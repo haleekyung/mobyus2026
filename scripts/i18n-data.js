@@ -69,11 +69,11 @@ window.i18nData = {
         "footer.title": "Ready to Innovate?",
         "footer.btn": "Contact Us",
         "footer.address_mobile": "서울특별시 강남구 테헤란로 326(역삼동707-27)<br>역삼태보아이타워 4층, 15층<br>Tel: 02-598-5838 | Email: contact@mobyus.com",
-        "gnb.products": "제품 및 솔루션",
-        "gnb.reference": "사례",
-        "gnb.insights": "인사이트",
-        "gnb.aboutus": "소개",
-        "gnb.contact": "문의하기",
+        "gnb.products": "PRODUCT & SOLUTION",
+        "gnb.reference": "REFERENCE",
+        "gnb.insights": "INSIGHT",
+        "gnb.aboutus": "ABOUT US",
+        "gnb.contact": "CONTACT",
         "au.snap.percent.suffix": "%",
 
         // Products & Solution Page
@@ -1956,11 +1956,11 @@ window.i18nData = {
         "footer.title": "Ready to Innovate?",
         "footer.btn": "Contact Us",
         "footer.address_mobile": "4F, 15F, Teabo i-Tower, 326 Teheran-ro, Gangnam-gu, Seoul, Republic of Korea<br>Tel: 02-598-5838 | Email: contact@mobyus.com",
-        "gnb.products": "Products & Solution",
-        "gnb.reference": "Reference",
-        "gnb.insights": "Insights",
-        "gnb.aboutus": "About Us",
-        "gnb.contact": "Contact",
+        "gnb.products": "PRODUCT & SOLUTION",
+        "gnb.reference": "REFERENCE",
+        "gnb.insights": "INSIGHT",
+        "gnb.aboutus": "ABOUT US",
+        "gnb.contact": "CONTACT",
         "au.snap.percent.suffix": "%",
 
         // Products & Solution Page
