@@ -24,12 +24,19 @@
         }
 
         /* 비교표 - MOBYUS 열 강조 */
+        .diff-table-wrapper {
+            border: 1px solid var(--color-gray20);
+            border-radius: 8px;
+            overflow: hidden;
+        }
         .diff-table {
             width: 100%;
             border-collapse: collapse;
-            outline: 1px solid var(--color-gray20);
-            border-radius: 8px;
-            overflow: hidden;
+            table-layout: fixed;
+        }
+        .diff-table td,
+        .diff-table th {
+            display: table-cell !important;
         }
 
         .diff-table thead tr {
@@ -322,7 +329,7 @@
         <section class="diff-section">
             <div class="container fade-in-section">
                 <h2 class="font-set-intro-title section-center-title" data-i18n="ps.amr.diff.title">핵심 차별점 (AMR vs AGV)</h2>
-                <table class="diff-table">
+                <div class="diff-table-wrapper"><table class="diff-table">
                     <colgroup>
                         <col style="width: 20%;">
                         <col style="width: 40%;">
@@ -352,7 +359,7 @@
                             <td class="font-set-table-ko col-competitor" data-i18n="ps.amr.diff.r3.agv">마커/QR 기반</td>
                         </tr>
                     </tbody>
-                </table>
+                </table></div>
             </div>
         </section>
 
@@ -412,7 +419,7 @@
         <section class="diff-section" style="background: var(--color-gray05); padding: 96px 0;">
             <div class="container fade-in-section">
                 <h2 class="font-set-intro-title section-center-title" data-i18n="ps.amr.attach.title">어태치먼트 &amp; 자동화 설비 연동</h2>
-                <table class="diff-table" style="background: #fff;">
+                <div class="diff-table-wrapper"><table class="diff-table" style="background: #fff;">
                     <colgroup>
                         <col style="width: 25%;">
                         <col style="width: 75%;">
@@ -433,7 +440,7 @@
                             <td class="font-set-table-ko" data-i18n="ps.amr.attach.r2.item">컨베이어, 수직반송기(리프트), 도킹 스테이션, 충전 스테이션</td>
                         </tr>
                     </tbody>
-                </table>
+                </table></div>
             </div>
         </section>
 
@@ -441,7 +448,7 @@
         <section class="diff-section">
             <div class="container fade-in-section">
                 <h2 class="font-set-intro-title section-center-title" data-i18n="ps.amr.industry.title">산업별 적용 예시</h2>
-                <table class="diff-table">
+                <div class="diff-table-wrapper"><table class="diff-table">
                     <colgroup>
                         <col style="width: 20%;">
                         <col style="width: 30%;">
@@ -481,7 +488,7 @@
                             <td class="font-set-table-ko" data-i18n="ps.amr.industry.r5.app">대량 소재, 셀 적재·이송</td>
                         </tr>
                     </tbody>
-                </table>
+                </table></div>
             </div>
         </section>
 
