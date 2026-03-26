@@ -199,9 +199,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const langHTML = `
             <div class="gnb-lang">
                 <i class="fas fa-globe"></i>
-                <a href="#" data-lang="ko" class="${activeLang === 'ko' ? 'active' : ''}">KOR</a>
-                <span class="divider">/</span>
-                <a href="#" data-lang="en" class="${activeLang === 'en' ? 'active' : ''}">ENG</a>
+                <a href="#" class="lang-toggle-btn" data-lang="${activeLang === 'ko' ? 'en' : 'ko'}">
+                    ${activeLang === 'ko' ? 'EN' : 'KO'}
+                </a>
             </div>
         `;
 

@@ -4409,7 +4409,7 @@ body.scroll-down-mode .secondary-nav {
     font-size: 14px;
     font-weight: 500;
     color: #4b5563;
-    margin-right: 10px;
+    margin-right: 15px;
 }
 
 .gnb-lang i {
@@ -4418,39 +4418,66 @@ body.scroll-down-mode .secondary-nav {
     margin-right: 4px;
 }
 
-.gnb-lang a {
+.gnb-lang .lang-toggle-btn {
     color: #4b5563;
     text-decoration: none;
-    transition: color 0.2s;
+    transition: all 0.2s;
+    font-weight: 600;
+    padding: 4px 15px;
+    border: 1px solid #e5e7eb;
+    border-radius: 50px;
+    background: #ffffff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
-.gnb-lang a:hover {
-    color: var(--primary-color);
-}
-
-.gnb-lang a.active {
-    font-weight: 700;
-    color: var(--primary-color);
-}
-
-.gnb-lang .divider {
-    color: #ccc;
-    font-size: 12px;
+.gnb-lang .lang-toggle-btn:hover {
+    color: var(--color-br900);
+    border-color: var(--color-br900);
 }
 
 @media (max-width: 768px) {
     .gnb-lang {
         font-size: 12px;
-        margin-right: 5px;
-        gap: 4px;
+        margin-right: 8px;
+        gap: 3px;
     }
     .gnb-lang i {
-        font-size: 12px;
-        margin-right: 2px;
+        display: none; /* Hide globe icon on small mobile to save space */
+    }
+    .gnb-lang .lang-toggle-btn {
+        padding: 2px 6px;
+    }
+    .gnb-right {
+        gap: 12px !important; 
     }
     .gnb-right .gnb-btn {
-        margin-right: 10px;
+        margin-right: 0;
         padding: 6px 12px;
         font-size: 11px;
+    }
+    .mobile-menu-btn {
+        margin-left: 5px;
+    }
+}
+
+/* Mobile GNB Layout Overrides */
+@media (max-width: 768px) {
+    .gnb-container {
+        padding: 0 15px !important;
+    }
+    .gnb-left img {
+        height: 24px !important;
+        width: auto !important;
+    }
+    .mobile-menu-btn {
+        display: block !important;
+        z-index: 10001 !important;
+        margin-left: 8px !important;
+    }
+    .mobile-menu-btn span {
+        background-color: #111 !important;
+    }
+    .gnb-right {
+        gap: 10px !important;
     }
 }
