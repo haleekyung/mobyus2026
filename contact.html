@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - MOBYUS</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&family=Pretendard+Variable:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <style>
+        .contact-page .fade-in-up {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .track-card {
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            border-radius: 16px;
+            padding: 40px 30px;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .track-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+        }
+
+        .track-card.active {
+            border: 2px solid #800040;
+            background: #fdf2f8;
+        }
+
+        .track-content {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .track-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            padding: 14px 16px;
+            font-family: inherit;
+            font-size: 1rem;
+            color: #111827;
+            transition: border-color 0.2s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #800040;
+            box-shadow: 0 0 0 3px rgba(128, 0, 64, 0.1);
+        }
+
+        .required {
+            color: #e11d48;
+            margin-left: 4px;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #e5e7eb;
+            padding: 20px 0;
+        }
+
+        .faq-q {
+            font-weight: 700;
+            color: #111827;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .faq-q i {
+            color: #800040;
+            margin-top: 4px;
+        }
+
+        .faq-a {
+            color: #4b5563;
+            font-size: 0.95rem;
+            padding-left: 28px;
+            line-height: 1.6;
+        }
+
+        .office-card {
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 24px;
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .office-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: #fdf2f8;
+            color: #800040;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            flex-shrink: 0;
+        }
+
+        /* Grid System */
+        .responsive-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        /* Mobile Optimization */
+        @media (max-width: 768px) {
+            .responsive-grid {
+                grid-template-columns: 1fr !important;
+                gap: 12px !important;
+            }
+            .page-header {
+                padding-top: 80px !important;
+                padding-bottom: 40px !important;
+            }
+
+            .page-header h1 {
+                font-size: 2rem !important;
+            }
+
+            .page-header p {
+                font-size: 1rem !important;
+                padding: 0 20px;
+                word-break: keep-all;
+            }
+
+            .container {
+                padding-left: 40px !important;
+                padding-right: 40px !important;
+            }
+
+            .contact-tracks {
+                grid-template-columns: 1fr !important;
+                gap: 12px !important;
+            }
+
+            .track-card {
+                padding: 30px 20px !important;
+            }
+
+            .track-card div {
+                font-size: 2rem !important;
+            }
+
+            .track-card h3 {
+                font-size: 1.15rem !important;
+            }
+
+            .track-content-wrapper {
+                padding: 30px 20px !important;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr !important;
+                gap: 0 !important;
+            }
+
+            .office-grid {
+                grid-template-columns: 1fr !important;
+            }
+
+            .office-card {
+                padding: 20px !important;
+            }
+        }
+    </style>
+</head>
+
+<body class="contact-page">
+    <header id="gnb"></header>
+
+    <main class="bg-light">
+        <!-- B3. Page Header -->
+        <section class="page-header section-padding text-center" style="padding-top: 120px; padding-bottom: 60px;">
+            <div class="container fade-in-up">
+                <span data-i18n="ct.header.tag"
+                    style="background: rgba(128,0,64,0.1); color: #800040; padding: 6px 16px; border-radius: 20px; font-size: 0.9rem; margin-bottom: 20px; display: inline-block; font-weight: 600; letter-spacing: 0.05em;">CONTACT
+                    US</span>
+                <h1 data-i18n="ct.header.title" style="font-size: 3rem; font-weight: 700; margin-bottom: 16px; color: #111827;">대화를 시작합니다</h1>
+                <p data-i18n="ct.header.sub" style="font-size: 1.2rem; color: #4b5563; margin-bottom: 12px;">제품 도입부터 투자·채용까지, 적합한 창구로 안내합니다</p>
+            </div>
+        </section>
+
+        <section class="section-padding" style="padding-top: 20px; padding-bottom: 100px;">
+            <div class="container fade-in-up" style="animation-delay: 0.1s;">
+
+                <h2 data-i18n="ct.select.title"
+                    style="font-size: 1.6rem; font-weight: 700; color: #111827; text-align: center; margin-bottom: 24px;">
+                    어떤 도움이 필요하신가요?</h2>
+
+                <!-- B4-1. 3-Track Selection -->
+                <div class="contact-tracks"
+                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 50px;">
+                    <div class="track-card active" data-target="track-product">
+                        <div style="font-size: 2.5rem; margin-bottom: 16px;">🤖</div>
+                        <h3 data-i18n="ct.track.p.title" style="font-size: 1.25rem; font-weight: 700; color: #111827; margin-bottom: 12px;">제품·솔루션 도입
+                            문의</h3>
+                        <p data-i18n="ct.track.p.sub" style="color: #6b7280; font-size: 0.95rem;">현장 자동화를 검토 중이시라면</p>
+                    </div>
+                    <div class="track-card" data-target="track-ir">
+                        <div style="font-size: 2.5rem; margin-bottom: 16px;">💼</div>
+                        <h3 data-i18n="ct.track.ir.title" style="font-size: 1.25rem; font-weight: 700; color: #111827; margin-bottom: 12px;">IR·투자 문의
+                        </h3>
+                        <p data-i18n="ct.track.ir.sub" style="color: #6b7280; font-size: 0.95rem;">투자 및 IR 자료 요청</p>
+                    </div>
+                    <div class="track-card" data-target="track-other">
+                        <div style="font-size: 2.5rem; margin-bottom: 16px;">🤝</div>
+                        <h3 data-i18n="ct.track.o.title" style="font-size: 1.25rem; font-weight: 700; color: #111827; margin-bottom: 12px;">기타 문의
+                        </h3>
+                        <p data-i18n="ct.track.o.sub" style="color: #6b7280; font-size: 0.95rem;">파트너십, 채용, 커뮤니케이션</p>
+                    </div>
+                </div>
+
+                <!-- Track Content Area -->
+                <div class="track-content-wrapper"
+                    style="background: #fff; border-radius: 20px; padding: 50px; box-shadow: 0 10px 40px rgba(0,0,0,0.03);">
+
+                    <!-- Track 1: Product (Fit-Check Gateway) -->
+                    <div id="track-product" class="track-content active">
+                        <div style="text-align: center; max-width: 600px; margin: 0 auto;">
+                            <!-- 게이트웨이 화면 -->
+                            <div id="product-gateway">
+                                <h3 data-i18n="ct.p.mw.title" style="font-size: 1.8rem; font-weight: 700; color: #800040; margin-bottom: 20px;">
+                                    3분이면 확인할 수 있습니다</h3>
+                                <p data-i18n="ct.p.mw.desc" style="font-size: 1.1rem; color: #374151; line-height: 1.7; margin-bottom: 40px;">
+                                    귀사 현장에 가장 적합한 <span style="font-weight: 700;">자동화 방향을 먼저 확인</span>해 보시겠습니까?<br>
+                                    Fit-Check 결과를 바탕으로 더 정확하고 효율적인 상담을 즉시 제공해 드립니다.
+                                </p>
+
+                                <a href="fit-check.html" class="btn" 
+                                    style="background: #800040; color: #fff; font-size: 1.1rem; font-weight: 600; padding: 18px 40px; border-radius: 999px; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; margin-bottom: 40px; box-shadow: 0 4px 15px rgba(128,0,64,0.3); transition: 0.2s;">
+                                    <span data-i18n="ct.p.mw.btn">Fit-Check 시작하기</span> <i class="fas fa-arrow-right"></i>
+                                </a>
+
+                                <div style="border-top: 1px solid #e5e7eb; padding-top: 30px; margin-top: 10px;">
+                                    <p data-i18n="ct.p.mw.done" style="color: #6b7280; font-size: 0.95rem; margin-bottom: 12px;">이미 Fit-Check를
+                                        완료하셨나요?</p>
+                                    <button type="button" onclick="showForm('product')" class="btn"
+                                        style="background: #fdf2f8; color: #800040; border: 1px solid #fbcfe8; font-weight: 600; padding: 12px 24px; border-radius: 8px; cursor: pointer; display: inline-block;">
+                                        <span data-i18n="ct.p.mw.result_btn">결과 기반 상담 요청</span> <i class="fas fa-chevron-right"
+                                            style="font-size:0.8em; margin-left:4px;"></i>
+                                    </button>
+                                </div>
+
+                                <div style="margin-top: 30px;">
+                                    <button type="button" onclick="showForm('product', true)" data-i18n="ct.p.mw.normal_btn"
+                                        style="background: none; border: none; font-size: 0.85rem; color: #9ca3af; text-decoration: underline; cursor: pointer;">
+                                        Fit-Check 없이 일반 문의하기
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- 제품 폼 화면 (숨김처리) -->
+                            <form id="product-form" style="display: none; text-align: left;">
+                                <div
+                                    style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+                                    <h3 data-i18n="ct.p.form.title" style="font-size: 1.5rem; font-weight: 700; color: #111827; margin: 0;">제품·솔루션
+                                        도입 문의</h3>
+                                    <button type="button" onclick="hideForm('product')"
+                                        style="background:none; border:none; color:#6b7280; cursor:pointer;"><i
+                                            class="fas fa-arrow-left"></i> <span data-i18n="ct.p.form.back"> 뒤로가기</span></button>
+                                </div>
+
+                                <!-- Fit-Check Result Banner (가상 영역, 실제 구현시 localStorage에서 로드) -->
+                                <div id="fit-check-result-banner"
+                                    style="background: #fdf2f8; border: 1px solid #fbcfe8; border-radius: 12px; padding: 20px; margin-bottom: 30px; display: none;">
+                                    <div style="font-weight: 600; color: #800040; margin-bottom: 12px; font-size: 1.05rem;">
+                                        <i class="fas fa-clipboard-check"></i> <span data-i18n="ct.p.form.banner.title">첨부된 Fit-Check 결과</span>
+                                    </div>
+                                    <div class="responsive-grid" style="font-size: 0.9rem; color: #4b5563;">
+                                        <div><strong data-i18n="ct.p.form.banner.type">현장 유형:</strong> <span id="fc-type">-</span></div>
+                                        <div><strong data-i18n="ct.p.form.banner.unit">취급 단위:</strong> <span id="fc-unit">-</span></div>
+                                        <div><strong data-i18n="ct.p.form.banner.task">핵심 작업:</strong> <span id="fc-task">-</span></div>
+                                        <div><strong data-i18n="ct.p.form.banner.status">진단 결과:</strong> <span id="fc-status" data-i18n="ct.p.form.banner.done">-</span></div>
+                                    </div>
+                                </div>
+
+                                <div class="responsive-grid">
+                                    <div class="form-group">
+                                        <label data-i18n="ct.form.company">회사명 <span class="required">*</span></label>
+                                        <input type="text" required data-i18n-placeholder="ct.form.company_ph" placeholder="회사명을 입력해주세요">
+                                    </div>
+                                    <div class="form-group">
+                                        <label data-i18n="ct.form.name">담당자명 <span class="required">*</span></label>
+                                        <input type="text" required data-i18n-placeholder="ct.form.name_ph" placeholder="본인 성함을 입력해주세요">
+                                    </div>
+                                </div>
+                                <div class="responsive-grid">
+                                    <div class="form-group">
+                                        <label data-i18n="ct.form.email">이메일 <span class="required">*</span></label>
+                                        <input type="email" required data-i18n-placeholder="ct.form.email_ph" placeholder="이메일 주소">
+                                    </div>
+                                    <div class="form-group">
+                                        <label data-i18n="ct.form.tel">연락처</label>
+                                        <input type="tel" data-i18n-placeholder="ct.form.tel_ph" placeholder="선택 사항">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label><span data-i18n="ct.form.scale">예상 규모</span> <span data-i18n="ct.form.scale_sub" style="font-weight: 400; color: #6b7280; font-size:0.85rem;">(선택
+                                            사항)</span></label>
+                                    <input type="text" data-i18n-placeholder="ct.form.scale_ph" placeholder="예: 로봇 10대, 면적 500평 등">
+                                </div>
+                                <div class="form-group">
+                                    <label><span data-i18n="ct.form.content">추가 설명 (문의 내용)</span> <span class="required" id="productFormContentReq"
+                                            style="display:none;">*</span></label>
+                                    <textarea rows="5" data-i18n-placeholder="ct.form.content_ph" placeholder="궁금하신 점이나 추가 현장 설명을 적어주세요."></textarea>
+                                </div>
+                                <div style="text-align: center; margin-top: 30px;">
+                                    <button type="submit" class="btn" data-i18n="ct.form.submit"
+                                        style="background: #111827; color: #fff; font-weight: 600; padding: 14px 40px; border-radius: 8px; border: none; cursor: pointer;">상담
+                                        요청 접수하기</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Track 2: IR -->
+                    <div id="track-ir" class="track-content">
+                        <div style="max-width: 600px; margin: 0 auto;">
+                            <h3 data-i18n="ct.ir.form.title" style="font-size: 1.5rem; font-weight: 700; color: #111827; margin-bottom: 30px;">IR·투자
+                                문의</h3>
+                            <form id="ir-form">
+                                <div class="responsive-grid">
+                                    <div class="form-group">
+                                        <label data-i18n="ct.ir.form.company">회사/기관명 <span class="required">*</span></label>
+                                        <input type="text" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label data-i18n="ct.form.name">담당자명 <span class="required">*</span></label>
+                                        <input type="text" required>
+                                    </div>
+                                </div>
+                                <div class="responsive-grid">
+                                    <div class="form-group">
+                                        <label data-i18n="ct.form.email">이메일 <span class="required">*</span></label>
+                                        <input type="email" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label data-i18n="ct.form.tel_ir">전화번호</label>
+                                        <input type="tel">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label data-i18n="ct.ir.form.type">문의 유형 <span class="required">*</span></label>
+                                    <select required>
+                                        <option value="" disabled selected data-i18n="ct.ir.form.type_ph">선택해주세요</option>
+                                        <option value="invest" data-i18n="ct.ir.form.opt1">투자 문의</option>
+                                        <option value="ir-doc" data-i18n="ct.ir.form.opt2">IR 자료 요청</option>
+                                        <option value="partner" data-i18n="ct.ir.form.opt3">핵심 파트너십</option>
+                                        <option value="other" data-i18n="ct.ir.form.opt4">기타</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label data-i18n="ct.ir.form.msg">메시지</label>
+                                    <textarea rows="4" data-i18n-placeholder="ct.ir.form.msg_ph" placeholder="상세 내용을 입력해주세요"></textarea>
+                                </div>
+                                <div style="text-align: center; margin-top: 30px;">
+                                    <button type="submit" class="btn" data-i18n="ct.ir.form.submit"
+                                        style="background: #111827; color: #fff; font-weight: 600; padding: 14px 40px; border-radius: 8px; border: none; cursor: pointer;">투자
+                                        담당자에게 문의하기</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Track 3: Other -->
+                    <div id="track-other" class="track-content">
+                        <div style="max-width: 600px; margin: 0 auto;">
+                            <h3 data-i18n="ct.o.form.title" style="font-size: 1.5rem; font-weight: 700; color: #111827; margin-bottom: 30px;">기타 문의
+                            </h3>
+                            <form id="other-form">
+                                <div class="form-group">
+                                    <label data-i18n="ct.o.form.type">문의 분류 <span class="required">*</span></label>
+                                    <select required>
+                                        <option value="" disabled selected data-i18n="ct.o.form.type_ph">문의 목적을 선택해주세요</option>
+                                        <option value="partner" data-i18n="ct.o.form.opt1">파트너십 제안</option>
+                                        <option value="recruit" data-i18n="ct.o.form.opt2">채용 문의</option>
+                                        <option value="media" data-i18n="ct.o.form.opt3">언론·미디어</option>
+                                        <option value="tech" data-i18n="ct.o.form.opt4">기술/연구 협력</option>
+                                        <option value="other" data-i18n="ct.o.form.opt5">기타 문의</option>
+                                    </select>
+                                </div>
+                                <div class="responsive-grid">
+                                    <div class="form-group">
+                                        <label data-i18n="ct.form.org">조직/소속명 <span class="required">*</span></label>
+                                        <input type="text" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label data-i18n="ct.form.sender">성함 <span class="required">*</span></label>
+                                        <input type="text" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label data-i18n="ct.form.email_ph">이메일 주소 <span class="required">*</span></label>
+                                    <input type="email" required>
+                                </div>
+                                <div class="form-group">
+                                    <label data-i18n="ct.o.form.msg">메시지 <span class="required">*</span></label>
+                                    <textarea rows="5" required data-i18n-placeholder="ct.o.form.msg_ph" placeholder="내용을 작성해주세요"></textarea>
+                                </div>
+                                <div style="text-align: center; margin-top: 30px;">
+                                    <button type="submit" class="btn" data-i18n="ct.o.form.submit"
+                                        style="background: #111827; color: #fff; font-weight: 600; padding: 14px 40px; border-radius: 8px; border: none; cursor: pointer;">문의
+                                        접수하기</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- B6. 오피스 정보 & B5. FAQ -->
+        <section class="section-padding bg-white" style="border-top: 1px solid #e5e7eb;">
+            <div class="container fade-in-up">
+                <div style="display: flex; flex-wrap: wrap; gap: 60px;">
+
+                    <!-- Left: Offices -->
+                    <div style="flex: 1; min-width: 320px;">
+                        <h2 data-i18n="ct.office.title" style="font-size: 1.6rem; font-weight: 700; color: #111827; margin-bottom: 30px;">Offices
+                        </h2>
+                        <div style="display: flex; flex-direction: column; gap: 20px;">
+                            <div class="office-card">
+                                <div class="office-icon"><i class="fas fa-building"></i></div>
+                                <div>
+                                    <h4 data-i18n="ct.office.hq.title"
+                                        style="font-weight: 700; color: #111827; font-size: 1.1rem; margin-bottom: 4px;">
+                                        본사</h4>
+                                    <p data-i18n="ct.office.hq.addr"
+                                        style="color: #6b7280; font-size: 0.95rem; line-height: 1.5; margin-bottom: 8px;">
+                                        서울시 강남구 테헤란로 326 아이타워</p>
+                                    <span data-i18n="ct.office.hq.tag"
+                                        style="display: inline-block; background: #f3f4f6; color: #4b5563; font-size: 0.8rem; padding: 4px 8px; border-radius: 4px;">경영,
+                                        TAMS & 솔루션 R&D</span>
+                                </div>
+                            </div>
+                            <div class="office-card">
+                                <div class="office-icon"><i class="fas fa-microchip"></i></div>
+                                <div>
+                                    <h4 data-i18n="ct.office.lab.title"
+                                        style="font-weight: 700; color: #111827; font-size: 1.1rem; margin-bottom: 4px;">
+                                        연구소 (물류로봇)</h4>
+                                    <p data-i18n="ct.office.lab.addr"
+                                        style="color: #6b7280; font-size: 0.95rem; line-height: 1.5; margin-bottom: 8px;">
+                                        경기도 시흥시 목감둘레로 168-28</p>
+                                    <span data-i18n="ct.office.lab.tag"
+                                        style="display: inline-block; background: #f3f4f6; color: #4b5563; font-size: 0.8rem; padding: 4px 8px; border-radius: 4px;">AMR,
+                                        AFL 로봇 하드웨어 설계 및 R&D</span>
+                                </div>
+                            </div>
+                            <div class="responsive-grid">
+                                <div class="office-card" style="padding: 20px;">
+                                    <div class="office-icon"
+                                        style="width: 40px; height: 40px; font-size: 1.2rem; flex-shrink: 0;"><i
+                                            class="fas fa-laptop-code"></i></div>
+                                    <div>
+                                        <h4 data-i18n="ct.office.busan.title" style="font-weight: 700; color: #111827; font-size: 1rem; margin-bottom: 4px;">
+                                            연구소 (부산)</h4>
+                                        <p data-i18n="ct.office.busan.desc" style="color: #6b7280; font-size: 0.85rem; line-height: 1.4;">TAMS R&D 남부권 지원</p>
+                                    </div>
+                                </div>
+                                <div class="office-card" style="padding: 20px;">
+                                    <div class="office-icon"
+                                        style="width: 40px; height: 40px; font-size: 1.2rem; flex-shrink: 0;"><i
+                                            class="fas fa-warehouse"></i></div>
+                                    <div>
+                                        <h4 data-i18n="ct.office.demo.title" style="font-weight: 700; color: #111827; font-size: 1rem; margin-bottom: 4px;">
+                                            Demo Center</h4>
+                                        <p data-i18n="ct.office.demo.desc" style="color: #6b7280; font-size: 0.85rem; line-height: 1.4;">로봇 및 TAMS 실증 센터 (안산)</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: FAQ -->
+                    <div style="flex: 1; min-width: 320px;">
+                        <h2 style="font-size: 1.6rem; font-weight: 700; color: #111827; margin-bottom: 30px;">FAQ</h2>
+                        <div style="display: flex; flex-direction: column;">
+                            <div class="faq-item" style="border-top: 1px solid #e5e7eb;">
+                                <div class="faq-q"><i class="fas fa-q"></i> <span data-i18n="ct.faq.q1">제품 도입 최소 규모가 있나요?</span></div>
+                                <div class="faq-a">
+                                    <span data-i18n="ct.faq.a1">물류 로봇 1대부터 시작 가능합니다. 고객사 현장 규모와 작업 특성에 맞춘 최적화된 로봇 구성 및 TAMS 도입 범위는 Fit-Check를 통해 먼저
+                                    점검하실 수 있습니다.</span>
+                                    <br><a href="fit-check.html" class="btn"
+                                        style="display:inline-block; margin-top:10px; padding:6px 16px; font-size:0.85rem; background:#f3f4f6; color:#374151; border-radius:6px; text-decoration:none;"><i
+                                            class="fas fa-arrow-right" style="margin-right:6px;"></i> Fit-Check</a>
+                                </div>
+                            </div>
+                            <div class="faq-item">
+                                <div class="faq-q"><i class="fas fa-q"></i> <span data-i18n="ct.faq.q2">기존 WMS/MES와 연동이 가능한가요?</span></div>
+                                <div class="faq-a">
+                                    <span data-i18n="ct.faq.a2">네, 가능합니다. 자사의 운영 통합 솔루션 TAMS는 표준 인터페이스(REST API, PLC 통신 규격 등)를 통해 기존 시스템(WMS, ERP,
+                                    설비)과 데이터 단절 없이 완벽히 연동되는 모듈형 아키텍처를 지원합니다.</span>
+                                    <br><a href="solution-control.html" class="btn"
+                                        style="display:inline-block; margin-top:10px; padding:6px 16px; font-size:0.85rem; background:#f3f4f6; color:#374151; border-radius:6px; text-decoration:none;"><i
+                                            class="fas fa-arrow-right" style="margin-right:6px;"></i> Control</a>
+                                </div>
+                            </div>
+                            <div class="faq-item">
+                                <div class="faq-q"><i class="fas fa-q"></i> <span data-i18n="ct.faq.q3">해외 현장에도 적용 가능한가요?</span></div>
+                                <div class="faq-a">
+                                    <span data-i18n="ct.faq.a3">12개국 이상의 글로벌 고객 현장에 배치되어 있습니다. 원격 관제 지원 시스템 및 글로벌 거점 파트너를 통해 안정적인 사후 지원이 가능합니다.</span>
+                                    <br><a href="reference.html" class="btn"
+                                        style="display:inline-block; margin-top:10px; padding:6px 16px; font-size:0.85rem; background:#f3f4f6; color:#374151; border-radius:6px; text-decoration:none;"><i
+                                            class="fas fa-arrow-right" style="margin-right:6px;"></i> Reference</a>
+                                </div>
+                            </div>
+                            <div class="faq-item" style="border-bottom: none;">
+                                <div class="faq-q"><i class="fas fa-q"></i> <span data-i18n="ct.faq.q4">IR 자료를 받을 수 있나요?</span></div>
+                                <div class="faq-a">
+                                    <span data-i18n="ct.faq.a4">IR 및 투자 문의 트랙(Track 2)을 통해 내용을 남겨주시면, 담당 부서 검토 후 최신 IR 자료 원본 및 논의를 위한 일정을 회신해 드립니다.
+                                    About Us 페이지에서도 요약 1-Pager PDF를 다운로드할 수 있습니다.</span>
+                                    <br><a href="#" onclick="switchTrack('ir'); return false;" class="btn"
+                                        style="display:inline-block; margin-top:10px; padding:6px 16px; font-size:0.85rem; background:#f3f4f6; color:#374151; border-radius:6px; text-decoration:none;"><i
+                                            class="fas fa-arrow-right" style="margin-right:6px;"></i> <span data-i18n="ct.faq.ir_btn">IR 문의</span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer id="contact"></footer>
+
+    <script src="scripts/i18n-data.js"></script>
+    <script src="scripts/i18n.js"></script>
+    <script src="scripts/main.js"></script>
+    <script>
+        // Contact Page Scripts
+        document.addEventListener('DOMContentLoaded', () => {
+            const trackCards = document.querySelectorAll('.track-card');
+            const trackContents = document.querySelectorAll('.track-content');
+
+            // 1) 탭 스위칭 로직
+            trackCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    // Remove active from all
+                    trackCards.forEach(c => c.classList.remove('active'));
+                    trackContents.forEach(c => c.classList.remove('active'));
+
+                    // Add active to clicked
+                    card.classList.add('active');
+                    const targetId = card.getAttribute('data-target');
+                    document.getElementById(targetId).classList.add('active');
+                });
+            });
+
+            // 2) URI Query Parameter 처리 (About Us 등에서 ?type=ir 전달 대응)
+            const urlParams = new URLSearchParams(window.location.search);
+            const typeParam = urlParams.get('type');
+            if (typeParam === 'ir') {
+                const irTab = document.querySelector('[data-target="track-ir"]');
+                if (irTab) irTab.click();
+            } else if (typeParam === 'recruit' || typeParam === 'other') {
+                const otherTab = document.querySelector('[data-target="track-other"]');
+                if (otherTab) otherTab.click();
+            }
+
+            // 3) Fit-Check 임시 데이터 확인 로직
+            const fitCheckDataStr = localStorage.getItem('fitCheckResult');
+            const isFitCheckAction = window.location.search.includes('action=fitcheck');
+
+            if (fitCheckDataStr) {
+                try {
+                    const fcData = JSON.parse(fitCheckDataStr);
+                    // 데이터가 있으면 바로 폼을 표출 (결과 기반)
+                    const gw = document.getElementById('product-gateway');
+                    const form = document.getElementById('product-form');
+                    const banner = document.getElementById('fit-check-result-banner');
+
+                    if (gw && form && banner) {
+                        gw.style.display = 'none';
+                        form.style.display = 'block';
+                        banner.style.display = 'block';
+
+                        document.getElementById('fc-type').textContent = fcData.industryType || '해당 없음';
+                        document.getElementById('fc-unit').textContent = fcData.handlingUnit || '해당 없음';
+                        document.getElementById('fc-task').textContent = fcData.tasks ? fcData.tasks.join(', ') : '해당 없음';
+                        document.getElementById('fc-status').textContent = fcData.status || '완료 (데이터 자동 첨부 됨)';
+
+                        // 12개 질문에 대한 답변 내용 자동 입력
+                        const contentArea = form.querySelector('textarea');
+                        if (contentArea && fcData.fullAnswers) {
+                            contentArea.value = "[Fit-Check 상세 응답 내역]\n\n" + fcData.fullAnswers + "\n\n==========================\n여기에 추가 문의사항을 작성해 주세요.";
+                        }
+
+                        if (isFitCheckAction) {
+                            showForm('product', true);
+                        }
+                    }
+                } catch (e) { }
+            }
+
+            // 폼 제출 기본 동작 방지
+            const forms = document.querySelectorAll('form');
+            forms.forEach(f => f.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const successMsg = (window.i18nData && window.i18nData[getLanguage()]) ? window.i18nData[getLanguage()]['ct.alert.success'] : '문의가 접수되었습니다. 2영업일 이내 답변드리겠습니다.';
+                alert(successMsg);
+                f.reset();
+            }));
+        });
+
+        // 폼 강제 보이기/숨기기 전환 로직 (HTML Onclick 이벤트 콜백)
+        function showForm(trackName, isDirect = false) {
+            if (trackName === 'product') {
+                document.getElementById('product-gateway').style.display = 'none';
+                document.getElementById('product-form').style.display = 'block';
+
+                // 일반 문의면 설명창을 필수로 설정
+                const cReq = document.getElementById('productFormContentReq');
+                if (isDirect && cReq) cReq.style.display = 'inline';
+            }
+        }
+        function hideForm(trackName) {
+            if (trackName === 'product') {
+                document.getElementById('product-form').style.display = 'none';
+                document.getElementById('product-gateway').style.display = 'block';
+                document.getElementById('fit-check-result-banner').style.display = 'none';
+            }
+        }
+
+        // FAQ에서 버튼 클릭 시 특정 트랙으로 전환 후 스크롤
+        function switchTrack(trackName) {
+            const trackTab = document.querySelector(`[data-target="track-${trackName}"]`);
+            if (trackTab) {
+                trackTab.click();
+                const container = document.querySelector('.contact-tracks');
+                if (container) {
+                    const y = container.getBoundingClientRect().top + window.scrollY - 100;
+                    window.scrollTo({ top: y, behavior: 'smooth' });
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

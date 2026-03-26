@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>도입 전 현장 준비 가이드 — 바닥·네트워크·통로 체크리스트 - MOBYUS Insights</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&family=Pretendard+Variable:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <script src="scripts/i18n-data.js"></script>
+    <script src="scripts/i18n.js"></script>
+    <style>
+        /* Bilingual Content Toggle */
+        html[lang="en"] .insight-title-ko {
+            display: none !important;
+        }
+
+        html[lang="en"] .insight-title-en {
+            display: block !important;
+            font-size: clamp(2rem, 4vw, 3.2rem) !important;
+            color: #111 !important;
+            font-weight: 700 !important;
+            line-height: 1.3 !important;
+            margin-bottom: 35px !important;
+        }
+
+        html[lang="en"] [data-i18n] {
+            font-family: 'Outfit', 'Pretendard Variable', sans-serif !important;
+        }
+        /* ===== Insights Detail Styles ===== */
+
+        .insight-header {
+            padding: 40px 0 50px;
+            background: #fff;
+        }
+
+        /* Breadcrumb */
+        .insight-breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+            color: #6b7280;
+            margin-bottom: 40px;
+            font-weight: 500;
+        }
+
+        .insight-breadcrumb a {
+            color: #6b7280;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .insight-breadcrumb a:hover {
+            color: var(--primary-color);
+        }
+
+        .insight-breadcrumb i {
+            font-size: 0.7rem;
+            color: #d1d5db;
+        }
+
+        /* Meta Top */
+        .insight-meta-top {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .insight-tag {
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: #f3f4f6;
+            color: #4b5563;
+        }
+
+        .badge-starter {
+            background: #ede9ff;
+            color: #6d28d9;
+        }
+
+        .badge-tech {
+            background: #e0f2fe;
+            color: #0369a1;
+        }
+
+        /* Titles */
+        .insight-title-ko {
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            font-weight: 700;
+            color: #111;
+            line-height: 1.3;
+            margin-bottom: 16px;
+            word-break: keep-all;
+            letter-spacing: -0.02em;
+        }
+
+        .insight-title-en {
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            font-weight: 400;
+            color: #9ca3af;
+            font-family: var(--font-heading);
+            margin-bottom: 35px;
+        }
+
+        /* Meta Bottom */
+        .insight-meta-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 25px;
+            border-top: 1px solid #f3f4f6;
+            color: #6b7280;
+            font-size: 0.95rem;
+        }
+
+        .insight-meta-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .insight-meta-info span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .insight-share-btn {
+            background: none;
+            border: 1px solid #e5e7eb;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #4b5563;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .insight-share-btn:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+            background: #f9fafb;
+        }
+
+        /* Hero Image */
+        .insight-hero-img {
+            width: 100%;
+            height: clamp(300px, 40vw, 550px);
+            border-radius: 24px;
+            margin-bottom: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .insight-hero-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .insight-hero-img::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.1) 0%, transparent 60%);
+        }
+
+        /* Content Body (Markdown style) */
+        .insight-content-body {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: #374151;
+        }
+
+        .insight-content-body h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #111;
+            margin: 60px 0 25px;
+            line-height: 1.4;
+            letter-spacing: -0.02em;
+        }
+
+        .insight-content-body h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin: 40px 0 20px;
+            line-height: 1.4;
+        }
+
+        .insight-content-body p {
+            margin-bottom: 24px;
+            word-break: keep-all;
+        }
+
+        .insight-content-body ul,
+        .insight-content-body ol {
+            margin-bottom: 30px;
+            padding-left: 24px;
+        }
+
+        .insight-content-body li {
+            margin-bottom: 12px;
+            word-break: keep-all;
+        }
+
+        .insight-content-body img {
+            width: 100%;
+            border-radius: 16px;
+            margin: 40px 0;
+            background: #f3f4f6;
+        }
+
+        /* Quote / Callout */
+        .insight-callout {
+            background: #f8fafc;
+            border-left: 4px solid var(--primary-color);
+            padding: 25px 30px;
+            border-radius: 0 16px 16px 0;
+            margin: 40px 0;
+            font-size: 1.1rem;
+            color: #4b5563;
+            font-style: italic;
+        }
+
+        /* Related Products Links */
+        .insight-products {
+            margin: 60px 0;
+            padding: 40px;
+            border: 1px solid #e5e7eb;
+            border-radius: 20px;
+            background: white;
+        }
+
+        .insight-products h4 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #111;
+        }
+
+        .product-links {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .product-link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: #f3f4f6;
+            color: #374151;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .product-link-btn:hover {
+            background: #e5e7eb;
+            color: #111;
+        }
+
+        /* Next Step CTA Banner (Type E) */
+        .insight-cta-banner {
+            max-width: 1000px;
+            margin: 80px auto;
+            background: linear-gradient(135deg, #1a1a2e 0%, #800020 100%);
+            border-radius: 24px;
+            padding: 50px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 20px 40px rgba(128, 0, 32, 0.15);
+        }
+
+        .cta-banner-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #fca5a5;
+        }
+
+        .cta-banner-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            word-break: keep-all;
+        }
+
+        .cta-banner-desc {
+            font-size: 1.05rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 30px;
+            line-height: 1.6;
+            word-break: keep-all;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary-alt {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 32px;
+            background: white;
+            color: #800020;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: transform 0.2s;
+        }
+
+        .btn-primary-alt:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-outline-alt {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 32px;
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .btn-outline-alt:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Related Insights */
+        .related-insights {
+            padding: 80px 0 100px;
+            background: #f9fafb;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .related-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 40px;
+        }
+
+        .related-header h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #111;
+        }
+
+        .view-all-link {
+            color: var(--primary-color);
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .view-all-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Repurposed from resource-guide.html for Related Cards */
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .insight-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid #f0f0f0;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .insight-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.09);
+        }
+
+        .card-thumb {
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            overflow: hidden;
+        }
+
+        .card-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-body {
+            padding: 25px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-badges {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #111;
+            line-height: 1.4;
+            margin-bottom: 10px;
+        }
+
+        .badge-type {
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .badge-cat {
+            padding: 3px 8px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            background: #f3f4f6;
+            color: #6b7280;
+        }
+
+        @media (max-width: 900px) {
+            .related-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .insight-title-ko {
+                font-size: 2rem;
+            }
+
+            .insight-hero-img {
+                height: 250px;
+                margin-bottom: 40px;
+                border-radius: 16px;
+            }
+
+            .insight-cta-banner {
+                padding: 40px 20px;
+            }
+
+            .related-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header id="gnb"></header>
+
+    <main>
+        <!-- Header Info -->
+        <section class="insight-header">
+            <div class="container fade-in">
+                <!-- Breadcrumb -->
+                <div class="insight-breadcrumb">
+                    <a href="index.html" data-i18n="gnb.home">Home</a>
+                    <i class="fas fa-chevron-right"></i>
+                    <a href="resource-guide.html" data-i18n="gnb.insights">Insights</a>
+                    <i class="fas fa-chevron-right"></i>
+                    <a href="resource-guide.html?filter=기술" data-i18n="insights.filter.tech">기술</a>
+                    <i class="fas fa-chevron-right"></i>
+                    <span style="color: #111;" data-i18n="ins.e2.breadcrumb">도입 전 현장 준비 가이드</span>
+                </div>
+
+                <!-- Meta Top -->
+                <div class="insight-meta-top">
+                    <span class="insight-tag" data-i18n="insights.filter.tech">기술</span>
+                    <span class="insight-tag badge-starter" style="background: #ede9ff;" data-i18n="ins.type.guide">Starter Guide</span>
+                </div>
+
+                <!-- Title -->
+                <h1 class="insight-title-ko" data-i18n="ins.e2.title">도입 전 현장 준비 가이드 — 바닥·네트워크·통로 체크리스트</h1>
+                <div class="insight-title-en" data-i18n="ins.e2.title_en">Site Readiness Guide — Floor, Network, and Aisles</div>
+
+                <!-- Meta Bottom -->
+                <div class="insight-meta-bottom">
+                    <div class="insight-meta-info">
+                        <span data-i18n="ins.e2.date"><i class="far fa-calendar"></i> 작성일: 2026.02.26</span>
+                        <span data-i18n="ins.e2.time"><i class="far fa-clock"></i> 약 8분 소요</span>
+                    </div>
+                    <button class="insight-share-btn" title="공유하기" onclick="alert('링크가 복사되었습니다.')">
+                        <i class="fas fa-link"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Content Area -->
+        <section style="padding-bottom: 60px;">
+            <div class="container fade-in-section">
+
+                <!-- Hero Image -->
+                <div class="insight-hero-img">
+                    <img src="images/thumbnail_04.png" alt="도입 전 현장 준비 가이드 — 바닥·네트워크·통로 체크리스트">
+                </div>
+
+                <!-- Article Body (Markdown-like structure) -->
+                <article class="insight-content-body">
+                    <h2 data-i18n="ins.e2.h1">1. 현장 준비가 중요한 이유</h2>
+                    <p data-i18n="ins.e2.q1"><strong>"로봇 자체의 하드웨어 성능보다, 로봇이 달리는 현장 인프라가 전체 시스템 성능의 50%를 결정합니다."</strong></p>
+                    <p data-i18n="ins.e2.p1">성공적인 물류 자동화 도입을 위해서는 로봇의 사양만큼이나 현장의 준비 상태가 중요합니다. 바닥이 고르지 않거나 네트워크가 불안정하다면 제아무리 똑똑한 자율주행 로봇이라도 제
+                        성능을 발휘할 수 없습니다.</p>
+
+                    <h2 data-i18n="ins.e2.h2">2. 바닥 상태 점검</h2>
+                    <p data-i18n="ins.e2.p2">로봇이 안전하고 빠르게 이동하기 위해서는 바닥의 평탄도와 표면 상태가 일정 기준을 충족해야 합니다.</p>
+                    <ul>
+                        <li data-i18n="ins.e2.li1"><strong>평탄도 기준:</strong> 지게차용 통로 바닥 평탄도 기준인 DIN 15185에 준하는 관리가 필요합니다.</li>
+                        <li data-i18n="ins.e2.li2"><strong>표면 상태:</strong> 심한 크랙이나 요철, 미끄러움을 유발하는 기름기나 물기 등은 주행 안정성을 저하시키므로 사전 보수가 필수적입니다. 바닥
+                            재질에 맞는 적절한 마찰 계수를 유지해야 규정된 제동 거리를 맞출 수 있습니다.</li>
+                        <li data-i18n="ins.e2.li3"><strong>단차 및 이음매:</strong> 층간 틈새나 신축 이음매(Expansion Joint)의 단차가 5mm 이내로 관리되어야 로봇의 떨림을 최소화할 수
+                            있습니다.</li>
+                    </ul>
+                    <p data-i18n="ins.e2.p3">Of course, it can operate even if it's not a perfect glass floor. <strong>MOBYUS</strong> products feature high-performance 3D SLAM and suspension structures, overcoming irregularities in typical site floors with excellent robustness.</p>
+
+                    <h2 data-i18n="ins.e2.h3">3. 네트워크 인프라</h2>
+                    <p data-i18n="ins.e2.p4">TAMS(통합 관제 시스템)와 수십 대의 로봇 간의 실시간 교통 관제를 위해서는 끊김 없는 네트워크 환경이 필수적입니다.</p>
+                    <ul>
+                        <li data-i18n="ins.e2.li4"><strong>Wi-Fi 커버리지:</strong> 로봇의 주행 구간인 워크 에어리어(Work Area) 전역에 걸쳐 음영(Dead Zone)이나 사각지대 없는 AP
+                            배치가 필요합니다.</li>
+                        <li data-i18n="ins.e2.li5"><strong>로밍(Roaming) 지연:</strong> AP 사이를 이동할 때 발생하는 로밍 지연 시간이 50ms (밀리초) 이하로 관리되어야 통신 단절을 피할
+                            수 있습니다.</li>
+                        <li data-i18n="ins.e2.li6"><strong>보안:</strong> 폐쇄망 구성을 권장하며, WPA3와 강력한 보안 프로토콜을 적용해야 합니다.</li>
+                    </ul>
+
+                    <h2 data-i18n="ins.e2.h4">4. 주행 환경 및 레이아웃</h2>
+                    <p data-i18n="ins.e2.p5">물리적인 통로 폭과 레이아웃은 로봇이 병목현상 없이 원활하게 물동량을 처리하기 위한 핵심 요소입니다.</p>
+                    <ul>
+                        <li data-i18n="ins.e2.li7"><strong>통로 폭 (Aisles):</strong> 기본적으로 로봇의 전폭에 양쪽 각각 10~20cm 이상의 안전 여유 공간이 확보되어야 합니다. 로봇 간
+                            교행(양방향 통행)이 필요한 메인 통로는 더 넓은 폭이 요구됩니다.</li>
+                        <li data-i18n="ins.e2.li8"><strong>회전 반경 (AST):</strong> 특히 전장이 긴 AFL(자율주행 지게차)의 경우 교차로 회전 반경 공간(AST, 직각적재통로폭)을 정확히
+                            계산하여 랙 간격을 배치해야 합니다.</li>
+                        <li data-i18n="ins.e2.li9"><strong>특수 구역 (Block Stacking):</strong> In areas with significant changes in features, such as block stacking yards without racks, additional reflectors for LiDAR recognition or ceiling markers are installed to increase positioning stability.</li>
+                    </ul>
+
+                    <h2 data-i18n="ins.e2.h6">6. "제약"은 "불가"가 아닙니다</h2>
+                    <p data-i18n="ins.e2.p6">체크리스트를 보며 우리 현장엔 불가능하다고 생각하셨나요? <strong>대부분의 제약 조건은 사전 준비와 현장 맞춤형 엔지니어링으로 충분히 치유 및 해결
+                            가능합니다.</strong></p>
+                    <p data-i18n="ins.e2.p7">또한, 최신 MOBYUS의 로봇들은 3D SLAM 기반의 맵핑 기술과 AI 파렛트/장애물 인식 모델을 탑재하고 있어 가혹한 산업 현장의 변화에도 유연하게 대처할 수 있는 현장
+                        극복형(Robust) 기술력을 자랑합니다.</p>
+                </article>
+
+                <!-- 체크리스트 (Moved outside 800px article for better width balance) -->
+                <div
+                    style="background: #fdfaf0; border: 1px solid #fde68a; border-radius: 12px; padding: 40px; margin: 60px auto; max-width: 1000px;">
+                    <h4
+                        style="font-size: 1.4rem; font-weight: 700; color: #854d0e; margin-bottom: 24px; display: flex; align-items: center; gap: 10px;">
+                        <i class="fas fa-check-square" style="color: #eab308; font-size: 1.5rem;"></i>
+                        <span data-i18n="ins.e2.h5">5. 기초 현장 체크리스트 (한눈에 보기)</span>
+                    </h4>
+                    <ul
+                        style="margin: 0; padding-left: 0; list-style: none; color: #713f12; font-size: 1.1rem; line-height: 2; font-weight: 500;">
+                        <li><i class="far fa-square" style="margin-right: 10px;"></i> <span data-i18n="ins.e2.chk2">로봇 교행(양방향) 통로 폭 여유 확보</span></li>
+                        <li><i class="far fa-square" style="margin-right: 10px;"></i> <span data-i18n="ins.e2.chk3">워크 에어리어 내 Wi-Fi AP 사각지대 없음</span></li>
+                        <li><i class="far fa-square" style="margin-right: 10px;"></i> <span data-i18n="ins.e2.chk4">이동 간 로밍 지연 50ms 이하</span></li>
+                        <li><i class="far fa-square" style="margin-right: 10px;"></i> <span data-i18n="ins.e2.chk5">바닥 표면 크랙, 요철, 기름기 없음</span></li>
+                        <li><i class="far fa-square" style="margin-right: 10px;"></i> <span data-i18n="ins.e2.chk6">신축 이음매(Expansion Joint) 단차 5mm 이내</span></li>
+                        <li><i class="far fa-square" style="margin-right: 10px;"></i> <span data-i18n="ins.e2.chk7">실내와 실외 주행 환경 구분 (또는 전용 셔터 연동) 명확</span></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- Type E(입문 가이드) 전용 CTA 배너 -->
+            <div class="container fade-in-section">
+                <div class="insight-cta-banner">
+                    <i class="fas fa-clipboard-check cta-banner-icon"></i>
+                    <h3 class="cta-banner-title" data-i18n="ins.e2.cta_title">우리 현장도 자동화가 가능할까?</h3>
+                    <p class="cta-banner-desc" data-i18n="ins.e2.cta_desc">로봇의 차이를 이해하셨다면, 이제 내 현장에 도입하기 위해 어떤 준비가 필요한지 확인해 볼 차례입니다. 3분이면 끝나는
+                        Fit-Check로 제약 요소와 대안을 바로 확인해 보세요.</p>
+
+                    <div class="cta-buttons">
+                        <a href="fit-check.html" class="btn-primary-alt" data-i18n="ins.e2.cta_btn1">Fit-Check 다시 진단하기 <i
+                                class="fas fa-arrow-right"></i></a>
+                        <a href="contact.html" class="btn-outline-alt" data-i18n="ins.e2.cta_btn2">상담 요청하기 <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Related Insights -->
+        <section class="related-insights">
+            <div class="container fade-in-section">
+                <div class="related-header">
+                    <h3 data-i18n="ins.common.related">Related Insights</h3>
+                    <a href="resource-guide.html" class="view-all-link" data-i18n="ins.back_to_list">목록으로 돌아가기 <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="related-grid">
+                    <!-- Related 1: E1로 변경 -->
+                    <a class="insight-card" href="insight-detail.html">
+                        <div class="card-thumb">
+                            <img src="images/thumbnail_02.png" alt="물류 로봇 입문">
+                        </div>
+                        <div class="card-body">
+                            <div class="card-badges">
+                                <span class="badge-type badge-starter" data-i18n="ins.type.starter">Starter Guide</span>
+                                <span class="badge-cat" data-i18n="insights.filter.tech">기술</span>
+                            </div>
+                            <div class="card-title" data-i18n="ins.e1.title">물류 로봇 입문 — AGV·AMR·AFL, 무엇이 다른가</div>
+                        </div>
+                    </a>
+
+                    <!-- Related 2 -->
+                    <a class="insight-card" href="insight-detail-roi.html">
+                        <div class="card-thumb">
+                            <img src="images/thumbnail_05.png" alt="물류 자동화 ROI 산출 가이드" data-i18n="ins.e3.title">
+                        </div>
+                        <div class="card-body">
+                            <div class="card-badges">
+                                <span class="badge-type badge-starter" data-i18n="ins.type.starter">Starter Guide</span>
+                                <span class="badge-cat" data-i18n="insights.filter.tech">기술</span>
+                            </div>
+                            <div class="card-title" data-i18n="ins.e3.title">물류 자동화 ROI 산출 가이드 — 투자 비용부터 회수까지</div>
+                        </div>
+                    </a>
+
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer id="contact"></footer>
+    <script src="scripts/main.js"></script>
+    <script>
+        // Sync html lang attribute for CSS visibility logic
+        window.addEventListener('languageChanged', (e) => {
+            document.documentElement.lang = e.detail.lang;
+        });
+        // Set initial state
+        document.documentElement.lang = localStorage.getItem('preferredLanguage') || 'ko';
+    </script>
+</body>
+
+</html>

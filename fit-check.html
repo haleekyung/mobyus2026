@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fit Check - MOBYUS</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&family=Pretendard+Variable:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <style>
+        /* Fit Check Specific Styles */
+        .fit-check-hero {
+            background-color: #ffffff;
+            padding: 120px 0 80px;
+            text-align: center;
+        }
+
+        .fit-check-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .fit-check-hero p {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 40px;
+        }
+
+        .helper-bar {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .helper-item {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            width: 300px;
+            text-align: center;
+        }
+
+        .helper-item h4 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .helper-item p {
+            font-size: 0.9rem;
+            color: #555;
+            margin-bottom: 0;
+            line-height: 1.6;
+        }
+
+        .start-btn {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px 50px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: transform 0.2s;
+        }
+
+        .start-btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* Wizard Form Styles */
+        .wizard-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            margin-top: -40px;
+            position: relative;
+            z-index: 10;
+            margin-bottom: 100px;
+        }
+
+        .progress-bar-container {
+            margin-bottom: 40px;
+        }
+
+        .progress-steps {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        .progress-line {
+            height: 6px;
+            background: #eee;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--primary-color);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .step-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .step-content.active {
+            display: block;
+        }
+
+        .step-question {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+        }
+
+        .option-card {
+            border: 2px solid #eee;
+            border-radius: 12px;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: center;
+        }
+
+        .option-card:hover {
+            border-color: #ddd;
+            background-color: #f9f9f9;
+        }
+
+        .option-card.selected {
+            border-color: var(--primary-color);
+            background-color: rgba(var(--primary-rgb), 0.05);
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .option-card i {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: #ccc;
+        }
+
+        .option-card.selected i {
+            color: var(--primary-color);
+        }
+
+        .wizard-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
+
+        .nav-btn {
+            padding: 10px 25px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            background: white;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .nav-btn.primary {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        /* Result Section */
+        #result-section {
+            display: none;
+            text-align: center;
+            padding: 60px 0;
+        }
+
+        .result-card {
+            background: linear-gradient(135deg, #fdf2f2 0%, #ffffff 100%);
+            border: 1px solid #eef2f6;
+            padding: 40px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+        }
+
+        /* Custom Modal Styles */
+        .custom-modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(4px);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .custom-modal {
+            background: white;
+            padding: 30px 40px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            width: 90%;
+            transform: translateY(20px);
+            animation: slideUp 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        @keyframes slideUp {
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        .modal-icon {
+            font-size: 3rem;
+            color: #f1c40f;
+            margin-bottom: 20px;
+        }
+
+        .modal-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .modal-message {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .modal-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .modal-btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* Mobile Optimization */
+        @media (max-width: 768px) {
+            .fit-check-hero {
+                padding: 80px 0 40px;
+            }
+
+            .fit-check-hero h1 {
+                font-size: 1.8rem !important;
+                line-height: 1.3;
+                word-break: keep-all;
+                padding: 0 10px;
+            }
+
+            .fit-check-hero p {
+                font-size: 0.95rem !important;
+                padding: 0 20px;
+                word-break: keep-all;
+            }
+
+            .container {
+                padding-left: 24px !important; /* Unified mobile margin */
+                padding-right: 24px !important;
+            }
+
+            .helper-item {
+                width: 100%;
+                padding: 16px;
+                margin-bottom: 12px;
+            }
+
+            .wizard-container {
+                padding: 24px 20px !important;
+                margin-top: -20px !important;
+                border-radius: 16px;
+            }
+
+            .progress-line {
+                height: 8px !important;
+            }
+
+            .step-question {
+                font-size: 1.25rem !important;
+                margin-bottom: 20px !important;
+                line-height: 1.4;
+                word-break: keep-all;
+            }
+
+            .options-grid {
+                grid-template-columns: 1fr !important;
+                gap: 12px !important;
+            }
+
+            .option-card {
+                padding: 16px !important;
+                text-align: center !important;
+            }
+
+            .option-card i {
+                margin-bottom: 0 !important;
+                font-size: 1.5rem !important;
+                width: 30px;
+                text-align: center;
+            }
+
+            .nav-btn {
+                padding: 12px 25px !important;
+                flex: 1;
+                text-align: center;
+            }
+
+            .wizard-navigation {
+                gap: 10px;
+            }
+
+            .result-card {
+                padding: 30px 20px !important;
+            }
+
+            .result-card h2 {
+                font-size: 1.4rem !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header id="gnb"></header>
+
+    <main>
+        <!-- Intro Section -->
+        <section class="fit-check-hero">
+            <div class="container fade-in">
+                <h1>3분 내에 적용 가능성과<br>준비 자료를 정리해 보세요.</h1>
+                <p>3단계 질문으로 도입 범위와 제약 가능성을 빠르게 종합합니다.<br>
+                    필요한 경우 '추가 검토 항목'과 '대안 경로'를 안내합니다.</p>
+
+                <div class="helper-bar">
+                    <div class="helper-item">
+                        <h4>1. 적용 조건</h4>
+                        <p>이 조건이라면 빠르게 적용 범위가 잡혀요<br>- Point-to-Point 반복<br>- Long Haul<br>- 표준 팔레트</p>
+                    </div>
+                    <div class="helper-item">
+                        <h4>2. 제약·리스크</h4>
+                        <p>이 항목이 있으면 추가 검토가 필요해요<br>- 협소/교행 어려움<br>- 실내외 혼용<br>- 요철/경사 포함</p>
+                    </div>
+                    <div class="helper-item">
+                        <h4>3. 준비자료</h4>
+                        <p>사진 1장 + 3줄 요약이면 검토가 빨라져요<br>- 통로/교차로 사진<br>- 바닥 상태 사진</p>
+                    </div>
+                </div>
+
+                <button class="start-btn" onclick="scrollToWizard()">3분 체크 시작</button>
+            </div>
+        </section>
+
+        <!-- Wizard Section -->
+        <section id="wizard-section" class="section-padding" style="display: none; background-color: #f8f9fa;">
+            <div class="container">
+                <div class="wizard-container fade-in-section">
+                    <!-- Progress Bar -->
+                    <div class="progress-bar-container">
+                        <div class="progress-steps">
+                            <span id="step-count">Step 1 of 12</span>
+                            <span id="step-title">현장/공간</span>
+                        </div>
+                        <div class="progress-line">
+                            <div class="progress-fill" id="progress-fill"></div>
+                        </div>
+                    </div>
+
+                    <!-- STEP 1: ?꾩옣/怨듦컙 -->
+                    <!-- Q1: ?꾩옣 ?좏삎 -->
+                    <div class="step-content active" data-step="1">
+                        <div class="step-question">Q1. 현장 유형을 선택해 주세요.</div>
+                        <div class="options-grid">
+                            <div class="option-card" onclick="selectOption(this, 'q1')">제조(공장)</div>
+                            <div class="option-card" onclick="selectOption(this, 'q1')">유통(물류센터)</div>
+                            <div class="option-card" onclick="selectOption(this, 'q1')" data-risk="yellow">혼합</div>
+                            <div class="option-card" onclick="selectOption(this, 'q1')" data-risk="yellow">기타</div>
+                        </div>
+                    </div>
+
+                    <!-- Q2: 痍④툒 ?⑥쐞 -->
+                    <div class="step-content" data-step="2">
+                        <div class="step-question">Q2. 취급 단위를 선택해 주세요.</div>
+                        <div class="options-grid">
+                            <div class="option-card" onclick="selectOption(this, 'q2')">팔레트</div>
+                            <div class="option-card" onclick="selectOption(this, 'q2')">박스</div>
+                            <div class="option-card" onclick="selectOption(this, 'q2')">롤 테이너</div>
+                            <div class="option-card" onclick="selectOption(this, 'q2')">대차</div>
+                            <div class="option-card" onclick="selectOption(this, 'q2')" data-risk="yellow">기타</div>
+                        </div>
+                    </div>
+
+                    <!-- Q3: ?듬줈/援먰뻾 ?ъ쑀 -->
+                    <div class="step-content" data-step="3">
+                        <div class="step-question">Q3. 통로/교행 여유가 어떤가요?</div>
+                        <div class="options-grid">
+                            <div class="option-card" onclick="selectOption(this, 'q3')">교행 여유</div>
+                            <div class="option-card" onclick="selectOption(this, 'q3')" data-risk="yellow">일부 구간 협소
+                            </div>
+                            <div class="option-card" onclick="selectOption(this, 'q3')" data-risk="red">협소/교행 어려움</div>
+                        </div>
+                    </div>
+
+                    <!-- Q4: ?댁쁺 怨듦컙 -->
+                    <div class="step-content" data-step="4">
+                        <div class="step-question">Q4. 운영 공간은 어디에 가까운가요?</div>
+                        <div class="options-grid">
+                            <div class="option-card" onclick="selectOption(this, 'q4')">실내</div>
+                            <div class="option-card" onclick="selectOption(this, 'q4')" data-risk="yellow">실내외 혼용</div>
+                            <div class="option-card" onclick="selectOption(this, 'q4')" data-risk="red">실외/일반도로</div>
+                        </div>
+                    </div>
+
+                    <!-- STEP 2: ?묒뾽/諛섎났 -->
+                    <!-- Q5: ?듭떖 ?묒뾽 -->
+                    <div class="step-content" data-step="5">
+                        <div class="step-question">Q5. 핵심 작업은 무엇인가요? (복수 선택)</div>
+                        <div class="options-grid">
+                            <div class="option-card" onclick="toggleOption(this)">입고</div>
+                            <div class="option-card" onclick="toggleOption(this)">전치</div>
+                            <div class="option-card" onclick="toggleOption(this)">피킹</div>
+                            <div class="option-card" onclick="toggleOption(this)">상하차</div>
+                            <div class="option-card" onclick="toggleOption(this)">공정간 이송</div>
+                            <div class="option-card" onclick="toggleOption(this)">라인 공급</div>
+                            <div class="option-card" onclick="toggleOption(this)">반출</div>
+                        </div>
+                    </div>
+
+                    <!-- Q6: ?묒뾽 ?⑦꽩 -->
+                    <div class="step-content" data-step="6">
+                        <div class="step-question">Q6. 작업 패턴은 어떤가요?</div>
+                        <div class="options-grid">
+                            <div class="option-card" onclick="selectOption(this, 'q6')">Point-to-Point 반복</div>
+                            <div class="option-card" onclick="selectOption(this, 'q6')" data-risk="yellow">대부분 반복(예외 있음)
+                            </div>
+                            <div class="option-card" onclick="selectOption(this, 'q6')" data-risk="red">비정형/수시 변경</div>
+                        </div>
+                    </div>
+
+                    <!-- Q7: ?대룞 嫄곕━ -->
+                    <div class="step-content" data-step="7">
+                        <div class="step-question">Q7. 이동 거리는 어느 쪽인가요?</div>
+                        <div class="options-grid">
+                            <div class="option-card" onclick="selectOption(this, 'q7')">Long Haul(장거리 반복)</div>
+                            <div class="option-card" onclick="selectOption(this, 'q7')" data-risk="yellow">중간</div>
+                            <div class="option-card" onclick="selectOption(this, 'q7')" data-risk="yellow">짧음/복잡</div>
+                        </div>
+                    </div>
+
+                    <!-- Q8: ?쇳겕 蹂??-->
+                    <div class="step-content" data-step="8">
+                        <div class="step-question">Q8. 피크 변동 수준은 어떤가요?</div>
+                        <div class="options-grid">
+                            <div class="option-card" onclick="selectOption(this, 'q8')">낮음</div>
+                            <div class="option-card" onclick="selectOption(this, 'q8')" data-risk="yellow">중간</div>
+                            <div class="option-card" onclick="selectOption(this, 'q8')" data-risk="yellow">높음</div>
+                        </div>
+                    </div>
+
+                    <!-- STEP 3: 湲곕컲/?쒖빟 -->
+                    <!-- Q9: ?곌퀎 ????쒖뒪??-->
+                    <div class="step-content" data-step="9">
+                        <div class="step-question">Q9. 연계 대상 시스템이 있나요? (복수 선택)</div>
+                        <div class="options-grid">
+                            <div class="option-card" onclick="toggleOption(this)">없음(독립)</div>
+                            <div class="option-card" onclick="toggleOption(this)" data-risk="yellow">ERP</div>
+                            <div class="option-card" onclick="toggleOption(this)" data-risk="yellow">MES</div>
+                            <div class="option-card" onclick="toggleOption(this)" data-risk="yellow">WMS</div>
+                            <div class="option-card" onclick="toggleOption(this)" data-risk="yellow">TMS</div>
+                            <div class="option-card" onclick="toggleOption(this)" data-risk="yellow">기타</div>
+                        </div>
+                    </div>
+
+                    <!-- Q10: 諛붾떏 ?곹깭 -->
+                    <div class="step-content" data-step="10">
+                        <div class="step-question">Q10. 바닥 상태는 어떤가요?</div>
+                        <div class="options-grid">
+                            <div class="option-card" onclick="selectOption(this, 'q10')">평탄</div>
+                            <div class="option-card" onclick="selectOption(this, 'q10')" data-risk="yellow">일부 요철/경사
+                            </div>
+                            <div class="option-card" onclick="selectOption(this, 'q10')" data-risk="red">요철/경사 포함</div>
+                        </div>
+                    </div>
+
+                    <!-- Q11: ?묒뾽 ?ъ씤??怨좎젙 -->
+                    <div class="step-content" data-step="11">
+                        <div class="step-question">Q11. 작업 포인트(상차/하차)가 고정인가요?</div>
+                        <div class="options-grid">
+                            <div class="option-card" onclick="selectOption(this, 'q11')">고정</div>
+                            <div class="option-card" onclick="selectOption(this, 'q11')" data-risk="yellow">가변 변경</div>
+                            <div class="option-card" onclick="selectOption(this, 'q11')" data-risk="yellow">수시 변경</div>
+                        </div>
+                    </div>
+
+                    <!-- Q12: ?명봽???ㅼ튂 ?쒖빟 -->
+                    <div class="step-content" data-step="12">
+                        <div class="step-question">Q12. 인프라 설치 제약이 있나요?</div>
+                        <div class="options-grid">
+                            <div class="option-card" onclick="selectOption(this, 'q12')">문제 없음</div>
+                            <div class="option-card" onclick="selectOption(this, 'q12')" data-risk="yellow">일부 제약 가능성
+                            </div>
+                            <div class="option-card" onclick="selectOption(this, 'q12')" data-risk="red">제약 우려 큼</div>
+                        </div>
+                    </div>
+
+                    <!-- Navigation -->
+                    <div class="wizard-navigation">
+                        <button class="nav-btn" id="prev-btn" onclick="prevStep()" disabled>이전</button>
+                        <button class="nav-btn primary" id="next-btn" onclick="nextStep()">다음</button>
+                    </div>
+                </div>
+
+                <!-- Result Section -->
+                <div id="result-section">
+                    <div class="result-card">
+                        <div id="result-icon" style="font-size: 3rem; margin-bottom: 20px;"></div>
+                        <h2 id="result-title" style="margin-bottom: 20px; color: var(--primary-color);"></h2>
+                        <h3 id="result-subtitle" style="margin-bottom: 15px;"></h3>
+                        <p id="result-desc" style="color: #666; margin-bottom: 30px;"></p>
+
+                        <div style="display: flex; justify-content: center; gap: 15px;">
+                            <button class="nav-btn primary" onclick="goToContact()">도입 범위 검토</button>
+                            <button class="nav-btn" onclick="location.reload()">다시 하기</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact"></footer>
+    <!-- Custom Validation Modal -->
+    <div id="customModal" class="custom-modal-overlay">
+        <div class="custom-modal">
+            <div class="modal-icon">
+                <i class="fas fa-exclamation-circle"></i>
+            </div>
+            <h3 class="modal-title">알림</h3>
+            <p class="modal-message">항목을 선택해 주세요.</p>
+            <button class="modal-btn" onclick="closeModal()">확인</button>
+        </div>
+    </div>
+
+    <script src="scripts/main.js"></script>
+    <script>
+        // Fit Check Logic
+        let currentStep = 1;
+        const totalSteps = 12;
+
+        function scrollToWizard() {
+            const wizardSection = document.getElementById('wizard-section');
+            wizardSection.style.display = 'block';
+
+            // Allow display:block to apply before scrolling
+            setTimeout(() => {
+                wizardSection.scrollIntoView({ behavior: 'smooth' });
+                // Trigger fade-in current for the container if needed, although main.js might handle intersection observer.
+                // Since we just showed it, intersection observer might catch it.
+                // But let's explicitly add the visible class to the container just in case.
+                const wizardContainer = document.querySelector('.wizard-container');
+                if (wizardContainer) {
+                    wizardContainer.classList.add('visible');
+                }
+            }, 100);
+        }
+
+        function updateProgress() {
+            const progress = ((currentStep - 1) / (totalSteps - 1)) * 100;
+            document.getElementById('progress-fill').style.width = `${progress}%`;
+            document.getElementById('step-count').innerText = `Step ${currentStep} of ${totalSteps}`;
+
+            // Step Titles
+            const titles = [
+                '현장/공간', '현장/공간', '현장/공간', '현장/공간',  // Q1-Q4
+                '작업/반복', '작업/반복', '작업/반복', '작업/반복',  // Q5-Q8
+                '기반/제약', '기반/제약', '기반/제약', '기반/제약'   // Q9-Q12
+            ];
+            document.getElementById('step-title').innerText = titles[currentStep - 1];
+
+            // Show/Hide Steps
+            document.querySelectorAll('.step-content').forEach(el => el.classList.remove('active'));
+            document.querySelector(`.step-content[data-step="${currentStep}"]`).classList.add('active');
+
+            // Button State
+            // Always enable prev button to show alert
+            document.getElementById('prev-btn').disabled = false;
+            document.getElementById('next-btn').innerText = currentStep === totalSteps ? '결과 보기' : '다음';
+        }
+
+        function nextStep() {
+            // Validation: Check if an option is selected for the current step
+            const currentStepEl = document.querySelector(`.step-content[data-step="${currentStep}"]`);
+            const selectedOption = currentStepEl.querySelector('.option-card.selected');
+
+            if (!selectedOption) {
+                showModal('항목을 선택해 주세요.');
+                return;
+            }
+
+            if (currentStep < totalSteps) {
+                currentStep++;
+                updateProgress();
+            } else {
+                showResult();
+            }
+        }
+
+        function prevStep() {
+            if (currentStep > 1) {
+                currentStep--;
+                updateProgress();
+            } else {
+                showModal('첫 번째 단계입니다.');
+            }
+        }
+
+        function selectOption(card, group) {
+            // Remove selected from siblings
+            const parent = card.parentElement;
+            parent.querySelectorAll('.option-card').forEach(el => el.classList.remove('selected'));
+            // Add selected to clicked
+            card.classList.add('selected');
+        }
+
+        function toggleOption(card) {
+            card.classList.toggle('selected');
+        }
+
+        function calculateResult() {
+            let redCount = 0;
+            let yellowCount = 0;
+
+            document.querySelectorAll('.option-card.selected').forEach(card => {
+                const risk = card.getAttribute('data-risk');
+                if (risk === 'red') redCount++;
+                if (risk === 'yellow') yellowCount++;
+            });
+
+            console.log(`Risk Analysis: Red=${redCount}, Yellow=${yellowCount}`);
+
+            // Logic:
+            // 1. Red >= 1 -> Constraints
+            // 2. No Red AND Yellow >= 6 -> Constraints
+            // 3. No Red AND Yellow >= 3 -> Review Needed
+            // 4. Else -> Feasible
+
+            if (redCount >= 1 || yellowCount >= 6) {
+                return 'CONSTRAINTS';
+            } else if (yellowCount >= 3) {
+                return 'REVIEW';
+            } else {
+                return 'FEASIBLE';
+            }
+        }
+
+        function showResult() {
+            const result = calculateResult();
+            const resultSection = document.getElementById('result-section');
+            const iconEl = document.getElementById('result-icon');
+            const titleEl = document.getElementById('result-title');
+            const subTitleEl = document.getElementById('result-subtitle');
+            const descEl = document.getElementById('result-desc');
+
+            document.querySelector('.wizard-container').style.display = 'none';
+            resultSection.style.display = 'block';
+
+            if (result === 'FEASIBLE') {
+                iconEl.innerHTML = '<i class="fas fa-check-circle" style="color: #2ecc71;"></i>';
+                titleEl.textContent = "진단 결과: 도입 가능성 높음";
+                subTitleEl.textContent = "\"현재 조건에서 도입 가능성이 높습니다\"";
+                descEl.innerHTML = "선택하신 환경은 자율주행 로봇 도입 시 빠른 효과를 볼 수 있는 조건입니다.<br>다음 단계로 구체적인 도입 범위를 검토해 보세요.";
+            } else if (result === 'REVIEW') {
+                iconEl.innerHTML = '<i class="fas fa-clipboard-check" style="color: #f1c40f;"></i>';
+                titleEl.textContent = "진단 결과: 추가 확인 필요";
+                subTitleEl.textContent = "\"몇 가지 핵심 조건 확인이 필요해요\"";
+                descEl.innerHTML = "전반적으로 긍정적이나, 일부 조건(통로, 혼합 운영 등)에 대한 현장 확인이 필요합니다.<br>Insight 의 가이드를 참고해 정확한 범위를 산정해 보세요.";
+            } else {
+                // CONSTRAINTS
+                iconEl.innerHTML = '<i class="fas fa-exclamation-circle" style="color: #e74c3c;"></i>';
+                titleEl.textContent = "진단 결과: 제약 가능성 있음";
+                subTitleEl.textContent = "\"제약 가능성이 있습니다. 하지만 우회 대안이 있습니다\"";
+                descEl.innerHTML = "현재 환경에서는 표준 모델 도입에 제약이 있을 수 있습니다.<br>현지 맞춤형 커스텀 개발이나 인프라 보완을 통한 대안을 제안해 드립니다.";
+            }
+
+            resultSection.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function goToContact() {
+            const answers = [];
+            document.querySelectorAll('.step-content').forEach((step, index) => {
+                const qText = step.querySelector('.step-question').innerText;
+                const selected = Array.from(step.querySelectorAll('.option-card.selected')).map(el => el.innerText.trim());
+                if (selected.length > 0) {
+                    answers.push(`${qText}\n답변: ${selected.join(', ')}`);
+                }
+            });
+
+            const q1 = document.querySelector('.step-content[data-step="1"] .option-card.selected')?.innerText || '';
+            const q2 = document.querySelector('.step-content[data-step="2"] .option-card.selected')?.innerText || '';
+            const q5 = Array.from(document.querySelectorAll('.step-content[data-step="5"] .option-card.selected')).map(el => el.innerText);
+            const statusText = document.getElementById('result-title').textContent.replace('진단 결과: ', '');
+
+            const fcData = {
+                industryType: q1,
+                handlingUnit: q2,
+                tasks: q5,
+                status: statusText,
+                fullAnswers: answers.join('\n\n')
+            };
+
+            localStorage.setItem('fitCheckResult', JSON.stringify(fcData));
+            window.location.href = 'contact.html?action=fitcheck';
+        }
+
+        // Initialize
+        updateProgress();
+        // Modal Functions
+        function showModal(message) {
+            const modal = document.getElementById('customModal');
+            const messageEl = modal.querySelector('.modal-message');
+            messageEl.textContent = message;
+            modal.style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('customModal').style.display = 'none';
+        }
+
+        // Close modal on outside click
+        document.getElementById('customModal').addEventListener('click', function (e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+
+</html>

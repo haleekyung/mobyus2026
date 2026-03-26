@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[스마트 물류] AGV에서 AMR로의 진화: 자율주행 물류 로봇의 핵심 기술 분석 - MOBYUS Insights</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&family=Pretendard+Variable:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <script src="scripts/i18n-data.js"></script>
+    <script src="scripts/i18n.js"></script>
+    <style>
+        /* Bilingual Content Toggle */
+        html[lang="en"] .insight-title-ko {
+            display: none !important;
+        }
+
+        html[lang="en"] .insight-title-en {
+            display: block !important;
+            font-size: clamp(2rem, 4vw, 3.2rem) !important;
+            color: #111 !important;
+            font-weight: 700 !important;
+            line-height: 1.3 !important;
+            margin-bottom: 35px !important;
+        }
+
+        html[lang="en"] [data-i18n] {
+            font-family: 'Outfit', 'Pretendard Variable', sans-serif !important;
+        }
+        /* ===== Insights Detail Styles ===== */
+
+        .insight-header {
+            padding: 40px 0 50px;
+            background: #fff;
+        }
+
+        /* Breadcrumb */
+        .insight-breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+            color: #6b7280;
+            margin-bottom: 40px;
+            font-weight: 500;
+        }
+
+        .insight-breadcrumb a {
+            color: #6b7280;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .insight-breadcrumb a:hover {
+            color: var(--primary-color);
+        }
+
+        .insight-breadcrumb i {
+            font-size: 0.7rem;
+            color: #d1d5db;
+        }
+
+        /* Meta Top */
+        .insight-meta-top {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .insight-tag {
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: #f3f4f6;
+            color: #4b5563;
+        }
+
+        .badge-starter {
+            background: #ede9ff;
+            color: #6d28d9;
+        }
+
+        .badge-tech {
+            background: #e0f2fe;
+            color: #0369a1;
+        }
+
+        /* Titles */
+        .insight-title-ko {
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            font-weight: 700;
+            color: #111;
+            line-height: 1.3;
+            margin-bottom: 16px;
+            word-break: keep-all;
+            letter-spacing: -0.02em;
+        }
+
+        .insight-title-en {
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            font-weight: 400;
+            color: #9ca3af;
+            font-family: var(--font-heading);
+            margin-bottom: 35px;
+        }
+
+        /* Meta Bottom */
+        .insight-meta-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 25px;
+            border-top: 1px solid #f3f4f6;
+            color: #6b7280;
+            font-size: 0.95rem;
+        }
+
+        .insight-meta-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .insight-meta-info span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .insight-share-btn {
+            background: none;
+            border: 1px solid #e5e7eb;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #4b5563;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .insight-share-btn:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+            background: #f9fafb;
+        }
+
+        /* Hero Image */
+        .insight-hero-img {
+            width: 100%;
+            height: clamp(300px, 40vw, 550px);
+            border-radius: 24px;
+            margin-bottom: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .insight-hero-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Content Body (Markdown style) */
+        .insight-content-body {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: #374151;
+        }
+
+        .insight-content-body h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #111;
+            margin: 60px 0 25px;
+            line-height: 1.4;
+            letter-spacing: -0.02em;
+        }
+
+        .insight-content-body h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin: 40px 0 20px;
+            line-height: 1.4;
+        }
+
+        .insight-content-body p {
+            margin-bottom: 24px;
+            word-break: keep-all;
+        }
+
+        .insight-content-body ul,
+        .insight-content-body ol {
+            margin-bottom: 30px;
+            padding-left: 24px;
+        }
+
+        .insight-content-body li {
+            margin-bottom: 12px;
+            word-break: keep-all;
+        }
+
+        .insight-content-body img {
+            width: 100%;
+            border-radius: 16px;
+            margin: 40px 0;
+            background: #f3f4f6;
+        }
+
+        /* Quote / Callout */
+        .insight-callout {
+            background: #f8fafc;
+            border-left: 4px solid var(--primary-color);
+            padding: 25px 30px;
+            border-radius: 0 16px 16px 0;
+            margin: 40px 0;
+            font-size: 1.1rem;
+            color: #4b5563;
+            font-style: italic;
+        }
+
+        /* Related Products Links */
+        .insight-products {
+            margin: 60px 0;
+            padding: 40px;
+            border: 1px solid #e5e7eb;
+            border-radius: 20px;
+            background: white;
+        }
+
+        .insight-products h4 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #111;
+        }
+
+        .product-links {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .product-link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: #f3f4f6;
+            color: #374151;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .product-link-btn:hover {
+            background: #e5e7eb;
+            color: #111;
+        }
+
+        /* Next Step CTA Banner (Type E) */
+        .insight-cta-banner {
+            max-width: 1000px;
+            margin: 80px auto;
+            background: linear-gradient(135deg, #1a1a2e 0%, #800020 100%);
+            border-radius: 24px;
+            padding: 50px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 20px 40px rgba(128, 0, 32, 0.15);
+        }
+
+        .cta-banner-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #fca5a5;
+        }
+
+        .cta-banner-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            word-break: keep-all;
+        }
+
+        .cta-banner-desc {
+            font-size: 1.05rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 30px;
+            line-height: 1.6;
+            word-break: keep-all;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary-alt {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 32px;
+            background: white;
+            color: #800020;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: transform 0.2s;
+        }
+
+        .btn-primary-alt:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-outline-alt {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 32px;
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .btn-outline-alt:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Related Insights */
+        .related-insights {
+            padding: 80px 0 100px;
+            background: #f9fafb;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .related-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 40px;
+        }
+
+        .related-header h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #111;
+        }
+
+        .view-all-link {
+            color: var(--primary-color);
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .view-all-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Repurposed from resource-guide.html for Related Cards */
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .insight-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid #f0f0f0;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .insight-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.09);
+        }
+
+        .card-thumb {
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            overflow: hidden;
+        }
+
+        .card-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-body {
+            padding: 25px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-badges {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #111;
+            line-height: 1.4;
+            margin-bottom: 10px;
+        }
+
+        .badge-type {
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .badge-starter {
+            background: #ede9ff;
+            color: #6d28d9;
+        }
+
+        .badge-tech {
+            background: #e0f2fe;
+            color: #0369a1;
+        }
+
+        .badge-cat {
+            padding: 3px 8px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            background: #f3f4f6;
+            color: #6b7280;
+        }
+
+        @media (max-width: 900px) {
+            .related-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .insight-title-ko {
+                font-size: 2rem;
+            }
+
+            .insight-hero-img {
+                height: 250px;
+                margin-bottom: 40px;
+                border-radius: 16px;
+            }
+
+            .insight-cta-banner {
+                padding: 40px 20px;
+            }
+
+            .related-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header id="gnb"></header>
+
+    <main>
+        <!-- Header Info -->
+        <section class="insight-header">
+            <div class="container fade-in">
+                <!-- Breadcrumb -->
+                <div class="insight-breadcrumb">
+                    <a href="index.html" data-i18n="gnb.home">Home</a>
+                    <i class="fas fa-chevron-right"></i>
+                    <a href="resource-guide.html" data-i18n="gnb.insights">Insights</a>
+                    <i class="fas fa-chevron-right"></i>
+                    <a href="resource-guide.html?filter=기술" data-i18n="insights.filter.tech">기술</a>
+                    <i class="fas fa-chevron-right"></i>
+                    <span style="color: #111;" data-i18n="ins.eval.breadcrumb">AGV에서 AMR로의 진화</span>
+                </div>
+
+                <!-- Meta Top -->
+                <div class="insight-meta-top">
+                    <span class="insight-tag" data-i18n="insights.filter.tech">기술</span>
+                    <span class="insight-tag badge-tech" data-i18n="ins.type.tech">Tech Blog</span>
+                </div>
+
+                <!-- Title -->
+                <h1 class="insight-title-ko" data-i18n="ins.eval.title">[스마트 물류] AGV에서 AMR로의 진화: 자율주행 물류 로봇의 핵심 기술 분석</h1>
+                <div class="insight-title-en" data-i18n="ins.eval.title_en">Evolution from AGV to AMR: Core Technology toward Autonomous Logistics
+                </div>
+
+                <!-- Meta Bottom -->
+                <div class="insight-meta-bottom">
+                    <div class="insight-meta-info">
+                        <span data-i18n="ins.eval.date"><i class="far fa-calendar"></i> 작성일: 2026.03.20</span>
+                        <span data-i18n="ins.eval.time"><i class="far fa-clock"></i> 약 12분 소요</span>
+                    </div>
+                    <button class="insight-share-btn" title="공유하기" onclick="alert('링크가 복사되었습니다.')">
+                        <i class="fas fa-link"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Content Area -->
+        <section style="padding-bottom: 60px;">
+            <div class="container fade-in-section">
+
+                <!-- Hero Image -->
+                <div class="insight-hero-img">
+                    <img src="images/thumbnail_03.png" alt="물류 로봇 기술의 패러다임 전환: AGV vs AMR, 그리고 3D SLAM">
+                </div>
+
+                <!-- Article Body (Markdown-like structure) -->
+                <article class="insight-content-body">
+                    <p class="insight-callout" data-i18n="ins.eval.callout">Explore the technological evolution from AGV to AMR and discover how 3D
+                        SLAM and intelligent autonomous mobile robots are reshaping the future of smart logistics.
+                        (AGV에서 AMR로의 기술적 진화를 탐구하고, 3D SLAM과 지능형 자율주행 모바일 로봇이 스마트 물류의 미래를 어떻게 재정의하고 있는지 알아보세요.)</p>
+
+                    <p data-i18n="ins.eval.p1">오늘날 물류 자동화 프로젝트의 첫 단추는 기술 용어에 대한 명확한 이해와 우리 현장에 적합한 '기술'이 무엇인지 식별하는 것에서 시작합니다. 과거의 자동화가 단순한
+                        '기계화'였다면, 현재의 자동화는 소프트웨어와 센서가 결합된 고도의 '지능화'를 의미합니다.</p>
+
+                    <p data-i18n="ins.eval.p2">현장에서 흔히 혼용되는 'AGV'와 'AMR'은 내비게이션 방식, 유연성, 인프라 의존도 측면에서 근본적으로 다른 기술적 뿌리를 가지고 있습니다. 오늘은 이 두 기술의
+                        차이점과 더불어, 진정한 스마트 물류를 완성하는 <strong>MOBYUS</strong>의 고도화된 기술력에 대해 파헤쳐 보겠습니다.</p>
+
+                    <h2 data-i18n="ins.eval.h1">1. 내비게이션 방식의 진화: 유도선에서 인프라 프리(Infra-free)로</h2>
+                    <p data-i18n="ins.eval.p3"><strong>AGV(Automated Guided Vehicle) 기술:</strong> 1950년대부터 도입된 전통적인 기술로, 바닥에 설치된 마그네틱 테이프, 유도선,
+                        QR 코드와 같은 물리적 인프라를 센서로 스캔하며 주행합니다. 경로 이탈이 불가능해 예측 가능성이 매우 높지만, 경로 변경 시 바닥 공사가 필수적이며 전방에 장애물이
+                        감지되면 장애물이 치워질 때까지 무조건 대기해야 하는 한계가 있습니다.</p>
+
+                    <p data-i18n="ins.eval.p4"><strong>AMR(Autonomous Mobile Robot) 기술:</strong> 반면 AMR은 LiDAR와 카메라 센서를 융합한 SLAM(Simultaneous
+                        Localization and Mapping) 기술을 기반으로 작동합니다. 탑재된 컴퓨터가 실시간으로 주변 환경을 스캔해 가상의 지도를 만들고 최적의 경로를 스스로
+                        계획합니다. 특히 장애물을 능동적으로 회피(Obstacle Avoidance)할 수 있어 물류 흐름의 병목을 방지하며, 'No-Code Configuration'을 통해
+                        소프트웨어 설정만으로 레이아웃 변경에 즉각 대응할 수 있습니다.</p>
+
+                    <h2 data-i18n="ins.eval.h2">2. 2D의 한계를 넘다: MOBYUS의 3D SLAM 기술</h2>
+                    <p data-i18n="ins.eval.p5">대부분의 범용 물류 로봇은 바닥에서 20~30cm 높이의 평면 정보만 수집하는 2D LiDAR를 사용합니다. 이는 다리가 얇은 테이블이나 공중에 매달린 구조물, 투명한 유리벽
+                        등을 인식하지 못하는 치명적인 단점이 있습니다.</p>
+
+                    <p data-i18n="ins.eval.p6">이를 극복하기 위해 <strong>MOBYUS</strong>는 독자적인 3D SLAM 기술을 상용화했습니다. 3D LiDAR를 통해 수집된 포인트 클라우드(Point
+                        Cloud) 데이터로 환경을 입체적으로 맵핑하며, 물류센터처럼 화물의 위치가 수시로 바뀌는 동적 환경에서도 고정된 구조물과 변동 객체를 완벽히 구분해냅니다. 이 기술 덕분에
+                        복잡한 현장에서도 cm 단위의 정밀한 위치 파악이 가능합니다.</p>
+
+                    <h2 data-i18n="ins.eval.h3">3. 지게차를 로봇으로: AFL(Autonomous Forklift)의 딥러닝 기술</h2>
+                    <p data-i18n="ins.eval.p7">파렛트 단위의 중량물 이송은 물류 현장에서 가장 사고 위험이 높고 자동화하기 까다로운 영역입니다. <strong>MOBYUS</strong>의 AFL은 AMR의 자율주행
+                        기술을 중량형 지게차에 접목했습니다.</p>
+
+                    <p data-i18n="ins.eval.p8">여기서 가장 중요한 기술적 난제는 바로 '비정형 파렛트 인식'입니다. <strong>MOBYUS</strong>는 단순한 센서 감지를 넘어 AI 딥러닝 기반의 영상 인식
+                        기술을 도입했습니다. 정형 파렛트는 물론, 파손되거나 특수하게 제작된 비정형 파렛트의 각도와 위치까지 정확하게 인식하여 포크를 안전하게 삽입하고 핸들링합니다.</p>
+
+                    <h2 data-i18n="ins.eval.h4">4. 거대한 로봇 군단을 지휘하는 두뇌: MAOP 기반 TAMS</h2>
+                    <p data-i18n="ins.eval.p9">하드웨어가 아무리 뛰어나도, 수십·수백 대의 로봇을 동시에 통제하는 기술이 없다면 현장은 교착 상태(Deadlock)에 빠집니다. <strong>MOBYUS</strong>의
+                        TAMS(Total AMR Management System)는 단순한 교통 제어 시스템을 넘어, 다기종 로봇과 유인 설비까지 아우르는 MAOP(Multi Agent
+                        Orchestration Platform) 기반의 통합 관제 시스템입니다.</p>
+
+                    <p data-i18n="ins.eval.p10">특히 분산 처리 아키텍처를 적용하여 300대 이상의 로봇을 네트워크 지연 없이 무중단으로 제어할 수 있는 압도적인 기술력을 갖추고 있습니다. 또한,
+                        V2V(Vehicle-to-Vehicle) 통신 기술을 통해 로봇 간 실시간으로 데이터를 주고받아, 중앙 서버를 거치지 않고도 좁은 통로에서 스스로 우선순위를 결정하고
+                        충돌을 회피하는 '탈중앙화된 지능'을 구현했습니다.</p>
+
+                    <p data-i18n="ins.eval.p11">기술은 멈춰있지 않습니다. 다가올 미래에는 LLM(거대언어모델)이 통합된 대화형 관제와 디지털 트윈 기술이 적용될 것입니다. 단순 반복 노동을 기술로 대체하고, 인간은 더
+                        가치 있는 일에 집중하는 진정한 의미의 스마트 물류 시대를 기대해 봅니다.</p>
+
+                </article>
+
+                <!-- Related Products Button (Moved outside 800px article for better width balance) -->
+                <div class="insight-products" style="max-width: 1000px; margin: 40px auto; padding: 40px;">
+                    <h4 data-i18n="ins.eval.rel_title" style="font-size: 1.4rem; margin-bottom: 24px;">관련 기술 및 솔루션 알아보기</h4>
+                    <div class="product-links">
+                        <a href="solution-tams.html" class="product-link-btn" data-i18n="ps.control.cta"><i class="fas fa-network-wired"></i>
+                            통합 관제 플랫폼 TAMS</a>
+                        <a href="product-amr.html" class="product-link-btn" data-i18n="ps.robot.bnb.c1.title"><i class="fas fa-robot"></i> 자율주행 로봇
+                            AMR</a>
+                        <a href="product-afl.html" class="product-link-btn" data-i18n="ps.robot.bnb.c2.title"><i class="fas fa-forklift"></i> 무인 지게차
+                            AFL</a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- CTA Banner -->
+            <div class="container fade-in-section">
+                <div class="insight-cta-banner">
+                    <i class="fas fa-lightbulb cta-banner-icon"></i>
+                    <h3 class="cta-banner-title" data-i18n="ins.eval.cta_title">MOBYUS의 독보적인 자율주행 기술력을 직접 확인하세요</h3>
+                    <p class="cta-banner-desc" data-i18n="ins.eval.cta_desc">AGV에서 AMR로의 전환, 그리고 3D SLAM 기반의 고도화된 물류 자동화. 전문가와의 상담을 통해 귀사 현장에 최적화된 로봇
+                        도입 전략을 수립해 드립니다.</p>
+
+                    <div class="cta-buttons">
+                        <a href="contact.html" class="btn-primary-alt" data-i18n="ins.eval.cta_btn1">기술 상담 신청하기 <i class="fas fa-arrow-right"></i></a>
+                        <a href="products-solution.html#robot-section" class="btn-outline-alt" data-i18n="ins.eval.cta_btn2">전체 제품 라인업 <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Related Insights -->
+        <section class="related-insights">
+            <div class="container fade-in-section">
+                <div class="related-header">
+                    <h3 data-i18n="ins.common.related">Related Insights</h3>
+                    <a href="resource-guide.html" class="view-all-link" data-i18n="ins.back_to_list">목록으로 돌아가기 <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="related-grid">
+                    <!-- Related 1 -->
+                    <a class="insight-card" href="insight-detail.html">
+                        <div class="card-thumb">
+                            <img src="images/thumbnail_02.png" alt="물류 로봇 입문">
+                        </div>
+                        <div class="card-body">
+                            <div class="card-badges">
+                                <span class="badge-type badge-starter" data-i18n="ins.type.starter">Starter Guide</span>
+                                <span class="badge-cat" data-i18n="insights.filter.tech">기술</span>
+                            </div>
+                            <div class="card-title" data-i18n="ins.e1.title">물류 로봇 입문 — AGV·AMR·AFL, 무엇이 다른가</div>
+                        </div>
+                    </a>
+
+                    <!-- Related 2 -->
+                    <a class="insight-card" href="insight-detail-tams.html">
+                        <div class="card-thumb">
+                            <img src="images/thumbnail_06.png" alt="TAMS 교통제어">
+                        </div>
+                        <div class="card-body">
+                            <div class="card-badges">
+                                <span class="badge-type badge-tech" data-i18n="ins.type.tech">Tech Blog</span>
+                                <span class="badge-cat" data-i18n="insights.filter.tech">기술</span>
+                            </div>
+                            <div class="card-title" data-i18n="ins.e4.title">300대 이상 동시 제어 — TAMS 교통제어의 기술적 과제와 해법</div>
+                        </div>
+                    </a>
+
+                    <!-- Related 3 -->
+                    <a class="insight-card" href="insight-detail-roi.html">
+                        <div class="card-thumb">
+                            <img src="images/thumbnail_05.png" alt="ROI 산출 가이드">
+                        </div>
+                        <div class="card-body">
+                            <div class="card-badges">
+                                <span class="badge-type badge-starter" data-i18n="ins.type.starter">Starter Guide</span>
+                                <span class="badge-cat" data-i18n="insights.filter.tech">기술</span>
+                            </div>
+                            <div class="card-title" data-i18n="ins.e3.title">물류 자동화 ROI 산출 가이드 — 투자 비용부터 회수까지</div>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer id="contact"></footer>
+    <script src="scripts/main.js"></script>
+    <script>
+        // Sync html lang attribute for CSS visibility logic
+        window.addEventListener('languageChanged', (e) => {
+            document.documentElement.lang = e.detail.lang;
+        });
+        // Set initial state
+        document.documentElement.lang = localStorage.getItem('preferredLanguage') || 'ko';
+    </script>
+</body>
+
+</html>

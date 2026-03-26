@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>300대 이상 동시 제어 — TAMS 교통제어의 기술적 과제와 해법 - MOBYUS Insights</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&family=Pretendard+Variable:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <script src="scripts/i18n-data.js"></script>
+    <script src="scripts/i18n.js"></script>
+    <style>
+        /* Bilingual Content Toggle */
+        html[lang="en"] .insight-title-ko {
+            display: none !important;
+        }
+
+        html[lang="en"] .insight-title-en {
+            display: block !important;
+            font-size: clamp(2rem, 4vw, 3.2rem) !important;
+            color: #111 !important;
+            font-weight: 700 !important;
+            line-height: 1.3 !important;
+            margin-bottom: 35px !important;
+        }
+
+        html[lang="en"] [data-i18n] {
+            font-family: 'Outfit', 'Pretendard Variable', sans-serif !important;
+        }
+        /* ===== Insights Detail Styles ===== */
+
+        .insight-header {
+            padding: 40px 0 50px;
+            background: #fff;
+        }
+
+        /* Breadcrumb */
+        .insight-breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+            color: #6b7280;
+            margin-bottom: 40px;
+            font-weight: 500;
+        }
+
+        .insight-breadcrumb a {
+            color: #6b7280;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .insight-breadcrumb a:hover {
+            color: var(--primary-color);
+        }
+
+        .insight-breadcrumb i {
+            font-size: 0.7rem;
+            color: #d1d5db;
+        }
+
+        /* Meta Top */
+        .insight-meta-top {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .insight-tag {
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: #f3f4f6;
+            color: #4b5563;
+        }
+
+        .badge-starter {
+            background: #ede9ff;
+            color: #6d28d9;
+        }
+
+        .badge-tech {
+            background: #e0f2fe;
+            color: #0369a1;
+        }
+
+        /* Titles */
+        .insight-title-ko {
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            font-weight: 700;
+            color: #111;
+            line-height: 1.3;
+            margin-bottom: 16px;
+            word-break: keep-all;
+            letter-spacing: -0.02em;
+        }
+
+        .insight-title-en {
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            font-weight: 400;
+            color: #9ca3af;
+            font-family: var(--font-heading);
+            margin-bottom: 35px;
+        }
+
+        /* Meta Bottom */
+        .insight-meta-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 25px;
+            border-top: 1px solid #f3f4f6;
+            color: #6b7280;
+            font-size: 0.95rem;
+        }
+
+        .insight-meta-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .insight-meta-info span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .insight-share-btn {
+            background: none;
+            border: 1px solid #e5e7eb;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #4b5563;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .insight-share-btn:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+            background: #f9fafb;
+        }
+
+        /* Hero Image */
+        .insight-hero-img {
+            width: 100%;
+            height: clamp(300px, 40vw, 550px);
+            border-radius: 24px;
+            margin-bottom: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .insight-hero-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .insight-hero-img::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.1) 0%, transparent 60%);
+        }
+
+        /* Content Body (Markdown style) */
+        .insight-content-body {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: #374151;
+        }
+
+        .insight-content-body h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #111;
+            margin: 60px 0 25px;
+            line-height: 1.4;
+            letter-spacing: -0.02em;
+        }
+
+        .insight-content-body h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin: 40px 0 20px;
+            line-height: 1.4;
+        }
+
+        .insight-content-body p {
+            margin-bottom: 24px;
+            word-break: keep-all;
+        }
+
+        .insight-content-body ul,
+        .insight-content-body ol {
+            margin-bottom: 30px;
+            padding-left: 24px;
+        }
+
+        .insight-content-body li {
+            margin-bottom: 12px;
+            word-break: keep-all;
+        }
+
+        .insight-content-body img {
+            width: 100%;
+            border-radius: 16px;
+            margin: 40px 0;
+            background: #f3f4f6;
+        }
+
+        /* Quote / Callout */
+        .insight-callout {
+            background: #f0f9ff;
+            border-left: 4px solid #0284c7;
+            padding: 25px 30px;
+            border-radius: 0 16px 16px 0;
+            margin: 40px 0;
+            font-size: 1.1rem;
+            color: #0369a1;
+            font-weight: 500;
+        }
+
+        /* Related Products Links */
+        .insight-products {
+            margin: 60px 0;
+            padding: 40px;
+            border: 1px solid #e5e7eb;
+            border-radius: 20px;
+            background: white;
+        }
+
+        .insight-products h4 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #111;
+        }
+
+        .product-links {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .product-link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: #f3f4f6;
+            color: #374151;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .product-link-btn:hover {
+            background: #e5e7eb;
+            color: #111;
+        }
+
+        /* Next Step CTA Banner (Tech Blog) */
+        .insight-cta-banner {
+            max-width: 1000px;
+            margin: 80px auto;
+            background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
+            border-radius: 24px;
+            padding: 50px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 20px 40px rgba(30, 58, 138, 0.15);
+        }
+
+        .cta-banner-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #93c5fd;
+        }
+
+        .cta-banner-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            word-break: keep-all;
+        }
+
+        .cta-banner-desc {
+            font-size: 1.05rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 30px;
+            line-height: 1.6;
+            word-break: keep-all;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary-alt {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 32px;
+            background: white;
+            color: #1e3a8a;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: transform 0.2s;
+        }
+
+        .btn-primary-alt:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-outline-alt {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 32px;
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .btn-outline-alt:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Related Insights */
+        .related-insights {
+            padding: 80px 0 100px;
+            background: #f9fafb;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .related-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 40px;
+        }
+
+        .related-header h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #111;
+        }
+
+        .view-all-link {
+            color: var(--primary-color);
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .view-all-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Repurposed from resource-guide.html for Related Cards */
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .insight-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid #f0f0f0;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .insight-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.09);
+        }
+
+        .card-thumb {
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            overflow: hidden;
+        }
+
+        .card-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-body {
+            padding: 25px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-badges {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #111;
+            line-height: 1.4;
+            margin-bottom: 10px;
+        }
+
+        .badge-type {
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .badge-cat {
+            padding: 3px 8px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            background: #f3f4f6;
+            color: #6b7280;
+        }
+
+        @media (max-width: 900px) {
+            .related-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .insight-title-ko {
+                font-size: 2rem;
+            }
+
+            .insight-hero-img {
+                height: 250px;
+                margin-bottom: 40px;
+                border-radius: 16px;
+            }
+
+            .insight-cta-banner {
+                padding: 40px 20px;
+            }
+
+            .related-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header id="gnb"></header>
+
+    <main>
+        <!-- Header Info -->
+        <section class="insight-header">
+            <div class="container fade-in">
+                <!-- Breadcrumb -->
+                <div class="insight-breadcrumb">
+                    <a href="index.html" data-i18n="gnb.home">Home</a>
+                    <i class="fas fa-chevron-right"></i>
+                    <a href="resource-guide.html" data-i18n="gnb.insights">Insights</a>
+                    <i class="fas fa-chevron-right"></i>
+                    <a href="resource-guide.html?filter=기술" data-i18n="insights.filter.tech">기술</a>
+                    <i class="fas fa-chevron-right"></i>
+                    <span style="color: #111;" data-i18n="ins.e4.breadcrumb">300대 이상 동시 제어 — TAMS 교통제어</span>
+                </div>
+
+                <!-- Meta Top -->
+                <div class="insight-meta-top">
+                    <span class="insight-tag" data-i18n="insights.filter.tech">기술</span>
+                    <span class="insight-tag badge-tech" style="background: #e0f2fe; color: #0369a1;" data-i18n="ins.type.tech">Tech Blog</span>
+                </div>
+
+                <!-- Title -->
+                <h1 class="insight-title-ko" data-i18n="ins.e4.title">300대 이상 동시 제어 — TAMS 교통제어의 기술적 과제와 해법</h1>
+                <div class="insight-title-en" data-i18n="ins.e4.title_en">Controlling 300+ Robots — How TAMS Solves Traffic at Scale</div>
+
+                <!-- Meta Bottom -->
+                <div class="insight-meta-bottom">
+                    <div class="insight-meta-info">
+                        <span data-i18n="ins.e4.date"><i class="far fa-calendar"></i> 작성일: 2026.02.26</span>
+                        <span data-i18n="ins.e4.time"><i class="far fa-clock"></i> 약 8분 소요</span>
+                    </div>
+                    <button class="insight-share-btn" title="공유하기" onclick="alert('링크가 복사되었습니다.')">
+                        <i class="fas fa-link"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Content Area -->
+        <section style="padding-bottom: 60px;">
+            <div class="container fade-in-section">
+
+                <!-- Hero Image -->
+                <div class="insight-hero-img">
+                    <img src="images/thumbnail_06.png" alt="300대 이상 동시 제어 — TAMS 교통제어의 기술적 과제와 해법">
+                </div>
+
+                <!-- Article Body (Markdown-like structure) -->
+                <article class="insight-content-body">
+                    <h2 data-i18n="ins.e4.h1">1. 왜 100대를 넘으면 문제가 달라지는가</h2>
+                    <p data-i18n="ins.e4.p1">로봇을 10대 운영할 때와 100대 이상을 운영할 때는 요구되는 시스템의 아키텍처 자체가 완전히 다릅니다. 차량 교통체증과 마찬가지로 좁은 통로에 병목 구간을 형성하는
+                        로봇들이 많아지면 결국 로봇들의 물리적인 한계에 다다릅니다.</p>
+                    <ul>
+                        <li data-i18n="ins.e4.li1"><strong>단순 FIFO 큐의 한계:</strong> 일반적인 관제에서 사용하는 선입선출(First-In-First-Out) 방식의 명령 하달은, 현장 복잡도가
+                            증가하면 교차로 대기 시간이 기하급수적으로 늘어나는 한계를 가집니다.</li>
+                        <li data-i18n="ins.e4.li2"><strong>교착(Deadlock) 발생 메커니즘:</strong> 좁은 외골목이나 메인 교차로에서 2대 이상의 로봇이 서로의 진행 방향을 막고 서서 영원히
+                            대기하는 데드락(Deadlock) 상황은 대규모 로봇 편대의 가장 큰 적입니다. 단 한 대의 치명적인 데드락이 100대의 로봇 통신 지연을 연쇄적으로 유발할 수
+                            있습니다.</li>
+                        <li data-i18n="ins.e4.li3"><strong>경쟁사 대비 한계:</strong> 로봇 자체의 똑똑함(개별 센서 기반 자율 회피)에만 의존하는 방식은, 로봇들이 각자 회피하려다 동선이 더 꼬이는
+                            군집 오류를 발생시킵니다. 전체를 조망하는 <strong>통합 관제(Centralized Control)</strong>가 필수적인 이유입니다.</li>
+                    </ul>
+
+                    <h2 data-i18n="ins.e4.h2">2. TAMS MCS의 접근법</h2>
+                    <p data-i18n="ins.e4.p2">MOBYUS의 <strong>TAMS</strong> 내에 탑재된 MCS(Material Control System) 모듈은 이러한 대규모 교통 혼잡을 근본적으로 해결하는 핵심
+                        알고리즘 덩어리입니다.</p>
+                    <ul>
+                        <li data-i18n="ins.e4.li4"><strong>실시간 교통제어 최적화:</strong> 1초 내에 수백 대의 로봇 위치를 파악하고 다음 노드의 점유 권한을 동적으로 승인 및
+                            재할당(Re-Routing)합니다.</li>
+                        <li data-i18n="ins.e4.li5"><strong>이기종 로봇 통합:</strong> 자사 제품은 물론 현장에 도입된 10종 이상의 타사 로봇(AGV, AMR, 무인 지게차 등)에 대한 표준
+                            프로토콜(VDA 5050 등) 어댑터를 내장하여, 마치 하나의 함대처럼 통합 제어합니다.</li>
+                        <li data-i18n="ins.e4.li6"><strong>3D 맵 기반 경로 계획:</strong> 단순한 2D 평면이 아닌 랙(Rack)의 높이, 설비 간 간격 등을 모두 포함하는 4종 이상의 복합 맵
+                            타입(Grid, Topological 등)을 처리하여 완벽한 동선을 생성합니다.</li>
+                    </ul>
+
+                    <h2 data-i18n="ins.e4.h3">3. 현장에서 마주친 난제와 해법</h2>
+                    <p data-i18n="ins.e4.p3">이상적인 연구 환경과 달리 고객 현장에는 늘 <strong>예측 불가능한 변수</strong>가 도사리고 있습니다.</p>
+                    <div class="insight-callout">
+                        <strong data-i18n="ins.e4.q1_title">난제 1: 유인 지게차와 무인 로봇의 교차 혼재</strong><br>
+                        <span data-i18n="ins.e4.q1_desc">"사람이 운전하는 지게차가 로봇의 전용 통로를 갑자기 가로막으면 어떻게 될까요?"</span><br><br>
+                        <span data-i18n="ins.e4.ans1"><strong>👉 TAMS WNS 해법:</strong> 공장 내 설치된 WNS(Warehouse Navigation System)의 카메라와 센서를 통해 유인 설비의
+                        위치를 시스템이 역으로 인식하고, 접근하는 자율주행 로봇들의 속도를 감속 및 우회시킵니다.</span>
+                    </div>
+                    <div class="insight-callout">
+                        <strong data-i18n="ins.e4.q2_title">난제 2: 기존 PLC 설비의 물리적 연동 지연</strong><br>
+                        <span data-i18n="ins.e4.q2_desc">"컨베이어 벨트나 자동 엘리베이터(PLC)의 리프트 오작동으로 통신 응답이 늦어질 경우, 대기 중인 로봇들이 줄지어 정체됩니다."</span><br><br>
+                        <span data-i18n="ins.e4.ans2"><strong>👉 TAMS ACS 버퍼링:</strong> ACS(Autonomous mobile robot Control System) 연동 모듈은 설비의 이상 지연을
+                        실시간 감지하여, 로봇들에게 인근의
+                        임시 버퍼 공간으로 먼저 회피하도록 동적 명령을 내립니다.</span>
+                    </div>
+
+                    <h2 data-i18n="ins.e4.h4">4. 요약 및 결과 창출</h2>
+                    <p data-i18n="ins.e4.p4">TAMS의 강력한 MCS 아키텍처는 결과적으로 다음과 같은 압도적인 성능 지표를 현장에서 증명하고 있습니다.</p>
+
+                    <div
+                        style="background: #fdfaf0; border: 1px solid #fde68a; border-radius: 12px; padding: 30px; margin: 40px 0;">
+                        <h4
+                            style="font-size: 1.25rem; font-weight: 700; color: #854d0e; margin-bottom: 16px; display: flex; align-items: center; gap: 10px;">
+                            <i class="fas fa-server" style="color: #eab308; font-size: 1.3rem;"></i>
+                            <span data-i18n="ins.e4.sum_title">실제 현장 팩트 지표</span>
+                        </h4>
+                        <ul
+                            style="margin: 0; padding-left: 24px; color: #713f12; font-size: 1.1rem; line-height: 1.7; font-weight: 500;">
+                            <li style="margin-bottom: 10px;"><span data-i18n="ins.e4.sum_li1">단일 시스템 기준 <strong>300대 이상</strong> 동시 제어 안정성 확보</span></li>
+                            <li style="margin-bottom: 10px;"><span data-i18n="ins.e4.sum_li2">교차로 진입 판단 및 대체 경로 할당 <strong>1초 이내(Sub-second) 응답</strong></span></li>
+                            <li><span data-i18n="ins.e4.sum_li3">로봇 대기 시간(Downtime) 최소화를 통한 <strong>전체 가동률 99.5% 이상 유지</strong></span></li>
+                        </ul>
+                    </div>
+
+                    <p
+                        style="font-size: 1.25rem; font-weight: 700; text-align: center; color: #0284c7; padding: 20px 0; border-top: 2px dashed #e0f2fe; margin-top: 50px;" data-i18n="ins.e4.quote">
+                        "통합 관제(TAMS)는 단순히 로봇을 연결하는 것이 아닙니다.<br>전체 물동의 끊임없는 '가치 흐름(Value Flow)'을 완벽하게 설계하는 기술입니다."
+                    </p>
+
+                </article>
+
+            </div>
+
+            <!-- Tech Blog 전용 CTA 배너 -->
+            <div class="container fade-in-section">
+                <div class="insight-cta-banner">
+                    <i class="fas fa-layer-group cta-banner-icon"></i>
+                    <h3 class="cta-banner-title" data-i18n="ins.e4.cta_title">단순한 로봇이 아닌, 완벽한 시스템을 원하신다면?</h3>
+                    <p class="cta-banner-desc" data-i18n="ins.e4.cta_desc">수백 대의 로봇을 하나의 유기체처럼 통합 제어하는 MOBYUS의 뇌, TAMS 솔루션의 강력한 아키텍처를 확인해 보세요.</p>
+
+                    <div class="cta-buttons">
+                        <a href="products-solution.html#control-section" class="btn-primary-alt" data-i18n="ins.e4.cta_btn1">TAMS 제품 상세 보기 <i
+                                class="fas fa-arrow-right"></i></a>
+                        <a href="contact.html" class="btn-outline-alt" data-i18n="ins.e4.cta_btn2">관제 솔루션 도입 문의 <i
+                                class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Related Insights -->
+        <section class="related-insights">
+            <div class="container fade-in-section">
+                <div class="related-header">
+                    <h3 data-i18n="ins.common.related">Related Insights</h3>
+                    <a href="resource-guide.html" class="view-all-link" data-i18n="ins.back_to_list">목록으로 돌아가기 <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="related-grid">
+                    <!-- Related 1 -->
+                    <a class="insight-card" href="insight-detail.html">
+                        <div class="card-thumb">
+                            <img src="images/thumbnail_02.png" alt="물류 로봇 입문">
+                        </div>
+                        <div class="card-body">
+                            <div class="card-badges">
+                                <span class="badge-type badge-starter" data-i18n="ins.type.starter">Starter Guide</span>
+                                <span class="badge-cat" data-i18n="insights.filter.tech">기술</span>
+                            </div>
+                            <div class="card-title" data-i18n="ins.e1.title">물류 로봇 입문 — AGV·AMR·AFL, 무엇이 다른가</div>
+                        </div>
+                    </a>
+
+                    <!-- Related 2 -->
+                    <a class="insight-card" href="insight-detail-prep.html">
+                        <div class="card-thumb">
+                            <img src="images/thumbnail_04.png" alt="도입 전 현장 준비 가이드" data-i18n="ins.e2.title">
+                        </div>
+                        <div class="card-body">
+                            <div class="card-badges">
+                                <span class="badge-type badge-starter" data-i18n="ins.type.starter">Starter Guide</span>
+                                <span class="badge-cat" data-i18n="insights.filter.tech">기술</span>
+                            </div>
+                            <div class="card-title" data-i18n="ins.e2.title">도입 전 현장 준비 가이드 — 바닥·네트워크·통로 체크리스트</div>
+                        </div>
+                    </a>
+
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer id="contact"></footer>
+    <script src="scripts/main.js"></script>
+    <script>
+        // Sync html lang attribute for CSS visibility logic
+        window.addEventListener('languageChanged', (e) => {
+            document.documentElement.lang = e.detail.lang;
+        });
+        // Set initial state
+        document.documentElement.lang = localStorage.getItem('preferredLanguage') || 'ko';
+    </script>
+</body>
+
+</html>

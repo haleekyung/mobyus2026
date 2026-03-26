@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="ins.e1.title">물류 로봇 입문 — AGV·AMR·AFL, 무엇이 다른가 - MOBYUS Insights</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&family=Pretendard+Variable:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <script src="scripts/i18n-data.js"></script>
+    <style>
+        /* Localization Styles */
+        .font-en { font-family: 'Outfit', sans-serif !important; }
+        body.lang-en .insight-title-ko { display: none !important; }
+        body.lang-en .insight-title-en { 
+            font-size: clamp(2rem, 4vw, 3.2rem) !important; 
+            color: #111 !important; 
+            font-weight: 700 !important;
+            margin-bottom: 25px !important;
+        }
+        /* Muted EN sub-title in KO mode - matching user original style if any, otherwise hide in EN mode */
+        body.lang-en .insight-title-en { display: none !important; }
+
+        /* ===== Insights Detail Styles ===== */
+
+        .insight-header {
+            padding: 40px 0 50px;
+            background: #fff;
+        }
+
+        /* Breadcrumb */
+        .insight-breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+            color: #6b7280;
+            margin-bottom: 40px;
+            font-weight: 500;
+        }
+
+        .insight-breadcrumb a {
+            color: #6b7280;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .insight-breadcrumb a:hover {
+            color: var(--primary-color);
+        }
+
+        .insight-breadcrumb i {
+            font-size: 0.7rem;
+            color: #d1d5db;
+        }
+
+        /* Meta Top */
+        .insight-meta-top {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .insight-tag {
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: #f3f4f6;
+            color: #4b5563;
+        }
+
+        .badge-starter {
+            background: #ede9ff;
+            color: #6d28d9;
+        }
+
+        .badge-tech {
+            background: #e0f2fe;
+            color: #0369a1;
+        }
+
+        /* Titles */
+        .insight-title-ko {
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            font-weight: 700;
+            color: #111;
+            line-height: 1.3;
+            margin-bottom: 16px;
+            word-break: keep-all;
+            letter-spacing: -0.02em;
+        }
+
+        .insight-title-en {
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            font-weight: 400;
+            color: #9ca3af;
+            font-family: var(--font-heading);
+            margin-bottom: 35px;
+        }
+
+        /* Meta Bottom */
+        .insight-meta-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 25px;
+            border-top: 1px solid #f3f4f6;
+            color: #6b7280;
+            font-size: 0.95rem;
+        }
+
+        .insight-meta-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .insight-meta-info span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .insight-share-btn {
+            background: none;
+            border: 1px solid #e5e7eb;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #4b5563;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .insight-share-btn:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+            background: #f9fafb;
+        }
+
+        /* Hero Image */
+        .insight-hero-img {
+            width: 100%;
+            height: clamp(300px, 40vw, 550px);
+            border-radius: 24px;
+            margin-bottom: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .insight-hero-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .insight-hero-img::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.1) 0%, transparent 60%);
+        }
+
+        /* Content Body (Markdown style) */
+        .insight-content-body {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: #374151;
+        }
+
+        .insight-content-body h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #111;
+            margin: 60px 0 25px;
+            line-height: 1.4;
+            letter-spacing: -0.02em;
+        }
+
+        .insight-content-body h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin: 40px 0 20px;
+            line-height: 1.4;
+        }
+
+        .insight-content-body p {
+            margin-bottom: 24px;
+            word-break: keep-all;
+        }
+
+        .insight-content-body ul,
+        .insight-content-body ol {
+            margin-bottom: 30px;
+            padding-left: 24px;
+        }
+
+        .insight-content-body li {
+            margin-bottom: 12px;
+            word-break: keep-all;
+        }
+
+        .insight-content-body img {
+            width: 100%;
+            border-radius: 16px;
+            margin: 40px 0;
+            background: #f3f4f6;
+        }
+
+        /* Quote / Callout */
+        .insight-callout {
+            background: #f8fafc;
+            border-left: 4px solid var(--primary-color);
+            padding: 25px 30px;
+            border-radius: 0 16px 16px 0;
+            margin: 40px 0;
+            font-size: 1.1rem;
+            color: #4b5563;
+            font-style: italic;
+        }
+
+        /* Related Products Links */
+        .insight-products {
+            margin: 60px 0;
+            padding: 40px;
+            border: 1px solid #e5e7eb;
+            border-radius: 20px;
+            background: white;
+        }
+
+        .insight-products h4 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #111;
+        }
+
+        .product-links {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .product-link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: #f3f4f6;
+            color: #374151;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .product-link-btn:hover {
+            background: #e5e7eb;
+            color: #111;
+        }
+
+        /* Next Step CTA Banner (Type E) */
+        .insight-cta-banner {
+            max-width: 800px;
+            margin: 80px auto;
+            background: linear-gradient(135deg, #1a1a2e 0%, #800020 100%);
+            border-radius: 24px;
+            padding: 50px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 20px 40px rgba(128, 0, 32, 0.15);
+        }
+
+        .cta-banner-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #fca5a5;
+        }
+
+        .cta-banner-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            word-break: keep-all;
+        }
+
+        .cta-banner-desc {
+            font-size: 1.05rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 30px;
+            line-height: 1.6;
+            word-break: keep-all;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary-alt {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 32px;
+            background: white;
+            color: #800020;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: transform 0.2s;
+        }
+
+        .btn-primary-alt:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-outline-alt {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 32px;
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .btn-outline-alt:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Related Insights */
+        .related-insights {
+            padding: 80px 0 100px;
+            background: #f9fafb;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .related-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 40px;
+        }
+
+        .related-header h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #111;
+        }
+
+        .view-all-link {
+            color: var(--primary-color);
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .view-all-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Repurposed from resource-guide.html for Related Cards */
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .insight-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid #f0f0f0;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .insight-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.09);
+        }
+
+        .card-thumb {
+            height: 180px;
+            overflow: hidden;
+        }
+
+        .card-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-body {
+            padding: 25px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-badges {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #111;
+            line-height: 1.4;
+            margin-bottom: 10px;
+        }
+
+        .badge-type {
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .badge-cat {
+            padding: 3px 8px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            background: #f3f4f6;
+            color: #6b7280;
+        }
+
+        @media (max-width: 900px) {
+            .related-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .insight-title-ko {
+                font-size: 2rem;
+            }
+
+            .insight-hero-img {
+                height: 250px;
+                margin-bottom: 40px;
+                border-radius: 16px;
+            }
+
+            .insight-cta-banner {
+                padding: 40px 20px;
+            }
+
+            .related-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header id="gnb"></header>
+
+    <main>
+        <!-- Header Info -->
+        <section class="insight-header">
+            <div class="container fade-in">
+                <!-- Breadcrumb -->
+                <div class="insight-breadcrumb">
+                    <a href="index.html" data-i18n="gnb.home">Home</a>
+                    <i class="fas fa-chevron-right"></i>
+                    <a href="resource-guide.html" data-i18n="gnb.insights">Insights</a>
+                    <i class="fas fa-chevron-right"></i>
+                    <a href="resource-guide.html?filter=기술" data-i18n="insights.filter.tech">기술</a>
+                    <i class="fas fa-chevron-right"></i>
+                    <span style="color: #111;" data-i18n="ins.e1.breadcrumb">물류 로봇 입문</span>
+                </div>
+
+                <!-- Hero Image -->
+                <div class="insight-hero-img">
+                    <img src="images/thumbnail_02.png" alt="물류 로봇 입문 — AGV·AMR·AFL, 무엇이 다른가">
+                </div>
+
+                <!-- Meta Top -->
+                <div class="insight-meta-top">
+                    <span class="insight-tag" data-i18n="insights.filter.tech">기술</span>
+                    <span class="insight-tag badge-starter" style="background: #ede9ff;" data-i18n="ins.type.guide">Starter Guide</span>
+                </div>
+
+                <!-- Title -->
+                <h1 class="insight-title-ko" data-i18n="ins.e1.title">물류 로봇 입문 — AGV·AMR·AFL, 무엇이 다른가</h1>
+                <div class="insight-title-en font-en" data-i18n="ins.e1.title_en">Logistics Robot 101 — AGV vs AMR vs AFL</div>
+
+                <!-- Meta Bottom -->
+                <div class="insight-meta-bottom">
+                    <div class="insight-meta-info">
+                        <span><i class="far fa-calendar"></i> <span data-i18n="ins.meta.date">작성일: 2026.02.26</span></span>
+                        <span><i class="far fa-clock"></i> <span data-i18n="ins.meta.time">약 10분 소요</span></span>
+                    </div>
+                    <button class="insight-share-btn" title="공유하기" onclick="alert('링크가 복사되었습니다.')">
+                        <i class="fas fa-link"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Content Area -->
+        <section style="padding-bottom: 60px;">
+            <div class="container fade-in-section">
+
+                <!-- Article Body (Markdown-like structure) -->
+                <article class="insight-content-body">
+                    <p data-i18n="ins.e1.intro"><strong>내 현장에 맞는 자율주행 로봇은 무엇일까요?</strong> 물류 자동화 도입을 고려할 때 가장 먼저 마주하는 용어가 바로 AGV, AMR, AFL입니다.
+                        기술의 발전 속도가 워낙 빠르다 보니 현장에서도 용어를 혼용해 사용하는 경우가 많습니다.</p>
+
+                    <h2 data-i18n="ins.e1.h1">1. 물류 자동화, 왜 지금인가</h2>
+                    <p data-i18n="ins.e1.p1">현대 스마트 물류에서 모바일 로봇의 도입은 더 이상 선택이 아닌 생존을 위한 필수 전략으로 자리 잡고 있습니다. 크게 3가지 시장 동인이 기업들의 물류 자동화를 가속화하고
+                        있습니다.</p>
+                    <ul>
+                        <li data-i18n="ins.e1.li1"><strong>생산성 한계 돌파:</strong> 이커머스 시장 확대에 따른 물동량 급증에 대응하기 위해 24시간 끊김없는 무인화·자동화 물류 시스템이 요구됩니다.
+                        </li>
+                        <li data-i18n="ins.e1.li2"><strong>노동구조 변화:</strong> 고령화와 구인난 심화, 인건비 부담 증가는 로봇을 통한 단순 반복 업무의 대체를 필수적으로 만들고 있습니다.</li>
+                        <li data-i18n="ins.e1.li3"><strong>안전 규제 강화:</strong> 중대재해처벌법 등 강화된 규제 대응 및 지게차 관련 안전사고 예방을 위해 작업장 내 인원과 장비 동선을 분리하는
+                            솔루션이 선호됩니다.</li>
+                    </ul>
+                    <p data-i18n="ins.e1.p2">이러한 배경 속에서 글로벌 물류 로봇 시장은 연평균 성장률(CAGR) 8.3%의 가파른 성장세를 보이며, 산업 전반의 핵심 인프라로 빠르게 채택되고 있습니다.</p>
+
+                    <h2 data-i18n="ins.e1.h2">2. AGV vs AMR vs AFL — 핵심 차이</h2>
+                    <p data-i18n="ins.e1.p3">물류 현장에서 가장 널리 쓰이는 세 가지 기종의 특징을 비교해 보겠습니다.</p>
+                    <ul>
+                        <li data-i18n="ins.e1.li4"><strong>AGV (Automated Guided Vehicle):</strong> 물리적 가이드라인(마그네틱 테이프, QR코드 등)을 따라 정해진 경로만
+                            주행하는 1세대 무인 운반차입니다. 시스템 예측 가능성이 매우 높고 안정적이지만, 경로 상의 장애물이 있으면 스스로 우회하지 못하고 멈춰서 기다리게 됩니다. 경로
+                            변경 시 물리적인 마그네틱 재설치가 필요해 유연성이 다소 떨어집니다.</li>
+                        <li data-i18n="ins.e1.li5"><strong>AMR (Autonomous Mobile Robot):</strong> 로봇에 부착된 LiDAR, 카메라 등의 센서로 주변 환경을 인식하고, 실시간
+                            지도를 생성(SLAM)하여 가이드 없이 스스로 목적지까지 최적의 경로를 찾아갑니다. 경로에 장애물이 나타나면 스스로 우회 경로를 계산해 이동하므로 사람과 혼재된
+                            환경에서도 유연하게 작동합니다.</li>
+                        <li data-i18n="ins.e1.li6"><strong>AFL (Autonomous Forklift):</strong> 기존 지게차 형태에 자율주행 기술을 입힌 다목적 무인 지게차입니다. 고하중 파렛트를
+                            인식하고 다단 랙(Rack)에 적재하거나 하역하는 3차원적인 자동화 전문 장비입니다.</li>
+                    </ul>
+
+                    <div style="overflow-x: auto; margin-bottom: 24px;">
+                        <table
+                            style="width: 100%; border-collapse: collapse; min-width: 600px; text-align: left; font-size: 0.95rem; border: 1px solid #e5e7eb;">
+                            <thead>
+                                <tr style="background: #f9fafb; border-bottom: 2px solid #e5e7eb;">
+                                    <th style="padding: 14px 16px;" data-i18n="ins.e1.th1">구분</th>
+                                    <th style="padding: 14px 16px;" data-i18n="ins.e1.th2">최소 인프라 의존도</th>
+                                    <th style="padding: 14px 16px;" data-i18n="ins.e1.th3">경로/환경 유연성</th>
+                                    <th style="padding: 14px 16px;" data-i18n="ins.e1.th4">주요 적용 환경</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="border-bottom: 1px solid #e5e7eb;">
+                                    <td style="padding: 14px 16px; font-weight: bold; width: 15%;" data-i18n="ins.e1.td1_1">AGV</td>
+                                    <td style="padding: 14px 16px; width: 25%;" data-i18n="ins.e1.td1_2">높음 (마그네틱/QR)</td>
+                                    <td style="padding: 14px 16px; width: 25%;" data-i18n="ins.e1.td1_3">낮음 (정해진 경로)</td>
+                                    <td style="padding: 14px 16px; width: 35%;" data-i18n="ins.e1.td1_4">단순 고정형 반복 이송</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid #e5e7eb;">
+                                    <td style="padding: 14px 16px; font-weight: bold;" data-i18n="ins.e1.td2_1">AMR</td>
+                                    <td style="padding: 14px 16px;" data-i18n="ins.e1.td2_2">낮음 (SLAM 맵핑)</td>
+                                    <td style="padding: 14px 16px;" data-i18n="ins.e1.td2_3">높음 (자율 우회)</td>
+                                    <td style="padding: 14px 16px;" data-i18n="ins.e1.td2_4">복잡 유동형 환경 (피킹 센터)</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 14px 16px; font-weight: bold;" data-i18n="ins.e1.td3_1">AFL</td>
+                                    <td style="padding: 14px 16px;" data-i18n="ins.e1.td3_2">낮음 (SLAM + 3D Vision)</td>
+                                    <td style="padding: 14px 16px;" data-i18n="ins.e1.td3_3">높음 (자율 우회 + 적재)</td>
+                                    <td style="padding: 14px 16px;" data-i18n="ins.e1.td3_4">고하중 파렛트 다단 적재 공간</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h2 data-i18n="ins.e1.h3">3. 통합 관제가 필요한 이유</h2>
+                    <p data-i18n="ins.e1.p4">로봇 1대나 2대를 도입해 단순 이동만 시연하는 것과 실제 현장에 100대 이상의 로봇을 전면 적용해 공정을 돌리는 것은 <strong>완전히 다른 차원의
+                            문제</strong>입니다. AGV 50대, AMR 100대, AFL 20대가 제한된 통로 면적 안에서 동시에 움직일 경우 필연적으로 병목 현상과 교착
+                        상태(Deadlock)에 빠집니다.</p>
+
+                    <p data-i18n="ins.e1.p5">개별 로봇의 자율주행이나 경로 회피 능력만으로는 함대에 가까운 대규모 로봇 편대를 효율적으로 지휘할 수 없습니다. 제조사가 각기 다른 수백 대의 로봇들의 전체 동선을 조망하며
+                        최적의 작업을 할당하고, 교차로에서 충돌하지 않도록 교통을 중앙 제어하는 두뇌 인프라, 즉 <strong>TAMS(Total AMR Management System)와 같은
+                            통합 제어 관점</strong>에서의 솔루션 도입이 반드시 선행되어야 합니다.</p>
+
+                    <!-- Related Products Button -->
+                    <div class="insight-products">
+                        <h4 data-i18n="ps.robot.tech.title">관련 제품 알아보기</h4>
+                        <div class="product-links">
+                            <a href="products-solution.html#control-section" class="product-link-btn" data-i18n="ins.rel.btn"><i
+                                    class="fas fa-network-wired"></i> 통합 관제 솔루션 TAMS 더 알아보기 &rarr;</a>
+                        </div>
+                    </div>
+
+                    <h2 data-i18n="ins.e1.h4">4. 우리 현장에 맞는 로봇은?</h2>
+                    <p data-i18n="ins.e1.p6">여러 기종 중에서 어떤 로봇을 우선순위로 도입할지는 주로 <strong>'취급하는 화물의 형태와 단위'</strong>에 의해 초기 판단이 이루어집니다.</p>
+
+                    <div style="overflow-x: auto; margin-bottom: 24px;">
+                        <table
+                            style="width: 100%; border-collapse: collapse; min-width: 600px; text-align: left; font-size: 0.95rem; border: 1px solid #e5e7eb;">
+                            <thead>
+                                <tr style="background: #f9fafb; border-bottom: 2px solid #e5e7eb;">
+                                    <th style="padding: 14px 16px; width: 25%;" data-i18n="ins.e1.th_unit">취급 단위</th>
+                                    <th style="padding: 14px 16px; width: 45%;" data-i18n="ins.e1.th_scenario">주요 적용 시나리오</th>
+                                    <th style="padding: 14px 16px; width: 30%;" data-i18n="ins.e1.th_robot">적합 로봇 추천군</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="border-bottom: 1px solid #e5e7eb;">
+                                    <td style="padding: 14px 16px; font-weight: bold;" data-i18n="ins.e1.td_u1">파렛트 (Pallet)</td>
+                                    <td style="padding: 14px 16px;" data-i18n="ins.e1.td_s1">입고장 트럭 하역, 고단 랙(Rack) 적치 및 보관, 규격화된 출하장 이송</td>
+                                    <td style="padding: 14px 16px;" data-i18n="ins.e1.td_r1"><strong>AFL</strong> (자율주행 지게차군)<br>고중량 Lifting AMR
+                                    </td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid #e5e7eb;">
+                                    <td style="padding: 14px 16px; font-weight: bold;" data-i18n="ins.e1.td_u2">롤 대차 (Rolltainer)</td>
+                                    <td style="padding: 14px 16px;" data-i18n="ins.e1.td_s3">다수의 롤 대차 연속 견인, B2B 매장 납품용 거점 분배 이송</td>
+                                    <td style="padding: 14px 16px;" data-i18n="ins.e1.td_r3"><strong>Towing AMR</strong><br>견인형 AGV</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 14px 16px; font-weight: bold;" data-i18n="ins.e1.td_u2">박스 / 개품 (Box/Piece)</td>
+                                    <td style="padding: 14px 16px;" data-i18n="ins.e1.td_s2">주문 피킹 작업자 동선 보조 이송, 컨베이어 라인 말단 연계 이송</td>
+                                    <td style="padding: 14px 16px;" data-i18n="ins.e1.td_r2"><strong>Lifting AMR</strong><br>저상형 AGV</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- 핵심 정리 박스 -->
+                    <div
+                        style="background: #fdfaf0; border: 1px solid #fde68a; border-radius: 12px; padding: 30px; margin: 50px 0;">
+                        <h4
+                            style="font-size: 1.25rem; font-weight: 700; color: #854d0e; margin-bottom: 16px; display: flex; align-items: center; gap: 10px;" data-i18n="ins.e1.h2">
+                            <i class="fas fa-lightbulb" style="color: #eab308; font-size: 1.3rem;"></i> 핵심 정리
+                        </h4>
+                        <ul
+                            style="margin: 0; padding-left: 24px; color: #713f12; font-size: 1.1rem; line-height: 1.7; font-weight: 500;">
+                            <li style="margin-bottom: 10px;" data-i18n="ins.e1.li1"><strong>AGV</strong> = 정해진 길, <strong>AMR</strong> = 자율 회피
+                                경로</li>
+                            <li style="margin-bottom: 10px;" data-i18n="ins.e1.li2"><strong>AFL</strong> = 자율주행 지게차 (파렛트 전문)</li>
+                            <li data-i18n="ins.e1.li3"><strong>100대 이상 대형 현장</strong> = 통합 관제(TAMS) 필수!</li>
+                        </ul>
+                    </div>
+                </article>
+
+            </div>
+
+            <!-- Type E(입문 가이드) 전용 CTA 배너 -->
+            <div class="container fade-in-section">
+                <div class="insight-cta-banner">
+                    <i class="fas fa-clipboard-check cta-banner-icon"></i>
+                    <h3 class="cta-banner-title" data-i18n="fitcheck.sub">우리 현장도 자동화가 가능할까?</h3>
+                    <p class="cta-banner-desc" data-i18n="fitcheck.desc">로봇의 차이를 이해하셨다면, 이제 내 현장에 도입하기 위해 어떤 준비가 필요한지 확인해 볼 차례입니다. 3분이면 끝나는
+                        Fit-Check로 제약 요소와 대안을 바로 확인해 보세요.</p>
+
+                    <div class="cta-buttons">
+                        <a href="fit-check.html" class="btn-primary-alt" data-i18n="fitcheck.btn">Fit-Check로 현장 적합도 확인하기 <i
+                                class="fas fa-arrow-right"></i></a>
+                        <a href="products-solution.html#robot-section" class="btn-outline-alt" data-i18n="ps.robot.bnb.c2.title">제품 라인업 보기 <i class="fas fa-arrow-right"></i></a>
+                        <a href="contact.html" class="btn-outline-alt" data-i18n="gnb.contact">상담 요청하기 <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Related Insights -->
+        <section class="related-insights">
+            <div class="container fade-in-section">
+                <div class="related-header">
+                    <h3 data-i18n="reference.case.semi-4.h1">Related Insights</h3>
+                    <a href="resource-guide.html" class="view-all-link" data-i18n="insights.back_to_list">목록으로 돌아가기 <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="related-grid">
+                    <!-- Related 1 -->
+                    <a class="insight-card" href="insight-detail-prep.html">
+                        <div class="card-thumb">
+                            <img src="images/thumbnail_04.png" alt="도입 전 현장 준비 가이드" data-i18n="ins.eval.title">
+                        </div>
+                        <div class="card-body">
+                            <div class="card-badges">
+                                <span class="badge-type badge-starter" data-i18n="ins.type.starter">Starter Guide</span>
+                                <span class="badge-cat" data-i18n="insights.filter.tech">기술</span>
+                            </div>
+                            <div class="card-title" data-i18n="ins.eval.title">도입 전 현장 준비 가이드 — 바닥·네트워크·통로 체크리스트</div>
+                        </div>
+                    </a>
+
+                    <!-- Related 2 -->
+                    <a class="insight-card" href="insight-detail-roi.html">
+                        <div class="card-thumb">
+                            <img src="images/thumbnail_05.png" alt="물류 자동화 ROI 산출 가이드" data-i18n="ins.e3.title">
+                        </div>
+                        <div class="card-body">
+                            <div class="card-badges">
+                                <span class="badge-type badge-starter" data-i18n="ins.type.starter">Starter Guide</span>
+                                <span class="badge-cat" data-i18n="insights.filter.tech">기술</span>
+                            </div>
+                            <div class="card-title" data-i18n="ins.e3.title">물류 자동화 ROI 산출 가이드 — 투자 비용부터 회수까지</div>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer id="contact"></footer>
+    <script src="scripts/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - MOBYUS</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/company.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&family=Pretendard+Variable:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <!-- i18n scripts -->
+     <script src="scripts/i18n-data.js"></script>
+     <script src="scripts/i18n.js"></script>
+</head>
+
+<body>
+    <header id="gnb"></header>
+
+    <main class="about-page bg-light">
+        <section class="global-hero"
+            style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/hero_aboutus_premium.png'); background-size: cover; background-position: center;">
+            <div class="global-hero-inner fade-in">
+                <p class="global-hero-category" data-i18n="au.hero.category">About Us</p>
+                <div class="hero-title-row">
+                    <h1 class="global-hero-title" data-i18n="au.hero.tagline">물류의 자율을 설계하다</h1>
+                    <p class="global-hero-tagline" data-i18n="au.hero.tagline_desc">Designing Autonomous Logistics</p>
+                </div>
+                <p class="global-hero-sub-ko mt-3" data-i18n="au.hero.sub">로봇, 관제, 물류SW — 현장의 모든 층위를 하나로 연결합니다</p>
+                <p class="global-hero-sub-en" data-i18n="au.hero.sub_desc">Robotics, Control, Logistics Software — connecting every layer into one seamless flow</p>
+            </div>
+        </section>
+
+        <!-- A4-2. Company Snapshot (Stats) -->
+        <section class="overview-section" style="padding-top: 100px; padding-bottom: 100px; background: #fff">
+            <div class="container fade-in-section">
+                <div class="section-header text-center" style="margin-bottom: 80px">
+                    <h2 class="font-set-intro-title" data-i18n="au.snap.title">Company Snapshot</h2>
+                    <p class="font-set-intro-ko" data-i18n="au.snap.sub" style="margin-top: 24px;">숫자로 증명하는 성장의 크기와 기술의 깊이</p>
+                </div>
+
+                <!-- Row 1 -->
+                <div class="stats-banner" style="margin-bottom: 20px;">
+                    <!-- Stat 1 -->
+                    <div class="stat-block">
+                        <div class="product-stats-num stat-count" data-target="2019">0</div>
+                        <div class="product-stats-label" data-i18n="au.snap.s1.label">로봇 상용화 및 양산 개시<br><span
+                                style="font-size: 0.85em; opacity: 0.7;">Commercial robotics launch</span></div>
+                    </div>
+                    <div class="stat-divider"></div>
+
+                    <!-- Stat 2 -->
+                    <div class="stat-block">
+                        <div class="product-stats-num"><span class="count-up" data-target="90">0</span><span data-i18n="au.snap.percent.suffix">%</span></div>
+                        <div class="product-stats-label" data-i18n="au.snap.s2.label">기술인력 비율<br><span
+                                style="font-size: 0.85em; opacity: 0.7;">Engineering talent ratio</span></div>
+                    </div>
+                    <div class="stat-divider"></div>
+
+                    <!-- Stat 3 -->
+                    <div class="stat-block">
+                        <div class="product-stats-num"><span class="count-up" data-target="12">0</span><span data-i18n="au.snap.s3.suffix">개국+</span></div>
+                        <div class="product-stats-label" data-i18n="au.snap.s3.label">글로벌 현장 적용<br><span
+                                style="font-size: 0.85em; opacity: 0.7;">Countries deployed</span></div>
+                    </div>
+                </div>
+
+                <!-- Row 2 -->
+                <div class="stats-banner">
+                    <!-- Stat 4 -->
+                    <div class="stat-block">
+                        <div class="product-stats-num"><span class="count-up" data-target="94">0</span><span data-i18n="au.snap.percent.suffix">%</span></div>
+                        <div class="product-stats-label" data-i18n="au.snap.s4.label">물류로봇 매출 CAGR<br><span
+                                style="font-size: 0.85em; opacity: 0.7;">Logistics robot revenue CAGR</span></div>
+                    </div>
+                    <div class="stat-divider"></div>
+
+                    <!-- Stat 5 -->
+                    <div class="stat-block">
+                        <div class="product-stats-num"><span class="count-up" data-target="13.5">0.0</span><span data-i18n="au.snap.percent.suffix">%</span></div>
+                        <div class="product-stats-label" data-i18n="au.snap.s5.label">매출 대비 R&D 투자<br><span
+                                style="font-size: 0.85em; opacity: 0.7;">Revenue-to-R&D ratio</span></div>
+                    </div>
+                    <div class="stat-divider"></div>
+
+                    <!-- Stat 6 -->
+                    <div class="stat-block">
+                        <div class="product-stats-num">3 → <span class="count-up" data-target="7">0</span><span data-i18n="au.snap.s6.suffix">개</span></div>
+                        <div class="product-stats-label" data-i18n="au.snap.s6.label">산업군 확대<br><span
+                                style="font-size: 0.85em; opacity: 0.7;">Industry verticals served</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- A4-3. What We Do -->
+        <section class="overview-section bg-light" style="padding-top: 100px; padding-bottom: 100px;">
+            <div class="container fade-in-section">
+                <div class="section-header text-center" style="margin-bottom: 80px">
+                    <h2 class="font-set-intro-title" data-i18n="au.wd.title">What We Do</h2>
+                    <p class="font-set-intro-ko" data-i18n="au.wd.sub" style="margin-top: 24px;">로봇부터 소프트웨어까지, 물류의 모든 층을 직접 만듭니다</p>
+                </div>
+
+                <div
+                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 50px;">
+                    <!-- Pillar 1: Hardware -->
+                    <div class="premium-card">
+                        <h3 data-i18n="au.wd.c1.title" style="font-size: 1.4rem; font-weight: 700; color: #111827; margin-bottom: 12px;">로봇 — Robot</h3>
+                        <p data-i18n="au.wd.c1.p" style="color: #4b5563; line-height: 1.6; font-size: 1rem; margin-bottom: 20px;">
+                            자율주행 지게차(AFL)와 이송 로봇(AMR)을 직접 설계·개발합니다. 현장의 물리적 이송을 자동화하는 핵심 제품군입니다.
+                        </p>
+                        <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                            <span data-i18n="au.wd.c1.t1" style="background: #f3f4f6; color: #6b7280; padding: 6px 14px; border-radius: 100px; font-size: 0.85rem; font-weight: 500;">AFL (팔레트 이송·적재)</span>
+                            <span data-i18n="au.wd.c1.t2" style="background: #f3f4f6; color: #6b7280; padding: 6px 14px; border-radius: 100px; font-size: 0.85rem; font-weight: 500;">AMR (GTP·고중량 이송)</span>
+                        </div>
+                    </div>
+
+                    <!-- Pillar 2: Control -->
+                    <div class="premium-card">
+                        <h3 data-i18n="au.wd.c2.title" style="font-size: 1.4rem; font-weight: 700; color: #111827; margin-bottom: 12px;">관제 — Orchestration</h3>
+                        <p data-i18n="au.wd.c2.p" style="color: #4b5563; line-height: 1.6; font-size: 1rem; margin-bottom: 20px;">
+                            통합 관제 시스템(TAMS)으로 로봇·설비·작업자를 하나의 운영 흐름으로 연결하고 최적화합니다.
+                        </p>
+                        <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                            <span data-i18n="au.wd.c2.t1" style="background: #f3f4f6; color: #6b7280; padding: 6px 14px; border-radius: 100px; font-size: 0.85rem; font-weight: 500;">MCS·ACS 통합 제어</span>
+                            <span data-i18n="au.wd.c2.t2" style="background: #f3f4f6; color: #6b7280; padding: 6px 14px; border-radius: 100px; font-size: 0.85rem; font-weight: 500;">FMS·WNS 실시간 관제</span>
+                        </div>
+                    </div>
+
+                    <!-- Pillar 3: Software -->
+                    <div class="premium-card">
+                        <h3 data-i18n="au.wd.c3.title" style="font-size: 1.4rem; font-weight: 700; color: #111827; margin-bottom: 12px;">물류 소프트웨어 — Logistics Software</h3>
+                        <p data-i18n="au.wd.c3.p" style="color: #4b5563; line-height: 1.6; font-size: 1rem; margin-bottom: 20px;">
+                            주문(OMS)·창고(WMS)·배송(TMS) 관리 소프트웨어로 물류 운영 전체의 데이터와 흐름을 관리합니다.
+                        </p>
+                        <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                            <span data-i18n="au.wd.c3.t1" style="background: #f3f4f6; color: #6b7280; padding: 6px 14px; border-radius: 100px; font-size: 0.85rem; font-weight: 500;">Logistics SW Full-Stack</span>
+                            <span data-i18n="au.wd.c3.t2" style="background: #f3f4f6; color: #6b7280; padding: 6px 14px; border-radius: 100px; font-size: 0.85rem; font-weight: 500;">VMS (가시성·KPI 분석)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="text-align: center;">
+                    <a href="products-solution.html" class="btn-primary" data-i18n="au.wd.cta">
+                        제품 더 알아보기 <i class="fas fa-arrow-right" style="margin-left: 10px;"></i>
+                    </a>
+                    <p class="font-set-intro-ko" data-i18n="au.wd.proof" style="margin-top: 32px; color: #6b7280;">이미 현대자동차, 삼성전자 등 글로벌 선도 기업의
+                        12개국<br>현장에서 증명되고 있습니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- A4-4. Where We're Headed - Physical AI -->
+        <section class="overview-section" style="padding-top: 100px; padding-bottom: 100px; background: #fff">
+            <div class="container fade-in-section">
+                <div class="section-header text-center" style="margin-bottom: 80px">
+                    <h2 class="font-set-intro-title" data-i18n="au.headed.title">Where We're Headed</h2>
+                    <p class="font-set-intro-ko" data-i18n="au.headed.sub" style="margin-top: 24px;">현장에서 시작된 Physical AI — AI가 현실 세계를 움직이려면, 현실 세계를 겪어야 합니다</p>
+                </div>
+
+                <div style="max-width: 900px; margin: 0 auto 60px; text-align: center;">
+                    <p class="font-set-intro-ko" data-i18n="au.headed.p1" style="margin-bottom: 40px; line-height: 2;">
+                        <strong>AI의 다음 무대는 물리세계입니다.</strong><br>
+                        보고, 판단하고, 움직이는 것을 동시에 해내야 합니다.<br>
+                        텍스트나 이미지를 다루는 AI와는 차원이 다른 문제입니다.
+                    </p>
+                    <p class="font-set-intro-ko" data-i18n="au.headed.p2" style="margin-bottom: 40px; line-height: 2;">
+                        <strong>MOBYUS는 이 문제를 실제 현장에서 풀어왔습니다.</strong><br>
+                        협소한 통로, 수 톤의 적재물, mm 단위 정밀 도킹, 수십 대 로봇의 동시 운영.<br>
+                        글로벌 선도 기업이 요구하는 가장 까다로운 조건이 우리 기술의 출발점입니다.
+                    </p>
+                    <p class="font-set-intro-ko" data-i18n="au.headed.p3" style="line-height: 2;">
+                        <strong>그 결과, Physical AI 기술 스택 4대 영역 전체에서</strong><br>
+                        <strong>실제 산업 현장의 검증을 거친 역량을 갖추고 있습니다.</strong>
+                    </p>
+                </div>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px;">
+                    <div class="premium-card">
+                        <div style="font-size: 3rem; margin-bottom: 24px;">👁️</div>
+                        <h3 data-i18n="au.headed.v1.title" style="font-size: 1.25rem; font-weight: 700; color: #111827; margin-bottom: 12px;">인지
+                            <span
+                                style="color: var(--color-br800); font-family: var(--font-heading); font-weight: 500; font-size: 1rem; margin-left: 5px;">Perception</span>
+                        </h3>
+                        <p data-i18n="au.headed.v1.p" style="color: #4b5563; font-size: 0.95rem; line-height: 1.6;">카메라·LiDAR·센서 융합으로 작업 대상과 공간을 실시간으로 인식하고, 변화하는 환경에 대응하고 있습니다</p>
+                    </div>
+                    <div class="premium-card">
+                        <div style="font-size: 3rem; margin-bottom: 24px;">🧠</div>
+                        <h3 data-i18n="au.headed.v2.title" style="font-size: 1.25rem; font-weight: 700; color: #111827; margin-bottom: 12px;">판단
+                            <span
+                                style="color: var(--color-br800); font-family: var(--font-heading); font-weight: 500; font-size: 1rem; margin-left: 5px;">Intelligence</span>
+                        </h3>
+                        <p data-i18n="au.headed.v2.p" style="color: #4b5563; font-size: 0.95rem; line-height: 1.6;">경로 계획, 작업 우선순위, 다중 로봇 협업 — 복잡한 상황을 실시간으로 해석하고 최적의 판단을 내리고 있습니다</p>
+                    </div>
+                    <div class="premium-card">
+                        <div style="font-size: 3rem; margin-bottom: 24px;">⚙️</div>
+                        <h3 data-i18n="au.headed.v3.title" style="font-size: 1.25rem; font-weight: 700; color: #111827; margin-bottom: 12px;">실행
+                            <span
+                                style="color: var(--color-br800); font-family: var(--font-heading); font-weight: 500; font-size: 1rem; margin-left: 5px;">Action</span>
+                        </h3>
+                        <p data-i18n="au.headed.v3.p" style="color: #4b5563; font-size: 0.95rem; line-height: 1.6;">정밀 도킹, 고중량 핸들링, 협소 공간 작업 — 산업 현장의 물리적 난제를 안정적으로 수행하고 있습니다</p>
+                    </div>
+                    <div class="premium-card">
+                        <div style="font-size: 3rem; margin-bottom: 24px;">🔗</div>
+                        <h3 data-i18n="au.headed.v4.title" style="font-size: 1.25rem; font-weight: 700; color: #111827; margin-bottom: 12px;">통합 운영
+                            <span
+                                style="color: var(--color-br800); font-family: var(--font-heading); font-weight: 500; font-size: 1rem; margin-left: 5px;">Orchestration</span>
+                        </h3>
+                        <p data-i18n="au.headed.v4.p" style="color: #4b5563; font-size: 0.95rem; line-height: 1.6;">로봇·설비·사람·시스템을 하나의 운영 흐름으로 연결하여, 현장 전체를 최적화하고 있습니다</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- A4-5. People & Team -->
+        <section class="overview-section bg-light" style="padding-top: 100px; padding-bottom: 100px;">
+            <div class="container fade-in-section">
+                <div class="section-header text-center" style="margin-bottom: 60px">
+                    <h2 class="font-set-intro-title" data-i18n="au.who.title">Who Drives It</h2>
+                    <p class="font-set-intro-ko" data-i18n="au.who.sub" style="margin-top: 24px;">기술로 모인 사람들</p>
+                </div>
+
+                <!-- Team Ratio Visual (Progress Bar Style) -->
+                <!-- Team Ratio Visual (Circular Charts) -->
+                <div style="max-width: 1000px; margin: 0 auto 80px; display: flex; justify-content: center; gap: 80px; flex-wrap: wrap;">
+                    
+                    <!-- Group 1: Total Engineering -->
+                    <div style="flex: 1; min-width: 300px; display: flex; flex-direction: column; align-items: center; text-align: center;">
+                        <h4 data-i18n="au.who.r1.title" style="font-size: 1.25rem; font-weight: 800; color: #111827; margin-bottom: 30px;">
+                            총 기술인력 <span style="font-family: var(--font-heading); font-weight: 500; font-size: 0.95rem; color: #6b7280; display: block; margin-top: 4px;">Total Engineering</span>
+                        </h4>
+                        
+                        <!-- Donut Chart 1 -->
+                        <div style="position: relative; width: 220px; height: 220px; border-radius: 50%; background: conic-gradient(var(--color-br900) 0% 90%, #f3f4f6 90% 100%); display: flex; align-items: center; justify-content: center; margin-bottom: 24px;">
+                            <div style="width: 170px; height: 170px; background: #fff; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: inset 0 2px 10px rgba(0,0,0,0.05);">
+                                <span style="font-size: 3rem; font-weight: 800; font-family: var(--font-heading); color: #111827; line-height: 1;">90<span style="font-size: 1.5rem; font-weight: 700;">%</span></span>
+                            </div>
+                        </div>
+                        
+                        <div data-i18n="au.who.r1.p" style="font-weight: 600; color: #374151; font-size: 1.05rem;">SW 중심 기술 조직</div>
+                        <p data-i18n="au.who.r1.p_desc" style="font-size: 0.9rem; color: #6b7280; margin-top: 4px;">Software-Centric Engineering Core</p>
+                    </div>
+
+                    <!-- Group 2: Engineering Breakdown -->
+                    <div style="flex: 1; min-width: 300px; display: flex; flex-direction: column; align-items: center; text-align: center;">
+                        <h4 data-i18n="au.who.r2.title" style="font-size: 1.25rem; font-weight: 800; color: #111827; margin-bottom: 30px;">
+                            분야별 기술인력 <span style="font-family: var(--font-heading); font-weight: 500; font-size: 0.95rem; color: #6b7280; display: block; margin-top: 4px;">Engineering Breakdown</span>
+                        </h4>
+                        
+                        <!-- Donut Chart 2 -->
+                        <div style="position: relative; width: 220px; height: 220px; border-radius: 50%; background: conic-gradient(#10b981 0% 54%, #007aff 54% 90%, #f3f4f6 90% 100%); display: flex; align-items: center; justify-content: center; margin-bottom: 24px;">
+                            <div style="width: 170px; height: 170px; background: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: inset 0 2px 10px rgba(0,0,0,0.05);">
+                                <span style="font-size: 2rem; font-weight: 800; font-family: var(--font-heading); color: #111827; line-height: 1.1;">Robot vs<br>Solution</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Legends for Breakdown -->
+                        <div style="width: 100%; display: flex; flex-direction: column; gap: 20px; align-items: center; text-align: center;">
+                            <div style="display: flex; flex-direction: column; align-items: center; gap: 6px;">
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <div style="width: 10px; height: 10px; border-radius: 2px; background: #10b981;"></div>
+                                    <div data-i18n="au.who.r2.l1" style="font-weight: 700; color: #111827; font-size: 0.95rem;">물류로봇 기술인력 (54%)</div>
+                                </div>
+                                <div data-i18n="au.who.r2.p1" style="color: #6b7280; font-size: 0.85rem; line-height: 1.4;">자율주행·제어·TAMS·기구 설계</div>
+                            </div>
+                            
+                            <div style="display: flex; flex-direction: column; align-items: center; gap: 6px;">
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <div style="width: 10px; height: 10px; border-radius: 2px; background: #007aff;"></div>
+                                    <div data-i18n="au.who.r2.l2" style="font-weight: 700; color: #111827; font-size: 0.95rem;">솔루션 기술인력 (36%)</div>
+                                </div>
+                                <div data-i18n="au.who.r2.p2" style="color: #6b7280; font-size: 0.85rem; line-height: 1.4;">WMS·OMS·TMS·구축·운영</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Leadership Section -->
+                <div class="text-center" style="margin-top: 80px; margin-bottom: 60px;">
+                    <h3 class="font-set-intro-sub" data-i18n="au.who.lead.title" style="margin-bottom: 32px; color: var(--color-gray90);">리더십 역량</h3>
+                    <div style="max-width: 1200px; margin: 0 auto;">
+                        <p class="font-set-intro-ko" data-i18n="au.who.lead.p" style="margin-bottom: 24px;">
+                            산업·물류 전략 역량과 로보틱스·AI 기술 전문성이 결합된 경영진이<br>
+                            인지–판단–실행–통합 운영 전 영역의 기술 구현을 이끌고 있습니다.
+                        </p>
+                        <p class="font-set-intro-en" data-i18n="au.who.lead.p_desc"
+                            style="color: #6b7280; font-family: var(--font-heading); line-height: 1.6;">
+                            A leadership team combining industry-logistics strategy with robotics-AI expertise<br>
+                            drives technology development across the full perception-to-orchestration stack.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Capability Cards Grid -->
+                <div class="leadership-capability-grid">
+                    <!-- Card 1: 전략·경영 -->
+                    <div class="premium-card leadership-card">
+                        <div style="color: var(--color-br900); font-size: 2rem; margin-bottom: 20px;"><i
+                                class="fas fa-chess-knight"></i></div>
+                        <h4 data-i18n="au.who.c1.title"
+                            style="font-size: 1.7rem; font-weight: 800; color: #111827; margin-bottom: 12px; letter-spacing: -0.02em;">
+                            전략·경영</h4>
+                        <p data-i18n="au.who.c1.p"
+                            style="font-size: 1.05rem; color: #374151; margin-bottom: 6px; line-height: 1.5; font-weight: 500;">
+                            글로벌 전략 컨설팅 및 제조·물류 사업 경영</p>
+                        <p data-i18n="au.who.c1.p_desc"
+                            style="font-family: var(--font-heading); font-size: 1rem; color: #4b5563; margin-bottom: 20px; line-height: 1.4;">
+                            Global strategy consulting & mfg/logistics business leadership</p>
+                        <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto;">
+                            <span data-i18n="au.who.c1.t1"
+                                style="background: #fff0f5; color: #6b7280; padding: 6px 14px; border-radius: 100px; font-size: 0.85rem; font-weight: 500;">PwC</span>
+                            <span data-i18n="au.who.c1.t2"
+                                style="background: #fff0f5; color: #6b7280; padding: 6px 14px; border-radius: 100px; font-size: 0.85rem; font-weight: 500;">AT커니</span>
+                            <span data-i18n="au.who.c1.t3"
+                                style="background: #fff0f5; color: #6b7280; padding: 6px 14px; border-radius: 100px; font-size: 0.85rem; font-weight: 500;">IBM
+                                GBS</span>
+                            <span data-i18n="au.who.c1.t4"
+                                style="background: #fff0f5; color: #6b7280; padding: 6px 14px; border-radius: 100px; font-size: 0.85rem; font-weight: 500;">대기업
+                                전략기획</span>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: 물류·SCM -->
+                    <div class="premium-card leadership-card">
+                        <div style="color: var(--color-br900); font-size: 2rem; margin-bottom: 20px;"><i
+                                class="fas fa-network-wired"></i></div>
+                        <h4 data-i18n="au.who.c2.title"
+                            style="font-size: 1.7rem; font-weight: 800; color: #111827; margin-bottom: 12px; letter-spacing: -0.02em;">
+                            물류·SCM</h4>
+                        <p data-i18n="au.who.c2.p"
+                            style="font-size: 1.05rem; color: #374151; margin-bottom: 6px; line-height: 1.5; font-weight: 500;">
+                            대규모 공급망 설계 및 물류 운영 혁신</p>
+                        <p data-i18n="au.who.c2.p_desc"
+                            style="font-family: var(--font-heading); font-size: 1rem; color: #4b5563; margin-bottom: 20px; line-height: 1.4;">
+                            Supply chain design & logistics operations transformation</p>
+                        <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto;">
+                            <span data-i18n="au.who.c2.t1"
+                                style="background: #fff0f5; color: #6b7280; padding: 6px 14px; border-radius: 100px; font-size: 0.85rem; font-weight: 500;">CJ대한통운</span>
+                            <span data-i18n="au.who.c2.t2"
+                                style="background: #fff0f5; color: #6b7280; padding: 6px 14px; border-radius: 100px; font-size: 0.85rem; font-weight: 500;">삼성SDS</span>
+                            <span data-i18n="au.who.c2.t3"
+                                style="background: #fff0f5; color: #6b7280; padding: 6px 14px; border-radius: 100px; font-size: 0.85rem; font-weight: 500;">선도기업
+                                CIO</span>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: 로보틱스·제어 -->
+                    <div class="premium-card leadership-card">
+                        <div style="color: var(--color-br900); font-size: 2rem; margin-bottom: 20px;"><i
+                                class="fas fa-robot"></i></div>
+                        <h4 data-i18n="au.who.c3.title"
+                            style="font-size: 1.7rem; font-weight: 800; color: #111827; margin-bottom: 12px; letter-spacing: -0.02em;">
+                            로보틱스·제어</h4>
+                        <p data-i18n="au.who.c3.p"
+                            style="font-size: 1.05rem; color: #374151; margin-bottom: 6px; line-height: 1.5; font-weight: 500;">
+                            자율주행 핵심 기술 및 로봇 하드웨어 개발</p>
+                        <p data-i18n="au.who.c3.p_desc"
+                            style="font-family: var(--font-heading); font-size: 1rem; color: #4b5563; margin-bottom: 20px; line-height: 1.4;">
+                            Autonomous driving core tech & robot hardware development</p>
+                        <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto;">
+                            <span data-i18n="au.who.c3.t1"
+                                style="background: #fff0f5; color: #6b7280; padding: 6px 14px; border-radius: 100px; font-size: 0.85rem; font-weight: 500;">두산
+                                밥캣 지게차</span>
+                            <span data-i18n="au.who.c3.t2"
+                                style="background: #fff0f5; color: #6b7280; padding: 6px 14px; border-radius: 100px; font-size: 0.85rem; font-weight: 500;">LG산전</span>
+                            <span data-i18n="au.who.c3.t3"
+                                style="background: #fff0f5; color: #6b7280; padding: 6px 14px; border-radius: 100px; font-size: 0.85rem; font-weight: 500;">KIST</span>
+                            <span data-i18n="au.who.c3.t4"
+                                style="background: #fff0f5; color: #6b7280; padding: 6px 14px; border-radius: 100px; font-size: 0.85rem; font-weight: 500;">유진로봇</span>
+                        </div>
+                    </div>
+
+                    <!-- Card 4: AI·시스템 -->
+                    <div class="premium-card leadership-card">
+                        <div style="color: var(--color-br900); font-size: 2rem; margin-bottom: 20px;"><i
+                                class="fas fa-brain"></i></div>
+                        <h4 data-i18n="au.who.c4.title"
+                            style="font-size: 1.7rem; font-weight: 800; color: #111827; margin-bottom: 12px; letter-spacing: -0.02em;">
+                            AI·시스템</h4>
+                        <p data-i18n="au.who.c4.p"
+                            style="font-size: 1.05rem; color: #374151; margin-bottom: 6px; line-height: 1.5; font-weight: 500;">
+                            AI 최적화 및 통합관제 시스템 아키텍처</p>
+                        <p data-i18n="au.who.c4.p_desc"
+                            style="font-family: var(--font-heading); font-size: 1rem; color: #4b5563; margin-bottom: 20px; line-height: 1.4;">
+                            AI optimization & orchestration system architecture</p>
+                        <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto;">
+                            <span data-i18n="au.who.c4.t1"
+                                style="background: #fff0f5; color: #6b7280; padding: 6px 14px; border-radius: 100px; font-size: 0.85rem; font-weight: 500;">TAMS
+                                아키텍처</span>
+                            <span data-i18n="au.who.c4.t2"
+                                style="background: #fff0f5; color: #6b7280; padding: 6px 14px; border-radius: 100px; font-size: 0.85rem; font-weight: 500;">AI
+                                경로 최적화</span>
+                            <span data-i18n="au.who.c4.t3"
+                                style="background: #fff0f5; color: #6b7280; padding: 6px 14px; border-radius: 100px; font-size: 0.85rem; font-weight: 500;">산업공학
+                                박사</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- A4-5-3. People & Careers -->
+        <section class="overview-section" style="padding-top: 100px; padding-bottom: 120px; background: #fff">
+            <div class="container fade-in-section text-center">
+                <div class="section-header" style="margin-bottom: 80px;">
+                    <h2 class="font-set-intro-title" data-i18n="au.prob.title">우리가 풀고 있는 문제들</h2>
+                    <p class="font-set-intro-ko" data-i18n="au.prob.sub" style="margin-top: 24px; color: #6b7280; font-size: 1.1rem;">로보틱스·AI·물류의 교차점에서, 실제 현장의 문제를 제품으로 해결합니다</p>
+                </div>
+
+                <!-- Problem Cards List -->
+                <div
+                    style="max-width: 1200px; margin: 0 auto 80px; display: flex; flex-direction: column; gap: 20px; text-align: left;">
+                    <!-- Problem 1 -->
+                    <div
+                        style="background: #fff; border: 1px solid var(--color-gray20); border-radius: 20px; padding: 28px 24px; display: flex; align-items: center; gap: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.02);">
+                        <div
+                            style="width: 44px; height: 44px; background: var(--color-br800); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; font-weight: 700; flex-shrink: 0;">
+                            1</div>
+                        <div>
+                            <div data-i18n="au.prob.i1" style="font-size: 1.15rem; font-weight: 600; color: #374151; margin-bottom: 4px;">188대의
+                                로봇이 공장에서 교착 없이 흐르는 제어 알고리즘</div>
+                            <div class="font-set-heading" data-i18n="au.prob.i1_desc" style="font-family: var(--font-heading); font-size: 1rem; color: #6b7280;">Algorithms that keep 188 robots moving without deadlock on a single factory floor</div>
+                        </div>
+                    </div>
+                    <!-- Problem 2 -->
+                    <div
+                        style="background: #fff; border: 1px solid var(--color-gray20); border-radius: 20px; padding: 28px 24px; display: flex; align-items: center; gap: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.02);">
+                        <div
+                            style="width: 44px; height: 44px; background: var(--color-br800); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; font-weight: 700; flex-shrink: 0;">
+                            2</div>
+                        <div>
+                            <div data-i18n="au.prob.i2" style="font-size: 1.15rem; font-weight: 600; color: #374151; margin-bottom: 4px;">사람이 볼
+                                수 없는 적재 공간을 3D로 인식하고, ±5mm로 도킹하는 자율주행 지게차</div>
+                            <div class="font-set-heading" data-i18n="au.prob.i2_desc" style="font-family: var(--font-heading); font-size: 1rem; color: #6b7280;">Forklifts that perceive invisible stacking zones in 3D and dock within ±5mm</div>
+                        </div>
+                    </div>
+                    <!-- Problem 3 -->
+                    <div
+                        style="background: #fff; border: 1px solid var(--color-gray20); border-radius: 20px; padding: 28px 24px; display: flex; align-items: center; gap: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.02);">
+                        <div
+                            style="width: 44px; height: 44px; background: var(--color-br800); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; font-weight: 700; flex-shrink: 0;">
+                            3</div>
+                        <div>
+                            <div data-i18n="au.prob.i3" style="font-size: 1.15rem; font-weight: 600; color: #374151; margin-bottom: 4px;">12개국,
+                                7개 이상 산업군에 걸친 현장에서 작동하는 운영 시스템</div>
+                            <div class="font-set-heading" data-i18n="au.prob.i3_desc" style="font-family: var(--font-heading); font-size: 1rem; color: #6b7280;">Operations systems that work across 12 countries and 7+ industry verticals</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recruitment Buttons -->
+                <div class="recruit-action-group">
+                    <a href="career.html" class="btn-primary" data-i18n="au.recruit.btn1">
+                        오픈 포지션 보기 <i class="fas fa-arrow-right" style="font-size: 0.95rem; margin-left: 10px;"></i>
+                    </a>
+                    <a href="contact.html?type=recruit" class="btn-outline" data-i18n="au.recruit.btn2">
+                        팀에 대해 문의하기
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- A4-6. Investor Snapshot -->
+        <section class="overview-section investor-snapshot"
+            style="padding-top: 100px; padding-bottom: 150px; background: #fff">
+            <div class="container fade-in-section">
+                <div class="section-header text-center" style="margin-bottom: 80px">
+                    <h2 class="font-set-intro-title" data-i18n="au.invest.title" style="margin-bottom: 12px;">Investor Snapshot</h2>
+                    <h3 class="font-set-intro-sub" data-i18n="au.invest.sub" style="color: #111; margin-bottom: 12px;">핵심수치</h3>
+                </div>
+
+                <!-- 핵심 수치 4종 -->
+                <div class="investor-snapshot"
+                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; margin-bottom: 0;">
+                    <div style="border-top: 2px solid #111; padding-top: 24px;">
+                        <div
+                            style="font-size: 2.5rem; font-weight: 700; font-family: var(--font-heading); color: #111; margin-bottom: 12px;">
+                            <span class="count-up" data-target="70">0</span><span
+                                style="font-size:1.5rem; margin-left: 2px;">%+</span>
+                        </div>
+                        <div data-i18n="au.invest.s1.label" style="font-weight: 700; color: #111; margin-bottom: 4px; font-size: 1.1rem;">고객 재구매율</div>
+                        <div data-i18n="au.invest.s1.desc" style="font-size: 0.85rem; color: #6b7280; font-family: var(--font-heading);">Client recurring rate</div>
+                    </div>
+                    <div style="border-top: 2px solid #111; padding-top: 24px;">
+                        <div
+                            style="font-size: 2.5rem; font-weight: 700; font-family: var(--font-heading); color: #111; margin-bottom: 12px;">
+                            <span class="count-up" data-target="99.5">0.0</span><span
+                                style="font-size:1.5rem; margin-left: 2px;">%+</span>
+                        </div>
+                        <div data-i18n="au.invest.s2.label" style="font-weight: 700; color: #111; margin-bottom: 4px; font-size: 1.1rem;">무정지 현장 가동률
+                        </div>
+                        <div data-i18n="au.invest.s2.desc" style="font-size: 0.85rem; color: #6b7280; font-family: var(--font-heading);">Zero-downtime field uptime</div>
+                    </div>
+                    <div style="border-top: 2px solid #111; padding-top: 24px;">
+                        <div
+                            style="font-size: 2.5rem; font-weight: 700; font-family: var(--font-heading); color: #111; margin-bottom: 12px;">
+                            <span class="count-up" data-target="45">0</span><span
+                                style="font-size:1.5rem; margin-left: 2px;">%</span>
+                        </div>
+                        <div data-i18n="au.invest.s3.label" style="font-weight: 700; color: #111; margin-bottom: 4px; font-size: 1.1rem;">표준화 개발 기간 단축
+                        </div>
+                        <div data-i18n="au.invest.s3.desc" style="font-size: 0.85rem; color: #6b7280; font-family: var(--font-heading);">Development time reduction via standardization</div>
+                    </div>
+                    <div style="border-top: 2px solid #111; padding-top: 24px;">
+                        <div
+                            style="font-size: 2.5rem; font-weight: 700; font-family: var(--font-heading); color: #111; margin-bottom: 12px;">
+                            <span
+                                style="font-size: 1.5rem; font-weight: 600; vertical-align: middle; margin-right: 4px;">CAGR</span><span
+                                class="count-up" data-target="8.3">0.0</span><span
+                                style="font-size:1.5rem; margin-left: 2px;">%</span>
+                        </div>
+                        <div data-i18n="au.invest.s4.label" style="font-weight: 700; color: #111; margin-bottom: 4px; font-size: 1.1rem;">물류로봇 글로벌 시장
+                            성장률 (2019~2030)</div>
+                        <div data-i18n="au.invest.s4.desc" style="font-size: 0.85rem; color: #6b7280; font-family: var(--font-heading);">Global logistics robot market CAGR</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- A4-6-2. Product Strategy (v0.2 신설) -->
+        <section class="overview-section bg-light" style="padding-top: 100px; padding-bottom: 100px;">
+            <div class="container fade-in-section">
+                <!-- 제품 경쟁력 — 3대 제품 표준화 전략 -->
+                <div style="margin-top: 74px;">
+                    <div class="text-center" style="margin-bottom: 48px;">
+                        <h3 class="font-set-intro-sub" data-i18n="au.strat.title" style="margin-bottom: 16px; color: var(--color-gray90);">제품 경쟁력 —
+                            3대 제품 표준화 전략</h3>
+                        <p class="font-set-intro-ko" data-i18n="au.strat.p">산업별 표준화(템플릿화) 제품 개발로 기간·비용을 절감하고 다양한 업종으로 확산 속도를 가속화</p>
+                    </div>
+
+                    <div class="standard-strategy-wrapper">
+                        <div class="standard-strategy-container">
+                            <!-- AMR -->
+                            <div class="standard-strategy-item">
+                                <div class="strategy-label-col">
+                                    <div class="strategy-tag">AMR</div>
+                                    <div class="strategy-title" data-i18n="au.strat.i1.title">산업별 템플릿화</div>
+                                </div>
+                                <div class="strategy-content-col">
+                                    <p class="font-set-intro-ko" data-i18n="au.strat.i1.p">다수 산업 현장 경험과 요구 분석을 반영한 산업별+공정/작업 특성 템플릿</p>
+                                    <p class="font-set-intro-en" data-i18n="au.strat.i1.p_desc">Industry + process/task templates built from multi-industry field experience</p>
+                                </div>
+                            </div>
+                            <!-- AFL -->
+                            <div class="standard-strategy-item">
+                                <div class="strategy-label-col">
+                                    <div class="strategy-tag">AFL</div>
+                                    <div class="strategy-title" data-i18n="au.strat.i2.title">로드별 표준 제품화</div>
+                                </div>
+                                <div class="strategy-content-col">
+                                    <p class="font-set-intro-ko" data-i18n="au.strat.i2.p">현장 요구 세분화를 바탕으로 하중별+작업 특성별 표준 라인업 구성</p>
+                                    <p class="font-set-intro-en" data-i18n="au.strat.i2.p_desc">Standardized lineup by load capacity and task type, based on field requirements</p>
+                                </div>
+                            </div>
+                            <!-- TAMS -->
+                            <div class="standard-strategy-item">
+                                <div class="strategy-label-col">
+                                    <div class="strategy-tag">TAMS</div>
+                                    <div class="strategy-title" data-i18n="au.strat.i3.title">고객 니즈별 모듈화</div>
+                                </div>
+                                <div class="strategy-content-col">
+                                    <p class="font-set-intro-ko" data-i18n="au.strat.i3.p">고객 니즈와 운영 목적에 따라 필요 모듈만 조합하는 모듈형 구조</p>
+                                    <p class="font-set-intro-en" data-i18n="au.strat.i3.p_desc">Modular architecture — combine only the modules each customer needs</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- A4-6-3. Growth Strategy -->
+        <section class="overview-section bg-white" style="padding-top: 100px; padding-bottom: 100px;">
+            <div class="container fade-in-section">
+                <!-- 성장 전략 (3가지) — v0.2 전면 재작성 -->
+                <div style="margin-top: 100px;">
+                    <div class="text-center" style="margin-bottom: 60px;">
+                        <h3 class="font-set-intro-sub" data-i18n="au.growth.title" style="color: var(--color-gray90);">성장 전략</h3>
+                    </div>
+
+                    <div class="overview-items" style="max-width: 1200px; margin: 0 auto;">
+                        <!-- Strategy 1 -->
+                        <div class="overview-item" style="grid-template-columns: 360px 1fr;">
+                            <div class="overview-left">
+                                <span class="overview-number">1</span>
+                                <span class="font-set-overview-label" data-i18n="au.growth.g1.label" style="font-size: 18px;">제품 표준화 → 다산업 확산</span>
+                            </div>
+                            <div class="overview-right">
+                                <p class="font-set-table-ko" data-i18n="au.growth.g1.p">산업별 표준화 제품 개발로 기간·비용 절감, 다양한 업종으로 확산 속도 가속화. 기존 고객 재구매 + 신규
+                                    산업 진입 동시 추진</p>
+                                <p class="font-set-table-en" data-i18n="au.growth.g1.p_desc" style="color: #6b7280;">Standardized products reduce time and cost, accelerating expansion across industries. Repeat orders from existing clients + new vertical penetration</p>
+                            </div>
+                        </div>
+
+                        <!-- Strategy 2 -->
+                        <div class="overview-item" style="grid-template-columns: 360px 1fr;">
+                            <div class="overview-left">
+                                <span class="overview-number">2</span>
+                                <span class="font-set-overview-label" data-i18n="au.growth.g2.label" style="font-size: 18px;">기술 확장 → 신규 시장 진입</span>
+                            </div>
+                            <div class="overview-right">
+                                <p class="font-set-table-ko" data-i18n="au.growth.g2.p">적용 기술군 확대 — 정밀 복합작업, 비정형 특수작업, 고중량·실외 인식/주행 → 냉동·냉장 물류센터,
+                                    산업단지·항만, 철강·조선 산업으로 확장</p>
+                                <p class="font-set-table-en" data-i18n="au.growth.g2.p_desc" style="color: #6b7280;">Technology expansion — precision manipulation, atypical cargo, heavy-payload/outdoor navigation → cold-chain warehouses, industrial complexes/ports, steel/shipbuilding</p>
+                            </div>
+                        </div>
+
+                        <!-- Strategy 3 -->
+                        <div class="overview-item" style="grid-template-columns: 360px 1fr;">
+                            <div class="overview-left">
+                                <span class="overview-number">3</span>
+                                <span class="font-set-overview-label" data-i18n="au.growth.g3.label" style="font-size: 18px;">Physical AI 기반 장기
+                                    경쟁력</span>
+                            </div>
+                            <div class="overview-right">
+                                <p class="font-set-table-ko" data-i18n="au.growth.g3.p">인지–판단–실행–통합 운영 전 영역의 기술 스택을 바탕으로 운영 지능 고도화, 장기 기술 우위 확보</p>
+                                <p class="font-set-table-en" data-i18n="au.growth.g3.p_desc" style="color: #6b7280;">Full-stack Physical AI capabilities as foundation for operational intelligence and long-term tech leadership</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- A4-6-4. PDF Download -->
+        <section class="overview-section bg-light" style="padding-top: 80px; padding-bottom: 100px;">
+            <div class="container fade-in-section">
+                <!-- PDF Download Section (v0.2 신설) -->
+                <div style="margin-top: 80px; padding: 40px; background: #f9fafb; border-radius: 20px; text-align: center;">
+                    <div style="font-size: 2.5rem; margin-bottom: 20px; color: var(--color-br800);">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <h3 class="font-set-intro-sub" data-i18n="au.pdf.title" style="margin-bottom: 12px; color: var(--color-gray90);">PDF 다운로드</h3>
+                    <p class="font-set-intro-ko" data-i18n="au.pdf.p" style="margin-bottom: 24px; color: #4b5563;">
+                        OpenAI Workshop 1-pager 기반 공개용 IR 1-Pager PDF 다운로드
+                    </p>
+                    <a href="javascript:void(0);" onclick="alert('현재 준비중입니다');" class="btn-outline" data-i18n="au.pdf.btn" style="padding: 12px 30px; font-weight: 600;">
+                        다운로드 받기 <i class="fas fa-download" style="margin-left: 8px;"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bottom Navigation Banner (IR, Careers, Products) -->
+        <div style="margin-top: 150px; margin-bottom: 200px;">
+            <nav class="bottom-nav-banner">
+                <div class="container">
+                    <div class="bnb-grid">
+                                <!-- IR Inquiry -->
+                                <a href="contact.html?type=ir" class="bnb-card">
+                                    <div class="bnb-text">
+                                        <span class="bnb-label" data-i18n="au.bnb.s1.label">IR 문의</span>
+                                        <span class="bnb-title" data-i18n="au.bnb.s1.title">IR 자료 요청 및 투자 문의</span>
+                                    </div>
+                                    <div class="bnb-arrow" style="background: var(--color-br900); color: #fff;">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </div>
+                                </a>
+
+                                <!-- Careers -->
+                                <a href="career.html" class="bnb-card">
+                                    <div class="bnb-text">
+                                        <span class="bnb-label" data-i18n="au.bnb.s2.label">채용</span>
+                                        <span class="bnb-title" data-i18n="au.bnb.s2.title">오픈 포지션 보기</span>
+                                    </div>
+                                    <div class="bnb-arrow" style="background: var(--color-br900); color: #fff;">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </div>
+                                </a>
+
+                                <!-- Product Inquiry -->
+                                <a href="contact.html" class="bnb-card bnb-card--accent">
+                                    <div class="bnb-text">
+                                        <span class="bnb-label" data-i18n="au.bnb.s3.label">제품 문의</span>
+                                        <span class="bnb-title" data-i18n="au.bnb.s3.title">제품·솔루션 도입 문의</span>
+                                    </div>
+                                    <div class="bnb-arrow">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </div>
+                                </a>
+                        </div>
+                    </nav>
+                </div>
+
+    </main>
+
+    <footer id="contact"></footer>
+
+    <script src="scripts/main.js"></script>
+    <script>
+        // Sync html lang attribute for CSS visibility logic
+        window.addEventListener('languageChanged', (e) => {
+            document.documentElement.lang = e.detail.lang;
+        });
+        // Set initial state
+        document.documentElement.lang = localStorage.getItem('preferredLanguage') || 'ko';
+    </script>
+</body>
+
+</html>

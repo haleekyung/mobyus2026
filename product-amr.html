@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMR - MOBYUS</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- i18n scripts -->
+    <script src="scripts/i18n-data.js"></script>
+    <script src="scripts/i18n.js"></script>
+    <style>
+        /* ===== 핵심 차별점 ===== */
+        .diff-section {
+            padding: 96px 0;
+            background: #fff;
+        }
+
+        .section-center-title {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        /* 비교표 - MOBYUS 열 강조 */
+        .diff-table {
+            width: 100%;
+            border-collapse: collapse;
+            outline: 1px solid var(--color-gray20);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .diff-table thead tr {
+            background: var(--color-gray05);
+            border-bottom: 1px solid var(--color-gray20);
+        }
+
+        .diff-table th {
+            padding: 12px 16px;
+            text-align: left;
+            /* font: .font-set-table-header */
+        }
+
+        .diff-table th.col-mobyus {
+            background: var(--color-br900);
+            color: #fff;
+            text-align: center;
+        }
+
+        .diff-table th:last-child {
+            text-align: center;
+        }
+
+        .diff-table td {
+            padding: 12px 16px;
+            vertical-align: middle;
+            /* font: .font-set-table-ko */
+        }
+
+        .diff-table td:first-child {
+            font-weight: 600;
+        }
+
+        .diff-table td.col-mobyus {
+            background: rgba(124, 11, 71, 0.04);
+            font-weight: 600;
+            color: var(--color-br900);
+            text-align: center;
+        }
+
+        .diff-table td.col-competitor {
+            color: var(--color-gray70);
+            text-align: center;
+        }
+
+        /* ===== Product Lineup ===== */
+        .lineup-section {
+            padding: 96px 0;
+            background: #fff;
+        }
+
+        .lineup-category {
+            margin-bottom: 56px;
+        }
+
+        .lineup-category:last-child {
+            margin-bottom: 0;
+        }
+
+        .lineup-category-title {
+            font-family: var(--font-heading);
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--color-gray90);
+            margin-bottom: 24px;
+        }
+
+        .lineup-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            row-gap: 48px;
+            column-gap: 24px;
+        }
+
+        .product-card {
+            background: #fff;
+            border: 1px solid var(--color-gray20);
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card-image {
+            aspect-ratio: 4/4.5;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 1px solid var(--color-gray10);
+        }
+
+        .product-card-image img {
+            max-width: 70%;
+            max-height: 70%;
+            object-fit: contain;
+        }
+
+        .product-card-image-placeholder {
+            color: var(--color-gray40);
+            font-size: 0.8rem;
+        }
+
+        .product-card-info {
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .product-card-model {
+            font-family: var(--font-heading);
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--color-gray90);
+            margin-bottom: 6px;
+            line-height: 1.2;
+        }
+
+        .product-card-capacity {
+            font-family: var(--font-heading);
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--color-gray70);
+            margin-bottom: 0;
+            line-height: 1.4;
+        }
+
+        .product-card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 16px;
+        }
+
+        .product-card-tag {
+            display: inline-block;
+            width: fit-content;
+            text-align: left;
+            min-height: 28px;
+            padding: 6px 12px;
+            font-family: 'Outfit', var(--font-body);
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--color-gray70);
+            background: var(--color-br50);
+            border-radius: 8px;
+            line-height: 1.3;
+        }
+
+        /* ===== OVERVIEW ===== */
+        .overview-section {
+            padding: 96px 0;
+            background: #fff;
+        }
+
+        .overview-section .section-center-title {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .overview-items {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .overview-item {
+            display: grid;
+            grid-template-columns: 240px 1fr;
+            align-items: center;
+            padding: 32px 0;
+            border-bottom: 1px solid var(--color-gray20);
+        }
+
+        .overview-item:first-child {
+            padding-top: 0;
+        }
+
+        .overview-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .overview-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .overview-number {
+            font-family: var(--font-heading);
+            font-size: 16px;
+            font-weight: 600;
+            color: #fff;
+            background: var(--color-br900);
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .overview-right p {
+            margin-bottom: 8px;
+        }
+
+        .overview-right p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Mobile specific adjustments */
+        @media (max-width: 768px) {
+            .lineup-grid {
+                grid-template-columns: repeat(2, 1fr);
+                column-gap: 16px;
+                row-gap: 32px;
+            }
+            .product-card[style*="visibility: hidden"] {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header id="gnb"></header>
+
+    <main>
+        <!-- ===== HERO ===== -->
+        <section class="global-hero"
+            style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/hero_amr_smart_factory.png'); background-size: cover; background-position: center;">
+            <div class="container global-hero-inner">
+                <div class="global-hero-category">Robot <i class="fas fa-chevron-right" style="font-size: 0.8em; margin: 0 4px;"></i> AMR</div>
+                <div class="hero-title-row">
+                    <h1 class="global-hero-title" data-i18n="ps.amr.hero.title">자율주행 모바일 로봇</h1>
+                    <p class="global-hero-tagline" data-i18n="ps.amr.hero.title_en">Autonomous Mobile Robot</p>
+                </div>
+                <p class="global-hero-sub-ko mt-3" data-i18n="ps.amr.hero.sub">비정형 환경에서도 최적의 물류 경로를 찾아 스스로 이동합니다</p>
+                <p class="global-hero-sub-en" data-i18n="ps.amr.hero.sub_en">Autonomous mobile robot optimizing logistics paths in dynamic environments</p>
+            </div>
+            <!-- Scroll Indicator -->
+            <div class="scroll-indicator">
+                <span>SCROLL</span>
+                <div class="scroll-line"></div>
+            </div>
+        </section>
+
+        <!-- ===== OVERVIEW ===== -->
+        <section class="overview-section">
+            <div class="container fade-in-section">
+                <h2 class="font-set-intro-title section-center-title" data-i18n="ps.amr.overview.title">Overview</h2>
+                <div class="overview-items">
+                    <div class="overview-item">
+                        <div class="overview-left">
+                            <span class="overview-number">1</span>
+                            <span class="font-set-overview-label" data-i18n="ps.amr.overview.c1.label">제품 개요</span>
+                        </div>
+                        <div class="overview-right">
+                            <p class="font-set-table-ko" data-i18n="ps.amr.overview.c1.desc">자율주행 기술을 통해 공장 및 창고 내에서 장애물을 회피하며 유연하게 물류를 이송하는 로봇</p>
+                            <p class="font-set-table-en" data-i18n="ps.amr.overview.c1.desc_en">Autonomous mobile robot for flexible logistics, navigating obstacles in factories and warehouses.</p>
+                        </div>
+                    </div>
+                    <div class="overview-item">
+                        <div class="overview-left">
+                            <span class="overview-number">2</span>
+                            <span class="font-set-overview-label" data-i18n="ps.amr.overview.c2.label">기술 특징</span>
+                        </div>
+                        <div class="overview-right">
+                            <p class="font-set-table-ko" data-i18n="ps.amr.overview.c2.desc">센서 융합 및 실시간 지도 생성 기반의 자율주행 (SLAM)</p>
+                            <p class="font-set-table-en" data-i18n="ps.amr.overview.c2.desc_en">Sensor-fusion and SLAM-based autonomous navigation.</p>
+                        </div>
+                    </div>
+                    <div class="overview-item">
+                        <div class="overview-left">
+                            <span class="overview-number">3</span>
+                            <span class="font-set-overview-label" data-i18n="ps.amr.overview.c3.label">주요 라인업</span>
+                        </div>
+                        <div class="overview-right">
+                            <p class="font-set-table-ko" data-i18n="ps.amr.overview.c3.desc">리프트 로봇 (Lift Robot), 롤러/컨베이어 로봇 (Roller/Conveyor Robot)</p>
+                            <p class="font-set-table-en" data-i18n="ps.amr.overview.c3.desc_en">Lift, Roller, and Conveyor robots.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== 핵심 차별점 ===== -->
+        <section class="diff-section">
+            <div class="container fade-in-section">
+                <h2 class="font-set-intro-title section-center-title" data-i18n="ps.amr.diff.title">핵심 차별점 (AMR vs AGV)</h2>
+                <table class="diff-table">
+                    <colgroup>
+                        <col style="width: 20%;">
+                        <col style="width: 40%;">
+                        <col style="width: 40%;">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th class="font-set-table-header" data-i18n="ps.amr.diff.th.cat">구분</th>
+                            <th class="font-set-table-header col-mobyus" data-i18n="ps.amr.diff.th.amr">AMR</th>
+                            <th class="font-set-table-header" data-i18n="ps.amr.diff.th.agv">AGV</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="font-set-table-ko" data-i18n="ps.amr.diff.r1.cat">운영 방식</td>
+                            <td class="font-set-table-ko col-mobyus" data-i18n="ps.amr.diff.r1.amr">자율 이동 (AMR)</td>
+                            <td class="font-set-table-ko col-competitor" data-i18n="ps.amr.diff.r1.agv">경로 기반 (AGV)</td>
+                        </tr>
+                        <tr>
+                            <td class="font-set-table-ko" data-i18n="ps.amr.diff.r2.cat">유연성</td>
+                            <td class="font-set-table-ko col-mobyus" data-i18n="ps.amr.diff.r2.amr">비정형 환경 대응 우수</td>
+                            <td class="font-set-table-ko col-competitor" data-i18n="ps.amr.diff.r2.agv">경로 변경 시 인프라 공사 필요</td>
+                        </tr>
+                        <tr>
+                            <td class="font-set-table-ko" data-i18n="ps.amr.diff.r3.cat">위치 추정</td>
+                            <td class="font-set-table-ko col-mobyus" data-i18n="ps.amr.diff.r3.amr">공간 인식 기반 (SLAM)</td>
+                            <td class="font-set-table-ko col-competitor" data-i18n="ps.amr.diff.r3.agv">마커/QR 기반</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- ===== Product Lineup ===== -->
+        <section class="lineup-section">
+            <div class="container fade-in-section">
+                <h2 class="font-set-intro-title section-center-title">Product Lineup</h2>
+
+                <div class="lineup-grid">
+                    <div class="product-card">
+                        <div class="product-card-image">
+                            <img src="images/img_amr.png" alt="MR01" style="max-width: 66%; max-height: 66%;">
+                        </div>
+                        <div class="product-card-info">
+                            <div class="product-card-model">MR01</div>
+                            <div class="product-card-capacity">80kg</div>
+                            <div class="product-card-tags">
+                                <div class="product-card-tag" data-i18n="ps.amr.lineup.tag.mr01.t1">소형·경량</div>
+                                <div class="product-card-tag" data-i18n="ps.amr.lineup.tag.mr01.t2">좁은 통로</div>
+                                <div class="product-card-tag" data-i18n="ps.amr.lineup.tag.mr01.t3">반도체·전자</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-card-image">
+                            <img src="images/product_amr_mr05.png" alt="MR05" style="max-width: 66%; max-height: 66%;">
+                        </div>
+                        <div class="product-card-info">
+                            <div class="product-card-model">MR05</div>
+                            <div class="product-card-capacity">500kg</div>
+                            <div class="product-card-tags">
+                                <div class="product-card-tag" data-i18n="ps.amr.lineup.tag.mr05.t1">중형</div>
+                                <div class="product-card-tag" data-i18n="ps.amr.lineup.tag.mr05.t2">자동차 부품</div>
+                                <div class="product-card-tag" data-i18n="ps.amr.lineup.tag.mr05.t3">2차전지</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-card-image">
+                            <img src="images/product_amr_mr12.png" alt="MR12" style="max-width: 66%; max-height: 66%;">
+                        </div>
+                        <div class="product-card-info">
+                            <div class="product-card-model">MR12</div>
+                            <div class="product-card-capacity">1,200kg</div>
+                            <div class="product-card-tags">
+                                <div class="product-card-tag" data-i18n="ps.amr.lineup.tag.mr12.t1">대형·중량물</div>
+                                <div class="product-card-tag" data-i18n="ps.amr.lineup.tag.mr12.t2">자동차 OEM</div>
+                                <div class="product-card-tag" data-i18n="ps.amr.lineup.tag.mr12.t3">중공업</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== 어태치먼트 & 자동화 설비 연동 ===== -->
+        <section class="diff-section" style="background: var(--color-gray05); padding: 96px 0;">
+            <div class="container fade-in-section">
+                <h2 class="font-set-intro-title section-center-title" data-i18n="ps.amr.attach.title">어태치먼트 &amp; 자동화 설비 연동</h2>
+                <table class="diff-table" style="background: #fff;">
+                    <colgroup>
+                        <col style="width: 25%;">
+                        <col style="width: 75%;">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th class="font-set-table-header" data-i18n="ps.amr.attach.th.cat">구분</th>
+                            <th class="font-set-table-header" data-i18n="ps.amr.attach.th.item">항목</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="font-set-table-ko" style="font-weight: 600;" data-i18n="ps.amr.attach.r1.cat">어태치먼트</td>
+                            <td class="font-set-table-ko" data-i18n="ps.amr.attach.r1.item">Conveyor top, Lift top, Roller, 특수 Jig 등</td>
+                        </tr>
+                        <tr>
+                            <td class="font-set-table-ko" style="font-weight: 600;" data-i18n="ps.amr.attach.r2.cat">설비 연동</td>
+                            <td class="font-set-table-ko" data-i18n="ps.amr.attach.r2.item">컨베이어, 수직반송기(리프트), 도킹 스테이션, 충전 스테이션</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- ===== 산업별 적용 예시 ===== -->
+        <section class="diff-section">
+            <div class="container fade-in-section">
+                <h2 class="font-set-intro-title section-center-title" data-i18n="ps.amr.industry.title">산업별 적용 예시</h2>
+                <table class="diff-table">
+                    <colgroup>
+                        <col style="width: 20%;">
+                        <col style="width: 30%;">
+                        <col style="width: 50%;">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th class="font-set-table-header" data-i18n="ps.amr.industry.th.ind">산업</th>
+                            <th class="font-set-table-header" data-i18n="ps.amr.industry.th.model">모델</th>
+                            <th class="font-set-table-header" data-i18n="ps.amr.industry.th.app">주요 적용</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="font-set-table-ko" style="font-weight: 600;" data-i18n="ps.amr.industry.r1.cat">자동차</td>
+                            <td class="font-set-table-ko">MR05, MR12</td>
+                            <td class="font-set-table-ko" data-i18n="ps.amr.industry.r1.app">차체·부품 이송, Jig 표준화</td>
+                        </tr>
+                        <tr>
+                            <td class="font-set-table-ko" style="font-weight: 600;" data-i18n="ps.amr.industry.r2.cat">2차전지</td>
+                            <td class="font-set-table-ko">MR01, MR05</td>
+                            <td class="font-set-table-ko" data-i18n="ps.amr.industry.r2.app">±1mm 정밀, 원재료 Roll 핸들링</td>
+                        </tr>
+                        <tr>
+                            <td class="font-set-table-ko" style="font-weight: 600;" data-i18n="ps.amr.industry.r3.cat">반도체</td>
+                            <td class="font-set-table-ko">MR01</td>
+                            <td class="font-set-table-ko" data-i18n="ps.amr.industry.r3.app">고정밀, 협동로봇+3D비전 연계</td>
+                        </tr>
+                        <tr>
+                            <td class="font-set-table-ko" style="font-weight: 600;" data-i18n="ps.amr.industry.r4.cat">식음료</td>
+                            <td class="font-set-table-ko">MR05</td>
+                            <td class="font-set-table-ko" data-i18n="ps.amr.industry.r4.app">위생 규격·재질, 방수</td>
+                        </tr>
+                        <tr>
+                            <td class="font-set-table-ko" style="font-weight: 600;" data-i18n="ps.amr.industry.r5.cat">태양광</td>
+                            <td class="font-set-table-ko">MR05, MR12</td>
+                            <td class="font-set-table-ko" data-i18n="ps.amr.industry.r5.app">대량 소재, 셀 적재·이송</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+
+    <footer id="contact"></footer>
+    <script src="scripts/main.js"></script>
+</body>
+
+</html>

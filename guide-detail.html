@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guide Detail - MOBYUS</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&family=Pretendard+Variable:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header id="gnb"></header>
+
+    <main>
+        <!-- Dynamic Header Section -->
+        <section class="page-header section-padding bg-light">
+            <div class="container fade-in">
+                <div class="section-header">
+                    <span id="guide-category" class="case-card-category"
+                        style="display: block; margin-bottom: 15px; font-weight: 700; letter-spacing: 1px;">Category</span>
+                    <h2 id="guide-title" style="font-size: 2.8rem; margin-bottom: 10px;">Guide Title</h2>
+                    <p class="subtitle">MOBYUS 자동화 솔루션 활용 가이드</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Content Section -->
+        <section class="section-padding" style="padding-top: 0; margin-top: -60px;">
+            <div class="container">
+                <div class="case-detail-container"
+                    style="background: white; border-radius: 30px; padding: 60px; box-shadow: 0 30px 60px rgba(0,0,0,0.05); position: relative; z-index: 10;">
+
+                    <!-- Overview Area -->
+                    <div style="display: flex; gap: 60px; margin-bottom: 80px; align-items: center;">
+                        <div id="guide-icon-container"
+                            style="flex: 0 0 140px; height: 140px; border-radius: 24px; display: flex; align-items: center; justify-content: center; font-size: 4rem;">
+                            <i id="guide-icon" class="fas fa-lightbulb"></i>
+                        </div>
+                        <div style="flex: 1;">
+                            <h3 style="font-size: 1.7rem; font-weight: 700; margin-bottom: 20px; color: #111;">개요
+                                (Overview)</h3>
+                            <p id="guide-overview"
+                                style="font-size: 1.15rem; color: #4b5563; line-height: 1.8; margin-bottom: 0; word-break: keep-all;">
+                                가이드 내용 요약이 이곳에 표시됩니다.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Steps Area -->
+                    <div style="border-top: 1px solid #eee; padding-top: 60px; margin-bottom: 60px;">
+                        <h3 style="font-size: 1.7rem; font-weight: 700; margin-bottom: 40px; color: #111;">핵심 가이드 (Key
+                            Insights)</h3>
+                        <div id="guide-steps">
+                            <!-- JS will inject steps here -->
+                        </div>
+                    </div>
+
+                    <!-- Expert Tips Area -->
+                    <div
+                        style="background: #fdfaf0; border-radius: 20px; padding: 40px; border-left: 5px solid #f1c40f;">
+                        <h4 style="font-size: 1.25rem; font-weight: 700; color: #856404; margin-bottom: 15px;">
+                            <i class="fas fa-info-circle" style="margin-right: 8px;"></i> 전문가의 한 마디 (Expert Tips)
+                        </h4>
+                        <p id="guide-tips"
+                            style="font-size: 1.1rem; line-height: 1.7; color: #664d03; margin-bottom: 0; word-break: keep-all;">
+                            도입 시 고려해야 할 실전 노하우를 확인하세요.
+                        </p>
+                    </div>
+
+                    <!-- CTA -->
+                    <div style="margin-top: 60px; text-align: center; border-top: 1px solid #eee; padding-top: 60px;">
+                        <p style="color: #666; margin-bottom: 25px;">더 구체적인 도입 컨설팅이 필요하신가요?</p>
+                        <div style="display: flex; justify-content: center; gap: 15px;">
+                            <a href="contact.html" class="contact-btn"
+                                style="background: var(--primary-color); color: white;">도입 문의하기</a>
+                            <a href="resource-guide.html" class="contact-btn"
+                                style="background: #f3f4f6; color: #333;">가이드 목록으로</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact"></footer>
+    <script src="scripts/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.initGuideDetail) {
+                window.initGuideDetail();
+            }
+        });
+    </script>
+</body>
+
+</html>

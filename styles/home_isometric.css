@@ -1,0 +1,432 @@
+/* 3-Layer Isometric Section */
+.isometric-visual-section {
+    background-color: #f7f7f7;
+    overflow: hidden;
+    padding-bottom: 120px;
+}
+
+.isometric-canvas {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 40px 0;
+    width: 100%;
+}
+
+.architecture-diagram {
+    max-width: 100%;
+    height: auto;
+    border-radius: 20px;
+    transition: transform 0.4s ease;
+}
+
+.architecture-diagram:hover {
+    transform: translateY(-5px);
+}
+
+.iso-world {
+    transform: rotateX(60deg) rotateZ(-45deg);
+    transform-style: preserve-3d;
+    width: 800px;
+    height: 600px;
+    position: relative;
+    transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* On hover across the canvas, slightly adjust the angle for dynamic feel */
+.isometric-canvas:hover .iso-world {
+    transform: rotateX(58deg) rotateZ(-42deg);
+}
+
+.iso-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Layer Title floating slightly above */
+.layer-title {
+    position: absolute;
+    top: -40px;
+    left: 20px;
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    transform: translateZ(20px);
+    transition: transform 0.4s;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* ==================================
+   Layer 1: Physical (Bottom)
+   ================================== */
+.layer-physical {
+    transform: translateZ(-80px);
+    background-color: rgba(241, 245, 249, 0.7);
+    /* Light grayish-blue glass */
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-top: 1px solid rgba(255, 255, 255, 0.8);
+    border-left: 1px solid rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: 20px 20px 40px rgba(0, 0, 0, 0.05);
+}
+
+.layer-physical .layer-title {
+    color: #475569;
+}
+
+.physical-grid {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    padding: 30px;
+    gap: 30px;
+}
+
+.zone {
+    flex: 1;
+    border: 2px dashed rgba(148, 163, 184, 0.5);
+    border-radius: 12px;
+    position: relative;
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(2px);
+}
+
+.zone-label {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-weight: 800;
+    color: #334155;
+    font-size: 1.2rem;
+}
+
+/* Interactive Items on Layers */
+.iso-item {
+    position: absolute;
+    background: #fff;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-weight: 800;
+    color: #111;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    transform: translateZ(10px);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.iso-item span {
+    font-size: 0.75rem;
+    color: #64748b;
+    font-weight: 600;
+    margin-top: 4px;
+}
+
+.iso-item:hover {
+    transform: translateZ(30px);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+    /* For physical layer highlighting */
+    background: #7c0b47;
+    color: #fff;
+}
+
+.iso-item:hover span {
+    color: #fce7f3;
+}
+
+
+/* ==================================
+   Layer 2: Digital (Middle)
+   ================================== */
+.layer-digital {
+    transform: translateZ(100px);
+    background-color: rgba(15, 23, 42, 0.6);
+    /* Dark blue glass with high transparency */
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    border-top: 1px solid rgba(56, 189, 248, 0.6);
+    border-left: 1px solid rgba(56, 189, 248, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 0 30px rgba(56, 189, 248, 0.15), inset 0 0 20px rgba(56, 189, 248, 0.1);
+}
+
+.layer-digital .layer-title {
+    color: #6ee7b7;
+}
+
+.digital-grid {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    padding: 30px;
+}
+
+/* Legacy items */
+.legacy-zone {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.iso-item.legacy {
+    position: relative;
+    background: rgba(51, 65, 85, 0.9);
+    color: #cbd5e1;
+    cursor: default;
+    border: 1px solid #64748b;
+}
+
+.iso-item.legacy:hover {
+    transform: translateZ(10px);
+    background: rgba(51, 65, 85, 0.9);
+    box-shadow: none;
+}
+
+/* Core DT Center */
+.core-dt-zone {
+    flex: 1;
+    height: 80%;
+    margin: 0 30px;
+    border: 2px solid rgba(56, 189, 248, 0.6);
+    border-radius: 12px;
+    display: flex;
+    position: relative;
+    background: rgba(15, 23, 42, 0.3);
+    backdrop-filter: blur(2px);
+}
+
+.core-dt-zone::before,
+.core-dt-zone::after {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 2px;
+    background: rgba(56, 189, 248, 0.6);
+    top: 50%;
+}
+
+.core-dt-zone::before {
+    left: -30px;
+}
+
+.core-dt-zone::after {
+    right: -30px;
+}
+
+.dt-half {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-right: 1px dashed rgba(56, 189, 248, 0.3);
+    position: relative;
+}
+
+.dt-half:last-child {
+    border-right: none;
+}
+
+.dt-half .zone-label {
+    top: 15px;
+    left: 15px;
+    color: #f8fafc;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.mobyus-core {
+    background: rgba(56, 189, 248, 0.2);
+    color: #7dd3fc;
+    border: 1px solid #38bdf8;
+    backdrop-filter: blur(4px);
+}
+
+.mobyus-core:hover {
+    background: #38bdf8;
+    color: #0f172a;
+}
+
+.mobyus-core.tams-item {
+    padding: 20px 40px;
+    font-size: 1.2rem;
+}
+
+
+/* ==================================
+   Layer 3: Visibility (Top)
+   ================================== */
+.layer-visibility {
+    transform: translateZ(280px);
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-top: 1px solid rgba(255, 255, 255, 0.7);
+    border-left: 1px solid rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.layer-visibility .layer-title {
+    color: #1e293b;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 4px 12px;
+    border-radius: 8px;
+}
+
+.dashboard-mockup {
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    right: 20%;
+    bottom: 20%;
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    border-radius: 12px;
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    flex-wrap: wrap;
+}
+
+.dash-chart {
+    flex: 1;
+    min-width: 40%;
+    height: 100px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 8px;
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.dash-chart.long {
+    min-width: 100%;
+}
+
+/* Hover Expanded Spacing */
+.isometric-canvas:hover .layer-physical {
+    transform: translateZ(-120px);
+}
+
+.isometric-canvas:hover .layer-digital {
+    transform: translateZ(100px);
+}
+
+.isometric-canvas:hover .layer-visibility {
+    transform: translateZ(320px);
+}
+
+/* ==================================
+   Solution Combinations Table
+   ================================== */
+.sol-combo-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+}
+
+.sol-combo-table th {
+    background: #111;
+    color: #fff;
+    padding: 16px 24px;
+    text-align: left;
+    font-weight: 600;
+}
+
+.sol-combo-table td {
+    padding: 20px 24px;
+    border-bottom: 1px solid #f1f5f9;
+    color: #334155;
+    transition: background 0.3s ease;
+}
+
+.sol-combo-table tr:hover td {
+    background: #f8fafc;
+}
+
+.combo-badge {
+    background: #f1f5f9;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-weight: 700;
+    color: #0f172a;
+    font-size: 0.85rem;
+    display: inline-block;
+    margin-right: 8px;
+    border: 1px solid #e2e8f0;
+}
+
+.combo-desc {
+    font-weight: 500;
+}
+
+/* ==================================
+   Responsive Adjustments
+   ================================== */
+@media (max-width: 1024px) {
+    .isometric-canvas {
+        height: 600px;
+    }
+    .iso-world {
+        transform: rotateX(60deg) rotateZ(-45deg) scale(0.8);
+        width: 100%;
+    }
+    .isometric-canvas:hover .iso-world {
+        transform: rotateX(58deg) rotateZ(-42deg) scale(0.85);
+    }
+}
+
+@media (max-width: 768px) {
+    .isometric-visual-section {
+        padding-bottom: 60px;
+    }
+    .isometric-canvas {
+        height: auto;
+        margin: 20px 0;
+        padding: 0;
+    }
+    .architecture-diagram {
+        transform: scale(1.05);
+        margin: 20px 0;
+    }
+    .iso-world {
+        transform: rotateX(60deg) rotateZ(-45deg) scale(0.65);
+        margin-top: -30px;
+    }
+    .isometric-canvas:hover .iso-world {
+        transform: rotateX(58deg) rotateZ(-42deg) scale(0.7);
+    }
+    .layer-title {
+        font-size: 1.25rem;
+    }
+}
+
+
+@media (max-width: 480px) {
+    .isometric-canvas {
+        height: 400px;
+    }
+    .iso-world {
+        transform: rotateX(60deg) rotateZ(-45deg) scale(0.45);
+        margin-top: -60px;
+    }
+    .isometric-canvas:hover .iso-world {
+        transform: rotateX(58deg) rotateZ(-42deg) scale(0.5);
+    }
+    .iso-item {
+        padding: 6px 12px;
+        font-size: 0.85rem;
+    }
+}

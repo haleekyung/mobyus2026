@@ -1,0 +1,338 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="0; url=resource-guide.html">
+    <title>Insights - MOBYUS</title>
+    <script>window.location.replace('resource-guide.html');</script>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&family=Pretendard+Variable:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <style>
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .blog-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+        }
+
+        .blog-thumbnail {
+            width: 100%;
+            height: 220px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .blog-content {
+            padding: 25px;
+        }
+
+        .blog-meta {
+            display: flex;
+            gap: 15px;
+            font-size: 0.85rem;
+            color: #999;
+            margin-bottom: 12px;
+        }
+
+        .blog-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .blog-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #333;
+            line-height: 1.4;
+        }
+
+        .blog-excerpt {
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .blog-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .blog-tag {
+            background: #f3f4f6;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        .filter-tabs {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 40px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .filter-tab {
+            padding: 10px 25px;
+            border: 2px solid #e5e7eb;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .filter-tab:hover,
+        .filter-tab.active {
+            border-color: var(--primary-color);
+            background: var(--primary-color);
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <header id="gnb"></header>
+
+    <main>
+        <section class="page-header section-padding bg-light">
+            <div class="container fade-in">
+                <div class="section-header" style="text-align: center;">
+                    <h2>Insights</h2>
+                    <p class="subtitle">물류 자동화 인사이트와 지원</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Secondary Menu -->
+        <nav class="secondary-nav sticky-nav">
+            <div class="container">
+                <ul>
+                    <li><a href="resource-guide.html">Guide</a></li>
+                    <li><a href="resource-blog.html" class="active">Tech Blog</a></li>
+                    <li><a href="resource-faq.html">FAQ</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <section class="section-padding" style="margin-top: 50px;">
+            <div class="container fade-in-section">
+                <!-- Filter Tabs -->
+                <div class="filter-tabs">
+                    <div class="filter-tab active">전체</div>
+                    <div class="filter-tab">자율주행</div>
+                    <div class="filter-tab">WMS/TMS</div>
+                    <div class="filter-tab">AI/ML</div>
+                    <div class="filter-tab">사례연구</div>
+                </div>
+
+                <!-- Blog Grid -->
+                <div class="blog-grid">
+                    <!-- Blog Post 1 -->
+                    <a href="blog-detail-1.html" class="blog-grid-item" data-category="자율주행"
+                        style="text-decoration: none; color: inherit;">
+                        <div class="blog-card">
+                            <div class="blog-thumbnail">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <div class="blog-content">
+                                <div class="blog-meta">
+                                    <span><i class="far fa-calendar"></i> 2026.02.01</span>
+                                    <span><i class="far fa-user"></i> MOBYUS Tech</span>
+                                </div>
+                                <div class="blog-title">자율주행 로봇의 경로 최적화 알고리즘</div>
+                                <div class="blog-excerpt">
+                                    AMR이 복잡한 창고 환경에서 최적의 경로를 찾는 방법과 실시간 장애물 회피 기술에 대해 알아봅니다.
+                                </div>
+                                <div class="blog-tags">
+                                    <span class="blog-tag">AMR</span>
+                                    <span class="blog-tag">알고리즘</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Blog Post 2 -->
+                    <a href="blog-detail-2.html" class="blog-grid-item" data-category="WMS/TMS"
+                        style="text-decoration: none; color: inherit;">
+                        <div class="blog-card">
+                            <div class="blog-thumbnail"
+                                style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                                <i class="fas fa-warehouse"></i>
+                            </div>
+                            <div class="blog-content">
+                                <div class="blog-meta">
+                                    <span><i class="far fa-calendar"></i> 2026.01.28</span>
+                                    <span><i class="far fa-user"></i> MOBYUS Tech</span>
+                                </div>
+                                <div class="blog-title">WMS 도입 시 고려해야 할 핵심 요소</div>
+                                <div class="blog-excerpt">
+                                    창고관리시스템(WMS) 도입 전 반드시 점검해야 할 체크리스트와 성공적인 구축 사례를 공유합니다.
+                                </div>
+                                <div class="blog-tags">
+                                    <span class="blog-tag">WMS</span>
+                                    <span class="blog-tag">도입가이드</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Blog Post 3 -->
+                    <div class="blog-card blog-grid-item" data-category="AI/ML">
+                        <div class="blog-thumbnail"
+                            style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <span><i class="far fa-calendar"></i> 2026.01.25</span>
+                                <span><i class="far fa-user"></i> MOBYUS Tech</span>
+                            </div>
+                            <div class="blog-title">AI 기반 수요 예측으로 재고 최적화하기</div>
+                            <div class="blog-excerpt">
+                                머신러닝을 활용한 수요 예측 모델 구축 방법과 실제 적용 사례를 통해 재고 비용 절감 효과를 확인해 보세요.
+                            </div>
+                            <div class="blog-tags">
+                                <span class="blog-tag">AI/ML</span>
+                                <span class="blog-tag">재고관리</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Blog Post 4 -->
+                    <div class="blog-card blog-grid-item" data-category="사례연구" onclick="alert('비공개 처리 되어있습니다')"
+                        style="cursor: pointer;">
+                        <div class="blog-thumbnail"
+                            style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+                            <i class="fas fa-truck"></i>
+                        </div>
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <span><i class="far fa-calendar"></i> 2026.01.20</span>
+                                <span><i class="far fa-user"></i> MOBYUS Tech</span>
+                            </div>
+                            <div class="blog-title">TMS와 배송 효율화 전략</div>
+                            <div class="blog-excerpt">
+                                운송관리시스템(TMS)을 통한 배송 경로 최적화와 실시간 추적으로 물류 비용의 30% 절감한 사례를 소개합니다.
+                            </div>
+                            <div class="blog-tags">
+                                <span class="blog-tag">TMS</span>
+                                <span class="blog-tag">사례연구</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Blog Post 5 -->
+                    <div class="blog-card blog-grid-item" data-category="AI/ML" onclick="alert('비공개 처리 되어있습니다')"
+                        style="cursor: pointer;">
+                        <div class="blog-thumbnail"
+                            style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <span><i class="far fa-calendar"></i> 2026.01.15</span>
+                                <span><i class="far fa-user"></i> MOBYUS Tech</span>
+                            </div>
+                            <div class="blog-title">스마트 물류센터의 미래: 디지털 트윈</div>
+                            <div class="blog-excerpt">
+                                디지털 트윈 기술을 활용한 물류센터 시뮬레이션과 사전 검증을 통해 리스크를 최소화하는 방법을 알아봅니다.
+                            </div>
+                            <div class="blog-tags">
+                                <span class="blog-tag">디지털트윈</span>
+                                <span class="blog-tag">혁신기술</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Blog Post 6 -->
+                    <div class="blog-card blog-grid-item" data-category="사례연구" onclick="alert('비공개 처리 되어있습니다')"
+                        style="cursor: pointer;">
+                        <div class="blog-thumbnail"
+                            style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <span><i class="far fa-calendar"></i> 2026.01.10</span>
+                                <span><i class="far fa-user"></i> MOBYUS Tech</span>
+                            </div>
+                            <div class="blog-title">TAMS 시스템 구축 실무 가이드</div>
+                            <div class="blog-excerpt">
+                                자율주행 로봇 통합 관제 시스템(TAMS) 구축을 위한 단계별 가이드와 실무 노하우를 공유합니다.
+                            </div>
+                            <div class="blog-tags">
+                                <span class="blog-tag">TAMS</span>
+                                <span class="blog-tag">구축가이드</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact"></footer>
+    <script src="scripts/main.js"></script>
+    <script>
+        // Filter tabs functionality with actual filtering
+        const filterTabs = document.querySelectorAll('.filter-tab');
+        const blogItems = document.querySelectorAll('.blog-grid-item');
+
+        filterTabs.forEach(tab => {
+            tab.addEventListener('click', function () {
+                // Update active tab
+                filterTabs.forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+
+                // Get selected category
+                const selectedCategory = this.textContent.trim();
+
+                // Filter blog items
+                blogItems.forEach(item => {
+                    const itemCategory = item.getAttribute('data-category');
+
+                    if (selectedCategory === '전체') {
+                        // Show all cards
+                        item.style.display = 'block';
+                    } else {
+                        // Show only matching cards
+                        if (itemCategory === selectedCategory) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

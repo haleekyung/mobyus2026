@@ -1,0 +1,1547 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Solution - MOBYUS</title>
+    <link rel="stylesheet" href="styles/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&family=Pretendard+Variable:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <header id="gnb"></header>
+
+    <main>
+      <!-- ===== PAGE HEADER (HERO) ===== -->
+      <section class="global-hero"
+        style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/hero_logistics_muted.png'); background-size: cover; background-position: center;">
+        <div class="global-hero-inner fade-in">
+          <p class="global-hero-category">Logistics SW</p>
+          <div class="hero-title-row">
+            <h1 class="global-hero-title">운영을 연결하다</h1>
+            <p class="global-hero-tagline">Operations, Connected</p>
+          </div>
+          <p class="global-hero-sub-ko mt-3">물류 프로세스 최적화를 위한 핵심 소프트웨어</p>
+          <p class="global-hero-sub-en">
+            Core software for logistics process optimization
+          </p>
+        </div>
+      </section>
+
+      <!-- ===== SECONDARY NAV ===== -->
+      <nav class="secondary-nav">
+        <div class="container">
+          <ul>
+            <li><a href="product.html">Robot</a></li>
+            <li><a href="solution-control.html">Control</a></li>
+            <li class="active"><a href="logistics.html">Logistics SW</a></li>
+            <li><a href="solution-custom.html">Total Solution</a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <!-- ===== STATS BANNER ===== -->
+      <section
+        class="section-padding"
+        style="padding-top: 40px; padding-bottom: 40px"
+      >
+        <div class="container fade-in-section">
+          <div class="stats-banner" id="logistics-stats-banner">
+            <!-- Stat 1 -->
+            <div class="stat-block">
+              <div
+                class="product-stats-num stat-count"
+                data-target="12"
+                data-suffix="년+"
+              >
+                0년+
+              </div>
+              <div class="product-stats-label">물류 솔루션 구축 경험</div>
+            </div>
+            <div class="stat-divider"></div>
+
+            <!-- Stat 2 -->
+            <div class="stat-block">
+              <div
+                class="product-stats-num stat-count"
+                data-prefix="MV "
+                data-target="4.0"
+              >
+                MV 0
+              </div>
+              <div class="product-stats-label">최신 플랫폼 버전</div>
+            </div>
+            <div class="stat-divider"></div>
+
+            <!-- Stat 3 -->
+            <div class="stat-block">
+              <div class="product-stats-num">SaaS</div>
+              <div class="product-stats-label">클라우드 제공</div>
+            </div>
+          </div>
+
+          <!-- Intro Copy -->
+          <div class="intro-copy" style="margin-top: 72px; text-align: center">
+            <h2 class="font-set-intro-title">Logistics Software Overview</h2>
+            <p class="font-set-intro-ko">
+              로봇이 움직이고, 관제가 지휘합니다.<br />
+              거기에 물류SW가 연결되어, 주문·재고·운송의 흐름을 하나로
+              잇습니다.<br />
+              WMS · OMS · TMS가 현장의 데이터를 운영의 언어로 바꾸고,<br />
+              VMS가 전체를 가시화합니다.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-padding" style="background: #fff">
+        <div class="container fade-in-section">
+          <div class="section-header text-center" style="margin-bottom: 40px">
+            <h3 style="font-size: 2rem; font-weight: 800; color: #111">
+              End-To-End Flow
+            </h3>
+          </div>
+
+          <div style="max-width: 900px; margin: 0 auto">
+            <!-- Main Flow Diagram Box -->
+            <div
+              style="
+                border: 1px solid #e5e7eb;
+                border-radius: 12px;
+                overflow: hidden;
+                background: #fff;
+                margin-bottom: 40px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+              "
+            >
+              <!-- Color Zones Container -->
+              <div style="display: flex; position: relative">
+                <!-- OMS Zone (Pink) -->
+                <div
+                  style="
+                    flex: 2;
+                    background: rgba(255, 240, 245, 0.6);
+                    padding: 32px 0 20px;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    border-right: 1px solid rgba(255, 255, 255, 0.5);
+                  "
+                >
+                  <div
+                    style="
+                      display: flex;
+                      width: 100%;
+                      justify-content: space-around;
+                      position: relative;
+                      z-index: 2;
+                    "
+                  >
+                    <!-- Line connecting steps -->
+                    <div
+                      style="
+                        position: absolute;
+                        top: 22px;
+                        left: 25%;
+                        right: 25%;
+                        height: 1px;
+                        background: #e5e7eb;
+                        z-index: -1;
+                      "
+                    ></div>
+                    <div style="text-align: center">
+                      <div
+                        style="
+                          width: 44px;
+                          height: 44px;
+                          border-radius: 50%;
+                          background: #fff0f5;
+                          color: #7c0b47;
+                          display: flex;
+                          align-items: center;
+                          justify-content: center;
+                          margin: 0 auto 12px;
+                          font-weight: 700;
+                          border: 1px solid #cfd3d7;
+                          font-size: 1.1rem;
+                        "
+                      >
+                        1
+                      </div>
+                      <div
+                        style="
+                          font-size: 0.85rem;
+                          font-weight: 600;
+                          color: #111;
+                        "
+                      >
+                        주문 수집
+                      </div>
+                    </div>
+                    <div style="text-align: center">
+                      <div
+                        style="
+                          width: 44px;
+                          height: 44px;
+                          border-radius: 50%;
+                          background: #fff;
+                          border: 1px solid #e5e7eb;
+                          display: flex;
+                          align-items: center;
+                          justify-content: center;
+                          margin: 0 auto 12px;
+                          font-weight: 600;
+                          color: #6b7280;
+                          font-size: 1.1rem;
+                        "
+                      >
+                        2
+                      </div>
+                      <div
+                        style="
+                          font-size: 0.85rem;
+                          font-weight: 600;
+                          color: #111;
+                        "
+                      >
+                        주문 배분
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    style="
+                      font-weight: 700;
+                      color: #111;
+                      font-size: 0.95rem;
+                      margin-top: 24px;
+                      display: flex;
+                      align-items: center;
+                      gap: 4px;
+                      cursor: pointer;
+                    "
+                    onclick="
+                      document.getElementById('modal-oms').style.display =
+                        'flex'
+                    "
+                  >
+                    OMS
+                    <i
+                      class="fas fa-chevron-right"
+                      style="font-size: 0.7em; color: #9ca3af"
+                    ></i>
+                  </div>
+                </div>
+
+                <!-- WMS Zone (Green) -->
+                <div
+                  style="
+                    flex: 5;
+                    background: rgba(229, 251, 234, 0.5);
+                    padding: 32px 0 20px;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    border-right: 1px solid rgba(255, 255, 255, 0.5);
+                  "
+                >
+                  <div
+                    style="
+                      display: flex;
+                      width: 100%;
+                      justify-content: space-around;
+                      position: relative;
+                      z-index: 2;
+                    "
+                  >
+                    <div
+                      style="
+                        position: absolute;
+                        top: 22px;
+                        left: -10%;
+                        right: -10%;
+                        height: 1px;
+                        background: #e5e7eb;
+                        z-index: -1;
+                      "
+                    ></div>
+                    <div style="text-align: center">
+                      <div
+                        style="
+                          width: 44px;
+                          height: 44px;
+                          border-radius: 50%;
+                          background: #e5fbea;
+                          color: #166534;
+                          display: flex;
+                          align-items: center;
+                          justify-content: center;
+                          margin: 0 auto 12px;
+                          font-weight: 700;
+                          border: 1px solid #cfd3d7;
+                          font-size: 1.1rem;
+                        "
+                      >
+                        3
+                      </div>
+                      <div
+                        style="
+                          font-size: 0.85rem;
+                          font-weight: 600;
+                          color: #111;
+                        "
+                      >
+                        입고
+                      </div>
+                    </div>
+                    <div style="text-align: center">
+                      <div
+                        style="
+                          width: 44px;
+                          height: 44px;
+                          border-radius: 50%;
+                          background: #fff;
+                          border: 1px solid #e5e7eb;
+                          display: flex;
+                          align-items: center;
+                          justify-content: center;
+                          margin: 0 auto 12px;
+                          font-weight: 600;
+                          color: #6b7280;
+                          font-size: 1.1rem;
+                        "
+                      >
+                        4
+                      </div>
+                      <div
+                        style="
+                          font-size: 0.85rem;
+                          font-weight: 600;
+                          color: #111;
+                        "
+                      >
+                        적치
+                      </div>
+                    </div>
+                    <div style="text-align: center">
+                      <div
+                        style="
+                          width: 44px;
+                          height: 44px;
+                          border-radius: 50%;
+                          background: #fff;
+                          border: 1px solid #e5e7eb;
+                          display: flex;
+                          align-items: center;
+                          justify-content: center;
+                          margin: 0 auto 12px;
+                          font-weight: 600;
+                          color: #6b7280;
+                          font-size: 1.1rem;
+                        "
+                      >
+                        5
+                      </div>
+                      <div
+                        style="
+                          font-size: 0.85rem;
+                          font-weight: 600;
+                          color: #111;
+                        "
+                      >
+                        피킹
+                      </div>
+                    </div>
+                    <div style="text-align: center">
+                      <div
+                        style="
+                          width: 44px;
+                          height: 44px;
+                          border-radius: 50%;
+                          background: #fff;
+                          border: 1px solid #e5e7eb;
+                          display: flex;
+                          align-items: center;
+                          justify-content: center;
+                          margin: 0 auto 12px;
+                          font-weight: 600;
+                          color: #6b7280;
+                          font-size: 1.1rem;
+                        "
+                      >
+                        6
+                      </div>
+                      <div
+                        style="
+                          font-size: 0.85rem;
+                          font-weight: 600;
+                          color: #111;
+                        "
+                      >
+                        패킹
+                      </div>
+                    </div>
+                    <div style="text-align: center">
+                      <div
+                        style="
+                          width: 44px;
+                          height: 44px;
+                          border-radius: 50%;
+                          background: #fff;
+                          border: 1px solid #e5e7eb;
+                          display: flex;
+                          align-items: center;
+                          justify-content: center;
+                          margin: 0 auto 12px;
+                          font-weight: 600;
+                          color: #6b7280;
+                          font-size: 1.1rem;
+                        "
+                      >
+                        7
+                      </div>
+                      <div
+                        style="
+                          font-size: 0.85rem;
+                          font-weight: 600;
+                          color: #111;
+                        "
+                      >
+                        출고
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    style="
+                      font-weight: 700;
+                      color: #111;
+                      font-size: 0.95rem;
+                      margin-top: 24px;
+                      display: flex;
+                      align-items: center;
+                      gap: 4px;
+                      cursor: pointer;
+                    "
+                    onclick="
+                      document.getElementById('modal-wms').style.display =
+                        'flex'
+                    "
+                  >
+                    WMS
+                    <i
+                      class="fas fa-chevron-right"
+                      style="font-size: 0.7em; color: #9ca3af"
+                    ></i>
+                  </div>
+                </div>
+
+                <!-- TMS Zone (Blue) -->
+                <div
+                  style="
+                    flex: 3;
+                    background: rgba(224, 250, 254, 0.5);
+                    padding: 32px 0 20px;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                  "
+                >
+                  <div
+                    style="
+                      display: flex;
+                      width: 100%;
+                      justify-content: space-around;
+                      position: relative;
+                      z-index: 2;
+                    "
+                  >
+                    <div
+                      style="
+                        position: absolute;
+                        top: 22px;
+                        left: -15%;
+                        right: 20%;
+                        height: 1px;
+                        background: #e5e7eb;
+                        z-index: -1;
+                      "
+                    ></div>
+                    <div style="text-align: center">
+                      <div
+                        style="
+                          width: 44px;
+                          height: 44px;
+                          border-radius: 50%;
+                          background: #e0fafe;
+                          color: #1e40af;
+                          display: flex;
+                          align-items: center;
+                          justify-content: center;
+                          margin: 0 auto 12px;
+                          font-weight: 700;
+                          border: 1px solid #cfd3d7;
+                          font-size: 1.1rem;
+                        "
+                      >
+                        8
+                      </div>
+                      <div
+                        style="
+                          font-size: 0.85rem;
+                          font-weight: 600;
+                          color: #111;
+                        "
+                      >
+                        배차
+                      </div>
+                    </div>
+                    <div style="text-align: center">
+                      <div
+                        style="
+                          width: 44px;
+                          height: 44px;
+                          border-radius: 50%;
+                          background: #fff;
+                          border: 1px solid #e5e7eb;
+                          display: flex;
+                          align-items: center;
+                          justify-content: center;
+                          margin: 0 auto 12px;
+                          font-weight: 600;
+                          color: #6b7280;
+                          font-size: 1.1rem;
+                        "
+                      >
+                        9
+                      </div>
+                      <div
+                        style="
+                          font-size: 0.85rem;
+                          font-weight: 600;
+                          color: #111;
+                        "
+                      >
+                        배송
+                      </div>
+                    </div>
+                    <div style="text-align: center">
+                      <div
+                        style="
+                          width: 44px;
+                          height: 44px;
+                          border-radius: 50%;
+                          background: #fff;
+                          border: 1px solid #e5e7eb;
+                          display: flex;
+                          align-items: center;
+                          justify-content: center;
+                          margin: 0 auto 12px;
+                          font-weight: 600;
+                          color: #6b7280;
+                          font-size: 1.1rem;
+                        "
+                      >
+                        10
+                      </div>
+                      <div
+                        style="
+                          font-size: 0.85rem;
+                          font-weight: 600;
+                          color: #111;
+                        "
+                      >
+                        정산
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    style="
+                      font-weight: 700;
+                      color: #111;
+                      font-size: 0.95rem;
+                      margin-top: 24px;
+                      display: flex;
+                      align-items: center;
+                      gap: 4px;
+                      cursor: pointer;
+                    "
+                    onclick="
+                      document.getElementById('modal-tms').style.display =
+                        'flex'
+                    "
+                  >
+                    TMS
+                    <i
+                      class="fas fa-chevron-right"
+                      style="font-size: 0.7em; color: #9ca3af"
+                    ></i>
+                  </div>
+                </div>
+              </div>
+
+              <!-- VMS Banner Bottom -->
+              <div
+                style="
+                  background: #f9fafb;
+                  padding: 16px 0;
+                  text-align: center;
+                  border-top: 1px solid #e5e7eb;
+                  cursor: pointer;
+                "
+                onclick="
+                  document.getElementById('modal-vms').style.display = 'flex'
+                "
+              >
+                <div
+                  style="
+                    font-weight: 700;
+                    color: #111;
+                    font-size: 0.95rem;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 6px;
+                  "
+                >
+                  VMS (전 구간 가시화)
+                  <i
+                    class="fas fa-chevron-right"
+                    style="font-size: 0.7em; color: #9ca3af"
+                  ></i>
+                </div>
+              </div>
+            </div>
+
+            <!-- Software Details Table -->
+            <div style="background: #fff; margin-top: 20px">
+              <table class="diff-table" style="width: 100%">
+                <thead>
+                  <tr>
+                    <th>SW</th>
+                    <th>커버구간</th>
+                    <th>설명</th>
+                    <th style="text-align: left">Content</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td style="font-weight: 700; color: #111">OMS</td>
+                    <td>주문 수집 ~ 배분</td>
+                    <td>주문의 시작점 — 접수, 배분, 통제</td>
+                    <td style="text-align: left">
+                      The starting point of orders
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="font-weight: 700; color: #111">WMS</td>
+                    <td>입고 ~ 출고</td>
+                    <td>물류센터의 최적 업무 환경</td>
+                    <td style="text-align: left">
+                      Optimal warehouse operations
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="font-weight: 700; color: #111">TMS</td>
+                    <td>배차 ~ 정산</td>
+                    <td>운송관리 업무의 최적화</td>
+                    <td style="text-align: left">
+                      Transportation optimization
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="font-weight: 700; color: #111">VMS</td>
+                    <td>전 구간</td>
+                    <td>전 과정 가시화 · 의사결정 지원</td>
+                    <td style="text-align: left">
+                      End-to-end visibility &amp; decisions
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 구축 옵션 -->
+      <section class="section-padding" style="padding: 100px 0">
+        <div class="container fade-in-section">
+          <div class="section-header text-center" style="margin-bottom: 60px">
+            <h3 class="font-set-intro-title">구축옵션</h3>
+          </div>
+          <div
+            style="
+              max-width: 900px;
+              margin: 0 auto;
+              display: flex;
+              flex-direction: column;
+              gap: 24px;
+            "
+          >
+            <!-- Enterprise -->
+            <div
+              style="
+                width: 100%;
+                border: 1px solid #e5e7eb;
+                border-radius: 8px;
+                padding: 40px 28px;
+                background: #fff;
+                text-align: center;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+              "
+            >
+              <div style="margin-bottom: 16px">
+                <span
+                  style="
+                    background: #111;
+                    color: #fff;
+                    font-size: 0.85rem;
+                    font-weight: 700;
+                    padding: 6px 16px;
+                    border-radius: 999px;
+                    letter-spacing: 0.02em;
+                  "
+                  >Enterprise</span
+                >
+              </div>
+              <div
+                style="
+                  font-size: 1.25rem;
+                  color: #111;
+                  font-weight: 700;
+                  margin-bottom: 12px;
+                "
+              >
+                대규모 센터 &amp; 공장
+                <span
+                  style="font-size: 0.95rem; color: #6b7280; font-weight: 500"
+                  >(MV Solution 4.0)</span
+                >
+              </div>
+              <p
+                style="
+                  font-size: 1rem;
+                  color: #374151;
+                  font-weight: 600;
+                  margin-bottom: 4px;
+                "
+              >
+                On-premise, 커스터마이징, ERP/MES 연동
+              </p>
+              <p style="font-size: 0.85rem; color: #6b7280; margin: 0">
+                On-premise, customizable, ERP/MES integration
+              </p>
+            </div>
+
+            <!-- Row for SaaS & Hybrid -->
+            <div style="display: flex; gap: 24px; flex-wrap: wrap">
+              <!-- SaaS -->
+              <div
+                style="
+                  flex: 1;
+                  min-width: 280px;
+                  border: 1px solid #e5e7eb;
+                  border-radius: 8px;
+                  padding: 40px 28px;
+                  background: #fff;
+                  text-align: center;
+                  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+                "
+              >
+                <div style="margin-bottom: 16px">
+                  <span
+                    style="
+                      background: #007aff;
+                      color: #fff;
+                      font-size: 0.85rem;
+                      font-weight: 700;
+                      padding: 6px 16px;
+                      border-radius: 999px;
+                      letter-spacing: 0.02em;
+                    "
+                    >SaaS</span
+                  >
+                </div>
+                <div
+                  style="
+                    font-size: 1.15rem;
+                    color: #111;
+                    font-weight: 700;
+                    margin-bottom: 12px;
+                  "
+                >
+                  SMB
+                </div>
+                <p
+                  style="
+                    font-size: 0.95rem;
+                    color: #374151;
+                    font-weight: 600;
+                    margin-bottom: 4px;
+                  "
+                >
+                  클라우드 기반, 빠른 도입, 구독형
+                </p>
+                <p style="font-size: 0.85rem; color: #6b7280; margin: 0">
+                  Cloud-based, quick deployment, subscription
+                </p>
+              </div>
+
+              <!-- Hybrid -->
+              <div
+                style="
+                  flex: 1;
+                  min-width: 280px;
+                  border: 1px solid #e5e7eb;
+                  border-radius: 8px;
+                  padding: 40px 28px;
+                  background: #fff;
+                  text-align: center;
+                  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+                "
+              >
+                <div style="margin-bottom: 16px">
+                  <span
+                    style="
+                      background: #10b981;
+                      color: #fff;
+                      font-size: 0.85rem;
+                      font-weight: 700;
+                      padding: 6px 16px;
+                      border-radius: 999px;
+                      letter-spacing: 0.02em;
+                    "
+                    >Hybrid</span
+                  >
+                </div>
+                <div
+                  style="
+                    font-size: 1.15rem;
+                    color: #111;
+                    font-weight: 700;
+                    margin-bottom: 12px;
+                  "
+                >
+                  TAMS + 물류SW
+                </div>
+                <p
+                  style="
+                    font-size: 0.95rem;
+                    color: #374151;
+                    font-weight: 600;
+                    margin-bottom: 4px;
+                  "
+                >
+                  로봇 관제와 물류SW 결합, 풀 스택
+                </p>
+                <p style="font-size: 0.85rem; color: #6b7280; margin: 0">
+                  TAMS + Logistics SW combined, full stack
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Logistics Software List -->
+      <section class="section-padding" style="padding: 100px 0">
+        <div class="container fade-in-section">
+          <div class="section-header text-center" style="margin-bottom: 60px">
+            <h3 style="font-size: 2rem; font-weight: 800; color: #111">
+              Logistics Software
+            </h3>
+          </div>
+
+          <div
+            style="
+              max-width: 900px;
+              margin: 0 auto;
+              display: flex;
+              flex-direction: column;
+              gap: 24px;
+            "
+          >
+            <!-- OMS Card -->
+            <div
+              style="
+                background: #fff;
+                border: 1px solid #e5e7eb;
+                border-radius: 12px;
+                padding: 32px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                cursor: pointer;
+                transition:
+                  transform 0.2s,
+                  box-shadow 0.2s;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+              "
+              onclick="location.href = 'solution-oms.html'"
+              onmouseover="
+                this.style.transform = 'translateY(-2px)';
+                this.style.boxShadow = '0 6px 16px rgba(0,0,0,0.06)';
+              "
+              onmouseout="
+                this.style.transform = 'translateY(0)';
+                this.style.boxShadow = '0 4px 12px rgba(0,0,0,0.02)';
+              "
+            >
+              <div>
+                <div style="display: flex; align-items: baseline; gap: 12px">
+                  <span style="font-size: 1.4rem; font-weight: 800; color: #111"
+                    >OMS</span
+                  >
+                  <span
+                    style="font-size: 0.95rem; color: #6b7280; font-weight: 500"
+                    >Order Management System</span
+                  >
+                </div>
+                <div style="font-size: 1rem; color: #374151; margin-top: 8px">
+                  주문 접수부터 실행 오더 생성까지, 완벽한 통제
+                </div>
+              </div>
+              <div
+                style="
+                  width: 44px;
+                  height: 44px;
+                  border-radius: 50%;
+                  background: #7c0b47;
+                  color: #fff;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  flex-shrink: 0;
+                "
+              >
+                <i class="fas fa-chevron-right" style="font-size: 0.9rem"></i>
+              </div>
+            </div>
+
+            <!-- WMS Card -->
+            <div
+              style="
+                background: #fff;
+                border: 1px solid #e5e7eb;
+                border-radius: 12px;
+                padding: 32px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                cursor: pointer;
+                transition:
+                  transform 0.2s,
+                  box-shadow 0.2s;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+              "
+              onclick="location.href = 'solution-wms.html'"
+              onmouseover="
+                this.style.transform = 'translateY(-2px)';
+                this.style.boxShadow = '0 6px 16px rgba(0,0,0,0.06)';
+              "
+              onmouseout="
+                this.style.transform = 'translateY(0)';
+                this.style.boxShadow = '0 4px 12px rgba(0,0,0,0.02)';
+              "
+            >
+              <div>
+                <div style="display: flex; align-items: baseline; gap: 12px">
+                  <span style="font-size: 1.4rem; font-weight: 800; color: #111"
+                    >WMS</span
+                  >
+                  <span
+                    style="font-size: 0.95rem; color: #6b7280; font-weight: 500"
+                    >Warehouse Management System</span
+                  >
+                </div>
+                <div style="font-size: 1rem; color: #374151; margin-top: 8px">
+                  창고 내 모든 작업을 정밀하게 관리하여 효율 극대화
+                </div>
+              </div>
+              <div
+                style="
+                  width: 44px;
+                  height: 44px;
+                  border-radius: 50%;
+                  background: #7c0b47;
+                  color: #fff;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  flex-shrink: 0;
+                "
+              >
+                <i class="fas fa-chevron-right" style="font-size: 0.9rem"></i>
+              </div>
+            </div>
+
+            <!-- TMS Card -->
+            <div
+              style="
+                background: #fff;
+                border: 1px solid #e5e7eb;
+                border-radius: 12px;
+                padding: 32px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                cursor: pointer;
+                transition:
+                  transform 0.2s,
+                  box-shadow 0.2s;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+              "
+              onclick="location.href = 'solution-tms.html'"
+              onmouseover="
+                this.style.transform = 'translateY(-2px)';
+                this.style.boxShadow = '0 6px 16px rgba(0,0,0,0.06)';
+              "
+              onmouseout="
+                this.style.transform = 'translateY(0)';
+                this.style.boxShadow = '0 4px 12px rgba(0,0,0,0.02)';
+              "
+            >
+              <div>
+                <div style="display: flex; align-items: baseline; gap: 12px">
+                  <span style="font-size: 1.4rem; font-weight: 800; color: #111"
+                    >TMS</span
+                  >
+                  <span
+                    style="font-size: 0.95rem; color: #6b7280; font-weight: 500"
+                    >Transportation Management System</span
+                  >
+                </div>
+                <div style="font-size: 1rem; color: #374151; margin-top: 8px">
+                  최적의 배차 및 운송 경로 관리로 물류 흐름 혁신
+                </div>
+              </div>
+              <div
+                style="
+                  width: 44px;
+                  height: 44px;
+                  border-radius: 50%;
+                  background: #7c0b47;
+                  color: #fff;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  flex-shrink: 0;
+                "
+              >
+                <i class="fas fa-chevron-right" style="font-size: 0.9rem"></i>
+              </div>
+            </div>
+
+            <!-- VMS Card -->
+            <div
+              style="
+                background: #fff;
+                border: 1px solid #e5e7eb;
+                border-radius: 12px;
+                padding: 32px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                cursor: pointer;
+                transition:
+                  transform 0.2s,
+                  box-shadow 0.2s;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+              "
+              onclick="location.href = 'solution-vms.html'"
+              onmouseover="
+                this.style.transform = 'translateY(-2px)';
+                this.style.boxShadow = '0 6px 16px rgba(0,0,0,0.06)';
+              "
+              onmouseout="
+                this.style.transform = 'translateY(0)';
+                this.style.boxShadow = '0 4px 12px rgba(0,0,0,0.02)';
+              "
+            >
+              <div>
+                <div style="display: flex; align-items: baseline; gap: 12px">
+                  <span style="font-size: 1.4rem; font-weight: 800; color: #111"
+                    >VMS</span
+                  >
+                  <span
+                    style="font-size: 0.95rem; color: #6b7280; font-weight: 500"
+                    >Vehicle Management System</span
+                  >
+                </div>
+                <div style="font-size: 1rem; color: #374151; margin-top: 8px">
+                  차량 운행 및 상태 통합 관제로 물류 가시성 확보
+                </div>
+              </div>
+              <div
+                style="
+                  width: 44px;
+                  height: 44px;
+                  border-radius: 50%;
+                  background: #7c0b47;
+                  color: #fff;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  flex-shrink: 0;
+                "
+              >
+                <i class="fas fa-chevron-right" style="font-size: 0.9rem"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 주요 고객 -->
+      <section class="section-padding bg-light">
+        <div class="container fade-in-section">
+          <div class="section-header text-center" style="margin-bottom: 40px">
+            <h3 style="font-size: 2rem; font-weight: 800; color: #111">
+              주요 고객
+            </h3>
+            <p class="font-set-intro-sub">
+              물류 SW 부문 주요 고객 (솔루션사업본부 실적 기준)
+            </p>
+          </div>
+
+          <div style="max-width: 900px; margin: 0 auto">
+            <div style="background: #fff">
+              <table class="diff-table" style="width: 100%">
+                <thead>
+                  <tr>
+                    <th style="width: 140px">산업</th>
+                    <th>주요 고객</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td style="font-weight: 700; color: #111">식음료</td>
+                    <td style="text-align: left">
+                      하림그룹, SPC, 동원 F&amp;B, 신세계푸드
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="font-weight: 700; color: #111">유통</td>
+                    <td style="text-align: left">
+                      롯데마트, 롯데칠성, 이마트24
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="font-weight: 700; color: #111">소비재</td>
+                    <td style="text-align: left">
+                      LG생활건강, 애경, 영원아웃도어
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="font-weight: 700; color: #111">플랫폼</td>
+                    <td style="text-align: left">우아한형제들</td>
+                  </tr>
+                  <tr>
+                    <td style="font-weight: 700; color: #111">제조</td>
+                    <td style="text-align: left">
+                      한화큐셀, 삼성전자, 서울반도체
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Bottom CTA Banners -->
+      <section class="bottom-nav-banner">
+        <div class="container fade-in-section">
+          <div
+            class="bnb-grid"
+            style="
+              grid-template-columns: repeat(2, 1fr);
+              max-width: 900px;
+              margin: 0 auto;
+            "
+          >
+            <!-- 1. Robot Link -->
+            <a href="product.html" class="bnb-card" style="padding: 32px 28px">
+              <div class="bnb-text">
+                <span class="bnb-label">로봇 연동</span>
+                <span class="bnb-title"
+                  >물류 SW와 함께 움직이는<br />로봇 보기</span
+                >
+              </div>
+              <div class="bnb-arrow">
+                <i class="fas fa-chevron-right"></i>
+              </div>
+            </a>
+
+            <!-- 2. TAMS Link -->
+            <a
+              href="solution-control.html"
+              class="bnb-card"
+              style="padding: 32px 28px"
+            >
+              <div class="bnb-text">
+                <span class="bnb-label">관제 연동</span>
+                <span class="bnb-title">TAMS와 연결해<br />풀스텍 구현</span>
+              </div>
+              <div class="bnb-arrow">
+                <i class="fas fa-chevron-right"></i>
+              </div>
+            </a>
+
+            <!-- 3. Custom Solution Link -->
+            <a
+              href="solution-custom.html"
+              class="bnb-card"
+              style="padding: 32px 28px"
+            >
+              <div class="bnb-text">
+                <span class="bnb-label">솔루션 조합</span>
+                <span class="bnb-title">솔루션 조합 보기</span>
+              </div>
+              <div class="bnb-arrow">
+                <i class="fas fa-chevron-right"></i>
+              </div>
+            </a>
+
+            <!-- 4. Fit Check (Accent) -->
+            <a
+              href="fit-check.html"
+              class="bnb-card bnb-card--accent"
+              style="padding: 32px 28px"
+            >
+              <div class="bnb-text">
+                <span class="bnb-label" style="color: rgba(255, 255, 255, 0.7)"
+                  >Fit Check</span
+                >
+                <span class="bnb-title" style="color: #fff"
+                  >내 현장 자동화 적합도<br />확인</span
+                >
+              </div>
+              <div
+                class="bnb-arrow"
+                style="background: #fff; color: var(--color-br900)"
+              >
+                <i class="fas fa-chevron-right"></i>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer id="contact"></footer>
+    <script src="scripts/main.js"></script>
+    <script>
+      // Simple fade-in effect for the new section
+      document.addEventListener("DOMContentLoaded", () => {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+              }
+            });
+          },
+          {
+            threshold: 0.1,
+          },
+        );
+
+        const fadeSection = document.querySelector(".fade-in-section");
+        if (fadeSection) {
+          observer.observe(fadeSection);
+        }
+      });
+
+      // Banner Counter Animation
+      (function () {
+        const banner = document.getElementById("logistics-stats-banner");
+        if (!banner) return;
+        let animated = false;
+
+        function animateCountUp() {
+          if (animated) return;
+          animated = true;
+          const DURATION = 2000; // ms
+          document
+            .querySelectorAll("#logistics-stats-banner .stat-count")
+            .forEach(function (el) {
+              const targetStr = el.getAttribute("data-target");
+              const target = parseFloat(targetStr);
+              const isFloat = targetStr.includes(".");
+              const prefix = el.getAttribute("data-prefix") || "";
+              const suffix = el.getAttribute("data-suffix") || "";
+              if (isNaN(target)) return;
+
+              let start = null;
+              function step(timestamp) {
+                if (!start) start = timestamp;
+                const progress = Math.min((timestamp - start) / DURATION, 1);
+                // easeOutQuart
+                const eased = 1 - Math.pow(1 - progress, 4);
+
+                let currentOut = eased * target;
+                if (isFloat) {
+                  currentOut = currentOut.toFixed(1);
+                } else {
+                  currentOut = Math.floor(currentOut);
+                }
+
+                el.textContent = prefix + currentOut + suffix;
+                if (progress < 1) requestAnimationFrame(step);
+                else el.textContent = prefix + targetStr + suffix;
+              }
+              requestAnimationFrame(step);
+            });
+        }
+
+        const io = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) animateCountUp();
+            });
+          },
+          { threshold: 0.3 },
+        );
+        io.observe(banner);
+      })();
+    </script>
+
+    <!-- ===== Modals ===== -->
+    <style>
+      @keyframes lswFadeIn {
+        from {
+          opacity: 0;
+        }
+
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes lswSlideUp {
+        from {
+          opacity: 0;
+          transform: translateY(24px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .lsw-modal {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.55);
+        z-index: 9999;
+        align-items: center;
+        justify-content: center;
+        animation: lswFadeIn 0.2s ease;
+      }
+
+      .lsw-modal-box {
+        background: #fff;
+        border-radius: 20px;
+        padding: 40px 44px;
+        max-width: 520px;
+        width: 90%;
+        position: relative;
+        animation: lswSlideUp 0.28s ease;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+      }
+
+      .lsw-modal-close {
+        position: absolute;
+        top: 16px;
+        right: 20px;
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: #9ca3af;
+        line-height: 1;
+        border: none;
+        background: none;
+      }
+
+      .lsw-modal-close:hover {
+        color: #111;
+      }
+
+      .lsw-modal-tag {
+        display: inline-block;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        padding: 4px 12px;
+        border-radius: 999px;
+        margin-bottom: 16px;
+      }
+
+      .lsw-modal-box h3 {
+        font-size: 1.6rem;
+        font-weight: 800;
+        color: #111;
+        margin-bottom: 8px;
+      }
+
+      .lsw-modal-box .lsw-subtitle {
+        font-size: 0.88rem;
+        color: #6b7280;
+        margin-bottom: 24px;
+      }
+
+      .lsw-modal-box ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        border-top: 1px solid #f3f4f6;
+        padding-top: 20px;
+      }
+
+      .lsw-modal-box ul li {
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+        padding: 10px 0;
+        border-bottom: 1px solid #f9fafb;
+        font-size: 0.93rem;
+        color: #374151;
+      }
+
+      .lsw-modal-box ul li::before {
+        content: "?";
+        font-size: 0.7rem;
+        color: #9ca3af;
+        flex-shrink: 0;
+        margin-top: 4px;
+      }
+    </style>
+
+    <!-- OMS Modal -->
+    <div
+      id="modal-oms"
+      class="lsw-modal"
+      onclick="if (event.target === this) this.style.display = 'none';"
+    >
+      <div class="lsw-modal-box">
+        <button
+          class="lsw-modal-close"
+          onclick="document.getElementById('modal-oms').style.display = 'none'"
+        >
+          ×
+        </button>
+        <span class="lsw-modal-tag" style="background: #f3dde7; color: #7c0b47"
+          >OMS</span
+        >
+        <h3>주문의 시작점 ? 접수, 배분, 통제</h3>
+        <p class="lsw-subtitle">담당 구간: 주문 수집 ~ 배분</p>
+        <ul>
+          <li>
+            복수 채널(온라인몰, EDI, ERP)에서 들어오는 주문을 단일 시스템으로
+            수집·통합
+          </li>
+          <li>주문 유효성 검증, 우선순위 판단, 실행 오더 자동 생성</li>
+          <li>재고 가용 수량 기반 오더 배분 및 창고 지시 연계</li>
+          <li>주문 상태 실시간 추적 및 고객사 통보 자동화</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- WMS Modal -->
+    <div
+      id="modal-wms"
+      class="lsw-modal"
+      onclick="if (event.target === this) this.style.display = 'none';"
+    >
+      <div class="lsw-modal-box">
+        <button
+          class="lsw-modal-close"
+          onclick="document.getElementById('modal-wms').style.display = 'none'"
+        >
+          ×
+        </button>
+        <span class="lsw-modal-tag" style="background: #d1ead9; color: #166534"
+          >WMS</span
+        >
+        <h3>물류센터의 최적 업무 환경</h3>
+        <p class="lsw-subtitle">담당 구간: 입고 ~ 출고</p>
+        <ul>
+          <li>입고 예정 정보 기반 자동 슬롯 배정 및 적치 위치 최적화</li>
+          <li>Algorithm 기반 피킹 경로 최적화로 작업 생산성 향상</li>
+          <li>로봇(AMR·AFL), 컨베이어 등 자동화 설비와 실시간 연동</li>
+          <li>출고 우선순위·납기 기반 출하 지시 자동화</li>
+          <li>재고 실사(cycle count) 및 로케이션 정확도 관리</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- TMS Modal -->
+    <div
+      id="modal-tms"
+      class="lsw-modal"
+      onclick="if (event.target === this) this.style.display = 'none';"
+    >
+      <div class="lsw-modal-box">
+        <button
+          class="lsw-modal-close"
+          onclick="document.getElementById('modal-tms').style.display = 'none'"
+        >
+          ×
+        </button>
+        <span class="lsw-modal-tag" style="background: #d5e0f5; color: #1e40af"
+          >TMS</span
+        >
+        <h3>운송관리 업무의 최적화</h3>
+        <p class="lsw-subtitle">담당 구간: 배차 ~ 정산</p>
+        <ul>
+          <li>출고량·목적지·차량 적재 효율을 고려한 최적 배차 계획 수립</li>
+          <li>실시간 차량 위치 추적 및 배송 상태 모니터링</li>
+          <li>
+            배송 완료 POD(Proof of Delivery) 수집 및 정산 데이터 자동 생성
+          </li>
+          <li>협력사(택배사·용차) 연동 및 운임 정산 자동화</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- VMS Modal -->
+    <div
+      id="modal-vms"
+      class="lsw-modal"
+      onclick="if (event.target === this) this.style.display = 'none';"
+    >
+      <div class="lsw-modal-box">
+        <button
+          class="lsw-modal-close"
+          onclick="document.getElementById('modal-vms').style.display = 'none'"
+        >
+          ×
+        </button>
+        <span class="lsw-modal-tag" style="background: #e8e8ec; color: #374151"
+          >VMS</span
+        >
+        <h3>전 과정 가시화 · 의사결정 지원</h3>
+        <p class="lsw-subtitle">담당 구간: 전 구간</p>
+        <ul>
+          <li>
+            주문 → 재고 → 출고 → 배송 전 구간 데이터를 단일 대시보드로 통합
+          </li>
+          <li>KPI 지표(처리량, 정확도, 지연율) 실시간 모니터링</li>
+          <li>예외 상황 알림 및 병목 구간 자동 감지</li>
+          <li>경영진·운영팀·현장 각 레벨별 맞춤형 리포트 제공</li>
+        </ul>
+      </div>
+    </div>
+    <script src="scripts/main.js"></script>
+  </body>
+</html>

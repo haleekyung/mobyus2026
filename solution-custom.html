@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Total Solution - MOBYUS</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/solution-custom.css">
+    
+    <!-- Fonts -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&family=Pretendard+Variable:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="ts-page">
+    <!-- Header -->
+    <header id="gnb"></header>
+
+    <main>
+        <!-- 1. Page Header (HERO) -->
+        <section class="global-hero"
+            style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/hero_total_solution_muted.png'); background-size: cover; background-position: center;">
+            <div class="global-hero-inner fade-in">
+                <p class="global-hero-category">Total Solution</p>
+                <div class="hero-title-row">
+                    <h1 class="global-hero-title">현장에 맞게, 유연하게</h1>
+                    <p class="global-hero-tagline">Customizable, Integrated</p>
+                </div>
+                <p class="global-hero-sub-ko mt-3">단위 제품부터 풀 스택 통합까지 — 현장의 조건에 따라 조합합니다</p>
+                <p class="global-hero-sub-en">From individual products to full-stack integration — combined to match your site</p>
+            </div>
+        </section>
+
+        <!-- Secondary Nav -->
+        <nav class="secondary-nav sticky-nav">
+            <div class="container">
+                <ul>
+                    <li><a href="product.html">Robot</a></li>
+                    <li><a href="solution-control.html">Control</a></li>
+                    <li><a href="logistics.html">Logistics SW</a></li>
+                    <li class="active"><a href="solution-custom.html">Total Solution</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Visual Image placeholder -->
+        <section class="section-padding" style="background: #fff;">
+            <div class="container fade-in-section text-center">
+                <div style="background: #f8fafc; border: 1px solid #e2e8f0; padding: 120px 20px; border-radius: 16px; margin-bottom: 30px;">
+                    <h3 style="color: #94a3b8; font-weight: 500; margin-bottom: 10px;"><i class="fa-regular fa-image" style="font-size: 2.5rem; display: block; margin-bottom: 15px;"></i> [3-Layer 이소메트릭 비주얼]</h3>
+                    <p style="color: #cbd5e1; font-size: 0.95rem;">메인페이지와 동일 비주얼 확대</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. 3-Layer 구조 설명 -->
+        <section class="section-padding" style="padding-top: 50px;">
+            <div class="container fade-in-section">
+                <!-- Header added for consistency -->
+                <div class="section-header text-center" style="margin-bottom: 50px;">
+                    <h2 class="font-set-intro-title">3-Layer 구조 상세</h2>
+                    <p class="font-set-intro-ko" style="margin-top: 12px;">현장의 모든 요소는 3개의 레이어 블록으로 구분됩니다</p>
+                </div>
+
+                <!-- 2-2 Layer 설명 -->
+                <div style="background: #fff; border-radius: 12px; overflow: hidden; border: 1px solid var(--color-gray20);">
+                   <table class="diff-table" style="width: 100%; border: none; outline: none; word-break: keep-all;">
+                    <thead>
+                      <tr style="background: var(--color-gray05);">
+                        <th class="font-set-table-header" style="width: 8%; text-align: center; padding: 16px;">Layer</th>
+                        <th class="font-set-table-header" style="width: 14%; text-align: left; padding: 16px;">이름</th>
+                        <th class="font-set-table-header" style="width: 37%; text-align: left; padding: 16px;">역할</th>
+                        <th class="font-set-table-header" style="width: 27%; text-align: left; padding: 16px;">포함 제품</th>
+                        <th class="font-set-table-header" style="width: 14%; text-align: left; padding: 16px;">비주얼 톤</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="font-set-table-en" style="padding: 16px; font-weight: 700; text-align: center;">3</td>
+                        <td class="font-set-table-en" style="padding: 16px; font-weight: 700;">Visibility</td>
+                        <td class="font-set-table-ko" style="padding: 16px;">데이터 가시화 – 인사이트·의사결정</td>
+                        <td class="font-set-table-ko" style="padding: 16px;">전체</td>
+                        <td class="font-set-table-ko" style="padding: 16px;">반투명, 암시적</td>
+                      </tr>
+                      <tr>
+                        <td class="font-set-table-en" style="padding: 16px; font-weight: 700; text-align: center;">2</td>
+                        <td class="font-set-table-en" style="padding: 16px; font-weight: 700;">Digital Twin</td>
+                        <td class="font-set-table-ko" style="padding: 16px;">디지털 제어·운영 – 현장의 디지털 복제본</td>
+                        <td class="font-set-table-en" style="padding: 16px;">TAMS (5모듈), OMS, WMS, TMS, VMS</td>
+                        <td class="font-set-table-ko" style="padding: 16px;">가장 선명, 사실적</td>
+                      </tr>
+                      <tr>
+                        <td class="font-set-table-en" style="border-bottom: none; padding: 16px; font-weight: 700; text-align: center;">1</td>
+                        <td class="font-set-table-en" style="border-bottom: none; padding: 16px; font-weight: 700;">Physical</td>
+                        <td class="font-set-table-ko" style="border-bottom: none; padding: 16px;">현장 실행 — 물리적 이송·적재·하역</td>
+                        <td class="font-set-table-ko" style="border-bottom: none; padding: 16px;">AMR, AFL, EPT, 컨베이어, 설비</td>
+                        <td class="font-set-table-ko" style="border-bottom: none; padding: 16px;">디지털톤</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="font-set-intro-sub text-center" style="margin-top: 30px;">
+                    모든 솔루션 조합은 이 3개 Layer의 <strong>블록을 선택·조합</strong>하는 것입니다.
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 블록 레고: 제품 빌딩 블록 -->
+        <section class="section-padding">
+            <div class="container fade-in-section">
+                <div class="section-header text-center">
+                    <h2 class="font-set-intro-title">블록 레고 : 제품 빌딩 목록</h2>
+                    <div class="font-set-intro-ko" style="margin-top: 20px; margin-bottom: 48px;">
+                        모든 솔루션 조합은 이 3개 Layer의 블록을<br>선택·조합하는 것입니다.
+                    </div>
+                </div>
+
+                <div class="fade-in-up" style="max-width: 1000px; margin: 0 auto;">
+                    
+                    <!-- Layer 3 -->
+                    <div style="display: flex; align-items: center; margin-bottom: 25px;">
+                        <div style="background: #111; color: #fff; padding: 6px 22px; border-radius: 30px; font-weight: 500; font-size: 1.05rem; margin-right: 20px;">Layer 3</div>
+                        <div style="font-weight: 600; font-size: 1.15rem; color: #111;">Visibility</div>
+                    </div>
+
+                    <!-- Layer 2 -->
+                    <div style="display: flex; align-items: center; margin-top: 50px; margin-bottom: 25px;">
+                        <div style="background: #111; color: #fff; padding: 6px 22px; border-radius: 30px; font-weight: 500; font-size: 1.05rem; margin-right: 20px;">Layer 2</div>
+                        <div style="font-weight: 600; font-size: 1.15rem; color: #111;">Digital Twin</div>
+                    </div>
+
+                    <div style="background: #fff; border-radius: 12px; overflow: hidden; border: 1px solid var(--color-gray20); margin-bottom: 50px;">
+                        <table class="diff-table" style="width: 100%; border: none; outline: none; word-break: keep-all;">
+                            <tbody>
+                                <tr>
+                                    <td class="font-set-table-en" style="padding: 16px 24px; font-weight: 700; width: 15%;">
+                                        <span class="sq-box sq-green" style="width: 18px; height: 18px; border-radius: 4px;"></span> TAMS
+                                    </td>
+                                    <td class="font-set-table-ko" style="padding: 16px 24px; font-weight: 600; width: 22%;">통합 관제 Suite</td>
+                                    <td class="font-set-table-en" style="padding: 16px 24px; font-weight: 600; width: 35%;">MCS · FMS · ACS · SMS · WNS</td>
+                                    <td class="font-set-table-ko" style="padding: 16px 24px; width: 28%;">로봇·설비·작업자 통합 지휘</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-set-table-en" style="padding: 16px 24px; font-weight: 700;">
+                                        <span class="sq-box" style="background: #60a5fa; width: 18px; height: 18px; border-radius: 4px;"></span> OMS
+                                    </td>
+                                    <td class="font-set-table-ko" style="padding: 16px 24px; font-weight: 600;">주문관리</td>
+                                    <td class="font-set-table-ko" style="padding: 16px 24px; text-align: center;">-</td>
+                                    <td class="font-set-table-ko" style="padding: 16px 24px;">주문 접수·배분·통제</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-set-table-en" style="padding: 16px 24px; font-weight: 700;">
+                                        <span class="sq-box" style="background: #60a5fa; width: 18px; height: 18px; border-radius: 4px;"></span> WMS
+                                    </td>
+                                    <td class="font-set-table-ko" style="padding: 16px 24px; font-weight: 600;">창고 관리</td>
+                                    <td class="font-set-table-ko" style="padding: 16px 24px; text-align: center;">-</td>
+                                    <td class="font-set-table-ko" style="padding: 16px 24px;">입고~출고 전 공정</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-set-table-en" style="padding: 16px 24px; font-weight: 700;">
+                                        <span class="sq-box" style="background: #60a5fa; width: 18px; height: 18px; border-radius: 4px;"></span> TMS
+                                    </td>
+                                    <td class="font-set-table-ko" style="padding: 16px 24px; font-weight: 600;">배송관리</td>
+                                    <td class="font-set-table-ko" style="padding: 16px 24px; text-align: center;">-</td>
+                                    <td class="font-set-table-ko" style="padding: 16px 24px;">배차·경로·정산</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-set-table-en" style="padding: 16px 24px; font-weight: 700; border-bottom: none;">
+                                        <span class="sq-box" style="background: #f472b6; width: 18px; height: 18px; border-radius: 4px;"></span> VMS
+                                    </td>
+                                    <td class="font-set-table-ko" style="padding: 16px 24px; font-weight: 600; border-bottom: none;">물류 가시성</td>
+                                    <td class="font-set-table-ko" style="padding: 16px 24px; text-align: center; border-bottom: none;">-</td>
+                                    <td class="font-set-table-ko" style="padding: 16px 24px; border-bottom: none;">전 구간 KPI·분석·알림</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Layer 1 -->
+                    <div style="display: flex; align-items: center; margin-bottom: 25px;">
+                        <div style="background: #111; color: #fff; padding: 6px 22px; border-radius: 30px; font-weight: 500; font-size: 1.05rem; margin-right: 20px;">Layer 1</div>
+                        <div style="font-weight: 600; font-size: 1.15rem; color: #111;">Physical</div>
+                    </div>
+
+                    <div style="background: #fff; border-radius: 12px; overflow: hidden; border: 1px solid var(--color-gray20);">
+                        <table class="diff-table" style="width: 100%; border: none; outline: none; word-break: keep-all;">
+                            <tbody>
+                                <tr>
+                                    <td class="font-set-table-en" style="padding: 16px 24px; font-weight: 700; width: 15%;">
+                                        <span class="sq-box sq-red" style="width: 18px; height: 18px; border-radius: 4px;"></span> AMR
+                                    </td>
+                                    <td class="font-set-table-ko" style="padding: 16px 24px; font-weight: 600; width: 22%;">자율주행 모바일 로봇</td>
+                                    <td class="font-set-table-en" style="padding: 16px 24px; font-weight: 600; width: 44%;">MR01 (80kg) · MR05 (500kg) · MR12 (1,200kg)</td>
+                                    <td class="font-set-table-ko" style="padding: 16px 24px; width: 19%;">자재·물품 이송</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-set-table-en" style="padding: 16px 24px; font-weight: 700;">
+                                        <span class="sq-box sq-orange" style="width: 18px; height: 18px; border-radius: 4px;"></span> AFL
+                                    </td>
+                                    <td class="font-set-table-ko" style="padding: 16px 24px; font-weight: 600;">자율주행 지게차</td>
+                                    <td class="font-set-table-en" style="padding: 16px 24px; font-weight: 600;">CB (1.5~3.5T) · RT (1.6~2.0T) · MD (1.5~3.0T)</td>
+                                    <td class="font-set-table-ko" style="padding: 16px 24px;">팔레트 적재·하역</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-set-table-en" style="padding: 16px 24px; font-weight: 700; border-bottom: none;">
+                                        <span class="sq-box sq-yellow" style="width: 18px; height: 18px; border-radius: 4px;"></span> EPT
+                                    </td>
+                                    <td class="font-set-table-ko" style="padding: 16px 24px; font-weight: 600; border-bottom: none;">전동 팔레트 트럭</td>
+                                    <td class="font-set-table-en" style="padding: 16px 24px; font-weight: 600; border-bottom: none;">MF15P (1.5T)</td>
+                                    <td class="font-set-table-ko" style="padding: 16px 24px; border-bottom: none;">수평 이동</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+            </div>
+        </section>
+
+        <!-- 4. 조합 4종 -->
+        <section class="section-padding">
+            <div class="container fade-in-section">
+                <div class="section-header text-center" style="margin-bottom: 68px;">
+                    <h2 class="font-set-intro-title">조합 4종 — 블록 레벨 상세</h2>
+                </div>
+
+                <!-- Combo 1 -->
+                <div class="fade-in-up" style="max-width: 1000px; margin: 0 auto; margin-bottom: 100px;">
+                    <!-- Top section background -->
+                    <div style="background: var(--color-gray05); border-radius: 12px; padding: 40px; margin-bottom: 40px;">
+                        <h3 class="ts-combo-title">1. Robot + Control</h3>
+                        <p class="ts-combo-subtitle-ko">단일 공정 자동화부터 공장 전체 관제까지</p>
+                        <p class="ts-combo-subtitle-en">From single-line automation to full-site orchestration</p>
+                    </div>
+
+                    <!-- 블록 구성 -->
+                    <div class="font-set-intro-sub" style="text-align: left; margin-bottom: 20px;">블록 구성</div>
+                    <div style="background: #fff; border-radius: 12px; overflow: hidden; border: 1px solid var(--color-gray20); margin-bottom: 16px;">
+                        <table class="diff-table" style="width: 100%; border: none; outline: none; word-break: keep-all;">
+                            <thead>
+                                <tr style="background: var(--color-gray05);">
+                                    <th class="font-set-table-header" style="width: 15%; text-align: left; padding: 16px 24px;">Layer</th>
+                                    <th class="font-set-table-header" style="width: 35%; text-align: left; padding: 16px 24px;">블록</th>
+                                    <th class="font-set-table-header" style="width: 25%; text-align: left; padding: 16px 24px;">필수/선택</th>
+                                    <th class="font-set-table-header" style="width: 25%; text-align: left; padding: 16px 24px;">비고</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="font-set-table-en" rowspan="3" style="padding: 16px 24px;">Physical</td>
+                                    <td class="font-set-table-en font-size-20" style="padding: 16px 24px; font-weight: 700; color: #111;"><span class="sq-box sq-red" style="width: 18px; height: 18px; border-radius: 4px; display: inline-block; vertical-align: middle; margin-right: 8px;"></span> AMR (모델 선택)</td>
+                                    <td class="font-set-table-ko" style="padding: 16px 24px;">○ 현장 맞춤</td>
+                                    <td class="font-set-table-ko" style="padding: 16px 24px;">자재 이송 자동화</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-set-table-en font-size-20" style="padding: 16px 24px; font-weight: 700; color: #111;"><span class="sq-box sq-orange" style="width: 18px; height: 18px; border-radius: 4px; display: inline-block; vertical-align: middle; margin-right: 8px;"></span> AFL (타입 선택)</td>
+                                    <td class="font-set-table-ko" style="padding: 16px 24px;">○ 현장 맞춤</td>
+                                    <td class="font-set-table-ko" style="padding: 16px 24px;">팔레트 적재·하역</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-set-table-en font-size-20" style="padding: 16px 24px; font-weight: 700; color: #111;"><span class="sq-box sq-yellow" style="width: 18px; height: 18px; border-radius: 4px; display: inline-block; vertical-align: middle; margin-right: 8px;"></span> EPT</td>
+                                    <td class="font-set-table-ko" style="padding: 16px 24px;">△ 선택</td>
+                                    <td class="font-set-table-ko" style="padding: 16px 24px;">수평 이동 보조</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-set-table-en" rowspan="5" style="padding: 16px 24px; border-top: 1px solid var(--color-gray20);">Digital Twin</td>
+                                    <td class="font-set-table-en font-size-20" style="padding: 16px 24px; border-top: 1px solid var(--color-gray20); font-weight: 700; color: #111;"><span class="sq-box sq-green" style="width: 18px; height: 18px; border-radius: 4px; display: inline-block; vertical-align: middle; margin-right: 8px;"></span> TAMS - MCS</td>
+                                    <td class="font-set-table-ko" style="padding: 16px 24px; border-top: 1px solid var(--color-gray20);">● 필수</td>
+                                    <td class="font-set-table-ko" style="padding: 16px 24px; border-top: 1px solid var(--color-gray20);">자재 흐름·이송 오더</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-set-table-en font-size-20" style="padding: 16px 24px; font-weight: 700; color: #111;"><span class="sq-box sq-green" style="width: 18px; height: 18px; border-radius: 4px; display: inline-block; vertical-align: middle; margin-right: 8px;"></span> TAMS - FMS</td>
+                                    <td class="font-set-table-ko" style="padding: 16px 24px;">● 필수</td>
+                                    <td class="font-set-table-ko" style="padding: 16px 24px;">다기종 로봇 관리</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-set-table-en font-size-20" style="padding: 16px 24px; font-weight: 700; color: #111;"><span class="sq-box sq-green" style="width: 18px; height: 18px; border-radius: 4px; display: inline-block; vertical-align: middle; margin-right: 8px;"></span> TAMS - ACS</td>
+                                    <td class="font-set-table-ko" style="padding: 16px 24px;">● 필수</td>
+                                    <td class="font-set-table-ko" style="padding: 16px 24px;">개별 로봇 제어</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-set-table-en font-size-20" style="padding: 16px 24px; font-weight: 700; color: #111;"><span class="sq-box sq-green" style="width: 18px; height: 18px; border-radius: 4px; display: inline-block; vertical-align: middle; margin-right: 8px;"></span> TAMS - SMS</td>
+                                    <td class="font-set-table-ko" style="padding: 16px 24px;">○ 권장</td>
+                                    <td class="font-set-table-ko" style="padding: 16px 24px;">안전 관제 (혼재 시)</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-set-table-en font-size-20" style="padding: 16px 24px; border-bottom: none; font-weight: 700; color: #111;"><span class="sq-box sq-green" style="width: 18px; height: 18px; border-radius: 4px; display: inline-block; vertical-align: middle; margin-right: 8px;"></span> TAMS - WNS</td>
+                                    <td class="font-set-table-ko" style="padding: 16px 24px; border-bottom: none;">△ 선택</td>
+                                    <td class="font-set-table-ko" style="padding: 16px 24px; border-bottom: none;">유인장비 공존 시</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div style="font-size: 0.9rem; color: var(--color-gray60); margin-bottom: 50px;">
+                        기호 설명: ● 필수 · ○ 권장/현장 맞춤 · △ 선택
+                    </div>
+
+                    <!-- 산업별 바리에이션 -->
+                    <div class="font-set-intro-sub" style="text-align: left; margin-bottom: 20px;">산업별 바리에이션</div>
+                    <div style="background: #fff; border-radius: 12px; overflow: hidden; border: 1px solid var(--color-gray20);">
+                        <table class="diff-table" style="width: 100%; border: none; outline: none; word-break: keep-all;">
+                            <thead>
+                                <tr style="background: var(--color-gray05);">
+                                    <th class="font-set-table-header" style="width: 15%; text-align: left; padding: 16px 24px;">Layer</th>
+                                    <th class="font-set-table-header" style="width: 40%; text-align: left; padding: 16px 24px;">블록</th>
+                                    <th class="font-set-table-header" style="width: 25%; text-align: left; padding: 16px 24px;">TAMS 블록</th>
+                                    <th class="font-set-table-header" style="width: 20%; text-align: left; padding: 16px 24px;">특이사항</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="font-set-table-ko" style="padding: 16px 24px;">자동차 OEM</td>
+                                    <td class="font-set-table-en font-size-20" style="padding: 16px 24px;">AMR(MR05·MR12) + AFL(MF30CB)</td>
+                                    <td class="font-set-table-ko font-size-20" style="padding: 16px 24px;">풀모듈</td>
+                                    <td class="font-set-table-ko" style="padding: 16px 24px;">188대 대규모, 글로벌 표준</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-set-table-ko" style="padding: 16px 24px;">배터리</td>
+                                    <td class="font-set-table-en font-size-20" style="padding: 16px 24px;">AMR(MR01, ±1mm) + AFL(MF16R)</td>
+                                    <td class="font-set-table-en font-size-20" style="padding: 16px 24px;">MCS+FMS+ACS+SMS</td>
+                                    <td class="font-set-table-ko" style="padding: 16px 24px;">팔레트 적재·하역</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-set-table-ko" style="padding: 16px 24px;">반도체</td>
+                                    <td class="font-set-table-en font-size-20" style="padding: 16px 24px;">AFL(MF15CB) 중심</td>
+                                    <td class="font-set-table-en font-size-20" style="padding: 16px 24px;">FMS+ACS</td>
+                                    <td class="font-set-table-ko" style="padding: 16px 24px;">수평 이동 보조</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-set-table-ko" style="padding: 16px 24px; border-bottom: none;">태양광</td>
+                                    <td class="font-set-table-en font-size-20" style="padding: 16px 24px; border-bottom: none;">AMR(MR05·MR12)</td>
+                                    <td class="font-set-table-en font-size-20" style="padding: 16px 24px; border-bottom: none;">MCS+FMS+ACS</td>
+                                    <td class="font-set-table-ko" style="padding: 16px 24px; border-bottom: none;">자재 흐름·이송 오더</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Divider per user request -->
+                    <div style="margin-top: 68px; border-bottom: 1px solid var(--color-gray20);"></div>
+
+                </div>
+
+                <!-- Combo 2 -->
+                <div class="fade-in-up" style="max-width: 1000px; margin: 0 auto; margin-bottom: 100px;">
+                    <div style="background: var(--color-gray05); border-radius: 12px; padding: 40px; margin-bottom: 40px;">
+                        <h3 class="ts-combo-title">2. Control 단독</h3>
+                        <p class="ts-combo-subtitle-ko">기존 로봇·설비를 하나의 관제로 통합</p>
+                        <p class="ts-combo-subtitle-en">Unify existing robots and equipment under one command</p>
+                    </div>
+
+                    <!-- 블록 구성 -->
+                    <div class="font-set-intro-sub" style="text-align: left; margin-bottom: 20px;">블록 구성</div>
+                    <div style="background: #fff; border-radius: 12px; overflow: hidden; border: 1px solid var(--color-gray20); margin-bottom: 50px;">
+                        <table class="diff-table" style="width: 100%; border: none; outline: none; word-break: keep-all;">
+                            <thead>
+                                <tr style="background: var(--color-gray05);">
+                                    <th class="font-set-table-header" style="width: 20%; text-align: left; padding: 16px 24px;">Layer</th>
+                                    <th class="font-set-table-header" style="width: 30%; text-align: left; padding: 16px 24px;">블록</th>
+                                    <th class="font-set-table-header" style="width: 50%; text-align: left; padding: 16px 24px;">역할</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="font-set-table-en" rowspan="5" style="padding: 16px 24px;">Digital Twin</td>
+                                    <td class="font-set-table-en font-size-20" style="padding: 16px 24px; font-weight: 700; color: #111;"><span class="sq-box sq-green" style="width: 18px; height: 18px; border-radius: 4px; display: inline-block; vertical-align: middle; margin-right: 8px;"></span> TAMS - FMS</td>
+                                    <td class="font-set-table-ko" style="padding: 16px 24px;">이기종 로봇 통합 관리</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-set-table-en font-size-20" style="padding: 16px 24px; font-weight: 700; color: #111;"><span class="sq-box sq-green" style="width: 18px; height: 18px; border-radius: 4px; display: inline-block; vertical-align: middle; margin-right: 8px;"></span> TAMS - ACS</td>
+                                    <td class="font-set-table-ko" style="padding: 16px 24px;">어댑터 기반 제어 (10+종)</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-set-table-en font-size-20" style="padding: 16px 24px; font-weight: 700; color: #111;"><span class="sq-box sq-green" style="width: 18px; height: 18px; border-radius: 4px; display: inline-block; vertical-align: middle; margin-right: 8px;"></span> TAMS - SMS</td>
+                                    <td class="font-set-table-ko" style="padding: 16px 24px;">혼재 환경 안전</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-set-table-en font-size-20" style="padding: 16px 24px; font-weight: 700; color: #111;"><span class="sq-box sq-green" style="width: 18px; height: 18px; border-radius: 4px; display: inline-block; vertical-align: middle; margin-right: 8px;"></span> TAMS - WNS</td>
+                                    <td class="font-set-table-ko" style="padding: 16px 24px;">유인장비·작업자 추적</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-set-table-en font-size-20" style="padding: 16px 24px; border-bottom: none; font-weight: 700; color: #111;"><span class="sq-box sq-green" style="width: 18px; height: 18px; border-radius: 4px; display: inline-block; vertical-align: middle; margin-right: 8px;"></span> TAMS - MCS</td>
+                                    <td class="font-set-table-ko" style="padding: 16px 24px; border-bottom: none;">(선택) 자재 흐름 연동</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- 연동 대상 -->
+                    <div class="font-set-intro-sub" style="text-align: left; margin-bottom: 20px;">연동 대상</div>
+                    <div style="background: #fff; border-radius: 12px; overflow: hidden; border: 1px solid var(--color-gray20); margin-bottom: 50px;">
+                        <table class="diff-table" style="width: 100%; border: none; outline: none; word-break: keep-all;">
+                            <thead>
+                                <tr style="background: var(--color-gray05);">
+                                    <th class="font-set-table-header" style="width: 30%; text-align: left; padding: 16px 24px;">구분</th>
+                                    <th class="font-set-table-header" style="width: 70%; text-align: left; padding: 16px 24px;">예시</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="font-set-table-ko" style="padding: 16px 24px;">자사 로봇</td>
+                                    <td class="font-set-table-en font-size-20" style="padding: 16px 24px;">MOBYUS AMR·AFL (기존 납품분)</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-set-table-ko" style="padding: 16px 24px;">타사 AGV</td>
+                                    <td class="font-set-table-ko font-size-20" style="padding: 16px 24px;">타 제조사 AGV (어댑터 연결)</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-set-table-ko" style="padding: 16px 24px;">유인장비</td>
+                                    <td class="font-set-table-ko font-size-20" style="padding: 16px 24px;">유인 지게차, 수동 카트</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-set-table-ko" style="padding: 16px 24px;">설비</td>
+                                    <td class="font-set-table-ko font-size-20" style="padding: 16px 24px;">컨베이어 (WCS/PLC 연동)</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-set-table-ko" style="padding: 16px 24px; border-bottom: none;">상위 시스템</td>
+                                    <td class="font-set-table-en font-size-20" style="padding: 16px 24px; border-bottom: none;">ERP·MES 연동</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div style="background: #FFF0F5; padding: 24px 30px; border-radius: 12px;">
+                        <p style="margin: 0; font-size: 1.05rem; color: #111; line-height: 1.6;">MOBYUS 로봇 없이도, <strong style="font-weight: 700;">TAMS만으로</strong> 기존 현장의 장비를 하나의 관제 체계로 통합할 수 있습니다. 기존 투자를 보호하면서 관제 수준을 높이는 접근</p>
+                    </div>
+
+                    <!-- Divider per user request -->
+                    <div style="margin-top: 68px; border-bottom: 1px solid var(--color-gray20);"></div>
+                </div>
+
+                <!-- Combo 3 -->
+                <div class="fade-in-up" style="max-width: 1000px; margin: 0 auto; margin-bottom: 100px;">
+                    <div style="background: var(--color-gray05); border-radius: 12px; padding: 40px; margin-bottom: 40px;">
+                        <h3 class="ts-combo-title">3. Logistics SW 단독</h3>
+                        <p class="ts-combo-subtitle-ko">물류 운영 시스템 구축 및 고도화</p>
+                        <p class="ts-combo-subtitle-en">Build or upgrade your logistics operations system</p>
+                    </div>
+                    
+                    <!-- 블록 구성 -->
+                    <div class="font-set-intro-sub" style="text-align: left; margin-bottom: 20px;">블록 구성</div>
+                    <div style="background: #fff; border-radius: 12px; overflow: hidden; border: 1px solid var(--color-gray20); margin-bottom: 50px;">
+                        <table class="diff-table" style="width: 100%; border: none; outline: none; word-break: keep-all;">
+                            <thead>
+                                <tr style="background: var(--color-gray05);">
+                                    <th class="font-set-table-header" style="width: 20%; text-align: left; padding: 16px 24px;">Layer</th>
+                                    <th class="font-set-table-header" style="width: 30%; text-align: left; padding: 16px 24px;">블록</th>
+                                    <th class="font-set-table-header" style="width: 25%; text-align: left; padding: 16px 24px;">필수/선택</th>
+                                    <th class="font-set-table-header" style="width: 25%; text-align: left; padding: 16px 24px;">비고</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="font-set-table-en" rowspan="4"
+                                        style="padding: 16px 24px; font-weight: 700; color: #111; border-right: 1px solid var(--color-gray20); vertical-align: middle;">
+                                        Digital Twin</td>
+                                    <td class="font-set-table-en font-size-20"
+                                        style="padding: 16px 24px; font-weight: 700; color: #111;">
+                                        <span class="sq-box sq-blue"
+                                            style="width: 18px; height: 18px; border-radius: 4px; display: inline-block; vertical-align: middle; margin-right: 8px;"></span>
+                                        OMS
+                                    </td>
+                                    <td class="font-set-table-ko" style="padding: 16px 24px;">△ 선택</td>
+                                    <td class="font-set-table-ko" style="padding: 16px 24px;">주문 수집·배분</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-set-table-en font-size-20"
+                                        style="padding: 16px 24px; font-weight: 700; color: #111; border-top: 1px solid var(--color-gray20);">
+                                        <span class="sq-box sq-blue"
+                                            style="width: 18px; height: 18px; border-radius: 4px; display: inline-block; vertical-align: middle; margin-right: 8px;"></span>
+                                        WMS
+                                    </td>
+                                    <td class="font-set-table-ko"
+                                        style="padding: 16px 24px; border-top: 1px solid var(--color-gray20);">○ 핵심</td>
+                                    <td class="font-set-table-ko"
+                                        style="padding: 16px 24px; border-top: 1px solid var(--color-gray20);">창고 전 공정</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-set-table-en font-size-20"
+                                        style="padding: 16px 24px; font-weight: 700; color: #111; border-top: 1px solid var(--color-gray20);">
+                                        <span class="sq-box sq-blue"
+                                            style="width: 18px; height: 18px; border-radius: 4px; display: inline-block; vertical-align: middle; margin-right: 8px;"></span>
+                                        TMS
+                                    </td>
+                                    <td class="font-set-table-ko"
+                                        style="padding: 16px 24px; border-top: 1px solid var(--color-gray20);">○ 핵심</td>
+                                    <td class="font-set-table-ko"
+                                        style="padding: 16px 24px; border-top: 1px solid var(--color-gray20);">배차·운송·정산</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-set-table-en font-size-20"
+                                        style="padding: 16px 24px; font-weight: 700; color: #111; border-top: 1px solid var(--color-gray20); border-bottom: none;">
+                                        <span class="sq-box sq-purple"
+                                            style="width: 18px; height: 18px; border-radius: 4px; display: inline-block; vertical-align: middle; margin-right: 8px;"></span>
+                                        VMS
+                                    </td>
+                                    <td class="font-set-table-ko"
+                                        style="padding: 16px 24px; border-top: 1px solid var(--color-gray20); border-bottom: none;">
+                                        △ 선택
+                                    </td>
+                                    <td class="font-set-table-ko"
+                                        style="padding: 16px 24px; border-top: 1px solid var(--color-gray20); border-bottom: none;">
+                                        KPI·가시성</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- 조합 패턴 예시 -->
+                    <div class="font-set-intro-sub" style="text-align: left; margin-bottom: 20px;">조합 패턴 예시</div>
+                    <div style="background: #fff; border-radius: 12px; overflow: hidden; border: 1px solid var(--color-gray20);">
+                        <table class="diff-table" style="width: 100%; border: none; outline: none; word-break: keep-all;">
+                            <thead>
+                                <tr style="background: var(--color-gray05);">
+                                    <th class="font-set-table-header" style="width: 30%; text-align: left; padding: 16px 24px;">구분</th>
+                                    <th class="font-set-table-header" style="width: 35%; text-align: left; padding: 16px 24px;">블록</th>
+                                    <th class="font-set-table-header" style="width: 35%; text-align: left; padding: 16px 24px;">적용 예시</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="font-set-table-ko" style="padding: 16px 24px;">물류센터 신규</td>
+                                    <td class="font-set-table-en font-size-20" style="padding: 16px 24px;">WMS 단독</td>
+                                    <td class="font-set-table-ko" style="padding: 16px 24px;">중소 물류센터 첫 시스템</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-set-table-ko" style="padding: 16px 24px;">자사 AGV</td>
+                                    <td class="font-set-table-en font-size-20" style="padding: 16px 24px;">WMS + TMS</td>
+                                    <td class="font-set-table-ko" style="padding: 16px 24px;">자체 물류 운영 기업</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-set-table-ko" style="padding: 16px 24px;">유인장비</td>
+                                    <td class="font-set-table-en font-size-20" style="padding: 16px 24px;">OMS + WMS + VMS</td>
+                                    <td class="font-set-table-ko" style="padding: 16px 24px;">다채널 주문 통합</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-set-table-ko" style="padding: 16px 24px;">설비</td>
+                                    <td class="font-set-table-en font-size-20" style="padding: 16px 24px;">TMS 단독</td>
+                                    <td class="font-set-table-ko" style="padding: 16px 24px;">운송 효율·정산 개선</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-set-table-ko" style="padding: 16px 24px; border-bottom: none;">상위 시스템</td>
+                                    <td class="font-set-table-en font-size-20" style="padding: 16px 24px; border-bottom: none;">OMS + WMS + TMS + VMS</td>
+                                    <td class="font-set-table-ko" style="padding: 16px 24px; border-bottom: none;">엔드투엔드 물류 운영</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Divider per user request -->
+                    <div style="margin-top: 68px; border-bottom: 1px solid var(--color-gray20);"></div>
+                </div>
+
+                <!-- Combo 4: Full Stack -->
+                <div class="fade-in-up" style="max-width: 1000px; margin: 0 auto; margin-bottom: 100px;">
+                    <div class="combo-theme-dark" style="background: var(--color-br900); border-radius: 12px; padding: 40px; margin-bottom: 40px;">
+                        <h3 class="ts-combo-title">4. Robot + Control + Logistics SW → 풀 스텍 물류 자동화</h3>
+                        <p class="ts-combo-subtitle-ko">물류 전체를 연결하는 풀 스택</p>
+                        <p class="ts-combo-subtitle-en">Full stack connecting the entire logistics</p>
+                    </div>
+                    <!-- 블록 구성 -->
+                    <div class="font-set-intro-sub" style="text-align: left; margin-bottom: 20px;">블록 구성 — 3-Layer 완전 채움</div>
+                    
+                    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 30px; margin-bottom: 50px;">
+                        <!-- Left Table -->
+                        <div style="background: #fff; border-radius: 12px; overflow: hidden; border: 1px solid var(--color-gray20);">
+                            <table class="diff-table" style="width: 100%; border: none; outline: none; word-break: keep-all; height: 100%;">
+                                <thead>
+                                    <tr style="background: var(--color-gray05);">
+                                        <th class="font-set-table-header" style="width: 25%; text-align: left; padding: 16px 24px;">Layer</th>
+                                        <th class="font-set-table-header" style="width: 45%; text-align: left; padding: 16px 24px;">블록</th>
+                                        <th class="font-set-table-header" style="width: 30%; text-align: left; padding: 16px 24px;">역할</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="font-set-table-en"
+                                            style="padding: 16px 24px; font-weight: 700; color: #111;">
+                                            Visibility</td>
+                                        <td class="font-set-table-en font-size-20"
+                                            style="padding: 16px 24px; font-weight: 700; color: #111;">
+                                        </td>
+                                        <td class="font-set-table-ko" style="padding: 16px 24px;">전 구간 KPI·의사결정</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="font-set-table-en"
+                                            style="padding: 16px 24px; border-top: 1px solid var(--color-gray20); font-weight: 700; color: #111;">
+                                            Digital Twin</td>
+                                        <td class="font-set-table-en font-size-20"
+                                            style="padding: 16px 24px; border-top: 1px solid var(--color-gray20); font-weight: 700; color: #111;">
+                                            <span class="sq-box sq-purple"></span> VMS
+                                        </td>
+                                        <td class="font-set-table-ko"
+                                            style="padding: 16px 24px; border-top: 1px solid var(--color-gray20);">
+                                            -
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="font-set-table-en"
+                                            style="padding: 16px 24px; border-top: 1px solid var(--color-gray20); font-weight: 700; color: #111;">
+                                            Digital Twin</td>
+                                        <td class="font-set-table-en font-size-20"
+                                            style="padding: 16px 24px; border-top: 1px solid var(--color-gray20); font-weight: 700; color: #111;">
+                                            <span class="sq-box sq-green"></span> TAMS (5모듈)
+                                        </td>
+                                        <td class="font-set-table-ko"
+                                            style="padding: 16px 24px; border-top: 1px solid var(--color-gray20);">
+                                            로봇·설비 통합 관제</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="font-set-table-en"
+                                            style="padding: 16px 24px; border-top: 1px solid var(--color-gray20); font-weight: 700; color: #111;">
+                                            Digital Twin</td>
+                                        <td class="font-set-table-en font-size-20"
+                                            style="padding: 16px 24px; border-top: 1px solid var(--color-gray20); font-weight: 700; color: #111;">
+                                            <span class="sq-box sq-blue"></span> OMS · WMS · TMS
+                                        </td>
+                                        <td class="font-set-table-ko"
+                                            style="padding: 16px 24px; border-top: 1px solid var(--color-gray20);">
+                                            주문·창고·배송 운영</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="font-set-table-en"
+                                            style="padding: 16px 24px; border-top: 1px solid var(--color-gray20); border-bottom: none; font-weight: 700; color: #111;">
+                                            Physical</td>
+                                        <td class="font-set-table-en font-size-20"
+                                            style="padding: 16px 24px; border-top: 1px solid var(--color-gray20); border-bottom: none; font-weight: 700; color: #111;">
+                                            <span class="sq-box sq-red"></span> AMR + <span
+                                                class="sq-box sq-orange"></span> AFL + <span
+                                                class="sq-box sq-yellow"></span> EPT
+                                        </td>
+                                        <td class="font-set-table-ko"
+                                            style="padding: 16px 24px; border-top: 1px solid var(--color-gray20); border-bottom: none;">
+                                            현장 자동화 실행</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Right Tree Container -->
+                        <div style="background: var(--color-gray05); border-radius: 12px; padding: 40px; display: flex; flex-direction: column; justify-content: center; border: 1px solid var(--color-gray20);">
+                            <!-- Layer 3 -->
+                            <div style="background: #FFF0F5; border-radius: 8px; padding: 20px; text-align: center; margin-bottom: 20px;">
+                                <div style="font-weight: 700; font-family: var(--font-heading); font-size: 1.1rem; color: #111; margin-bottom: 4px;">Layer 3: Visibility</div>
+                                <div style="font-size: 0.95rem; color: #4b5563;">(Shared Insight Layer)</div>
+                            </div>
+                            
+                            <!-- Layer 2 -->
+                            <div style="background: #fdf2f8; border-radius: 8px; padding: 20px; text-align: center; margin-bottom: 20px;">
+                                <div style="font-weight: 700; font-family: var(--font-heading); font-size: 1.1rem; color: #111; margin-bottom: 8px;">Layer 2: Digital Twin</div>
+                                <div style="font-size: 0.95rem; color: #111; margin-bottom: 4px; font-weight: 500;">· TAMS (MCS·FMS·ACS·SMS·WNS)</div>
+                                <div style="font-size: 0.95rem; color: #111; font-weight: 500;">· OMS · WMS · TMS · VMS</div>
+                            </div>
+                            
+                            <!-- Layer 1 -->
+                            <div style="background: #fce7f3; border: 1px solid #9d174d; border-radius: 8px; padding: 20px; text-align: center;">
+                                <div style="font-weight: 700; font-family: var(--font-heading); font-size: 1.1rem; color: #111; margin-bottom: 8px;">Layer 1: Physical</div>
+                                <div style="font-size: 0.95rem; color: #111; font-weight: 500;">· AMR · AFL · EPT · 컨베이어 · 작업자</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Highlight Box -->
+                    <div style="background: #FFF0F5; padding: 30px; border-radius: 12px; text-align: center; margin-bottom: 50px;">
+                        <p style="margin: 0; font-size: 1.1rem; color: var(--color-gray70); line-height: 1.6;">
+                            이것이 3-Layer가 모두 채워진 풀 스택입니다. 다른 조합은 필요한 Layer의 블록만 선택하는 것.<br>
+                            <span style="color: #111; font-size: 1.25rem; font-weight: 700; display: block; margin-top: 8px;">MOBYUS는 3개 Layer를 모두 자사 제품으로 채울 수 있는 유일한 물류 로봇·솔루션 기업입니다.</span>
+                        </p>
+                    </div>
+
+                    <!-- 산업별 풀 스택 예시 -->
+                    <div class="font-set-intro-sub" style="text-align: left; margin-bottom: 20px;">산업별 풀 스택 예시</div>
+                    <div style="background: #fff; border-radius: 12px; overflow: hidden; border: 1px solid var(--color-gray20);">
+                        <table class="diff-table" style="width: 100%; border: none; outline: none; word-break: keep-all;">
+                            <thead>
+                                <tr style="background: var(--color-gray05);">
+                                    <th class="font-set-table-header" style="width: 15%; text-align: left; padding: 16px 24px;">산업</th>
+                                    <th class="font-set-table-header" style="width: 15%; text-align: left; padding: 16px 24px;">Physical</th>
+                                    <th class="font-set-table-header" style="width: 25%; text-align: left; padding: 16px 24px;">Digital Twin</th>
+                                    <th class="font-set-table-header" style="width: 15%; text-align: left; padding: 16px 24px;">Visibility</th>
+                                    <th class="font-set-table-header" style="width: 30%; text-align: left; padding: 16px 24px;">적용</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="font-set-table-ko" style="padding: 16px 24px;">식음료 DC</td>
+                                    <td class="font-set-table-en font-size-20" style="padding: 16px 24px;">AMR + EPT</td>
+                                    <td class="font-set-table-en font-size-20" style="padding: 16px 24px;">TAMS + WMS + OMS + TMS+VMS</td>
+                                    <td class="font-set-table-ko font-size-20" style="padding: 16px 24px;">-</td>
+                                    <td class="font-set-table-ko" style="padding: 16px 24px;">협소 공간 무인화 + 통합 물류정보시스템용</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-set-table-ko" style="padding: 16px 24px;">유통 풀필먼트</td>
+                                    <td class="font-set-table-en font-size-20" style="padding: 16px 24px;">AMR</td>
+                                    <td class="font-set-table-en font-size-20" style="padding: 16px 24px;">TAMS + WMS + OMS+VMS</td>
+                                    <td class="font-set-table-ko font-size-20" style="padding: 16px 24px;">-</td>
+                                    <td class="font-set-table-ko" style="padding: 16px 24px;">다채널 주문 처리 + 자동 피킹</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-set-table-ko" style="padding: 16px 24px; border-bottom: none;">배터리 공장+창고</td>
+                                    <td class="font-set-table-en font-size-20" style="padding: 16px 24px; border-bottom: none;">AMR + AFL</td>
+                                    <td class="font-set-table-en font-size-20" style="padding: 16px 24px; border-bottom: none;">TAMS + WMS+VMS</td>
+                                    <td class="font-set-table-ko font-size-20" style="padding: 16px 24px; border-bottom: none;">-</td>
+                                    <td class="font-set-table-ko" style="padding: 16px 24px; border-bottom: none;">제조 라인 이송 + 원자재 창고 관리 통합</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Divider per user request -->
+                    <div style="margin-top: 68px; border-bottom: 1px solid var(--color-gray20);"></div>
+                </div>
+
+                <!-- 5. Supply Chain Coverage -->
+        </section>
+
+        <!-- 5. Supply Chain Coverage -->
+        <section class="section-padding bg-light">
+            <div class="container fade-in-section text-center">
+                <div class="section-header text-center" style="margin-bottom: 50px;">
+                    <h2 class="font-set-intro-title">Supply Chain Coverage</h2>
+                    <p class="font-set-intro-ko" style="margin-top: 12px;">전체 공급망에서 MOBYUS 제품이 커버하는 영역</p>
+                </div>
+
+                <div class="fade-in-up" style="max-width: 1000px; margin: 0 auto;">
+                    <div style="border: 1px solid var(--color-gray20); border-radius: 12px; overflow: hidden; background: #fff;">
+                        <table class="ts-table" style="width: 100%; border-collapse: collapse; border-spacing: 0; margin: 0;">
+                            <thead>
+                                <tr style="background: var(--color-gray05); text-align: center;">
+                                    <th style="padding: 24px 10px; font-weight: 700; color: #111; border-bottom: 1px solid var(--color-gray20); border-right: none; border-left: none; vertical-align: middle;">Supplier</th>
+                                    <th style="padding: 24px 0; color: var(--color-gray70); width: 20px; border-bottom: 1px solid var(--color-gray20); border-right: none; border-left: none; vertical-align: middle;">→</th>
+                                    <th style="padding: 24px 10px; font-weight: 700; color: #111; border-bottom: 1px solid var(--color-gray20); border-right: none; border-left: none; vertical-align: middle;">Inbound<br>Logistics</th>
+                                    <th style="padding: 24px 0; color: var(--color-gray70); width: 20px; border-bottom: 1px solid var(--color-gray20); border-right: none; border-left: none; vertical-align: middle;">→</th>
+                                    <th style="padding: 24px 10px; font-weight: 700; color: #111; border-bottom: 1px solid var(--color-gray20); border-right: none; border-left: none; vertical-align: middle;">Manufacturing<br>Process</th>
+                                    <th style="padding: 24px 0; color: var(--color-gray70); width: 20px; border-bottom: 1px solid var(--color-gray20); border-right: none; border-left: none; vertical-align: middle;">→</th>
+                                    <th style="padding: 24px 10px; font-weight: 700; color: #111; border-bottom: 1px solid var(--color-gray20); border-right: none; border-left: none; vertical-align: middle;">Warehousing<br>(CDC)</th>
+                                    <th style="padding: 24px 0; color: var(--color-gray70); width: 20px; border-bottom: 1px solid var(--color-gray20); border-right: none; border-left: none; vertical-align: middle;">→</th>
+                                    <th style="padding: 24px 10px; font-weight: 700; color: #111; border-bottom: 1px solid var(--color-gray20); border-right: none; border-left: none; vertical-align: middle;">Warehousing<br>(RDC)</th>
+                                    <th style="padding: 24px 0; color: var(--color-gray70); width: 20px; border-bottom: 1px solid var(--color-gray20); border-right: none; border-left: none; vertical-align: middle;">→</th>
+                                    <th style="padding: 24px 10px; font-weight: 700; color: #111; border-bottom: 1px solid var(--color-gray20); border-right: none; border-left: none; vertical-align: middle;">Distribution<br>& Delivery</th>
+                                    <th style="padding: 24px 0; color: var(--color-gray70); width: 20px; border-bottom: 1px solid var(--color-gray20); border-right: none; border-left: none; vertical-align: middle;">→</th>
+                                    <th style="padding: 24px 10px; font-weight: 700; color: #111; border-bottom: 1px solid var(--color-gray20); border-right: none; border-left: none; vertical-align: middle;">Customer<br>Touchpoint</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- First Row: Smart Factory -->
+                                <tr>
+                                    <td colspan="2" style="background: #fff; padding: 25px; border: none;"></td>
+                                    <td colspan="5" style="background: #F0F9FF; padding: 30px; text-align: left; vertical-align: middle; border: none;">
+                                        <h4 style="font-weight: 700; color: #0077E6; margin-bottom: 12px; font-size: 1.15rem;">제조물류 (Smart Factory Logistics)</h4>
+                                        <p style="font-weight: 700; color: #111; margin-bottom: 8px; font-size: 1.05rem;">AMR · AFL · TAMS</p>
+                                        <p style="color: #475569; font-size: 0.95rem; margin: 0;">로봇·관제 기반 공정 간 자재 이송 자동화</p>
+                                    </td>
+                                    <td colspan="6" style="background: #fff; padding: 25px; border: none;"></td>
+                                </tr>
+                                <!-- Second Row: Smart Distribution -->
+                                <tr>
+                                    <td colspan="6" style="background: #fff; padding: 25px; border: none;"></td>
+                                    <td colspan="5" style="background: #FFF0F5; padding: 30px; text-align: left; vertical-align: middle; border: none;">
+                                        <h4 style="font-weight: 700; color: #D72828; margin-bottom: 12px; font-size: 1.15rem;">유통물류 (Smart Distribution Logistics)</h4>
+                                        <p style="font-weight: 700; color: #111; margin-bottom: 8px; font-size: 1.05rem;">AMR · EPT · TAMS + WMS · OMS · TMS</p>
+                                        <p style="color: #475569; font-size: 0.95rem; margin: 0;">물류센터 전 과정 디지털 자동화</p>
+                                    </td>
+                                    <td colspan="2" style="background: #fff; padding: 25px; border: none;"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. 산업별 적용 요약 -->
+        <section class="section-padding">
+            <div class="container fade-in-section">
+                <div class="section-header text-center" style="margin-bottom: 50px;">
+                    <h2 class="font-set-intro-title">산업별 적용 요약</h2>
+                </div>
+
+                <div class="fade-in-up" style="background: #fff; border-radius: 12px; overflow: hidden; border: 1px solid var(--color-gray20);">
+                    <table class="diff-table" style="width: 100%; border: none; outline: none; word-break: keep-all;">
+                        <thead>
+                            <tr style="background: var(--color-gray05);">
+                                <th class="font-set-table-header" style="text-align: left; padding: 16px 24px;">산업</th>
+                                <th class="font-set-table-header" style="text-align: left; padding: 16px 24px;">주요 제품 조합</th>
+                                <th class="font-set-table-header" style="text-align: left; padding: 16px 24px;">대표 레퍼런스</th>
+                                <th class="font-set-table-header" style="text-align: left; padding: 16px 24px;">하이라이트</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="font-weight: 700; color: #111; padding: 16px 24px; text-align: left;">자동차</td>
+                                <td style="padding: 16px 24px; text-align: left;">AMR + AFL + TAMS</td>
+                                <td style="padding: 16px 24px; text-align: left;">글로벌 OEM 전기차 공장</td>
+                                <td style="padding: 16px 24px; text-align: left;">업계 최대 단일 사이트(188대), 글로벌 표준 플랫폼</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 700; color: #111; padding: 16px 24px; text-align: left;">배터리·에너지</td>
+                                <td style="padding: 16px 24px; text-align: left;">AMR + AFL + TAMS + WMS</td>
+                                <td style="padding: 16px 24px; text-align: left;">2차전지·태양광 제조기업</td>
+                                <td style="padding: 16px 24px; text-align: left;">국내외 다수 공장 Roll-out</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 700; color: #111; padding: 16px 24px; text-align: left;">반도체·전자</td>
+                                <td style="padding: 16px 24px; text-align: left;">AFL + TAMS + TMS</td>
+                                <td style="padding: 16px 24px; text-align: left;">글로벌 반도체 기업</td>
+                                <td style="padding: 16px 24px; text-align: left;">72시간 무정지·무에러, 99.58% 가동률</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 700; color: #111; padding: 16px 24px; border-bottom: none; text-align: left;">식음료·소비재</td>
+                                <td style="padding: 16px 24px; border-bottom: none; text-align: left;">Robot + TAMS + SW</td>
+                                <td style="padding: 16px 24px; border-bottom: none; text-align: left;">식음료 대기업, 유통사</td>
+                                <td style="padding: 16px 24px; border-bottom: none; text-align: left;">협소 공간 무인화, 통합 물류정보시스템</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                    
+                <div class="text-center" style="margin-top: 28px;">
+                    <a href="reference.html" class="btn-primary" style="font-family: var(--font-heading); font-size: 0.875rem; letter-spacing: 0.01em; padding: 0 24px;">산업별 상세 사례 보기 <i class="fa-solid fa-arrow-right ml-1" style="font-size: 0.8em;"></i></a>
+                </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. Why MOBYUS -->
+        <section class="section-padding bg-light">
+            <div class="container fade-in-section">
+                <div class="section-header text-center" style="margin-bottom: 50px;">
+                    <h2 class="font-set-intro-title">Why MOBYUS — 차별점</h2>
+                    <p class="font-set-intro-ko" style="margin-top: 12px;">왜 세계적인 기업들이 MOBYUS를 선택할까요?</p>
+                </div>
+
+                <div class="fade-in-up" style="background: #fff; border-radius: 12px; overflow: hidden; border: 1px solid var(--color-gray20);">
+                    <table class="diff-table" style="width: 100%; border: none; outline: none; word-break: keep-all;">
+                        <thead>
+                            <tr style="background: var(--color-gray05);">
+                                <th class="font-set-table-header" style="text-align: left; padding: 16px 24px;">경쟁 유형</th>
+                                <th class="font-set-table-header" style="text-align: left; padding: 16px 24px;">한계</th>
+                                <th class="font-set-table-header col-mobyus" style="text-align: left; padding: 16px 24px;">MOBYUS의 답</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="padding: 16px 24px; text-align: left;">로봇만 파는 회사</td>
+                                <td style="padding: 16px 24px; text-align: left;">End-to-End 최적화 불가. 관제·물류SW는 타사 의존.</td>
+                                <td class="col-mobyus" style="font-weight: 700; color: var(--color-br900); padding: 16px 24px; text-align: left;">Robot + TAMS + Logistics SW 풀 스택</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 16px 24px; text-align: left;">SW만 파는 회사</td>
+                                <td style="padding: 16px 24px; text-align: left;">물리적 실행 레이어 없음. 로봇 제어 경험 부재.</td>
+                                <td class="col-mobyus" style="font-weight: 700; color: var(--color-br900); padding: 16px 24px; text-align: left;">자사 로봇으로 Physical Layer 완결</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 16px 24px; border-bottom: none; text-align: left;">SI 프로젝트 중심</td>
+                                <td style="padding: 16px 24px; border-bottom: none; text-align: left;">일회성 구축. 확장성·반복성 부족.</td>
+                                <td class="col-mobyus" style="font-weight: 700; color: var(--color-br900); padding: 16px 24px; border-bottom: none; text-align: left;">제품 기반 + 산업별 템플릿으로 반복 확산</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Summary Box -->
+                <div class="fade-in-up" style="margin-top: 30px; padding: 28px; background: rgba(124, 11, 71, 0.05); border-radius: 12px; text-align: center;">
+                    <p style="font-size: 1.05rem; color: #333; line-height: 1.6; word-break: keep-all; margin: 0;">
+                        MOBYUS는 물리적 실행(Layer 1)부터 디지털 제어 및 통합 가시성(Layer 2+3)까지<br>
+                        <strong style="color: #111; font-size: 1.15rem;">모든 핵심 블록을 자사 제품으로 채울 수 있는 물류 자동화 전문 기업입니다.</strong>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== 하단 3단 배너 ===== -->
+        <section class="bottom-nav-banner" style="margin-top: 200px;">
+            <div class="container fade-in-section">
+                <div class="bnb-grid">
+                    <!-- 1. Fit Check (강조) -->
+                    <a href="fit-check.html" class="bnb-card bnb-card--accent">
+                        <div class="bnb-text">
+                            <span class="bnb-label">Fit Check</span>
+                            <span class="bnb-title">우리 현장, 자동화가 가능할까?</span>
+                        </div>
+                        <div class="bnb-arrow" style="background: #fff; color: var(--color-br900);">
+                            <i class="fas fa-chevron-right"></i>
+                        </div>
+                    </a>
+
+                    <!-- 2. 문의하기 -->
+                    <a href="contact.html" class="bnb-card">
+                        <div class="bnb-text">
+                            <span class="bnb-label">문의하기</span>
+                            <span class="bnb-title">맞춤 솔루션 상담</span>
+                        </div>
+                        <div class="bnb-arrow">
+                            <i class="fas fa-chevron-right"></i>
+                        </div>
+                    </a>
+
+                    <!-- 3. 사례 보기 -->
+                    <a href="reference.html" class="bnb-card">
+                        <div class="bnb-text">
+                            <span class="bnb-label">사례 보기</span>
+                            <span class="bnb-title">산업별 적용 사례 보기</span>
+                        </div>
+                        <div class="bnb-arrow">
+                            <i class="fas fa-chevron-right"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer id="footer"></footer>
+
+    <!-- Scripts -->
+    <script src="scripts/main.js"></script>
+</body>
+
+</html>

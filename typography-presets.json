@@ -1,0 +1,78 @@
+{
+    "_readme": "타이포그래피 프리셋 파일 — 세트 이름을 부르면 각 영역에 해당 옵션을 적용합니다.",
+    "_unit_guide": {
+        "pt_to_px": "1pt = 1.333px (96dpi 기준)",
+        "pt_to_rem": "px ÷ 16 = rem (root 16px 기준)",
+        "line_height": "행간(pt) ÷ 폰트크기(pt) = line-height 비율"
+    },
+    "presets": {
+        "Hero-SB48": {
+            "_description": "Hero 대제목 기준 세트 — 자율을 실현하다",
+            "_created": "2026-03-09",
+            "zones": {
+                "hero_title": {
+                    "label": "Hero 대제목 (예: 자율을 실현하다)",
+                    "selector": ".product-hero-title",
+                    "figma": {
+                        "font_weight": "Semibold",
+                        "font_size_pt": 40,
+                        "line_height_pt": 60,
+                        "letter_spacing_pt": 0
+                    },
+                    "css": {
+                        "font-weight": "600",
+                        "font-size": "2.5rem",
+                        "line-height": "1.5",
+                        "letter-spacing": "0"
+                    }
+                },
+                "hero_tagline": {
+                    "label": "Hero 태그라인 (예: Autonomy in Action)",
+                    "selector": ".product-hero-tagline",
+                    "figma": {
+                        "font_weight": "Regular",
+                        "font_size_pt": 24,
+                        "line_height_pt": 42,
+                        "letter_spacing_pt": 0
+                    },
+                    "css": {
+                        "font-weight": "400",
+                        "font-size": "1.5rem",
+                        "line-height": "1.75",
+                        "letter-spacing": "0"
+                    }
+                },
+                "hero_sub_ko": {
+                    "label": "Hero 서브텍스트 — 한국어 (예: 현장 자동화를 위한 최첨단 로봇 라인업.)",
+                    "selector": ".product-hero-sub-ko",
+                    "figma": {
+                        "font_weight": "Medium",
+                        "font_size_pt": 20,
+                        "line_height_pt": 32,
+                        "letter_spacing_pt": 0
+                    },
+                    "css": {
+                        "font-weight": "500",
+                        "font-size": "1.25rem",
+                        "line-height": "1.6"
+                    }
+                },
+                "hero_sub_en": {
+                    "label": "Hero 서브텍스트 — 영문 (예: Advanced robot lineup...)",
+                    "selector": ".product-hero-sub-en",
+                    "figma": {
+                        "font_weight": "Regular",
+                        "font_size_pt": 18,
+                        "line_height_pt": 32,
+                        "letter_spacing_pt": 0
+                    },
+                    "css": {
+                        "font-weight": "400",
+                        "font-size": "1.125rem",
+                        "line-height": "1.778"
+                    }
+                }
+            }
+        }
+    }
+}

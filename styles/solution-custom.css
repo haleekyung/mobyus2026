@@ -1,0 +1,406 @@
+/* --- Total Solution specific styles (Redesign) --- */
+
+.ts-page {
+    background-color: #fcfcfc;
+}
+
+/* 3-Layer Section */
+.ts-layer-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+.ts-layer-table th {
+    background-color: #fdf2f8; /* Light pink/burgundy touch */
+    border-top: 2px solid #800040;
+    border-bottom: 1px solid #e5e7eb;
+    padding: 16px 20px;
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: #111;
+    text-align: left;
+}
+.ts-layer-table td {
+    padding: 16px 20px;
+    border-bottom: 1px solid #e5e7eb;
+    color: #4b5563;
+    font-size: 1rem;
+}
+.ts-layer-table tbody tr:last-child td {
+    border-bottom: none;
+}
+.ts-layer-table th:nth-child(1), .ts-layer-table td:nth-child(1) { width: 12%; text-align: center; } /* Layer */
+.ts-layer-table th:nth-child(2), .ts-layer-table td:nth-child(2) { width: 20%; font-weight: 700; color: #111;} /* 이름 */
+.ts-layer-table th:nth-child(3), .ts-layer-table td:nth-child(3) { width: 30%; } /* 역할 */
+.ts-layer-table th:nth-child(4), .ts-layer-table td:nth-child(4) { width: 25%; } /* 포함 제품 */
+.ts-layer-table th:nth-child(5), .ts-layer-table td:nth-child(5) { width: 13%; color: #6b7280; font-size: 0.95rem; } /* 비주얼 톤 */
+
+
+/* Building Blocks Container */
+.ts-blocks-container {
+    background: #f8fafc;
+    border-radius: 20px;
+    padding: 60px;
+    margin-bottom: 80px;
+}
+
+/* Combinations layout */
+.ts-combo-card {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    margin-bottom: 40px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+}
+
+.ts-combo-header {
+    padding: 40px;
+    border-bottom: 1px solid #e2e8f0;
+}
+.ts-combo-header h4 {
+    font-family: var(--font-heading);
+    color: #64748b;
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 8px;
+    display: flex;
+    flex-direction: column;
+}
+.ts-combo-header h4 .combo-num {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+.ts-combo-header h3 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 0;
+}
+
+/* Data Table variations inside Combo Cards */
+.ts-data-table {
+    width: 100%;
+    margin-bottom: 30px;
+    border-collapse: collapse;
+}
+.ts-data-table th {
+    background: #f1f5f9;
+    padding: 12px 16px;
+    font-weight: 600;
+    color: #334155;
+    border-bottom: 1px solid #e2e8f0;
+    text-align: left;
+}
+.ts-data-table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid #f1f5f9;
+    color: #475569;
+}
+.ts-data-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Combination 4 Flagship Styling */
+.ts-combo-4 {
+    border: 2px solid #800040;
+    position: relative;
+    box-shadow: 0 10px 40px rgba(128,0,64,0.1);
+}
+.ts-combo-4-flag {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #800040;
+    color: white;
+    padding: 8px 24px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    border-bottom-left-radius: 12px;
+    letter-spacing: 0.05em;
+    font-family: var(--font-heading);
+}
+.ts-combo-4 .ts-combo-header {
+    background: #800040;
+    border-bottom: none;
+}
+.ts-combo-4 .ts-combo-header h4 { color: rgba(255,255,255,0.8); }
+.ts-combo-4 .ts-combo-header h4 .combo-num { color: #f9a8d4; }
+.ts-combo-4 .ts-combo-header h3 { color: #fff; }
+
+
+/* Colored Square markers */
+.sq-box { display: inline-block; width: 14px; height: 14px; border-radius: 3px; margin-right: 8px; vertical-align: middle; }
+.sq-red { background: #ef4444; }
+.sq-orange { background: #f97316; }
+.sq-yellow { background: #eab308; }
+.sq-green { background: #22c55e; }
+.sq-blue { background: #3b82f6; }
+.sq-purple { background: #a855f7; }
+
+/* Badges */
+.ts-badge { padding: 4px 10px; border-radius: 4px; font-size: 0.85rem; font-weight: 600; display: inline-block; }
+.ts-badge-req { background: #dcfce7; color: #166534; } /* 필수 */
+.ts-badge-rec { background: #f1f5f9; color: #475569; } /* 권장 */
+.ts-badge-opt { background: #f8fafc; color: #64748b; } /* 선택 */
+
+/* Supply Chain Section */
+.sc-container {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 40px;
+    margin-bottom: 80px;
+}
+.sc-flow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f8fafc;
+    padding: 20px 30px;
+    border-radius: 12px;
+    margin-bottom: 24px;
+}
+.sc-step {
+    text-align: center;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #475569;
+    position: relative;
+    padding: 0 10px;
+}
+.sc-arrow {
+    color: #cbd5e1;
+    font-size: 1.2rem;
+}
+
+/* Why MOBYUS & Industry Uses tables */
+.ts-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 40px;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    border: 1px solid #e5e7eb;
+}
+.ts-table th {
+    background: #f8fafc;
+    padding: 16px 24px;
+    font-weight: 700;
+    color: #111;
+    border-bottom: 1px solid #e5e7eb;
+    text-align: left;
+}
+.ts-table td {
+    padding: 16px 24px;
+    border-bottom: 1px solid #f1f5f9;
+    color: #4b5563;
+}
+.ts-why-table th { background: #fdf2f8; color: #800040; border-top: 2px solid #800040; }
+.ts-why-table td:first-child { font-weight: 700; color: #111; background: #fafaf9; width: 25%; }
+
+/* CTA Area */
+.ts-cta-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 40px;
+}
+.ts-cta-card {
+    background: white;
+    border: 1px solid #e5e7eb;
+    padding: 30px;
+    border-radius: 16px;
+    text-align: center;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+}
+.ts-cta-card:hover {
+    border-color: #800040;
+    box-shadow: 0 10px 30px rgba(128,0,64,0.08);
+    transform: translateY(-4px);
+}
+.ts-cta-en { font-family: var(--font-heading); font-size: 0.9rem; color: #6b7280; display: block; margin-bottom: 8px; }
+.ts-cta-ko { font-size: 1.2rem; font-weight: 700; color: #800040; display: block; }
+
+/* 3-Layer blocks (List styling) */
+.layer-block-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.layer-block-item {
+    display: flex;
+    padding: 15px 20px;
+    border-bottom: 1px solid #e2e8f0;
+    align-items: center;
+    background: #fff;
+}
+.layer-block-item:first-child { border-top-left-radius: 12px; border-top-right-radius: 12px; }
+.layer-block-item:last-child { border-bottom: none; border-bottom-left-radius: 12px; border-bottom-right-radius: 12px; }
+.lbi-icon { width: 30px; }
+.lbi-title { width: 120px; font-weight: 700; color: #111; }
+.lbi-sub { width: 200px; color: #64748b; font-size: 0.95rem; }
+.lbi-desc { flex: 1; color: #334155; }
+.layer-title-bar {
+    padding: 12px 20px;
+    border-radius: 8px 8px 0 0;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.ltb-3 { background: #800040; } /* Vis */
+.ltb-2 { background: #0056b3; } /* DT */
+.ltb-1 { background: #333333; } /* Phys */
+.layer-block-group {
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    margin-bottom: 30px;
+    border: 1px solid #e2e8f0;
+}
+
+/* Table global font size override */
+.ts-page .diff-table th,
+.ts-page .diff-table td {
+    font-size: 18px !important;
+}
+
+@media (max-width: 768px) {
+    .ts-page .diff-table th,
+    .ts-page .diff-table td {
+        font-size: 14px !important;
+        padding: 10px 4px !important;
+    }
+}
+
+.font-size-20 {
+    font-size: 20px !important;
+}
+
+/* Combination Card Headers */
+.ts-combo-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-gray90);
+    margin: 0 0 12px 0;
+}
+.ts-combo-subtitle-ko {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--color-gray90);
+    margin: 0 0 4px 0;
+}
+.ts-combo-subtitle-en {
+    font-family: var(--font-heading);
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--color-gray70);
+    margin: 0;
+}
+
+/* Combo 4 Dark Theme */
+.combo-theme-dark {
+    background: var(--color-br900) !important;
+}
+.combo-theme-dark .ts-combo-title,
+.combo-theme-dark .ts-combo-subtitle-ko,
+.combo-theme-dark .ts-combo-subtitle-en {
+    color: #fff !important;
+}
+
+/* ==========================================================================
+   Floating Quick Navigation
+   ========================================================================== */
+.quick-nav {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 1000;
+}
+
+.nav-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid var(--color-gray20);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    color: var(--color-gray90);
+    backdrop-filter: blur(8px);
+    opacity: 0;
+    pointer-events: none;
+    padding: 0;
+}
+
+.nav-btn.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.nav-btn i {
+    font-size: 1.1rem;
+    margin-bottom: 2px;
+}
+
+.nav-btn span {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+}
+
+.nav-btn:hover {
+    background: var(--color-br900);
+    color: #fff;
+    border-color: var(--color-br900);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(124, 11, 71, 0.25);
+}
+
+.nav-btn#btn-prev {
+    background: rgba(124, 11, 71, 0.05);
+    border-color: rgba(124, 11, 71, 0.2);
+    color: var(--color-br900);
+}
+
+.nav-btn#btn-prev:hover {
+    background: var(--color-br900);
+    color: #fff;
+}
+
+@media (max-width: 768px) {
+    .quick-nav {
+        bottom: 24px;
+        right: 24px;
+        gap: 8px;
+    }
+    .nav-btn {
+        width: 50px;
+        height: 50px;
+    }
+    .nav-btn i {
+        font-size: 1rem;
+    }
+    .nav-btn span {
+        font-size: 0.6rem;
+    }
+}
+

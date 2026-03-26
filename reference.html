@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reference - MOBYUS</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&family=Pretendard+Variable:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <style>
+        @media (max-width: 768px) {
+            .world-map-wrapper {
+                clip-path: inset(0 0 30px 0) !important;
+                margin-bottom: -30px !important;
+            }
+        }
+
+        .font-en {
+            font-family: 'Outfit', sans-serif !important;
+        }
+
+
+        body.lang-en {
+            font-family: 'Outfit', 'Pretendard Variable', sans-serif !important;
+        }
+
+        /* English Filter Tab Optimization */
+        body.lang-en .filter-tabs {
+            gap: 8px !important;
+            flex-wrap: nowrap !important;
+            justify-content: center !important;
+        }
+
+        body.lang-en .filter-tab {
+            padding: 10px 16px !important;
+            font-size: 0.85rem !important;
+            letter-spacing: -0.02em !important;
+            white-space: nowrap !important;
+        }
+
+        @media (max-width: 1200px) {
+            body.lang-en .filter-container {
+                overflow-x: auto;
+                padding-bottom: 10px;
+                justify-content: flex-start !important;
+            }
+            body.lang-en .filter-tabs {
+                justify-content: flex-start !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header id="gnb"></header>
+
+    <main>
+        <section class="global-hero"
+            style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/hero_reference_premium.png'); background-size: cover; background-position: center;">
+
+            <div class="global-hero-inner fade-in">
+                <p class="global-hero-category font-en" data-i18n="reference.hero.category">Reference</p>
+                <div class="hero-title-row">
+                    <h1 class="global-hero-title" data-i18n="reference.hero.title">성공으로 증명하는 가치</h1>
+                    <p class="global-hero-tagline font-en" data-i18n="reference.hero.tagline">Scale & Excellence</p>
+                </div>
+                <p class="global-hero-sub-ko mt-3" data-i18n="reference.hero.sub_ko">전 세계 현장 데이터가 증명하는 MOBYUS의 완벽한 자율 운영 레퍼런스</p>
+                <p class="global-hero-sub-en" data-i18n="reference.hero.sub_en">Proving technology value through success — MOBYUS powers logistics across
+                    the globe</p>
+            </div>
+        </section>
+
+        <!-- Global Map Section -->
+        <section class="overview-section" style="padding-top: 100px; padding-bottom: 100px; background: #fff">
+            <div class="container fade-in-section">
+                <div class="section-header text-center" style="margin-bottom: 80px">
+                    <h2 class="font-set-intro-title" data-i18n="reference.map.title">Global Presence</h2>
+                    <p class="font-set-intro-ko" style="margin-top: 24px;" data-i18n="reference.map.sub">MOBYUS는 전 세계 12개국 이상의 현장에서 990+대의 로봇을 안정적으로 운영하며<br>글로벌 물류 혁신을 선도하고 있습니다.</p>
+                </div>
+
+                <div class="map-container" style="display: flex; justify-content: center; position: relative;">
+                    <div class="world-map-wrapper"
+                        style="position: relative; width: 100%; max-width: 1200px; border-radius: 20px; overflow: hidden; clip-path: inset(0 0 70px 0); margin-bottom: -70px;">
+                        <img src="images/map_global.png" alt="Global Presence Map"
+                            style="width: 100%; height: auto; display: block;">
+
+                        <!-- Pins -->
+                        <div class="map-pin pin-kr pin-both">
+                            <div class="pin-tooltip" data-i18n="reference.map.pin.kr"><strong>대한민국</strong>2019–현재 / 자동차·배터리·반도체·태양광·식음료·유통·소비재 외 /
+                                AMR·AFL·TAMS·WMS·OMS·TMS
+                            </div>
+                        </div>
+                        <div class="map-pin pin-us pin-both">
+                            <div class="pin-tooltip" data-i18n="reference.map.pin.us"><strong>미국</strong>2020–현재 / 자동차·배터리·농기계 / AMR·AFL·AGV·WMS</div>
+                        </div>
+                        <div class="map-pin pin-br pin-robot">
+                            <div class="pin-tooltip" data-i18n="reference.map.pin.br"><strong>브라질</strong>2022–2023 / 자동차 / AMR</div>
+                        </div>
+                        <div class="map-pin pin-cn pin-both">
+                            <div class="pin-tooltip" data-i18n="reference.map.pin.cn"><strong>중국</strong>2021–현재 / 배터리·제조 / AMR·AFL·WMS</div>
+                        </div>
+                        <div class="map-pin pin-pl pin-robot tooltip-bottom">
+                            <div class="pin-tooltip" data-i18n="reference.map.pin.pl"><strong>폴란드</strong>2019–현재 / 배터리 / AGV</div>
+                        </div>
+                        <div class="map-pin pin-sa pin-robot">
+                            <div class="pin-tooltip" data-i18n="reference.map.pin.sa"><strong>사우디</strong>2025 / 자동차 / AMR</div>
+                        </div>
+                        <div class="map-pin pin-cz pin-robot">
+                            <div class="pin-tooltip" data-i18n="reference.map.pin.cz"><strong>체코</strong>2022 / 자동차(부품) / AGV</div>
+                        </div>
+                        <div class="map-pin pin-fr pin-robot">
+                            <div class="pin-tooltip" data-i18n="reference.map.pin.fr"><strong>프랑스</strong>2022 / 배터리 / AMR</div>
+                        </div>
+                        <div class="map-pin pin-se pin-robot tooltip-bottom">
+                            <div class="pin-tooltip" data-i18n="reference.map.pin.se"><strong>스웨덴</strong>2022 / 배터리 / AMR</div>
+                        </div>
+                        <div class="map-pin pin-tr pin-robot">
+                            <div class="pin-tooltip" data-i18n="reference.map.pin.tr"><strong>튀르키예</strong> —</div>
+                        </div>
+                        <div class="map-pin pin-in pin-robot">
+                            <div class="pin-tooltip" data-i18n="reference.map.pin.in"><strong>인도</strong> —</div>
+                        </div>
+                        <div class="map-pin pin-vn pin-sw">
+                            <div class="pin-tooltip" data-i18n="reference.map.pin.vn"><strong>베트남</strong>2016–현재 / 식품 유통 / OMS·WMS·TMS·VMS</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="industry-cases" class="section-padding" style="padding-top: 100px; background: #fff;">
+            <div class="container fade-in-section">
+                <div class="section-header text-center" style="margin-bottom: 60px;">
+                    <h2 class="font-set-intro-title" data-i18n="reference.cases.title">Industry Cases</h2>
+                    <p class="font-set-intro-ko" style="margin-top: 24px;" data-i18n="reference.cases.sub">6개 산업군 적용 사례를 확인해보세요.</p>
+                </div>
+
+                <!-- Filter Tabs -->
+                <div class="filter-container">
+                    <!-- Populated by JS: .filter-tabs -->
+                </div>
+
+                <div class="case-grid">
+                    <!-- Dynamically populated by main.js inlined -->
+                </div>
+
+                <!-- Pagination -->
+                <div class="pagination-container" style="margin-top: 80px; display: flex; justify-content: center;">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    <footer id="contact"></footer>
+
+    <script>
+        /**
+         * MOBYUS Reference Page Localization & Logic (Self-Contained)
+         */
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Helper: Safe localStorage ---
+            const safeStorage = {
+                getItem: (key) => { try { return localStorage.getItem(key); } catch (e) { return null; } },
+                setItem: (key, value) => { try { localStorage.setItem(key, value); } catch (e) { } }
+            };
+
+            const DEFAULT_LANG = 'ko';
+            function getLanguage() { return safeStorage.getItem('preferredLanguage') || DEFAULT_LANG; }
+
+            // --- Translation Data ---
+            const i18nData = {
+                ko: {
+                    "nav.products": "Products & Solution",
+                    "nav.reference": "Reference",
+                    "nav.insights": "Insights",
+                    "nav.aboutus": "About Us",
+                    "nav.contact": "Contact",
+                    "reference.hero.category": "Reference",
+                    "reference.hero.title": "성공으로 증명하는 가치",
+                    "reference.hero.tagline": "Scale & Excellence",
+                    "reference.hero.sub_ko": "전 세계 현장 데이터가 증명하는 MOBYUS의 완벽한 자율 운영 레퍼런스",
+                    "reference.hero.sub_en": "Proving technology value through success — MOBYUS powers logistics across the globe",
+                    "reference.map.title": "Global Presence",
+                    "reference.map.sub": "MOBYUS는 전 세계 12개국 이상의 현장에서 990+대의 로봇을 안정적으로 운영하며<br>글로벌 물류 혁신을 선도하고 있습니다.",
+                    "reference.map.pin.kr": "<strong>대한민국</strong>2019–현재 / 자동차·배터리·반도체·태양광·식음료·유통·소비재 외 / AMR·AFL·TAMS·WMS·OMS·TMS",
+                    "reference.map.pin.us": "<strong>미국</strong>2020–현재 / 자동차·배터리·농기계 / AMR·AFL·AGV·WMS",
+                    "reference.map.pin.br": "<strong>브라질</strong>2022–2023 / 자동차 / AMR",
+                    "reference.map.pin.cn": "<strong>중국</strong>2021–현재 / 배터리·제조 / AMR·AFL·WMS",
+                    "reference.map.pin.pl": "<strong>폴란드</strong>2019–현재 / 배터리 / AGV",
+                    "reference.map.pin.sa": "<strong>사우디</strong>2025 / 자동차 / AMR",
+                    "reference.map.pin.cz": "<strong>체코</strong>2022 / 자동차(부품) / AGV",
+                    "reference.map.pin.fr": "<strong>프랑스</strong>2022 / 배터리 / AMR",
+                    "reference.map.pin.se": "<strong>스웨덴</strong>2022 / 배터리 / AMR",
+                    "reference.map.pin.tr": "<strong>튀르키예</strong> —",
+                    "reference.map.pin.in": "<strong>인도</strong> —",
+                    "reference.map.pin.vn": "<strong>베트남</strong>2016–현재 / 식품 유통 / OMS·WMS·TMS·VMS",
+                    "reference.cases.title": "Industry Cases",
+                    "reference.cases.sub": "6개 산업군 적용 사례를 확인해보세요.",
+                    "reference.filter.all": "전체",
+                    "reference.filter.auto": "자동차",
+                    "reference.filter.battery": "배터리·에너지",
+                    "reference.filter.semi": "반도체·전자",
+                    "reference.filter.food": "식음료·제조",
+                    "reference.filter.dist": "유통·풀필먼트",
+                    "reference.filter.fashion": "패션·소비재",
+                    "reference.pagination.prev": '<i class="fas fa-arrow-left"></i> 이전',
+                    "reference.pagination.next": '다음 <i class="fas fa-arrow-right"></i>',
+                    "reference.no_results": "해당하는 사례가 없습니다.",
+                    "reference.no_results_with_tag": "<strong>'{{tag}}'</strong> 솔루션이 포함된 해당하는 사례가 없습니다.",
+                    // Case Study Strings (KOR)
+                    "case.auto-1.title": "현대자동차 글로벌 EV 생산 거점 무인화",
+                    "case.auto-1.desc": "글로벌 6개국 이상의 생산 현장에서 300대 이상의 로봇을 TAMS로 통합 관제하여 혁신적인 생산 유연성을 확보했습니다.",
+                    "case.auto-1.cust": "현대자동차",
+                    "case.auto-1.h1": "단일 사이트 188대 최대 규모",
+                    "case.auto-1.h2": "글로벌 표준 관제 시스템 구축",
+                    "case.auto-2.title": "현대모비스 해외 부품 공장 자동화",
+                    "case.auto-2.desc": "미국 및 체코 등 해외 주요 거점에 200대 이상의 자율 주행 로봇을 도입하여 부품 공급 효율을 극대화했습니다.",
+                    "case.auto-2.cust": "현대모비스",
+                    "case.auto-2.h1": "해외 거점 200대+ 도입",
+                    "case.auto-2.h2": "이기종 로봇 통합 제어",
+                    "case.batt-1.title": "LG에너지솔루션 해외 배터리 공장 자동화",
+                    "case.batt-1.desc": "폴란드와 중국 공장에 120대 이상의 AGV를 도입하여 배터리 셀 제조 공정의 물류 흐름을 자동화했습니다.",
+                    "case.batt-1.cust": "LG에너지솔루션",
+                    "case.batt-1.h1": "해외 공장 120대+ 통합 운영",
+                    "case.batt-1.h2": "24시간 무중단 자재 공급",
+                    "case.batt-2.title": "SK온 해외 배터리 생산 라인 자동화",
+                    "case.batt-2.desc": "중국 및 미국 생산 거점에 85대 이상의 AMR을 도입하여 배터리 제조 공정 물류를 지능화했습니다.",
+                    "case.batt-2.cust": "SK온",
+                    "case.batt-2.h1": "글로벌 거점 85대+ 도입",
+                    "case.batt-2.h2": "정밀 반송 솔루션 적용",
+                    "case.batt-3.title": "한화큐셀 태양광 모듈 생산 풀스택 자동화",
+                    "case.batt-3.desc": "로봇 관제(TAMS)와 창고관리시스템(WMS)을 유기적으로 결합하여 자재 입고부터 생산 투입까지 전 과정을 자동화했습니다.",
+                    "case.batt-3.cust": "한화큐셀",
+                    "case.batt-3.h1": "로봇 + WMS 복합 구축",
+                    "case.batt-3.h2": "자재 흐름 가시성 100% 확보",
+                    "case.batt-4.title": "Verkor 배터리 기가팩토리 AMR 도입",
+                    "case.batt-4.desc": "유럽 신흥 배터리 강자 Verkor의 생산 라인에 정밀 이송을 위한 AMR 솔루션을 공급했습니다.",
+                    "case.batt-4.cust": "Verkor",
+                    "case.batt-4.h1": "유럽 기가팩토리 레퍼런스",
+                    "case.batt-4.h2": "정밀 가이던스 기술 적용",
+                    "case.batt-5.title": "Northvolt 배터리 생산 공정 자동화",
+                    "case.batt-5.desc": "유럽 최대 배터리 제조사인 Northvolt 생산 현장에 자율 주행 로봇 솔루션을 도입했습니다.",
+                    "case.batt-5.cust": "Northvolt",
+                    "case.batt-5.h1": "유럽 핵심 배터리 제조사 공급",
+                    "case.batt-5.h2": "글로벌 기술 경쟁력 입증",
+                    "case.semi-1.title": "삼성전자 반도체 부문 TAMS 전사 표준 채택",
+                    "case.semi-1.desc": "반도체 생산 현장의 수백 대 로봇 운용을 위한 통합 관제 표준 플랫폼으로 TAMS가 채택되어 전사 확산 중입니다.",
+                    "case.semi-1.cust": "삼성전자",
+                    "case.semi-1.h1": "반도체 공정 표준 관제 채택",
+                    "case.semi-1.h2": "확장 가능한 아키텍처 구현",
+                    "case.semi-2.title": "LG전자 캘리포니아 물류센터 AMR 도입",
+                    "case.semi-2.desc": "미국 캘리포니아 가전 물류 거점에 자율 주행 로봇을 도입하여 피킹 및 이송 효율을 극대화했습니다.",
+                    "case.semi-2.cust": "LG전자",
+                    "case.semi-2.h1": "북미 물류 거점 자동화",
+                    "case.semi-2.h2": "이송 효율 대폭 개선",
+                    "case.semi-3.title": "서울반도체 LED 제조 통합 물류 관리",
+                    "case.semi-3.desc": "LED 생산 및 유통 과정의 투명성을 확보하기 위한 지능형 창고 관리 시스템(WMS)을 구축했습니다.",
+                    "case.semi-3.cust": "서울반도체",
+                    "case.semi-3.h1": "재고 정확도 향상",
+                    "case.semi-3.h2": "실시간 물류 가시성 확보",
+                    "case.semi-4.title": "세메스 반도체 장비 부품 통합 물류 고도화",
+                    "case.semi-4.desc": "정밀 부품의 입출고 및 재고 관리를 위해 WMS 2차 고도화를 진행하여 반도체 장비 제조 경쟁력을 높였습니다.",
+                    "case.semi-4.cust": "세메스",
+                    "case.semi-4.h1": "2차 고도화 프로젝트 완료",
+                    "case.semi-4.h2": "부품 오피킹 제로화",
+                    "case.food-1.title": "하림그룹 가금류·사료 통합 물류 시스템",
+                    "case.food-1.desc": "자재 입고부터 주문, 배송까지 아우르는 통합 물류 SW 플랫폼을 구축하여 전사 운영 효율을 개선했습니다.",
+                    "case.food-1.cust": "하림그룹",
+                    "case.food-1.h1": "OMS·WMS·TMS 통합 구축",
+                    "case.food-1.h2": "신선식품 물류 체계 최적화",
+                    "case.food-2.title": "신세계푸드 전국 통합 물류 인프라",
+                    "case.food-2.desc": "전국 23개 물류 거점의 주문부터 재고까지 전 과정을 통합 관리하여 콜드체인 운영을 최적화했습니다.",
+                    "case.food-2.cust": "신세계푸드",
+                    "case.food-2.h1": "전국 23개 센터 통합 관리",
+                    "case.food-2.h2": "주문-재고 실시간 연동",
+                    "case.food-3.title": "SPC삼립 제과·제빵 배송 최적화 시스템",
+                    "case.food-3.desc": "복잡한 배송 경로를 효율화하는 TMS 솔루션을 도입하여 물류 비용 절감 및 배송 품질을 향상시켰습니다.",
+                    "case.food-3.cust": "SPC삼립",
+                    "case.food-3.h1": "전국 단위 배송 경로 최적화",
+                    "case.food-3.h2": "배송 가동률 향상",
+                    "case.food-4.title": "롯데칠성 음료 물류 배송 고도화",
+                    "case.food-4.desc": "대규모 음료 물량의 효율적인 운송 관리를 위한 지능형 배송 관리 시스템(TMS)을 구축했습니다.",
+                    "case.food-4.cust": "롯데칠성",
+                    "case.food-4.h1": "대량 물동량 처리 최적화",
+                    "case.food-4.h2": "운송 가시성 확보",
+                    "case.dist-1.title": "이마트24 전국 물류 거점 통합 운영 플랫폼",
+                    "case.dist-1.desc": "전국 각지의 편의점 물류 센터를 아우르는 통합 관리 시스템을 구축하여 재고 및 주문 효율을 극대화했습니다.",
+                    "case.dist-1.cust": "이마트24",
+                    "case.dist-1.h1": "전국 DC 통합 관리",
+                    "case.dist-1.h2": "물류 데이터 표준화",
+                    "case.dist-2.title": "우아한형제들(배민상회) 통합 물류 플랫폼",
+                    "case.dist-2.desc": "OMS, WMS, TMS 등 핵심 모듈을 통합 구축하여 최적화된 풀필먼트 서비스를 구현했습니다.",
+                    "case.dist-2.cust": "우아한형제들",
+                    "case.dist-2.h1": "6개 모듈 풀스택 구축",
+                    "case.dist-2.h2": "통합 플랫폼 기술력 입증",
+                    "case.fashion-1.title": "F&F 패션 물류 자동화 설비 연동 고도화",
+                    "case.fashion-1.desc": "RFID 및 자동화 설비(Sorter 등)와 연동되는 WMS를 구축하여 물류 속도를 혁신했습니다.",
+                    "case.fashion-1.cust": "F&F",
+                    "case.fashion-1.h1": "자동화 설비 커스텀 연동",
+                    "case.fashion-1.h2": "1~3차 단계적 고도화 완료",
+                    "case.fashion-2.title": "신성통상 패션 물류 통합 관리 플랫폼",
+                    "case.fashion-2.desc": "전국 18개 패션 물류 거점을 아우르는 통합 시스템을 구축하여 재고 운영 효율을 극대화했습니다.",
+                    "case.fashion-2.cust": "신성통상",
+                    "case.fashion-2.h1": "전국 18개 센터 통합",
+                    "case.fashion-2.h2": "4차 연속 고도화 신뢰 관계"
+                },
+                en: {
+                    "nav.products": "Products & Solution",
+                    "nav.reference": "Reference",
+                    "nav.insights": "Insights",
+                    "nav.aboutus": "About Us",
+                    "nav.contact": "Contact",
+                    "reference.hero.category": "Reference",
+                    "reference.hero.title": "Proving Value Through Success",
+                    "reference.hero.tagline": "Scale & Excellence",
+                    "reference.hero.sub_ko": "",
+                    "reference.hero.sub_en": "Proving technology value through success — MOBYUS powers logistics across the globe",
+                    "reference.map.title": "Global Presence",
+                    "reference.map.sub": "MOBYUS leads global logistics innovation by stably operating 990+ robots<br>at field sites in more than 12 countries worldwide.",
+                    "reference.map.pin.kr": "<strong>Korea</strong> 2019–Pres. / Auto, Battery, Semi, Solar, F&B, Retail, etc. / AMR, AFL, TAMS, WMS, OMS, TMS",
+                    "reference.map.pin.us": "<strong>USA</strong> 2020–Pres. / Auto, Battery, Agritech / AMR, AFL, AGV, WMS",
+                    "reference.map.pin.br": "<strong>Brazil</strong> 2022–2023 / Automotive / AMR",
+                    "reference.map.pin.cn": "<strong>China</strong> 2021–Pres. / Battery, Manufacturing / AMR, AFL, WMS",
+                    "reference.map.pin.pl": "<strong>Poland</strong> 2019–Pres. / Battery / AGV",
+                    "reference.map.pin.sa": "<strong>Saudi Arabia</strong> 2025 / Automotive / AMR",
+                    "reference.map.pin.cz": "<strong>Czech Republic</strong> 2022 / Automotive Parts / AGV",
+                    "reference.map.pin.fr": "<strong>France</strong> 2022 / Battery / AMR",
+                    "reference.map.pin.se": "<strong>Sweden</strong> 2022 / Battery / AMR",
+                    "reference.map.pin.tr": "<strong>Türkiye</strong> —",
+                    "reference.map.pin.in": "<strong>India</strong> —",
+                    "reference.map.pin.vn": "<strong>Vietnam</strong> 2016–Pres. / Food Distribution / OMS, WMS, TMS, VMS",
+                    "reference.cases.title": "Industry Cases",
+                    "reference.cases.sub": "Explore our references across 6 major industries.",
+                    "reference.filter.all": "All",
+                    "reference.filter.auto": "Automotive",
+                    "reference.filter.battery": "Battery & Energy",
+                    "reference.filter.semi": "Semiconductor & Electronics",
+                    "reference.filter.food": "Food & Manufacturing",
+                    "reference.filter.dist": "Distribution & Fulfillment",
+                    "reference.filter.fashion": "Fashion & Consumer Goods",
+                    "reference.pagination.prev": '<i class="fas fa-arrow-left"></i> Prev',
+                    "reference.pagination.next": 'Next <i class="fas fa-arrow-right"></i>',
+                    "reference.no_results": "No cases found.",
+                    "reference.no_results_with_tag": "No cases found including <strong>'{{tag}}'</strong> solution.",
+                    // Case Study Strings (ENG)
+                    "case.auto-1.title": "Hyundai Motor Global EV Production Automation",
+                    "case.auto-1.desc": "Integrated control of 300+ robots across 6+ countries using TAMS for innovative production flexibility.",
+                    "case.auto-1.cust": "Hyundai Motor",
+                    "case.auto-1.h1": "Largest-scale site (188 robots)",
+                    "case.auto-1.h2": "Global standard control system",
+                    "case.auto-2.title": "Hyundai Mobis Overseas Parts Factory Automation",
+                    "case.auto-2.desc": "Deployed 200+ autonomous robots in major global hubs including USA and Czech Republic to maximize supply efficiency.",
+                    "case.auto-2.cust": "Hyundai Mobis",
+                    "case.auto-2.h1": "200+ robots across global sites",
+                    "case.auto-2.h2": "Multi-vendor robot integration",
+                    "case.batt-1.title": "LG Energy Solution Battery Factory Automation",
+                    "case.batt-1.desc": "Deployed 120+ AGVs in Poland and China to automate logistics in battery cell manufacturing.",
+                    "case.batt-1.cust": "LG Energy Solution",
+                    "case.batt-1.h1": "Integrated 120+ robots overseas",
+                    "case.batt-1.h2": "24/7 non-stop material supply",
+                    "case.batt-2.title": "SK On Global Battery Production Line Automation",
+                    "case.batt-2.desc": "Implemented global battery manufacturing logistics with 85+ AMRs in China and USA sites.",
+                    "case.batt-2.cust": "SK On",
+                    "case.batt-2.h1": "85+ robots across global hubs",
+                    "case.batt-2.h2": "High-precision transport solutions",
+                    "case.batt-3.title": "Hanwha Q CELLS Solar Module Full-Stack Automation",
+                    "case.batt-3.desc": "Unified TAMS and WMS to automate the entire process from receiving to production input.",
+                    "case.batt-3.cust": "Hanwha Q CELLS",
+                    "case.batt-3.h1": "Robot + WMS hybrid integration",
+                    "case.batt-3.h2": "100% material flow visibility",
+                    "case.batt-4.title": "Verkor Battery Gigafactory AMR Implementation",
+                    "case.batt-4.desc": "Supplied precise AMR solutions for European battery leader Verkor's production lines.",
+                    "case.batt-4.cust": "Verkor",
+                    "case.batt-4.h1": "European Gigafactory reference",
+                    "case.batt-4.h2": "Advanced guidance technology",
+                    "case.batt-5.title": "Northvolt Battery Manufacturing Automation",
+                    "case.batt-5.desc": "Implemented autonomous robot solutions at Northvolt, Europe's largest battery manufacturer.",
+                    "case.batt-5.cust": "Northvolt",
+                    "case.batt-5.h1": "Supplied to key EU battery maker",
+                    "case.batt-5.h2": "Proven global competitiveness",
+                    "case.semi-1.title": "Samsung Electronics Semiconductor TAMS Adoption",
+                    "case.semi-1.desc": "TAMS selected as the global standard for managing hundreds of robots in semiconductor FABs.",
+                    "case.semi-1.cust": "Samsung Electronics",
+                    "case.semi-1.h1": "Standard for semiconductor FABs",
+                    "case.semi-1.h2": "Highly scalable architecture",
+                    "case.semi-2.title": "LG Electronics California Logistics Automation",
+                    "case.semi-2.desc": "Implemented AMRs in California distribution center to maximize picking and transport efficiency.",
+                    "case.semi-2.cust": "LG Electronics",
+                    "case.semi-2.h1": "North America logistics automation",
+                    "case.semi-2.h2": "Significant throughput improvement",
+                    "case.semi-3.title": "Seoul Semiconductor Integrated Logistics Management",
+                    "case.semi-3.desc": "Built an intelligent WMS to achieve 100% transparency in LED manufacturing and distribution.",
+                    "case.semi-3.cust": "Seoul Semiconductor",
+                    "case.semi-3.h1": "Enhanced inventory accuracy",
+                    "case.semi-3.h2": "Real-time logistics visibility",
+                    "case.semi-4.title": "SEMES Semiconductor Parts Logistics Upgrading",
+                    "case.semi-4.desc": "Advanced WMS optimization for high-precision parts management in semiconductor equipment manufacturing.",
+                    "case.semi-4.cust": "SEMES",
+                    "case.semi-4.h1": "2nd phase optimization complete",
+                    "case.semi-4.h2": "Zero picking error achieved",
+                    "case.food-1.title": "Harim Group Integrated Logistics SW Platform",
+                    "case.food-1.desc": "Unified logistics platform covering ordering, warehousing, and shipping for cross-group efficiency.",
+                    "case.food-1.cust": "Harim Group",
+                    "case.food-1.h1": "OMS·WMS·TMS integrated suite",
+                    "case.food-1.h2": "Fresh food chain optimization",
+                    "case.food-2.title": "Shinsegae Food Nationwide Infrastructure",
+                    "case.food-2.desc": "Integrated 23 distribution centers to optimize cold chain operations from order to inventory.",
+                    "case.food-2.cust": "Shinsegae Food",
+                    "case.food-2.h1": "23 regional centers integrated",
+                    "case.food-2.h2": "Real-time order-inventory sync",
+                    "case.food-3.title": "SPC Samlip Delivery Optimization System",
+                    "case.food-3.desc": "Implemented TMS to optimize complex delivery routes, reducing costs and improving quality.",
+                    "case.food-3.cust": "SPC Samlip",
+                    "case.food-3.h1": "National route optimization",
+                    "case.food-3.h2": "Maximized fleet utilization",
+                    "case.food-4.title": "Lotte Chilsung Beverage Logistics Upgrade",
+                    "case.food-4.desc": "Intelligent TMS built to manage large-scale beverage shipments with high efficiency.",
+                    "case.food-4.cust": "Lotte Chilsung",
+                    "case.food-4.h1": "High-volume cargo optimization",
+                    "case.food-4.h2": "Enhanced delivery visibility",
+                    "case.dist-1.title": "emart24 Nationwide Integrated Operation Platform",
+                    "case.dist-1.desc": "Centralized management system for convenience store logistics hubs to maximize inventory efficiency.",
+                    "case.dist-1.cust": "emart24",
+                    "case.dist-1.h1": "Integrated nationwide DCs",
+                    "case.dist-1.h2": "Standardized logistics data",
+                    "case.dist-2.title": "Woowa Brothers Integrated Logistics Platform",
+                    "case.dist-2.desc": "Unified full-stack suite including OMS, WMS, and TMS for optimized fulfillment services.",
+                    "case.dist-2.cust": "Woowa Brothers",
+                    "case.dist-2.h1": "6-module full-stack suite",
+                    "case.dist-2.h2": "Proven platform technicality",
+                    "case.fashion-1.title": "F&F Fashion Logistics Automation Integration",
+                    "case.fashion-1.desc": "Advanced WMS integrated with RFID and automation (Sorters, etc.) for innovative logisitics speed.",
+                    "case.fashion-1.cust": "F&F",
+                    "case.fashion-1.h1": "Custom hardware integration",
+                    "case.fashion-1.h2": "Phased 1–3 optimization complete",
+                    "case.fashion-2.title": "Sinsung Tongsang Integrated Management Platform",
+                    "case.fashion-2.desc": "Unified 18 fashion hubs to maximize inventory efficiency across national networks.",
+                    "case.fashion-2.cust": "Sinsung Tongsang",
+                    "case.fashion-2.h1": "Integrated 18 regional hubs",
+                    "case.fashion-2.h2": "4th consecutive project trust"
+                }
+            };
+
+            // --- Case Study Data (Raw structure) ---
+            const caseStudyData = [
+                { id: "auto-1", category: "AUTOMOTIVE", tags: ["AMR", "AFL", "TAMS"], icon: "fas fa-car-side" },
+                { id: "auto-2", category: "AUTOMOTIVE", tags: ["AMR", "TAMS"], icon: "fas fa-gears" },
+                { id: "batt-1", category: "BATTERY & ENERGY", tags: ["AMR", "TAMS"], icon: "fas fa-battery-full" },
+                { id: "batt-2", category: "BATTERY & ENERGY", tags: ["AMR"], icon: "fas fa-car-battery" },
+                { id: "batt-3", category: "BATTERY & ENERGY", tags: ["AMR", "TAMS", "WMS"], icon: "fas fa-sun" },
+                { id: "batt-4", category: "BATTERY & ENERGY", tags: ["AMR"], icon: "fas fa-charging-station" },
+                { id: "batt-5", category: "BATTERY & ENERGY", tags: ["AMR"], icon: "fas fa-bolt" },
+                { id: "semi-1", category: "SEMICONDUCTOR & ELECTRONICS", tags: ["AFL", "TAMS"], icon: "fas fa-cpu" },
+                { id: "semi-2", category: "SEMICONDUCTOR & ELECTRONICS", tags: ["AMR"], icon: "fas fa-tv" },
+                { id: "semi-3", category: "SEMICONDUCTOR & ELECTRONICS", tags: ["WMS"], icon: "fas fa-lightbulb" },
+                { id: "semi-4", category: "SEMICONDUCTOR & ELECTRONICS", tags: ["WMS"], icon: "fas fa-microchip" },
+                { id: "food-1", category: "FOOD & MANUFACTURING", tags: ["WMS", "TMS", "OMS"], icon: "fas fa-egg" },
+                { id: "food-2", category: "FOOD & MANUFACTURING", tags: ["OMS", "WMS", "VMS"], icon: "fas fa-bread-slice" },
+                { id: "food-3", category: "FOOD & MANUFACTURING", tags: ["TMS"], icon: "fas fa-truck-fast" },
+                { id: "food-4", category: "FOOD & MANUFACTURING", tags: ["TMS"], icon: "fas fa-wine-bottle" },
+                { id: "dist-1", category: "DISTRIBUTION & FULFILLMENT", tags: ["OMS", "WMS", "VMS"], icon: "fas fa-store" },
+                { id: "dist-2", category: "DISTRIBUTION & FULFILLMENT", tags: ["OMS", "WMS", "TMS"], icon: "fas fa-rocket" },
+                { id: "fashion-1", category: "FASHION & CONSUMER GOODS", tags: ["WMS"], icon: "fas fa-shirt" },
+                { id: "fashion-2", category: "FASHION & CONSUMER GOODS", tags: ["OMS", "WMS"], icon: "fas fa-tshirt" }
+            ];
+
+            let currentCategory = 'All';
+            let currentPage = 1;
+            const itemsPerPage = 6;
+
+            // --- Core Engine: Localization ---
+            function updateContent(lang) {
+                const dictionary = i18nData[lang];
+                if (!dictionary) return;
+
+                document.querySelectorAll('[data-i18n]').forEach(el => {
+                    const key = el.getAttribute('data-i18n');
+                    if (key in dictionary) {
+                        if (dictionary[key] === "") {
+                            el.style.display = 'none';
+                        } else {
+                            el.style.display = '';
+                            el.innerHTML = dictionary[key];
+                        }
+                    }
+                });
+            }
+
+            function updateGnbUI(lang) {
+                document.querySelectorAll('.gnb-lang a').forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('data-lang') === lang) link.classList.add('active');
+                });
+            }
+
+            window.setLanguage = function(lang) {
+                safeStorage.setItem('preferredLanguage', lang);
+                if (lang === 'en') {
+                    document.body.classList.add('lang-en');
+                } else {
+                    document.body.classList.remove('lang-en');
+                }
+                updateContent(lang);
+                updateGnbUI(lang);
+                renderCaseStudies(currentCategory, 1); // Re-render case studies on language change
+            };
+
+            // --- Core Engine: GNB Loading ---
+            function loadGNB() {
+                const header = document.getElementById('gnb');
+                if (!header) return;
+                const activeLang = getLanguage();
+                
+                const menuItems = [
+                    { name: 'Products & Solution', link: 'products-solution.html' },
+                    { name: 'Reference', link: 'reference.html', active: true },
+                    { name: 'Insights', link: 'resource-guide.html' },
+                    { name: 'About Us', link: 'aboutus.html' }
+                ];
+
+                header.innerHTML = `
+                    <div class="gnb-container">
+                        <div class="gnb-left">
+                            <a href="index.html" class="logo"><img src="images/logo_mobyus.png" alt="MOBYUS"></a>
+                        </div>
+                        <nav class="nav-menu center-nav">
+                            <ul>
+                                ${menuItems.map(item => `<li><a href="${item.link}" class="${item.active ? 'active' : ''}">${item.name}</a></li>`).join('')}
+                            </ul>
+                        </nav>
+                        <div class="gnb-right">
+                            <div class="gnb-lang">
+                                <i class="fas fa-globe"></i>
+                                <a href="javascript:void(0)" onclick="setLanguage('ko')" data-lang="ko" class="${activeLang === 'ko' ? 'active' : ''}">KOR</a>
+                                <span class="divider">/</span>
+                                <a href="javascript:void(0)" onclick="setLanguage('en')" data-lang="en" class="${activeLang === 'en' ? 'active' : ''}">ENG</a>
+                            </div>
+                            <a href="contact.html" class="gnb-btn">Contact</a>
+                            <button class="mobile-menu-btn"><span></span><span></span><span></span></button>
+                        </div>
+                    </div>
+                `;
+                
+                // Navigation sticky effect
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 50) {
+                        header.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
+                        header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+                    } else {
+                        header.style.backgroundColor = 'rgba(255, 255, 255, 0.8)';
+                        header.style.boxShadow = 'none';
+                    }
+                });
+            }
+
+
+            // --- Core Engine: Case Studies ---
+            window.renderCaseStudies = function(category = 'All', page = 1) {
+                currentCategory = category;
+                currentPage = page;
+                const lang = getLanguage();
+                const dict = i18nData[lang];
+
+                const grid = document.querySelector('.case-grid');
+                const filterContainer = document.querySelector('.filter-container');
+                const paginationContainer = document.querySelector('.pagination-container');
+                if (!grid) return;
+
+                // Render Filter Tabs
+                if (filterContainer) {
+                    const industries = [
+                        { id: 'All', name: dict['reference.filter.all'] },
+                        { id: 'AUTOMOTIVE', name: dict['reference.filter.auto'] },
+                        { id: 'BATTERY & ENERGY', name: dict['reference.filter.battery'] },
+                        { id: 'SEMICONDUCTOR & ELECTRONICS', name: dict['reference.filter.semi'] },
+                        { id: 'FOOD & MANUFACTURING', name: dict['reference.filter.food'] },
+                        { id: 'DISTRIBUTION & FULFILLMENT', name: dict['reference.filter.dist'] },
+                        { id: 'FASHION & CONSUMER GOODS', name: dict['reference.filter.fashion'] }
+                    ];
+                    filterContainer.innerHTML = `<div class="filter-tabs">
+                        ${industries.map(ind => `<button class="filter-tab ${currentCategory === ind.id ? 'active' : ''}" onclick="renderCaseStudies('${ind.id}', 1)">${ind.name}</button>`).join('')}
+                    </div>`;
+                }
+
+                // Filter & Paginate
+                const filtered = category === 'All' ? caseStudyData : caseStudyData.filter(c => c.category === category);
+                const totalPages = Math.ceil(filtered.length / itemsPerPage);
+                const start = (page - 1) * itemsPerPage;
+                const paginated = filtered.slice(start, start + itemsPerPage);
+
+
+                // Render Grid
+                grid.innerHTML = paginated.map(item => {
+                    const title = dict[`case.${item.id}.title`];
+                    const desc = dict[`case.${item.id}.desc`];
+                    const h1 = dict[`case.${item.id}.h1`];
+                    const h2 = dict[`case.${item.id}.h2`];
+                    
+                    const isEn = lang === 'en';
+                    const fontClass = isEn ? 'font-en' : '';
+
+                    return `
+                        <div class="case-card-horizontal fade-in">
+                            <div class="case-card-image"><i class="${item.icon}"></i></div>
+                            <div class="case-card-content">
+                                <span class="case-card-category">${item.category}</span>
+                                <h3 class="case-card-title ${fontClass}">${title}</h3>
+                                <div class="case-tags">${item.tags.map(t => `<span class="case-meta-tag">${t}</span>`).join('')}</div>
+                                <p class="case-card-desc ${fontClass}">${desc}</p>
+                                <div class="case-card-highlights">
+                                    <div class="highlight-item"><i class="fas fa-check-circle"></i> <span class="${fontClass}">${h1}</span></div>
+                                    <div class="highlight-item"><i class="fas fa-check-circle"></i> <span class="${fontClass}">${h2}</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+
+                // Render Pagination
+                if (paginationContainer) {
+                    if (totalPages <= 1) {
+                        paginationContainer.innerHTML = "";
+                    } else {
+                        let html = `<div class="pagination">`;
+                        html += `<button class="page-btn" ${page === 1 ? 'disabled' : ''} onclick="renderCaseStudies('${category}', ${page - 1})">${dict['reference.pagination.prev']}</button>`;
+                        for(let i=1; i<=totalPages; i++) {
+                            html += `<button class="page-btn ${i === page ? 'active' : ''}" onclick="renderCaseStudies('${category}', ${i})">${i}</button>`;
+                        }
+                        html += `<button class="page-btn" ${page === totalPages ? 'disabled' : ''} onclick="renderCaseStudies('${category}', ${page + 1})">${dict['reference.pagination.next']}</button>`;
+                        html += `</div>`;
+                        paginationContainer.innerHTML = html;
+                    }
+                }
+            }
+
+            // --- Initialization ---
+            const initialLang = getLanguage();
+            if (initialLang === 'en') document.body.classList.add('lang-en');
+            loadGNB();
+            updateContent(initialLang);
+            updateGnbUI(initialLang);
+            
+            // Check for URL filter
+            const params = new URLSearchParams(window.location.search);
+            const filterParam = params.get('filter');
+            renderCaseStudies(filterParam || 'All', 1);
+
+            // Trigger animations on scroll
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) entry.target.classList.add('visible');
+                });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.fade-in-section').forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+
+</html>

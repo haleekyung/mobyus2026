@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AFL — 자율주행 지게차 | MOBYUS</title>
+    <meta name="description" content="MOBYUS AFL — AI 인식 기반 자율주행 지게차. 팔레트 자율 인식, 장애물 회피, 정밀 적재·하역.">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- i18n scripts -->
+    <script src="scripts/i18n-data.js"></script>
+    <script src="scripts/i18n.js"></script>
+    <style>
+        /* ===== 핵심 차별점 ===== */
+        .diff-section {
+            padding: 96px 0;
+            background: #fff;
+        }
+
+        .section-center-title {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        /* 비교표 - MOBYUS 열 강조 */
+        .diff-table {
+            width: 100%;
+            border-collapse: collapse;
+            outline: 1px solid var(--color-gray20);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .diff-table thead tr {
+            background: var(--color-gray05);
+            border-bottom: 1px solid var(--color-gray20);
+        }
+
+        .diff-table th {
+            padding: 12px 16px;
+            text-align: left;
+            /* font: .font-set-table-header */
+        }
+
+        .diff-table th.col-mobyus {
+            background: var(--color-br900);
+            color: #fff;
+            text-align: center;
+        }
+
+        .diff-table th:last-child {
+            text-align: center;
+        }
+
+        .diff-table td {
+            padding: 12px 16px;
+            vertical-align: middle;
+            /* font: .font-set-table-ko */
+        }
+
+        .diff-table td:first-child {
+            font-weight: 600;
+        }
+
+        .diff-table td.col-mobyus {
+            background: rgba(124, 11, 71, 0.04);
+            font-weight: 600;
+            color: var(--color-br900);
+            text-align: center;
+        }
+
+        .diff-table td.col-competitor {
+            color: var(--color-gray70);
+            text-align: center;
+        }
+
+        /* ===== Product Lineup ===== */
+        .lineup-section {
+            padding: 96px 0;
+            background: #fff;
+        }
+
+        .lineup-category {
+            margin-bottom: 56px;
+        }
+
+        .lineup-category:last-child {
+            margin-bottom: 0;
+        }
+
+        .lineup-category-title {
+            font-family: var(--font-heading);
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--color-gray90);
+            margin-bottom: 24px;
+        }
+
+        .lineup-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            row-gap: 48px;
+            column-gap: 24px;
+        }
+
+        .product-card {
+            background: #fff;
+            border: 1px solid var(--color-gray20);
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card-image {
+            aspect-ratio: 4/4.5;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 1px solid var(--color-gray10);
+        }
+
+        .product-card-image img {
+            max-width: 70%;
+            max-height: 70%;
+            object-fit: contain;
+        }
+
+        .product-card-image-placeholder {
+            color: var(--color-gray40);
+            font-size: 0.8rem;
+        }
+
+        .product-card-info {
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .product-card-model {
+            font-family: var(--font-heading);
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--color-gray90);
+            margin-bottom: 6px;
+            line-height: 1.2;
+        }
+
+        .product-card-capacity {
+            font-family: var(--font-heading);
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--color-gray70);
+            margin-bottom: 0;
+            line-height: 1.4;
+        }
+
+        .product-card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 16px;
+        }
+
+        .product-card-tag {
+            display: inline-block;
+            width: fit-content;
+            text-align: left;
+            min-height: 28px;
+            padding: 6px 12px;
+            font-family: 'Outfit', var(--font-body);
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--color-gray70);
+            background: var(--color-br50);
+            border-radius: 8px;
+            line-height: 1.3;
+        }
+
+        /* ===== OVERVIEW ===== */
+        .overview-section {
+            padding: 96px 0;
+            background: #fff;
+        }
+
+        .overview-section .section-center-title {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .overview-items {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .overview-item {
+            display: grid;
+            grid-template-columns: 240px 1fr;
+            align-items: center;
+            gap: 40px;
+            padding: 40px 0;
+            border-bottom: 1px solid var(--color-gray20);
+        }
+
+        .overview-item:last-child {
+            border-bottom: none;
+        }
+
+        /* 왼쪽: 번호 원형 + 라벨 */
+        .overview-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .overview-number {
+            font-family: var(--font-heading);
+            font-size: 16px;
+            font-weight: 600;
+            color: #fff;
+            background: var(--color-br900);
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .overview-label {
+            white-space: nowrap;
+        }
+
+        /* 오른쪽: 본문 */
+        .overview-right {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        /* Mobile specific adjustments */
+        @media (max-width: 768px) {
+            .lineup-grid {
+                grid-template-columns: repeat(2, 1fr);
+                column-gap: 16px;
+                row-gap: 32px;
+            }
+            .product-card[style*="visibility: hidden"] {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header id="gnb"></header>
+
+    <main>
+        <section class="global-hero"
+            style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/hero_robot_muted.png'); background-size: cover; background-position: center;">
+            <div class="global-hero-inner fade-in">
+                <p class="global-hero-category">Robot > AFL</p>
+                <div class="hero-title-row">
+                    <h1 class="global-hero-title" data-i18n="ps.afl.hero.title">자율주행 지게차</h1>
+                    <p class="global-hero-tagline" data-i18n="ps.afl.hero.title_en">Autonomous Forklift</p>
+                </div>
+                <p class="global-hero-sub-ko mt-3" data-i18n="ps.afl.hero.sub">고성능 센서와 AI 인식 기반으로 팔레트 적재·하역을 완전 자율화합니다</p>
+                <p class="global-hero-sub-en" data-i18n="ps.afl.hero.sub_en">AI vision-based autonomous forklift for precise pallet operation</p>
+            </div>
+        </section>
+
+        <!-- ===== OVERVIEW ===== -->
+        <section class="overview-section">
+            <div class="container fade-in-section">
+                <h2 class="font-set-intro-title section-center-title" data-i18n="ps.afl.overview.title">Overview</h2>
+                <div class="overview-items">
+                    <div class="overview-item">
+                        <div class="overview-left">
+                            <span class="overview-number">1</span>
+                            <span class="font-set-overview-label" data-i18n="ps.afl.overview.c1.label">제품 개요</span>
+                        </div>
+                        <div class="overview-right">
+                            <p class="font-set-table-ko" data-i18n="ps.afl.overview.c1.desc">고성능 센서와 AI 인식 기반의 무인 지게차.<br>팔레트를 자율 인식하고, 장애물을 회피하며, 정확한 위치에 적재·하역합니다.</p>
+                            <p class="font-set-table-en" data-i18n="ps.afl.overview.c1.desc_en">AI vision-based autonomous forklift. Recognizes pallets, avoids obstacles, and loads/unloads at precise positions.</p>
+                        </div>
+                    </div>
+                    <div class="overview-item">
+                        <div class="overview-left">
+                            <span class="overview-number">2</span>
+                            <span class="font-set-overview-label" data-i18n="ps.afl.overview.c2.label">적용 환경</span>
+                        </div>
+                        <div class="overview-right">
+                            <p class="font-set-table-ko" data-i18n="ps.afl.overview.c2.desc">평치 창고, 랙(Rack) 창고, 생산 라인</p>
+                            <p class="font-set-table-en" data-i18n="ps.afl.overview.c2.desc_en">Open-floor warehouse, rack storage, production lines</p>
+                        </div>
+                    </div>
+                    <div class="overview-item">
+                        <div class="overview-left">
+                            <span class="overview-number">3</span>
+                            <span class="font-set-overview-label" data-i18n="ps.afl.overview.c3.label">사용 방식</span>
+                        </div>
+                        <div class="overview-right">
+                            <p class="font-set-table-ko" data-i18n="ps.afl.overview.c3.desc">단독 운영 또는 컨베이어·수직반송기 등과 조합</p>
+                            <p class="font-set-table-en" data-i18n="ps.afl.overview.c3.desc_en">Standalone or combined with conveyors, lifts, etc.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== 핵심 차별점 ===== -->
+        <section class="diff-section">
+            <div class="container fade-in-section">
+                <h2 class="font-set-intro-title section-center-title" data-i18n="ps.afl.diff.title">핵심 차별점</h2>
+                <table class="diff-table">
+                    <colgroup>
+                        <col style="width: 20%;">
+                        <col style="width: 40%;">
+                        <col style="width: 40%;">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th class="font-set-table-header" data-i18n="ps.afl.diff.th.cat">구분</th>
+                            <th class="font-set-table-header col-mobyus" data-i18n="ps.afl.diff.th.mobyus">MOBYUS</th>
+                            <th class="font-set-table-header" data-i18n="ps.afl.diff.th.comp">주요 경쟁사</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="font-set-table-ko" data-i18n="ps.afl.diff.r1.cat">운영 방식</td>
+                            <td class="font-set-table-ko col-mobyus" data-i18n="ps.afl.diff.r1.m">AI 인식 기반 (비정형 환경 대응)</td>
+                            <td class="font-set-table-ko col-competitor" data-i18n="ps.afl.diff.r1.c">위치 기반 (LGV)</td>
+                        </tr>
+                        <tr>
+                            <td class="font-set-table-ko" data-i18n="ps.afl.diff.r2.cat">위치 추정</td>
+                            <td class="font-set-table-ko col-mobyus" data-i18n="ps.afl.diff.r2.m">3D SLAM</td>
+                            <td class="font-set-table-ko col-competitor" data-i18n="ps.afl.diff.r2.c">LGV</td>
+                        </tr>
+                        <tr>
+                            <td class="font-set-table-ko" data-i18n="ps.afl.diff.r3.cat">제어 솔루션</td>
+                            <td class="font-set-table-ko col-mobyus" data-i18n="ps.afl.diff.r3.m">자사 솔루션</td>
+                            <td class="font-set-table-ko col-competitor" data-i18n="ps.afl.diff.r3.c">외산 솔루션 (Kollmorgen 등)</td>
+                        </tr>
+                        <tr>
+                            <td class="font-set-table-ko" data-i18n="ps.afl.diff.r4.cat">기구 다양성</td>
+                            <td class="font-set-table-ko col-mobyus" data-i18n="ps.afl.diff.r4.m">Counterbalance, Reach, Multi-directional</td>
+                            <td class="font-set-table-ko col-competitor" data-i18n="ps.afl.diff.r4.c">Counterbalance, Reach</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- ===== Product Lineup ===== -->
+        <section class="lineup-section">
+            <div class="container fade-in-section">
+                <h2 class="font-set-intro-title section-center-title" data-i18n="ps.afl.lineup.title">Product Lineup</h2>
+
+                <!-- Counterbalance Type -->
+                <div class="lineup-category">
+                    <h3 class="lineup-category-title" data-i18n="ps.afl.lineup.c1">Counterbalance Type</h3>
+                    <div class="lineup-grid">
+                        <div class="product-card">
+                            <div class="product-card-image">
+                                <img src="images/product_afl_mf15cb.png" alt="MF15CB">
+                            </div>
+                            <div class="product-card-info">
+                                <div class="product-card-model">MF15CB</div>
+                                <div class="product-card-capacity">1.5T</div>
+                                <div class="product-card-tags">
+                                    <div class="product-card-tag" data-i18n="ps.afl.lineup.tag.mf15cb">Standard Counterbalance</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-card-image">
+                                <img src="images/product_afl_mf20cb.png" alt="MF20CB" style="max-width: 66%; max-height: 66%;">
+                            </div>
+                            <div class="product-card-info">
+                                <div class="product-card-model">MF20CB</div>
+                                <div class="product-card-capacity">2.0T</div>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-card-image">
+                                <img src="images/product_afl_mf30cb.png" alt="MF30CB" style="max-width: 66%; max-height: 66%;">
+                            </div>
+                            <div class="product-card-info">
+                                <div class="product-card-model">MF30CB</div>
+                                <div class="product-card-capacity">3.0T / 3.5T</div>
+                                <div class="product-card-tags">
+                                    <div class="product-card-tag" data-i18n="ps.afl.lineup.tag.mf30cb">대형 팔레트 / 자동차 공장</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reach Truck -->
+                <div class="lineup-category">
+                    <h3 class="lineup-category-title" data-i18n="ps.afl.lineup.c2">Reach Truck</h3>
+                    <div class="lineup-grid">
+                        <div class="product-card">
+                            <div class="product-card-image">
+                                <img src="images/product_afl_mf16r.png" alt="MF16R" style="max-width: 66%; max-height: 66%;">
+                            </div>
+                            <div class="product-card-info">
+                                <div class="product-card-model">MF16R</div>
+                                <div class="product-card-capacity">1.6T</div>
+                                <div class="product-card-tags">
+                                    <div class="product-card-tag" data-i18n="ps.afl.lineup.tag.mf16r">고단 랙 적재</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-card-image">
+                                <img src="images/product_afl_mf20r.png" alt="MF20R" style="max-width: 66%; max-height: 66%;">
+                            </div>
+                            <div class="product-card-info">
+                                <div class="product-card-model">MF20R</div>
+                                <div class="product-card-capacity">2.0T</div>
+                            </div>
+                        </div>
+                        <div class="product-card" style="visibility: hidden;"></div>
+                    </div>
+                </div>
+
+                <!-- Multi-directional Forklift -->
+                <div class="lineup-category">
+                    <h3 class="lineup-category-title" data-i18n="ps.afl.lineup.c3">Multi-directional Forklift</h3>
+                    <div class="lineup-grid">
+                        <div class="product-card">
+                            <div class="product-card-image">
+                                <img src="images/product_afl_mf15q.png" alt="MF15Q" style="max-width: 66%; max-height: 66%;">
+                            </div>
+                            <div class="product-card-info">
+                                <div class="product-card-model">MF15Q</div>
+                                <div class="product-card-capacity">1.5T</div>
+                                <div class="product-card-tags">
+                                    <div class="product-card-tag" data-i18n="ps.afl.lineup.tag.mf15q">전방향 이동</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-card-image">
+                                <img src="images/product_afl_mf20q.png" alt="MF20Q" style="max-width: 66%; max-height: 66%;">
+                            </div>
+                            <div class="product-card-info">
+                                <div class="product-card-model">MF20Q</div>
+                                <div class="product-card-capacity">2.0T</div>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-card-image">
+                                <img src="images/product_afl_mf30q.png" alt="MF30Q" style="max-width: 66%; max-height: 66%;">
+                            </div>
+                            <div class="product-card-info">
+                                <div class="product-card-model">MF30Q</div>
+                                <div class="product-card-capacity">3.0T</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pallet Truck -->
+                <div class="lineup-category">
+                    <h3 class="lineup-category-title" data-i18n="ps.afl.lineup.c4">Pallet Truck</h3>
+                    <div class="lineup-grid">
+                        <div class="product-card">
+                            <div class="product-card-image">
+                                <img src="images/product_ept_mf15p.png" alt="MF15P" style="max-width: 66%; max-height: 66%;">
+                            </div>
+                            <div class="product-card-info">
+                                <div class="product-card-model">MF15P</div>
+                                <div class="product-card-capacity">1.5T</div>
+                                <div class="product-card-tags">
+                                    <div class="product-card-tag" data-i18n="ps.afl.lineup.tag.mf15p">AFL Pallet Truck Type과 동일 플랫폼</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+    </main>
+
+    <footer id="contact"></footer>
+    <script src="scripts/main.js"></script>
+</body>
+
+</html>

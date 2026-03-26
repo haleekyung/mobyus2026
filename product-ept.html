@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EPT — 자율주행 전동 팔레트 트럭 | MOBYUS</title>
+    <meta name="description" content="MOBYUS EPT — 고정밀 자율주행 전동 팔레트 트럭. 수평 이동 최적화, 좁은 통로 민첩성, 안전한 물동량 처리.">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ===== 핵심 차별점 ===== */
+        .diff-section {
+            padding: 96px 0;
+            background: #fff;
+        }
+
+        .section-center-title {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        /* 비교표 - MOBYUS 열 강조 */
+        .diff-table {
+            width: 100%;
+            border-collapse: collapse;
+            outline: 1px solid var(--color-gray20);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .diff-table thead tr {
+            background: var(--color-gray05);
+            border-bottom: 1px solid var(--color-gray20);
+        }
+
+        .diff-table th {
+            padding: 12px 16px;
+            text-align: left;
+            /* font: .font-set-table-header */
+        }
+
+        .diff-table th.col-mobyus {
+            background: var(--color-br900);
+            color: #fff;
+            text-align: center;
+        }
+
+        .diff-table th:last-child {
+            text-align: center;
+        }
+
+        .diff-table td {
+            padding: 12px 16px;
+            vertical-align: middle;
+            /* font: .font-set-table-ko */
+        }
+
+        .diff-table td:first-child {
+            font-weight: 600;
+        }
+
+        .diff-table td.col-mobyus {
+            background: rgba(124, 11, 71, 0.04);
+            font-weight: 600;
+            color: var(--color-br900);
+            text-align: center;
+        }
+
+        .diff-table td.col-competitor {
+            color: var(--color-gray70);
+            text-align: center;
+        }
+
+        /* ===== Product Lineup ===== */
+        .lineup-section {
+            padding: 96px 0;
+            background: #fff;
+        }
+
+        .lineup-category {
+            margin-bottom: 56px;
+        }
+
+        .lineup-category:last-child {
+            margin-bottom: 0;
+        }
+
+        .lineup-category-title {
+            font-family: var(--font-heading);
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--color-gray90);
+            margin-bottom: 24px;
+        }
+
+        .lineup-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            row-gap: 48px;
+            column-gap: 24px;
+        }
+
+        .product-card {
+            background: #fff;
+            border: 1px solid var(--color-gray20);
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card-image {
+            aspect-ratio: 4/4.5;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 1px solid var(--color-gray10);
+        }
+
+        .product-card-image img {
+            max-width: 70%;
+            max-height: 70%;
+            object-fit: contain;
+        }
+
+        .product-card-image-placeholder {
+            color: var(--color-gray40);
+            font-size: 0.8rem;
+        }
+
+        .product-card-info {
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .product-card-model {
+            font-family: var(--font-heading);
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--color-gray90);
+            margin-bottom: 6px;
+            line-height: 1.2;
+        }
+
+        .product-card-capacity {
+            font-family: var(--font-heading);
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--color-gray70);
+            margin-bottom: 0;
+            line-height: 1.4;
+        }
+
+        .product-card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 16px;
+        }
+
+        .product-card-tag {
+            display: inline-flex;
+            align-items: center;
+            height: 28px;
+            padding: 0 12px;
+            font-family: 'Outfit', var(--font-body);
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--color-gray70);
+            background: var(--color-br50);
+            border-radius: 99px;
+        }
+
+        /* ===== OVERVIEW ===== */
+        .overview-section {
+            padding: 96px 0;
+            background: #fff;
+        }
+
+        .overview-section .section-center-title {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .overview-items {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .overview-item {
+            display: grid;
+            grid-template-columns: 240px 1fr;
+            align-items: center;
+            padding: 32px 0;
+            border-bottom: 1px solid var(--color-gray20);
+        }
+
+        .overview-item:first-child {
+            padding-top: 0;
+        }
+
+        .overview-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .overview-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .overview-number {
+            font-family: var(--font-heading);
+            font-size: 16px;
+            font-weight: 600;
+            color: #fff;
+            background: var(--color-br900);
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .overview-right p {
+            margin-bottom: 8px;
+        }
+
+        .overview-right p:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* ===== Platform Family ===== */
+        .platform-family-section {
+            padding: 96px 0;
+            background: #fff;
+        }
+
+        .platform-visual {
+            display: flex;
+            align-items: stretch;
+            border: 1px solid var(--color-gray20);
+            border-radius: 12px;
+            overflow: hidden;
+            background: #fff;
+        }
+
+        .platform-box {
+            flex: 1;
+            padding: 32px 28px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .platform-box-label {
+            font-family: var(--font-heading);
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--color-gray40);
+            margin-bottom: 12px;
+            letter-spacing: 0.05em;
+        }
+
+        .platform-box-title {
+            font-family: var(--font-heading);
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--color-gray90);
+            margin-bottom: 8px;
+        }
+
+        .platform-box-desc {
+            font-family: var(--font-body);
+            font-size: 15px;
+            color: var(--color-gray70);
+            line-height: 1.5;
+        }
+
+        .platform-divider {
+            width: 1px;
+            background: var(--color-gray20);
+        }
+
+        .platform-center {
+            display: flex;
+            align-items: center;
+            padding: 0 32px;
+            background: var(--color-gray05);
+            text-align: center;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .platform-center-icon {
+            font-size: 24px;
+            color: var(--color-gray40);
+            margin-bottom: 8px;
+        }
+
+        .platform-center-text {
+            font-family: var(--font-body);
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--color-gray70);
+            white-space: nowrap;
+        }
+    </style>
+</head>
+
+<body>
+    <header id="gnb"></header>
+
+    <main>
+        <!-- ===== HERO ===== -->
+        <section class="global-hero"
+            style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/hero_ept_warehouse_v2.png'); background-size: cover; background-position: center;">
+            <div class="container global-hero-inner">
+                <div class="global-hero-category">Robot <i class="fas fa-chevron-right" style="font-size: 0.8em; margin: 0 4px;"></i> EPT</div>
+                <h1 class="global-hero-title">전동 팔레트 트럭</h1>
+                <p class="global-hero-tagline">Electric Pallet Truck</p>
+            </div>
+            <!-- Scroll Indicator -->
+            <div class="scroll-indicator">
+                <span>SCROLL</span>
+                <div class="scroll-line"></div>
+            </div>
+        </section>
+
+        <!-- ===== OVERVIEW ===== -->
+        <section class="overview-section">
+            <div class="container fade-in-section">
+                <h2 class="font-set-intro-title section-center-title">Overview</h2>
+                <div class="overview-items">
+                    <div class="overview-item">
+                        <div class="overview-left">
+                            <span class="overview-number">1</span>
+                            <span class="font-set-overview-label">제품 개요</span>
+                        </div>
+                        <div class="overview-right">
+                            <p class="font-set-table-ko">자동화된 전동 팔레트 트럭. 수평 이동에 최적화.<br>좁은 통로에서 민첩하게 이동하며 대량의 물동량을 신속 처리합니다.</p>
+                            <p class="font-set-table-en">Automated electric pallet truck optimized for horizontal transport. Agile in narrow aisles, handles high-volume throughput.</p>
+                        </div>
+                    </div>
+                    <div class="overview-item">
+                        <div class="overview-left">
+                            <span class="overview-number">2</span>
+                            <span class="font-set-overview-label">적용 공정</span>
+                        </div>
+                        <div class="overview-right">
+                            <p class="font-set-table-ko">입고 도크→보관 구역 이송, 공정 간 부품 공급, 단순 반복 이동 작업</p>
+                            <p class="font-set-table-en">Dock-to-storage transfer, inter-process parts supply, repetitive transport tasks</p>
+                        </div>
+                    </div>
+                    <div class="overview-item">
+                        <div class="overview-left">
+                            <span class="overview-number">3</span>
+                            <span class="font-set-overview-label">운영 편의성</span>
+                        </div>
+                        <div class="overview-right">
+                            <p class="font-set-table-ko">기존 수동 작업 대비 작업자 피로도 저감, 안전 사고 예방</p>
+                            <p class="font-set-table-en">Reduces worker fatigue and prevents safety incidents vs. manual operation</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== Product Lineup ===== -->
+        <section class="lineup-section">
+            <div class="container fade-in-section">
+                <h2 class="font-set-intro-title section-center-title">Product Lineup</h2>
+
+                <div class="lineup-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 320px));">
+                    <div class="product-card" style="background: #fff;">
+                        <div class="product-card-image">
+                            <img src="images/product_ept_mf15p.png" alt="MF15P" style="max-width: 66%; max-height: 66%;">
+                        </div>
+                        <div class="product-card-info">
+                            <div class="product-card-model">MF15P</div>
+                            <div class="product-card-capacity">1.5T</div>
+                            <div class="product-card-tags">
+                                <div class="product-card-tag">AFL Pallet Truck Type과 동일 플랫폼</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+    </main>
+
+    <footer id="contact"></footer>
+    <script src="scripts/main.js"></script>
+</body>
+
+</html>

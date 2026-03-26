@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control - MOBYUS</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/solution.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&family=Pretendard+Variable:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header id="gnb"></header>
+
+    <main>
+        <section class="global-hero"
+            style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/hero_control_muted.png'); background-size: cover; background-position: center;">
+            <!-- 나중에 배경 이미지가 있다면 위 style에 추가. 현재는 다크 배경(#111)만 적용됨 -->
+            <div class="global-hero-inner fade-in">
+                <p class="global-hero-category">Control</p>
+                <div class="hero-title-row">
+                    <h1 class="global-hero-title">현장을 지휘하다</h1>
+                </div>
+                <!-- 국문 서브텍스트 유지 (영문 생략) -->
+                <p class="global-hero-sub-ko mt-3">이기종 로봇과 설비를 통합 제어하여 물류 효율을 극대화합니다.</p>
+                <p class="global-hero-sub-en">Integrated control of heterogeneous robots and equipment for maximized logistics efficiency</p>
+            </div>
+        </section>
+
+        <!-- Secondary Menu -->
+        <nav class="secondary-nav sticky-nav">
+            <div class="container">
+                <ul>
+                    <li><a href="product.html">Robot</a></li>
+                    <li class="active"><a href="solution-control.html">Control</a></li>
+                    <li><a href="logistics.html">Logistics SW</a></li>
+                    <li><a href="solution-custom.html">Total Solution</a></li>
+                </ul>
+            </div>
+        </nav>
+        <!-- Stats Banner -->
+        <section class="section-padding" style="padding-top: 40px; padding-bottom: 0;">
+            <div class="container fade-in-section">
+                <div class="stats-banner">
+                    <!-- Stat 1 -->
+                    <div class="stat-block">
+                        <div class="product-stats-num stat-count" data-target="300" data-suffix="대+">0대+</div>
+                        <div class="product-stats-label">동시 제어 (1초 내 대응)</div>
+                    </div>
+                    <div class="stat-divider"></div>
+
+                    <!-- Stat 2 -->
+                    <div class="stat-block">
+                        <div class="product-stats-num stat-count" data-target="10" data-suffix="+종">0+종</div>
+                        <div class="product-stats-label">이기종 어댑터</div>
+                    </div>
+                    <div class="stat-divider"></div>
+
+                    <!-- Stat 3 -->
+                    <div class="stat-block">
+                        <div class="product-stats-num stat-count" data-target="5" data-suffix="모듈">0모듈</div>
+                        <div class="product-stats-label">통합관제 시스템 구성</div>
+                    </div>
+                    <div class="stat-divider"></div>
+
+                    <!-- Stat 4 -->
+                    <div class="stat-block">
+                        <div class="product-stats-num stat-count" data-target="4" data-suffix="종">0종</div>
+                        <div class="product-stats-label">지원 맵 타입</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-padding" style="padding-top: 72px;">
+            <div class="container fade-in-section">
+                <!-- TAMS Overview -->
+                <div style="max-width: 800px; margin: 0 auto 200px; text-align: center;">
+                    <h2 class="font-set-intro-title section-center-title" style="margin-bottom: 32px;">TAMS Overview</h2>
+                    <p class="font-set-intro-ko" style="margin-bottom: 40px;">
+                        로봇을 한 대씩 움직일 수는 있습니다.<br>
+                        그러나 수백 대가 엉키지 않고 하나의 흐름으로 움직이려면, 지휘가 필요합니다.<br>
+                        TAMS는 다수·이기종 로봇과 설비, 작업 흐름까지 통합 조율해 교착을 막고<br>
+                        물류 현장의 전체 효율을 최적화하는 <strong>통합 관제 시스템</strong>입니다.
+                    </p>
+                    <div class="tams-maop-badge">
+                        TAMS = Built and Orchestrated on MAOP <br class="mobile-block">(Multi Agent Orchestration Platform)
+                    </div>
+                </div>
+
+                <!-- Why TAMS -->
+                <div style="max-width: 800px; margin: 0 auto;">
+                    <h2 class="font-set-intro-title section-center-title" style="margin-bottom: 12px; text-align: center;">Why TAMS</h2>
+                    <p class="font-set-intro-sub" style="margin-bottom: 52px;">현장에서 마주치는 문제</p>
+
+                    <div class="why-tams-container" style="margin-bottom: 52px; background: transparent; border: none; padding: 0; box-shadow: none;">
+                        <table class="tech-table">
+                            <colgroup>
+                                <col style="width: 8%;">
+                                <col style="width: 18%;">
+                                <col>
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th style="text-align: center;"><span class="font-set-table-header" style="color: var(--color-gray90);">#</span></th>
+                                    <th style="text-align: center;"><span class="font-set-table-header">문제</span></th>
+                                    <th><span class="font-set-table-header">설명</span></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="text-align: center; color: var(--color-gray90); font-weight: 700;">1</td>
+                                    <td style="text-align: center;"><span class="font-set-table-ko" style="font-weight: 600;">혼재</span></td>
+                                    <td>
+                                        <span class="font-set-table-ko">다량의 로봇/기기가 혼재 — 개별 관리 불가</span>
+                                        <span class="font-set-table-en td-en">Multiple robots & devices coexist — unmanageable individually</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: center; color: var(--color-gray90); font-weight: 700;">2</td>
+                                    <td style="text-align: center;"><span class="font-set-table-ko" style="font-weight: 600;">교착</span></td>
+                                    <td>
+                                        <span class="font-set-table-ko">기기간 교착(Deadlock)</span>
+                                        <span class="font-set-table-en td-en">Inter-device deadlocks — line stoppage</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: center; color: var(--color-gray90); font-weight: 700;">3</td>
+                                    <td style="text-align: center;"><span class="font-set-table-ko" style="font-weight: 600;">충돌·대기</span></td>
+                                    <td>
+                                        <span class="font-set-table-ko">로봇/설비 간 충돌 및 대기</span>
+                                        <span class="font-set-table-en td-en">Collisions & queuing — efficiency loss</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: center; color: var(--color-gray90); font-weight: 700;">4</td>
+                                    <td style="text-align: center;"><span class="font-set-table-ko" style="font-weight: 600;">분산제어</span></td>
+                                    <td>
+                                        <span class="font-set-table-ko">시스템별 분산 제어</span>
+                                        <span class="font-set-table-en td-en">Siloed control per system — no global optimization</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- TAMS Answer -->
+                    <div style="text-align: center; margin-bottom: 24px;">
+                        <p class="font-set-intro-sub" style="margin: 0;">TAMS의 답</p>
+                    </div>
+                    <div class="tams-answer-banner" style="background: #7C0b47; border: none; border-radius: 12px; padding: 32px; text-align: center; margin-bottom: 200px;">
+                        <p class="font-set-table-ko-white" style="margin: 0;">
+                            5개 모듈이 하나의 플랫폼(MAOP) 위에서 유기적으로 작동하여,<br>
+                            자재 흐름부터 로봇 제어, 안전 관제, 작업자 내비게이션까지 통합 지휘합니다.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- TAMS Suite Architecture Visual -->
+                <div>
+                    <h3 class="font-set-intro-title section-center-title" style="margin-bottom: 40px; text-align: center;">TAMS Suite</h3>
+
+                    <div class="tams-upper-integration">
+                        <div class="ui-label">상위 시스템 연동</div>
+                        <div class="ui-systems">
+                            <span class="ui-system-badge">ERP</span>
+                            <span class="ui-system-badge">MES</span>
+                            <span class="ui-system-badge">WMS</span>
+                            <span class="ui-system-badge">OMS</span>
+                        </div>
+                    </div>
+
+                    <div style="text-align: center; color: #e8b4cc; font-size: 1.4rem; margin-bottom: 24px;">▼</div>
+
+                    <div class="tams-suite-layout">
+                        <!-- Left Image -->
+                        <div class="tams-suite-image">
+                            <img src="images/tams-suite.png" alt="TAMS Suite Architecture">
+                        </div>
+                        
+                        <!-- Right Modules -->
+                        <div class="tams-suite-modules">
+                            <!-- MCS -->
+                            <div class="tams-suite-module-item">
+                                <div class="tams-suite-module-title" style="cursor: pointer;" onclick="location.href='#mcs-module'">
+                                    MCS <span class="ko">자재흐름 & 이송오더 관리 시스템</span> <span class="en">(Material Control System)</span>
+                                </div>
+                                <div class="tams-suite-module-desc">
+                                    <ul style="padding-left: 20px; margin: 0; color: var(--color-gray90); font-size: 0.9rem; line-height: 1.6;">
+                                        <li>공장/창고 내 피킹/적치 전략과 이송 요청(TransferRequest) 매핑</li>
+                                        <li>이송 요청에 대한 최적 이송 오더 생성 (최적화 엔진 탑재)</li>
+                                        <li>자재 흐름 통합 관리, 실시간 재고관리</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- FMS -->
+                            <div class="tams-suite-module-item">
+                                <div class="tams-suite-module-title" style="cursor: pointer;" onclick="location.href='#fms-module'">
+                                    FMS <span class="ko">다중 로봇관리 시스템</span> <span class="en">(Fleet Management System)</span>
+                                </div>
+                                <div class="tams-suite-module-desc">
+                                    <ul style="padding-left: 20px; margin: 0; color: var(--color-gray90); font-size: 0.9rem; line-height: 1.6;">
+                                        <li>다수(300대 이상), 다기종(10여종 어댑터)의 유무인 군집 관리 (이송오더 할당, 동작제어, 설비제어, 최적화 자동교통 제어)</li>
+                                        <li>하위 연관설비 제어 (엘리베이터, 리프트, 스피드 도어 등)</li>
+                                        <li>에이전트 기반 시뮬레이션</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- ACS -->
+                            <div class="tams-suite-module-item">
+                                <div class="tams-suite-module-title" style="cursor: pointer;" onclick="location.href='#acs-module'">
+                                    ACS <span class="ko">로봇 제어 시스템</span> <span class="en">(Autonomous mobile robot Control System)</span>
+                                </div>
+                                <div class="tams-suite-module-desc">
+                                    <ul style="padding-left: 20px; margin: 0; color: var(--color-gray90); font-size: 0.9rem; line-height: 1.6;">
+                                        <li>3D 로봇 관제 (로봇 언어로 이송오더 변환)</li>
+                                        <li>현장 상황 반영(초 단위) 우선 순위 교통 제어</li>
+                                        <li>산업용 프로토콜 게이트웨이 탑재 (PLC, 설비, IoT 등 제어)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- SMS -->
+                            <div class="tams-suite-module-item">
+                                <div class="tams-suite-module-title" style="cursor: pointer;" onclick="location.href='#sms-module'">
+                                    SMS <span class="ko">안전 관제 시스템</span> <span class="en">(Safety Management System)</span>
+                                </div>
+                                <div class="tams-suite-module-desc">
+                                    <ul style="padding-left: 20px; margin: 0; color: var(--color-gray90); font-size: 0.9rem; line-height: 1.6;">
+                                        <li>공장/창고 내 충돌 및 사고 방지</li>
+                                        <li>유무인 혼합 작업 환경 실시간 위험 제어</li>
+                                        <li>중대 재해 예방 위한 제어로직 탑재</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- WNS -->
+                            <div class="tams-suite-module-item">
+                                <div class="tams-suite-module-title" style="cursor: pointer;" onclick="location.href='#wns-module'">
+                                    WNS <span class="ko">창고 내비게이션 시스템</span> <span class="en">(Warehouse Navigation System)</span>
+                                </div>
+                                <div class="tams-suite-module-desc">
+                                    <ul style="padding-left: 20px; margin: 0; color: var(--color-gray90); font-size: 0.9rem; line-height: 1.6;">
+                                        <li>작업자 위치기반 내비게이션 및 협업 관리</li>
+                                        <li>공장창고내 총량/박스 피킹 및 분류</li>
+                                        <li>공장창고내 최적 경로 가이드</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="text-align: center; color: #e8b4cc; font-size: 1.4rem; margin-top: 24px; margin-bottom: 24px;">▼</div>
+
+                    <div class="tams-lower-integration">
+                        <div class="ui-label">현장 실행</div>
+                        <div class="ui-systems">
+                            <span class="ui-system-badge">AMR</span>
+                            <span class="ui-system-badge">AFL</span>
+                            <span class="ui-system-badge">EPT</span>
+                            <span class="ui-system-badge">컨베이어</span>
+                            <span class="ui-system-badge">작업자</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 핵심 역량 -->
+        <section class="section-padding core-competencies-section">
+            <div class="container fade-in-section">
+                <h3 class="font-set-intro-title section-center-title" style="margin-bottom: 30px; text-align: center;">핵심 역량</h3>
+                <table class="tech-table">
+                    <colgroup>
+                        <col style="width: 8%;">
+                        <col style="width: 20%;">
+                        <col>
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th style="text-align: center;"><span class="font-set-table-header" style="color: var(--color-gray90);">#</span></th>
+                            <th><span class="font-set-table-header">역량</span></th>
+                            <th><span class="font-set-table-header">설명</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="text-align: center; color: var(--color-gray90); font-weight: 700;">1</td>
+                            <td><span class="font-set-table-ko" style="font-weight: 600;">대규모 동시제어</span></td>
+                            <td><span class="font-set-table-ko">300대 동시접속 (1초 내 대응), Microservices 기반, 메모리 캐시(Message Queue)</span></td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center; color: var(--color-gray90); font-weight: 700;">2</td>
+                            <td><span class="font-set-table-ko" style="font-weight: 600;">이기종 통합</span></td>
+                            <td><span class="font-set-table-ko">자사 로봇 + 타사 AGV + 유인지게차 + 청소로봇 혼재 환경 통합 관제</span></td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center; color: var(--color-gray90); font-weight: 700;">3</td>
+                            <td><span class="font-set-table-ko" style="font-weight: 600;">AI 운송 최적화</span></td>
+                            <td><span class="font-set-table-ko">AI 기반 물동 사전예측, 군집 이동 최적화(스케줄링·할당), 경로 최적화(혼잡 우회)</span></td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center; color: var(--color-gray90); font-weight: 700;">4</td>
+                            <td><span class="font-set-table-ko" style="font-weight: 600;">Realtime 실행</span></td>
+                            <td><span class="font-set-table-ko">중앙 3D 관제 포털, Mobile/키오스크 UI, 플랫폼 기반(UI 개발/CAD)</span></td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center; color: var(--color-gray90); font-weight: 700;">5</td>
+                            <td><span class="font-set-table-ko" style="font-weight: 600;">분석·KPI</span></td>
+                            <td><span class="font-set-table-ko">관리자 분석툴, KPI 대시보드, 운영 최적화 인사이트</span></td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center; color: var(--color-gray90); font-weight: 700;">6</td>
+                            <td><span class="font-set-table-ko" style="font-weight: 600;">유연한 플랫폼</span></td>
+                            <td><span class="font-set-table-ko">MAOP 기반 유연한 개발, 다양한 구축 지원 플랫폼</span></td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center; color: var(--color-gray90); font-weight: 700;">7</td>
+                            <td><span class="font-set-table-ko" style="font-weight: 600;">안정성</span></td>
+                            <td><span class="font-set-table-ko">이중화 아키텍처, 무중단 운영 구조</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="overview-section" style="background-color: #f8f9fa;">
+            <div class="container fade-in-section">
+                <!-- MCS Module -->
+                <div id="mcs-module" style="margin-bottom: 200px;">
+                    <h2 class="font-set-intro-title section-center-title" style="margin-bottom: 12px; text-align: center;"><span style="color: #7C0b47;">MCS</span> <span style="font-size: 1.5rem; color: var(--color-gray40);">—</span> Material Control System</h2>
+                    <p class="font-set-intro-sub" style="margin-bottom: 52px;">자재흐름제어시스템</p>
+                    
+                    <div class="overview-items" style="background: #fff; padding: 40px; border-radius: 12px; border: 1px solid var(--color-gray20);">
+                        <div class="overview-item">
+                            <div class="overview-left">
+                                <span class="overview-number">1</span>
+                                <span class="font-set-overview-label">한줄</span>
+                            </div>
+                            <div class="overview-right">
+                                <p class="font-set-table-ko">자재 흐름과 이송 오더를 관리합니다</p>
+                                <p class="font-set-table-en">Manages material flow and transport orders</p>
+                            </div>
+                        </div>
+                        <div class="overview-item">
+                            <div class="overview-left">
+                                <span class="overview-number">2</span>
+                                <span class="font-set-overview-label">역할</span>
+                            </div>
+                            <div class="overview-right">
+                                <p class="font-set-table-ko">상위 시스템(WMS, MES, ERP)에서 내려온 작업 요청을 이송 오더로 변환하고, 자재의 출발지·목적지·우선순위를 판단하여 최적의 실행 계획을 수립합니다</p>
+                                <p class="font-set-table-en">Converts work requests from upper systems (WMS, MES, ERP) into transport orders, determines origin/destination/priority, and creates optimal execution plans</p>
+                            </div>
+                        </div>
+                        <div class="overview-item">
+                            <div class="overview-left">
+                                <span class="overview-number">3</span>
+                                <span class="font-set-overview-label">핵심기능</span>
+                            </div>
+                            <div class="overview-right">
+                                <p class="font-set-table-ko">① 이송 오더 생성·유연화 ② 최적 이송계획 수립 (VRP 기반) ③ 상위 시스템 연동 (ERP·MES·WMS·OMS)</p>
+                                <p class="font-set-table-en">① Flexible transport order generation ② Optimal plan (VRP-based) ③ Upper system integration</p>
+                            </div>
+                        </div>
+                        <div class="overview-item">
+                            <div class="overview-left">
+                                <span class="overview-number">4</span>
+                                <span class="font-set-overview-label">적용예시</span>
+                            </div>
+                            <div class="overview-right">
+                                <p class="font-set-table-ko">생산 라인에서 부품 공급 요청 → MCS가 가장 효율적인 로봇과 경로를 할당</p>
+                                <p class="font-set-table-en">Production line requests parts → MCS assigns the most efficient robot & route</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FMS Module -->
+                <div id="fms-module" style="margin-bottom: 200px;">
+                    <h2 class="font-set-intro-title section-center-title" style="margin-bottom: 12px; text-align: center;"><span style="color: #7C0b47;">FMS</span> <span style="font-size: 1.5rem; color: var(--color-gray40);">—</span> Fleet Management System</h2>
+                    <p class="font-set-intro-sub" style="margin-bottom: 52px;">다중 로봇관리 시스템</p>
+                    
+                    <div class="overview-items" style="background: #fff; padding: 40px; border-radius: 12px; border: 1px solid var(--color-gray20);">
+                        <div class="overview-item">
+                            <div class="overview-left">
+                                <span class="overview-number">1</span>
+                                <span class="font-set-overview-label">한줄</span>
+                            </div>
+                            <div class="overview-right">
+                                <p class="font-set-table-ko">다수의 유·무인 기기를 동시에 관리하고 제어합니다</p>
+                                <p class="font-set-table-en">Manages and controls multiple manned/unmanned fleets simultaneously</p>
+                            </div>
+                        </div>
+                        <div class="overview-item">
+                            <div class="overview-left">
+                                <span class="overview-number">2</span>
+                                <span class="font-set-overview-label">역할</span>
+                            </div>
+                            <div class="overview-right">
+                                <p class="font-set-table-ko">MCS에서 생성된 이송 오더를 수행하기 위해 다수(300대 이상), 다기종의 로봇과 유인 지게차 등을 군집 제어하며 교통의 혼잡, 교착을 예방합니다</p>
+                                <p class="font-set-table-en">Fleet-controls various types of robots (300+) to execute transport orders from MCS, preventing traffic congestion and deadlocks</p>
+                            </div>
+                        </div>
+                        <div class="overview-item">
+                            <div class="overview-left">
+                                <span class="overview-number">3</span>
+                                <span class="font-set-overview-label">핵심기능</span>
+                            </div>
+                            <div class="overview-right">
+                                <p class="font-set-table-ko">① 대규모 군집 제어 (300대 이상) ② 이기종 통합 관제 (자사/타사 AGV 혼재) ③ 엘리베이터/도어 등 하위 연관설비 제어</p>
+                                <p class="font-set-table-en">① Large-scale fleet control (300+) ② Heterogeneous integration (own/3rd party AGVs) ③ Lower-level equipment control (Elevators/Doors)</p>
+                            </div>
+                        </div>
+                        <div class="overview-item">
+                            <div class="overview-left">
+                                <span class="overview-number">4</span>
+                                <span class="font-set-overview-label">적용예시</span>
+                            </div>
+                            <div class="overview-right">
+                                <p class="font-set-table-ko">로봇 100대가 좁은 통로를 지나갈 때 충돌 없이 최적 경로로 이동하도록 제어</p>
+                                <p class="font-set-table-en">Controls 100 robots to navigate narrow aisles cleanly without collision</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ACS Module -->
+                <div id="acs-module" style="margin-bottom: 200px;">
+                    <h2 class="font-set-intro-title section-center-title" style="margin-bottom: 12px; text-align: center;"><span style="color: #7C0b47;">ACS</span> <span style="font-size: 1.5rem; color: var(--color-gray40);">—</span> AMR Control System</h2>
+                    <p class="font-set-intro-sub" style="margin-bottom: 52px;">로봇 제어 시스템</p>
+                    
+                    <div class="overview-items" style="background: #fff; padding: 40px; border-radius: 12px; border: 1px solid var(--color-gray20);">
+                        <div class="overview-item">
+                            <div class="overview-left">
+                                <span class="overview-number">1</span>
+                                <span class="font-set-overview-label">한줄</span>
+                            </div>
+                            <div class="overview-right">
+                                <p class="font-set-table-ko">로봇의 개별적인 움직임을 정밀하게 제어합니다</p>
+                                <p class="font-set-table-en">Precisely controls individual robot movements</p>
+                            </div>
+                        </div>
+                        <div class="overview-item">
+                            <div class="overview-left">
+                                <span class="overview-number">2</span>
+                                <span class="font-set-overview-label">역할</span>
+                            </div>
+                            <div class="overview-right">
+                                <p class="font-set-table-ko">각 로봇이 지시받은 경로를 따라 안전하고 정확하게 이동하도록 휠 모터, 센서 등을 직접 제어하며 현장의 장애물을 실시간으로 인지·회피합니다</p>
+                                <p class="font-set-table-en">Directly controls wheel motors and sensors for safe/accurate movement along designated paths, recognizing and avoiding obstacles in real-time</p>
+                            </div>
+                        </div>
+                        <div class="overview-item">
+                            <div class="overview-left">
+                                <span class="overview-number">3</span>
+                                <span class="font-set-overview-label">핵심기능</span>
+                            </div>
+                            <div class="overview-right">
+                                <p class="font-set-table-ko">① 3D 로봇 관제 및 로봇 언어 변환 ② 초 단위 우선순위 교통 제어 ③ 산업용 프로토콜 게이트웨이 탑재 (PLC, 설비, IoT 등)</p>
+                                <p class="font-set-table-en">① 3D robot monitoring & language conversion ② Priority traffic control per second ③ Industrial protocol gateway (PLC, IoT, etc.)</p>
+                            </div>
+                        </div>
+                        <div class="overview-item">
+                            <div class="overview-left">
+                                <span class="overview-number">4</span>
+                                <span class="font-set-overview-label">적용예시</span>
+                            </div>
+                            <div class="overview-right">
+                                <p class="font-set-table-ko">로봇 주행 중 예상치 못한 적재물 발견 시, 스스로 우회 경로를 생성하여 이동</p>
+                                <p class="font-set-table-en">When an unexpected pallet appears in the path, the robot automatically navigates around it</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SMS Module -->
+                <div id="sms-module" style="margin-bottom: 200px;">
+                    <h2 class="font-set-intro-title section-center-title" style="margin-bottom: 12px; text-align: center;"><span style="color: #7C0b47;">SMS</span> <span style="font-size: 1.5rem; color: var(--color-gray40);">—</span> Safety Management System</h2>
+                    <p class="font-set-intro-sub" style="margin-bottom: 52px;">안전 관제 시스템</p>
+                    
+                    <div class="overview-items" style="background: #fff; padding: 40px; border-radius: 12px; border: 1px solid var(--color-gray20);">
+                        <div class="overview-item">
+                            <div class="overview-left">
+                                <span class="overview-number">1</span>
+                                <span class="font-set-overview-label">한줄</span>
+                            </div>
+                            <div class="overview-right">
+                                <p class="font-set-table-ko">공장/창고 내 작업자와 로봇의 안전을 보장합니다</p>
+                                <p class="font-set-table-en">Ensures safety for workers and robots in the facility</p>
+                            </div>
+                        </div>
+                        <div class="overview-item">
+                            <div class="overview-left">
+                                <span class="overview-number">2</span>
+                                <span class="font-set-overview-label">역할</span>
+                            </div>
+                            <div class="overview-right">
+                                <p class="font-set-table-ko">유무인 혼합 환경에서 위험 요소를 실시간으로 제어하고 중대 재해를 예방하는 제어로직을 구현합니다</p>
+                                <p class="font-set-table-en">In mixed manned/unmanned environments, it controls risk factors in real-time and implements control logic to prevent severe accidents</p>
+                            </div>
+                        </div>
+                        <div class="overview-item">
+                            <div class="overview-left">
+                                <span class="overview-number">3</span>
+                                <span class="font-set-overview-label">핵심기능</span>
+                            </div>
+                            <div class="overview-right">
+                                <p class="font-set-table-ko">① 공장/창고 내 충돌 방지 ② 유무인 혼합 작업 환경 실시간 위험 제어 ③ 중대 재해 예방 자동 정지</p>
+                                <p class="font-set-table-en">① Collision prevention ② Real-time risk control in mixed zones ③ Auto-stop for severe accident prevention</p>
+                            </div>
+                        </div>
+                        <div class="overview-item">
+                            <div class="overview-left">
+                                <span class="overview-number">4</span>
+                                <span class="font-set-overview-label">적용예시</span>
+                            </div>
+                            <div class="overview-right">
+                                <p class="font-set-table-ko">지게차와 작업자가 교차하는 구간에서, 로봇과 지게차의 위치를 파악하여 충돌 전 로봇 감속/정지</p>
+                                <p class="font-set-table-en">Detects intersecting forklifts and workers to decelerate/stop the robot proactively</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- WNS Module -->
+                <div id="wns-module" style="margin-bottom: 0;">
+                    <h2 class="font-set-intro-title section-center-title" style="margin-bottom: 12px; text-align: center;"><span style="color: #7C0b47;">WNS</span> <span style="font-size: 1.5rem; color: var(--color-gray40);">—</span> Warehouse Navigation System</h2>
+                    <p class="font-set-intro-sub" style="margin-bottom: 52px;">창고 내비게이션 시스템</p>
+                    
+                    <div class="overview-items" style="background: #fff; padding: 40px; border-radius: 12px; border: 1px solid var(--color-gray20);">
+                        <div class="overview-item">
+                            <div class="overview-left">
+                                <span class="overview-number">1</span>
+                                <span class="font-set-overview-label">한줄</span>
+                            </div>
+                            <div class="overview-right">
+                                <p class="font-set-table-ko">작업자 위치 기반 최적 경로 가이드를 제공합니다</p>
+                                <p class="font-set-table-en">Provides optimal route guides based on worker locations</p>
+                            </div>
+                        </div>
+                        <div class="overview-item">
+                            <div class="overview-left">
+                                <span class="overview-number">2</span>
+                                <span class="font-set-overview-label">역할</span>
+                            </div>
+                            <div class="overview-right">
+                                <p class="font-set-table-ko">창고 내 작업자의 동선을 최소화하고 피킹/분류 작업을 원활하게 수행할 수 있도록 내비게이션 기능과 협업 관리를 지원합니다</p>
+                                <p class="font-set-table-en">Supports navigation and collaboration to minimize worker travel distance and facilitate smooth picking & sortation tasks</p>
+                            </div>
+                        </div>
+                        <div class="overview-item">
+                            <div class="overview-left">
+                                <span class="overview-number">3</span>
+                                <span class="font-set-overview-label">핵심기능</span>
+                            </div>
+                            <div class="overview-right">
+                                <p class="font-set-table-ko">① 작업자 위치기반 내비게이션 및 로봇-작업자 협업 관리 ② 창고 내 총량/박스 피킹 및 분류 가이브</p>
+                                <p class="font-set-table-en">① Worker-location-based navigation & robot-human collaboration ② Box/Carton picking and sortation guides</p>
+                            </div>
+                        </div>
+                        <div class="overview-item">
+                            <div class="overview-left">
+                                <span class="overview-number">4</span>
+                                <span class="font-set-overview-label">적용예시</span>
+                            </div>
+                            <div class="overview-right">
+                                <p class="font-set-table-ko">대형 물류센터에서 작업자가 PDA 화면을 통해 다음 이동할 보관 위치와 최단 경로를 안내받음</p>
+                                <p class="font-set-table-en">In a large distribution center, workers receive turn-by-turn guidance to the next bin via PDA</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 경쟁력 비교 -->
+        <section class="section-padding">
+            <div class="container fade-in-section">
+                <h3 class="font-set-intro-title section-center-title" style="margin-bottom: 30px; text-align: center;">경쟁력 비교</h3>
+                <table class="diff-table">
+                    <colgroup>
+                        <col style="width: 25%;">
+                        <col style="width: 25%;">
+                        <col style="width: 25%;">
+                        <col style="width: 25%;">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th class="font-set-table-header">항목</th>
+                            <th class="font-set-table-header col-mobyus">MOBYUS TAMS</th>
+                            <th class="font-set-table-header col-competitor">경쟁사 A</th>
+                            <th class="font-set-table-header col-competitor">경쟁사 B</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="font-set-table-ko">자동 교통제어 동시 수</td>
+                            <td class="font-set-table-ko col-mobyus">300대 이상</td>
+                            <td class="font-set-table-ko col-competitor">80대 이하</td>
+                            <td class="font-set-table-ko col-competitor">50대</td>
+                        </tr>
+                        <tr>
+                            <td class="font-set-table-ko">오더 최적화</td>
+                            <td class="font-set-table-ko col-mobyus">VRP (Multi-Pick, Multi-Drop)</td>
+                            <td class="font-set-table-ko col-competitor">Single-Pick, Single-Drop</td>
+                            <td class="font-set-table-ko col-competitor">TSP (Single-Pick, Multi-Drop)</td>
+                        </tr>
+                        <tr>
+                            <td class="font-set-table-ko">교통제어 지원</td>
+                            <td class="font-set-table-ko col-mobyus">5종</td>
+                            <td class="font-set-table-ko col-competitor">1종</td>
+                            <td class="font-set-table-ko col-competitor">2종</td>
+                        </tr>
+                        <tr>
+                            <td class="font-set-table-ko">지원 맵 종류</td>
+                            <td class="font-set-table-ko col-mobyus">4종</td>
+                            <td class="font-set-table-ko col-competitor">2종</td>
+                            <td class="font-set-table-ko col-competitor">2종</td>
+                        </tr>
+                        <tr>
+                            <td class="font-set-table-ko">다기종/유무인 구축사례</td>
+                            <td class="font-set-table-ko col-mobyus">5건 / 2건</td>
+                            <td class="font-set-table-ko col-competitor">0건</td>
+                            <td class="font-set-table-ko col-competitor">0건</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- ===== 하단 3단 배너 ===== -->
+        <section class="bottom-nav-banner">
+            <div class="container">
+                <div class="bnb-grid">
+
+                    <!-- 1. Reference -->
+                    <a href="reference.html" class="bnb-card">
+                        <div class="bnb-text">
+                            <span class="bnb-label">레퍼런스</span>
+                            <span class="bnb-title">관련 사례 보기</span>
+                        </div>
+                        <div class="bnb-arrow">
+                            <i class="fas fa-chevron-right"></i>
+                        </div>
+                    </a>
+
+                    <!-- 2. Solution -->
+                    <a href="solution-custom.html" class="bnb-card">
+                        <div class="bnb-text">
+                            <span class="bnb-label">솔루션 조합</span>
+                            <span class="bnb-title">솔루션 조합 보기</span>
+                        </div>
+                        <div class="bnb-arrow">
+                            <i class="fas fa-chevron-right"></i>
+                        </div>
+                    </a>
+
+                    <!-- 3. Fit Check (강조) -->
+                    <a href="fit-check.html" class="bnb-card bnb-card--accent">
+                        <div class="bnb-text">
+                            <span class="bnb-label">Fit Check</span>
+                            <span class="bnb-title">내 현장 자동화 적합도 확인</span>
+                        </div>
+                        <div class="bnb-arrow" style="background: #fff; color: var(--color-br900);">
+                            <i class="fas fa-chevron-right"></i>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer id="contact"></footer>
+    <script src="scripts/main.js"></script>
+    <script>
+        (function () {
+            const banner = document.getElementById('control-stats-banner');
+            if (!banner) return;
+            let animated = false;
+
+            function animateCountUp() {
+                if (animated) return;
+                animated = true;
+                const DURATION = 2000; // ms
+                document.querySelectorAll('#control-stats-banner .stat-count').forEach(function (el) {
+                    const target = parseInt(el.dataset.target, 10);
+                    const suffix = el.dataset.suffix || '';
+                    const start = performance.now();
+                    function step(now) {
+                        const elapsed = now - start;
+                        const progress = Math.min(elapsed / DURATION, 1);
+                        const eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+                        el.textContent = Math.floor(eased * target) + suffix;
+                        if (progress < 1) requestAnimationFrame(step);
+                        else el.textContent = target + suffix;
+                    }
+                    requestAnimationFrame(step);
+                });
+            }
+
+            const observer = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) animateCountUp();
+                });
+            }, { threshold: 0.3 });
+            observer.observe(banner);
+        })();
+    </script>
+
+    <!-- MAOP Modal -->
+    <div id="maop-modal" onclick="if(event.target===this)this.style.display='none'"
+        style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.45); z-index:9999; align-items:center; justify-content:center; animation:fadeInOverlay 0.2s ease;">
+        <div
+            style="background:#fff; border-radius:20px; width:min(560px,90vw); max-height:85vh; overflow-y:auto; box-shadow:0 24px 60px rgba(0,0,0,0.2); animation:slideUpModal 0.25s ease;">
+            <!-- Modal header -->
+            <div
+                style="background:#fdf2f8; border-bottom:1px solid #e8b4cc; padding:24px 28px; display:flex; align-items:center; justify-content:space-between; border-radius:20px 20px 0 0;">
+                <div>
+                    <div style="font-size:1rem; font-weight:700; color:#7C0B47; margin-bottom:4px;">MAOP</div>
+                    <div style="font-size:0.85rem; color:#6b7280;">Multi Agent Orchestration Platform</div>
+                </div>
+                <button onclick="document.getElementById('maop-modal').style.display='none'"
+                    style="background:none; border:none; font-size:1.4rem; color:#9ca3af; cursor:pointer; line-height:1; padding:4px 8px;">&times;</button>
+            </div>
+            <!-- Modal body -->
+            <div style="padding:28px;">
+                <!-- 정의 -->
+                <div
+                    style="font-size:0.78rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:#9ca3af; margin-bottom:8px;">
+                    정의</div>
+                <p style="font-size:0.97rem; color:#374151; margin-bottom:24px;">Multi Agent Orchestration Platform</p>
+
+                <!-- 역할 -->
+                <div
+                    style="font-size:0.78rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:#9ca3af; margin-bottom:8px;">
+                    역할</div>
+                <p style="font-size:0.97rem; color:#374151; line-height:1.8; margin-bottom:24px;">TAMS 5모듈의 기반 플랫폼.
+                    Microservices 아키텍처로 모듈 간 독립 운영과 유기적 연동을 동시에 가능하게 합니다.</p>
+
+                <!-- 핵심 특징 -->
+                <div
+                    style="font-size:0.78rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:#9ca3af; margin-bottom:14px;">
+                    핵심 특징</div>
+                <div style="display:flex; flex-direction:column; gap:10px;">
+                    <div style="display:flex; gap:14px; background:#f9fafb; border-radius:10px; padding:14px 18px;">
+                        <span style="font-weight:800; color:#7C0B47; min-width:22px;">①</span>
+                        <span style="font-size:0.93rem; color:#374151;">Microservices 기반 서비스 관리</span>
+                    </div>
+                    <div style="display:flex; gap:14px; background:#f9fafb; border-radius:10px; padding:14px 18px;">
+                        <span style="font-weight:800; color:#7C0B47; min-width:22px;">②</span>
+                        <span style="font-size:0.93rem; color:#374151;">메모리 캐시(Message Queue) 기반 정보 관리</span>
+                    </div>
+                    <div style="display:flex; gap:14px; background:#f9fafb; border-radius:10px; padding:14px 18px;">
+                        <span style="font-weight:800; color:#7C0B47; min-width:22px;">③</span>
+                        <span style="font-size:0.93rem; color:#374151;">이중화 아키텍처 (안정성)</span>
+                    </div>
+                    <div style="display:flex; gap:14px; background:#f9fafb; border-radius:10px; padding:14px 18px;">
+                        <span style="font-weight:800; color:#7C0B47; min-width:22px;">④</span>
+                        <span style="font-size:0.93rem; color:#374151;">유연한 UI 개발 플랫폼 + CAD 플랫폼</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts/main.js"></script>
+</body>
+
+</html>
