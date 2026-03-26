@@ -4460,10 +4460,13 @@ body.scroll-down-mode .secondary-nav {
     }
 }
 
-/* Mobile GNB Layout Overrides */
+/* Mobile Layout Overrides */
 @media (max-width: 768px) {
-    .gnb-container {
-        padding: 0 15px !important;
+    .gnb-container,
+    .container, 
+    .global-hero-inner, 
+    .hero-container {
+        padding: 0 20px !important;
     }
     .gnb-left img {
         height: 24px !important;
