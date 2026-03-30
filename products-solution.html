@@ -154,8 +154,34 @@
             text-align: center !important;
         }
 
+        /* 모든 표의 첫 번째 헤더셀 중앙정렬 */
+        .diff-table thead th:first-child,
+        .tech-table thead th:first-child {
+            text-align: center !important;
+        }
+
         .font-set-table-ko {
             word-break: keep-all !important;
+        }
+
+        /* Solution 조합 표 전용: 2컬럼 고정 레이아웃 보장 */
+        .solution-combo-table {
+            display: table !important;
+            width: 100% !important;
+            table-layout: fixed !important;
+            border-collapse: collapse !important;
+        }
+        .solution-combo-table tr {
+            display: table-row !important;
+        }
+        .solution-combo-table th,
+        .solution-combo-table td {
+            display: table-cell !important;
+            vertical-align: middle !important;
+        }
+        .solution-combo-table th:first-child,
+        .solution-combo-table td:first-child {
+            width: 40% !important;
         }
 
         @media (max-width: 768px) {
@@ -322,7 +348,7 @@
             </div>
 
             <div class="container" style="max-width: 1000px; margin: 0 auto;">
-                <table class="tech-table">
+                <table class="tech-table solution-combo-table">
                     <thead>
                         <tr>
                             <th style="text-align: center; width: 40%;" data-i18n="ps.combo.th.combo">조합</th>
@@ -1919,14 +1945,14 @@
                         <table class="diff-table sw-detail-table" style="width: 100%">
                             <thead>
                                 <tr>
-                                    <th style="width: 80px" data-i18n="ps.logistics.e2e.table.sw">SW</th>
+                                    <th style="width: 80px; text-align: center" data-i18n="ps.logistics.e2e.table.sw">SW</th>
                                     <th style="width: 160px; white-space: nowrap" data-i18n="ps.logistics.e2e.table.cover">커버구간</th>
                                     <th style="text-align: left" data-i18n="ps.logistics.e2e.table.desc">설명</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td style="font-weight: 700; color: #111">
+                                    <td style="font-weight: 700; color: #111; text-align: center">
                                         <span>OMS</span>
                                     </td>
                                     <td style="white-space: nowrap" data-i18n="ps.logistics.e2e.table.c1">주문 수집 ~ 배분</td>
@@ -1936,7 +1962,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td style="font-weight: 700; color: #111">
+                                    <td style="font-weight: 700; color: #111; text-align: center">
                                         <span>WMS</span>
                                     </td>
                                     <td style="white-space: nowrap" data-i18n="ps.logistics.e2e.table.c2">입고 ~ 출고</td>
@@ -1946,7 +1972,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td style="font-weight: 700; color: #111">
+                                    <td style="font-weight: 700; color: #111; text-align: center">
                                         <span>TMS</span>
                                     </td>
                                     <td style="white-space: nowrap" data-i18n="ps.logistics.e2e.table.c3">배차 ~ 정산</td>
@@ -1955,7 +1981,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td style="font-weight: 700; color: #111">
+                                    <td style="font-weight: 700; color: #111; text-align: center">
                                         <span>VMS</span>
                                     </td>
                                     <td style="white-space: nowrap" data-i18n="ps.logistics.e2e.table.c4">전 구간</td>
