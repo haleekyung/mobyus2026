@@ -1,4 +1,4 @@
-window.i18nData = {
+﻿window.i18nData = {
     ko: {
         "hero.title_main": "자율을 지휘하다 <span>Autonomy, Orchestrated.</span>",
         "hero.desc": "로봇이 움직입니다. Robots move. <br>관제가 지휘합니다. TAMS orchestrates.<br>물류SW가 운영합니다 Logistics SW runs the flow.",
@@ -3972,3 +3972,6 @@ window.i18nData = {
         "case.fashion-2.h2": "4th consecutive project trust",
     }
 };
+
+
+

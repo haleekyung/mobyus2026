@@ -176,6 +176,7 @@ ul {
     object-fit: contain;
 }
 
+/* Navigation Menu */
 .nav-menu ul {
     display: flex;
     gap: 40px;
@@ -188,8 +189,31 @@ ul {
     color: #4b5563;
     position: relative;
     padding: 5px 0;
-    /* text-transform: uppercase; Removed to allow dynamic casing */
+    text-transform: uppercase;
     letter-spacing: 0.05em;
+}
+
+/* Mobile menu button (Hidden on PC by default) */
+.mobile-menu-btn {
+    display: none !important;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 24px;
+    height: 18px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    position: relative;
+    z-index: 10001;
+}
+
+.mobile-menu-btn span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: all 0.3s ease;
 }
 
 .nav-menu a::after {
@@ -3889,9 +3913,9 @@ body.scroll-down-mode .secondary-nav {
         display: block !important; 
     }
 
+    /* Force show hamburger removal for PC visibility */
     .mobile-menu-btn {
-        display: block !important; /* Force show hamburger */
-        z-index: 9999 !important;
+        z-index: 9999;
     }
 
     .nav-menu {
@@ -4632,12 +4656,12 @@ body.scroll-down-mode .secondary-nav {
 
     /* Reference Tags Mobile Stacking */
     .case-tags {
-    margin-top: 20px;
-      flex-direction: column !important;
+        margin-top: 20px;
+        flex-direction: column !important;
         align-items: flex-start !important;
         gap: 10px !important;
     }
-}
+} /* Closing media query from line 4610 */
 
 /* Bilingual Support: Hide EN sub-texts in English mode to keep it clean */
 html[lang="en"] [data-i18n$=".desc_en"] {
