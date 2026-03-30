@@ -114,29 +114,23 @@
     <script src="scripts/i18n.js"></script>
 
     <style>
-        /* [Global Table Layout Fix] 모든 표가 화면 너비를 꽉 채우고 균등하게 분배되도록 강제 */
+        /* [Table Structural Fix] 표 display 구조 보장 (rowspan 보호) */
+        /* ⚠️ table-layout: fixed 는 rowspan 표에서 충돌 → 제거, inline style로 per-table 관리 */
         .diff-table,
         .tech-table {
             display: table !important;
-            width: 100% !important;
-            table-layout: fixed !important;
-            word-break: keep-all !important;
-            margin: 0 auto !important;
-            border-collapse: collapse !important;
-        }
-
-        .diff-table thead,
-        .diff-table tbody,
-        .diff-table tr,
-        .tech-table thead,
-        .tech-table tbody,
-        .tech-table tr {
-            display: table-row-group !important;
+            width: 100%;
+            border-collapse: collapse;
         }
 
         .diff-table thead,
         .tech-table thead {
             display: table-header-group !important;
+        }
+
+        .diff-table tbody,
+        .tech-table tbody {
+            display: table-row-group !important;
         }
 
         .diff-table tr,
@@ -150,13 +144,6 @@
         .tech-table td {
             display: table-cell !important;
             vertical-align: middle !important;
-            padding: 14px 16px !important;
-        }
-
-        /* 항목(첫 번째 열)은 왼쪽 정렬 유지 */
-        .diff-table td:first-child,
-        .diff-table th:first-child {
-            text-align: left !important;
         }
 
         /* MOBYUS / 경쟁사 열은 가운데 정렬 */
@@ -165,12 +152,6 @@
         .diff-table td.col-competitor,
         .diff-table th.col-competitor {
             text-align: center !important;
-        }
-
-        /* tech-table 설명 열은 왼쪽 정렬 유지 */
-        .tech-table td:last-child,
-        .tech-table th:last-child {
-            text-align: left !important;
         }
 
         .font-set-table-ko {
@@ -1390,34 +1371,6 @@
                 <h2 class="font-set-intro-title section-center-title" style="margin-bottom: 50px; text-align: center;"
                     data-i18n="ps.control.maop.title">
                     MAOP 플랫폼</h2>
-
-                <!-- Desktop Only: Table Structure -->
-                <div class="maop-desktop">
-                    <table class="tech-table">
-                        <colgroup>
-                            <col style="width: 160px;">
-                            <col style="width: 840px;">
-                        </colgroup>
-                        <tbody>
-                            <tr>
-                                <th style="text-align: left; padding: 20px 0; border-bottom: 2px solid #333;" data-i18n="ps.control.maop.r1.name">정의</th>
-                                <td style="padding: 20px 0; border-bottom: 1px solid #eee;" data-i18n="ps.control.maop.r1.val">Multi Agent Orchestration Platform</td>
-                            </tr>
-                            <tr>
-                                <th style="text-align: left; padding: 20px 0; border-bottom: 2px solid #333;" data-i18n="ps.control.maop.r2.name">역할</th>
-                                <td style="padding: 20px 0; border-bottom: 1px solid #eee;" data-i18n="ps.control.maop.r2.val">
-                                    <p>TAMS 5모듈의 기반 플랫폼. Microservices 아키텍처로 모듈 간 독립 운영과 유기적 연동을 동시에 가능하게 합니다.</p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th style="text-align: left; padding: 20px 0; border-bottom: 2px solid #333;" data-i18n="ps.control.maop.r3.name">핵심 특징</th>
-                                <td style="padding: 20px 0; border-bottom: 1px solid #eee;" data-i18n="ps.control.maop.r3.val">
-                                    <p>① Microservices 기반 서비스 관리 ② 메모리 캐시(Message Queue) 기반 정보 관리 ③ 이중화 아키텍처 (안정성) ④ 유연한 UI 개발 플랫폼 + CAD 플랫폼</p>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
 
                 <!-- Mobile Only: Image-based Card Structure -->
                 <div class="maop-mobile maop-mobile-list">
