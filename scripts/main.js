@@ -84,46 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.setLanguage = setLanguage;
     window.getLanguage = getLanguage;
 
-    // --- Smooth Scroll Effect ---
-    let isScrolling = false;
-    let scrollTarget = window.scrollY;
-
-    function smoothScroll() {
-        if (!isScrolling) return;
-
-        const currentScroll = window.scrollY;
-        const distance = scrollTarget - currentScroll;
-        const step = distance * 1.0; 
-
-        if (Math.abs(distance) > 1) {
-            window.scrollTo(0, currentScroll + step);
-            requestAnimationFrame(smoothScroll);
-        } else {
-            isScrolling = false;
-        }
-    }
-
-    window.addEventListener('scroll', () => {
-        if (!isScrolling) {
-            scrollTarget = window.scrollY;
-        }
-    });
-
-    window.addEventListener('wheel', (e) => {
-        e.preventDefault();
-        scrollTarget += e.deltaY;
-        const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-        scrollTarget = Math.max(0, Math.min(scrollTarget, maxScroll));
-
-        if (!isScrolling) {
-            isScrolling = true;
-            requestAnimationFrame(smoothScroll);
-        }
-    }, { passive: false });
-
-
-
-    // --- Smooth Anchor Scrolling ---
+    // --- Smooth Anchor Scrolling (Simplified) ---
     function handleAnchorScroll() {
         const hash = window.location.hash;
         if (hash) {
@@ -136,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         top: targetPosition,
                         behavior: 'smooth'
                     });
-                }, 300); // Delay to ensure GNB and other elements are loaded
+                }, 300); 
             }
         }
     }

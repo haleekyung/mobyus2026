@@ -4454,6 +4454,8 @@ body.scroll-down-mode .secondary-nav {
         width: 100% !important;
         border: none !important;
         table-layout: auto !important;
+        background: transparent !important;
+        box-shadow: none !important;
     }
 
     .maop-platform-section .tech-table thead {
@@ -4468,20 +4470,26 @@ body.scroll-down-mode .secondary-nav {
 
     .maop-platform-section .tech-table tr {
         display: block !important;
-        background: #fff !important;
-        border: 1px solid #e5e7eb !important;
-        border-radius: 12px !important;
-        padding: 18px 20px !important;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.04) !important;
+        background: transparent !important;
+        border: none !important;
+        border-bottom: 1px solid #e5e7eb !important;
+        border-radius: 0 !important;
+        padding: 40px 0 !important; /* 내부 마진(패딩) 대폭 증대 */
+        box-shadow: none !important;
+    }
+
+    .maop-platform-section .tech-table tr:last-child {
+        border-bottom: none !important;
     }
 
     .maop-platform-section .tech-table td {
         display: block !important;
-        padding: 0 !important;
+        padding: 12px 0 !important;
         border: none !important;
         width: 100% !important;
         white-space: normal !important;
         word-break: keep-all !important;
+        background: transparent !important;
     }
 
     .maop-platform-section .tech-table td:first-child {
