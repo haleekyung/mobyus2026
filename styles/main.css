@@ -4302,10 +4302,31 @@ body.scroll-down-mode .secondary-nav {
     
     .diff-table th, 
     .diff-table td {
-        font-size: 14px !important;
-        padding: 10px 8px !important;
-        letter-spacing: -0.05em;
-        word-break: break-all;
+        font-size: 13px !important;
+        padding: 12px 6px !important;
+        letter-spacing: -0.04em;
+        line-height: 1.4 !important;
+        word-break: keep-all !important;
+        overflow-wrap: break-word !important;
+    }
+
+    .diff-table th.col-layer,
+    .diff-table td:first-child {
+        width: 8% !important;
+        text-align: center !important;
+    }
+
+    .diff-table th.col-name {
+        width: 28% !important;
+    }
+
+    .diff-table th.col-role {
+        width: 29% !important;
+    }
+
+    .diff-table th.col-products,
+    .diff-table td:last-child {
+        width: 35% !important;
     }
 }
 /* --- Visibility Helpers --- */
@@ -4323,6 +4344,14 @@ body.scroll-down-mode .secondary-nav {
     .m-hide { display: none !important; }
     .mobile-only { display: block !important; }
     .pc-only { display: none !important; }
+
+    /* Total Solution Mobile Cards */
+    .sc-mobile-cards {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 16px !important;
+        margin-top: 20px;
+    }
 
     .module-block { margin-bottom: 60px !important; }
     .overview-items { padding: 16px !important; }
@@ -4608,5 +4637,10 @@ body.scroll-down-mode .secondary-nav {
         align-items: flex-start !important;
         gap: 10px !important;
     }
+}
+
+/* Bilingual Support: Hide EN sub-texts in English mode to keep it clean */
+html[lang="en"] [data-i18n$=".desc_en"] {
+    display: none !important;
 }
 
