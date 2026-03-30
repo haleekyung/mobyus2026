@@ -12,38 +12,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&family=Pretendard+Variable:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- i18n & Core scripts -->
+    <script src="scripts/i18n-data.js"></script>
 </head>
 
 <body>
-    <header id="gnb" class="gnb-desktop">
-        <div class="gnb-container">
-            <div class="gnb-left">
-                <a href="index.html" class="logo">
-                    <img src="images/logo_mobyus.png" alt="MOBYUS">
-                </a>
-            </div>
-            <nav class="nav-menu center-nav">
-                <ul>
-                    <li><a href="products-solution.html">Products & Solution</a></li>
-                    <li><a href="reference.html">Reference</a></li>
-                    <li><a href="resource-guide.html" class="active">Insights</a></li>
-                    <li><a href="aboutus.html">About Us</a></li>
-                </ul>
-            </nav>
-            <div class="gnb-right">
-                <div class="gnb-lang">
-                    <i class="fas fa-globe"></i>
-                    <a href="#" id="lang-ko" onclick="event.preventDefault(); setLanguage('ko')" class="active">KOR</a>
-                    <span class="divider">/</span>
-                    <a href="#" id="lang-en" onclick="event.preventDefault(); setLanguage('en')">ENG</a>
-                </div>
-                <a href="contact.html" class="gnb-btn">Contact</a>
-                <button class="mobile-menu-btn" aria-label="Menu" onclick="toggleMobileMenu()">
-                    <span></span><span></span><span></span>
-                </button>
-            </div>
-        </div>
-    </header>
+    <header id="gnb"></header>
 
     <main>
         <!-- Page Header (HERO) -->
@@ -90,89 +64,9 @@
 
     <footer id="contact"></footer>
 
+    <script src="scripts/main.js"></script>
     <script>
-        // --- Core Engine: Localization & Data ---
-        const i18nData = {
-            ko: {
-                "insights.hero.category": "Insights",
-                "insights.hero.title": "현장의 깊이, 미래의 방향",
-                "insights.hero.tagline": "Field Depth, Future Direction",
-                "insights.hero.sub_ko": "990대+ 로봇 운영 경험에서 출발해, 물류 자동화의 내일을 설계합니다",
-                "insights.hero.sub_en": "From 990+ robots in the field to designing tomorrow's logistics automation",
-                "insights.filter.all": "전체",
-                "insights.filter.technology": "기술",
-                "insights.filter.industry": "산업",
-                "insights.filter.product": "제품",
-                "insights.filter.company": "회사",
-                "insights.news.title": "물류 자동화 인사이트, 놓치지 마세요.",
-                "insights.news.sub": "일 1회, 엄선된 기술 정보와 산업 트렌드를 이메일로 받아보세요.",
-                "insights.news.placeholder": "이메일을 입력하세요",
-                "insights.news.btn": "구독하기",
-                "insights.pagination.prev": "이전",
-                "insights.pagination.next": "다음",
-                "insights.meta.read": "약",
-                "insights.meta.min": "분",
-                
-                // Articles
-                "ins.e1.title": "물류 로봇 입문 — AGV·AMR·AFL, 무엇이 다른가",
-                "ins.e1.desc": "내 현장에 맞는 자율주행 로봇은 무엇일까요? 핵심 기술 차이부터 통합 관제(TAMS)가 필요한 이유까지, 물류 자동화 도입 전 반드시 알아야 할 기초를 정리했습니다.",
-                "ins.case.title": "산업별 스마트 팩토리 실전 도입기: 자동차부터 반도체, 2차전지까지의 물류 자동화 사례",
-                "ins.case.desc": "대규모 자동차 기가팩토리부터 초정밀 반도체 클린룸까지... 산업 현장의 제약 조건을 극복한 맞춤형 로봇 솔루션 도입 사례를 소개합니다.",
-                "ins.eval.title": "[스마트 물류] AGV에서 AMR로의 진화: 자율주행 물류 로봇의 핵심 기술 분석",
-                "ins.eval.desc": "기존 AGV와 최신 AMR의 내비게이션 및 시스템 차이를 비교하고, MOBYUS가 구현한 3D SLAM, 무인 지게차(AFL) 인식 기술 등을 심층 분석합니다.",
-                "ins.e2.title": "도입 전 현장 준비 가이드 — 바닥·네트워크·통로 체크리스트",
-                "ins.e2.desc": "바닥 평탄도, Wi-Fi 인프라, 통로 폭까지. 대부분의 현장 제약은 사전 준비로 해결 가능합니다.",
-                "ins.e3.title": "물류 자동화 ROI 산출 가이드 — 투자 비용부터 회수까지",
-                "ins.e3.desc": "CapEx, 연간 절감액, OpEx를 체계적으로 계산하는 방법. 구축 기간 45% 단축 효과를 확인하세요.",
-                "ins.t1.title": "300대 이상 동시 제어 — TAMS 교통제어의 기술적 과제와 해법",
-                "ins.t1.desc": "100대를 넘으면 문제가 달라집니다. 교착 방지, 실시간 경로 최적화 등 TAMS 알고리즘을 해부합니다.",
-                "ins.twin.title": "Digital Twin으로 물류 현장을 복제하다 — 시뮬레이션 기반 운영 최적화",
-                "ins.twin.desc": "실제 현장을 가상에서 재현하고, 시뮬레이션으로 최적 운영을 검증하는 TAMS의 기술을 살펴봅니다.",
-                "ins.sol4.title": "MV Solution 4.0 — 물류SW 플랫폼 메이저 업데이트",
-                "ins.sol4.desc": "WMS·OMS·TMS를 아우르는 MV Solution 플랫폼 4.0의 주요 변경 사항과 신기술을 소개합니다.",
-                "coming.soon": "📋 콘텐츠 준비 중입니다. 곧 공개됩니다!"
-            },
-            en: {
-                "insights.hero.category": "Insights",
-                "insights.hero.title": "Field Depth, Future Direction",
-                "insights.hero.tagline": "",
-                "insights.hero.sub_ko": "",
-                "insights.hero.sub_en": "From 990+ robots in the field to designing tomorrow's logistics automation",
-                "insights.filter.all": "All",
-                "insights.filter.technology": "Technology",
-                "insights.filter.industry": "Industry",
-                "insights.filter.product": "Product",
-                "insights.filter.company": "Company",
-                "insights.news.title": "Don't miss out on logistics automation insights.",
-                "insights.news.sub": "Receive curated technical information and industry trends by email once a day.",
-                "insights.news.placeholder": "Enter your email",
-                "insights.news.btn": "Subscribe",
-                "insights.pagination.prev": "Previous",
-                "insights.pagination.next": "Next",
-                "insights.meta.read": "",
-                "insights.meta.min": "min read",
-                
-                // Articles
-                "ins.e1.title": "Logistics Robot 101 — AGV vs AMR vs AFL",
-                "ins.e1.desc": "Which logistics robot is right for your site? From core technology differences to the necessity of integrated control (TAMS), we summarize the basics you must know before introducing automation.",
-                "ins.case.title": "Industry-specific Smart Factory Implementation: Logistics Automation Cases",
-                "ins.case.desc": "From large-scale automotive gigafactories to ultra-precision semiconductor cleanrooms... Overcoming industrial site constraints with customized robot solutions.",
-                "ins.eval.title": "[Smart Logistics] Evolution from AGV to AMR: Core Technology Analysis",
-                "ins.eval.desc": "Comparing navigation and system differences between conventional AGVs and the latest AMRs, with in-depth analysis of 3D SLAM and AI recognition.",
-                "ins.e2.title": "Site Readiness Guide — Floor, Network, and Aisle Checklist",
-                "ins.e2.desc": "From floor flatness and Wi-Fi infrastructure to aisle width. Most site constraints can be resolved with advance preparation.",
-                "ins.e3.title": "Logistics Automation ROI Guide — From Investment to Payback",
-                "ins.e3.desc": "How to systematically calculate CapEx, annual savings, and OpEx. Check the 45% reduction in implementation period.",
-                "ins.t1.title": "Controlling 300+ Robots — How TAMS Solves Traffic at Scale",
-                "ins.t1.desc": "Things change when you exceed 100 units. We anatomize TAMS algorithms such as deadlock prevention and path optimization.",
-                "ins.twin.title": "Replicating the Floor with Digital Twin — Simulation-Based Optimization",
-                "ins.twin.desc": "How TAMS reproduces actual sites in virtual space and verifies optimal operations with simulation.",
-                "ins.sol4.title": "MV Solution 4.0 — Major Logistics SW Platform Update",
-                "ins.sol4.desc": "Introducing major changes in MV Solution 4.0, encompassing WMS, OMS, and TMS technologies.",
-                "coming.soon": "📋 Content is being prepared. Coming soon!"
-            }
-        };
-
+        // --- Page Specific Data: Insights ---
         const insightData = [
             { id: 'e1', cat: 'Technology', type: 'Starter Guide · E1', thumb: 'images/thumbnail_02.png', url: 'insight-detail.html', date: '2026.02.26', time: '10', featured: true },
             { id: 'case', cat: 'Industry', type: 'Case Study', thumb: 'images/thumbnail_01.png', url: 'insight-case-study.html', date: '2026.03.24', time: '12' },
@@ -188,57 +82,14 @@
         let currentPage = 1;
         const itemsPerPage = 6;
 
-        const safeStorage = {
-            getItem: (key) => { try { return localStorage.getItem(key); } catch (e) { return null; } },
-            setItem: (key, val) => { try { localStorage.setItem(key, val); } catch (e) { } }
-        };
-
-        function getLanguage() { return safeStorage.getItem('preferredLanguage') || 'ko'; }
-
-        function updateContent(lang) {
-            const dict = i18nData[lang];
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                if (dict[key] !== undefined) {
-                    if (dict[key] === "" && (key.includes('.sub_ko') || key.includes('.tagline'))) {
-                        el.style.display = 'none';
-                    } else {
-                        el.style.display = '';
-                        el.innerHTML = dict[key];
-                    }
-                }
-            });
-            document.querySelectorAll('[data-i18n-attr]').forEach(el => {
-                const parts = el.getAttribute('data-i18n-attr').split(':');
-                const attr = parts[0]; const key = parts[1];
-                if (dict[key]) el.setAttribute(attr, dict[key]);
-            });
-        }
-
-        function updateGnbUI(lang) {
-            const btnKo = document.getElementById('lang-ko');
-            const btnEn = document.getElementById('lang-en');
-            if (btnKo && btnEn) {
-                if (lang === 'ko') { btnKo.classList.add('active'); btnEn.classList.remove('active'); }
-                else { btnEn.classList.add('active'); btnKo.classList.remove('active'); }
-            }
-        }
-
-        window.setLanguage = function(lang) {
-            safeStorage.setItem('preferredLanguage', lang);
-            if (lang === 'en') document.body.classList.add('lang-en');
-            else document.body.classList.remove('lang-en');
-            updateContent(lang);
-            updateGnbUI(lang);
-            renderInsights(currentCategory, 1);
-        };
-
+        // --- Insights Rendering Logic ---
         window.renderInsights = function(category = 'All', page = 1) {
             currentCategory = category; currentPage = page;
-            const lang = getLanguage();
+            const lang = typeof getLanguage === 'function' ? getLanguage() : 'ko';
             const isEn = lang === 'en';
             const fontClass = isEn ? 'font-en' : '';
-            const dictKo = i18nData.ko; const dictEn = i18nData.en; const activeDict = i18nData[lang];
+            const dicts = window.i18nData || { ko: {}, en: {} };
+            const dictKo = dicts.ko; const dictEn = dicts.en; const activeDict = dicts[lang];
 
             const featuredContainer = document.getElementById('featured-container');
             const grid = document.getElementById('insights-grid');
@@ -247,11 +98,11 @@
 
             if (filterContainer) {
                 const cats = [
-                    { id: 'All', name: activeDict['insights.filter.all'] },
-                    { id: 'Technology', name: activeDict['insights.filter.technology'] },
-                    { id: 'Industry', name: activeDict['insights.filter.industry'] },
-                    { id: 'Product', name: activeDict['insights.filter.product'] },
-                    { id: 'Company', name: activeDict['insights.filter.company'] }
+                    { id: 'All', name: activeDict['insights.filter.all'] || '전체' },
+                    { id: 'Technology', name: activeDict['insights.filter.technology'] || '기술' },
+                    { id: 'Industry', name: activeDict['insights.filter.industry'] || '산업' },
+                    { id: 'Product', name: activeDict['insights.filter.product'] || '제품' },
+                    { id: 'Company', name: activeDict['insights.filter.company'] || '회사' }
                 ];
                 filterContainer.innerHTML = cats.map(c => `<button class="filter-chip ${currentCategory === c.id ? 'active' : ''}" onclick="renderInsights('${c.id}', 1)">${c.name}</button>`).join('');
             }
@@ -271,7 +122,7 @@
                             <p class="featured-desc ${fontClass}">${dictKo[`ins.${featuredItem.id}.desc`]}</p>
                             <div class="featured-meta">
                                 <span><i class="far fa-calendar"></i> ${featuredItem.date}</span>
-                                <span><i class="far fa-clock"></i> ${activeDict['insights.meta.read']} ${featuredItem.time}${activeDict['insights.meta.min']}</span>
+                                <span><i class="far fa-clock"></i> ${activeDict['insights.meta.read'] || ''} ${featuredItem.time}${activeDict['insights.meta.min'] || '분'}</span>
                             </div>
                         </div>
                     </a>`;
@@ -283,7 +134,7 @@
             const start = (page - 1) * itemsPerPage;
             const paginated = gridSource.slice(start, start + itemsPerPage);
 
-            grid.innerHTML = paginated.map(item => {
+            grid.innerHTML = paginated.length > 0 ? paginated.map(item => {
                 const tKo = dictKo[`ins.${item.id}.title`];
                 const tEn = dictEn[`ins.${item.id}.title`];
                 const titleHtml = isEn ? tEn : `${tKo}<span class="card-title-en font-en" style="display:block; margin-top:4px; font-size:0.9rem; color:#888; font-weight:400;">${tEn}</span>`;
@@ -293,29 +144,30 @@
                         <div class="card-body">
                             <span class="badge-type">${item.type}</span>
                             <h3 class="card-title ${fontClass}">${titleHtml}</h3>
-                            <div class="card-tag">${activeDict[`insights.filter.${item.cat.toLowerCase()}`]}</div>
-                            <p class="card-desc ${fontClass}">${activeDict[`ins.${item.id}.desc`]}</p>
+                            <div class="card-tag">${activeDict[`insights.filter.${item.cat.toLowerCase()}`] || item.cat}</div>
+                            <p class="card-desc ${fontClass}">${activeDict[`ins.${item.id}.desc`] || ''}</p>
                             <div class="card-meta">
                                 <span><i class="far fa-calendar"></i> ${item.date}</span>
-                                <span><i class="far fa-clock"></i> ${item.time}${activeDict['insights.meta.min']}</span>
+                                <span><i class="far fa-clock"></i> ${item.time}${activeDict['insights.meta.min'] || ''}</span>
                             </div>
                         </div>
                     </a>`;
-            }).join('');
+            }).join('') : `<p class="no-results" style="grid-column: 1/-1; text-align: center; padding: 100px 0; color: #888;">${isEn ? 'No articles found.' : '검색된 콘텐츠가 없습니다.'}</p>`;
 
             if (paginationContainer) {
                 if (totalPages <= 1) { paginationContainer.innerHTML = ""; } else {
-                    let html = `<a href="#" class="page-nav ${page === 1 ? 'disabled' : ''}" onclick="event.preventDefault(); renderInsights('${category}', ${page - 1})"><i class="fas fa-arrow-left"></i> ${activeDict['insights.pagination.prev']}</a><div class="page-numbers">`;
+                    let html = `<a href="#" class="page-nav ${page === 1 ? 'disabled' : ''}" onclick="event.preventDefault(); renderInsights('${category}', ${page - 1})"><i class="fas fa-arrow-left"></i> ${activeDict['insights.pagination.prev'] || ''}</a><div class="page-numbers">`;
                     for(let i=1; i<=totalPages; i++) { html += `<a href="#" class="page-num ${i === page ? 'active' : ''}" onclick="event.preventDefault(); renderInsights('${category}', ${i})">${i}</a>`; }
-                    html += `</div><a href="#" class="page-nav ${page === totalPages ? 'disabled' : ''}" onclick="event.preventDefault(); renderInsights('${category}', ${page + 1})">${activeDict['insights.pagination.next']} <i class="fas fa-arrow-right"></i></a>`;
+                    html += `</div><a href="#" class="page-nav ${page === totalPages ? 'disabled' : ''}" onclick="event.preventDefault(); renderInsights('${category}', ${page + 1})">${activeDict['insights.pagination.next'] || ''} <i class="fas fa-arrow-right"></i></a>`;
                     paginationContainer.innerHTML = html;
                 }
             }
         };
 
-        window.toggleMobileMenu = function() { document.querySelector('.nav-menu').classList.toggle('active'); };
-        window.showComingSoon = function(e) { e.preventDefault();
-            const msg = i18nData[getLanguage()]['coming.soon'];
+        window.showComingSoon = function(e) {
+            e.preventDefault();
+            const lang = typeof getLanguage === 'function' ? getLanguage() : 'ko';
+            const msg = (window.i18nData[lang] && window.i18nData[lang]['coming.soon']) || '준비 중입니다.';
             const existing = document.querySelector('.coming-soon-toast'); if (existing) existing.remove();
             const toast = document.createElement('div'); toast.className = 'coming-soon-toast';
             toast.style.cssText = `position: fixed; bottom: 40px; left: 50%; transform: translateX(-50%); background: #111; color: white; padding: 14px 28px; border-radius: 50px; font-weight: 500; font-size: 0.95rem; z-index: 9999; box-shadow: 0 8px 24px rgba(0,0,0,0.2); animation: toastIn 0.3s ease;`;
@@ -323,21 +175,30 @@
         };
 
         window.handleNewsletterSubmit = function() {
-            const email = document.getElementById('newsletter-email').value; const lang = getLanguage();
+            const email = document.getElementById('newsletter-email').value;
+            const lang = typeof getLanguage === 'function' ? getLanguage() : 'ko';
             if (!email || !email.includes('@')) { alert(lang === 'ko' ? '올바른 이메일을 입력해주세요.' : 'Please enter a valid email.'); return; }
             alert(lang === 'ko' ? `감사합니다! ${email} 으로 뉴스레터를 발송해 드립니다.` : `Thank you! We will send the newsletter to ${email}.`);
             document.getElementById('newsletter-email').value = '';
         };
 
+        // --- Initialization ---
         document.addEventListener('DOMContentLoaded', () => {
-            const initialLang = getLanguage();
-            if (initialLang === 'en') document.body.classList.add('lang-en');
-            updateContent(initialLang); updateGnbUI(initialLang); renderInsights('All', 1);
-            window.addEventListener('scroll', () => {
-                const header = document.getElementById('gnb');
-                if (window.scrollY > 50) { header.style.backgroundColor = 'rgba(255, 255, 255, 0.95)'; header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)'; }
-                else { header.style.backgroundColor = 'rgba(255, 255, 255, 0.8)'; header.style.boxShadow = 'none'; }
+            renderInsights('All', 1);
+
+            // Listen for global language changes from main.js
+            window.addEventListener('languageChanged', (e) => {
+                const lang = e.detail.lang;
+                if (lang === 'en') document.body.classList.add('lang-en');
+                else document.body.classList.remove('lang-en');
+                
+                // Re-render insights with the new language
+                renderInsights(currentCategory, currentPage);
             });
+            
+            // Set initial body class if needed
+            const initialLang = typeof getLanguage === 'function' ? getLanguage() : 'ko';
+            if (initialLang === 'en') document.body.classList.add('lang-en');
         });
     </script>
 </body>

@@ -119,9 +119,9 @@ ul {
     left: 0;
     width: 100%;
     height: var(--nav-height);
-    z-index: 9999;
+    z-index: 99999;
     backdrop-filter: blur(10px);
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 1); /* Increased opacity for clear visibility */
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
     transition: all var(--transition-speed);
 }
@@ -188,7 +188,7 @@ ul {
     color: #4b5563;
     position: relative;
     padding: 5px 0;
-    text-transform: uppercase;
+    /* text-transform: uppercase; Removed to allow dynamic casing */
     letter-spacing: 0.05em;
 }
 

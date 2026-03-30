@@ -427,4 +427,43 @@
         padding: 12px 20px; /* Matched padding for height consistency */
         font-size: 0.95rem; /* Slightly smaller font to fit in row */
     }
+
+    /* Insights Filter Mobile Scroll */
+    /* Insights Filter Mobile Wrap Layout */
+    .insights-filter-container {
+        padding: 24px 20px !important; /* 좌우 20px, 총 40px 마진 확보 */
+        display: flex !important;
+        justify-content: center !important;
+        overflow-x: visible !important; /* 스크롤 비활성화 */
+    }
+
+    .insights-filter-tabs {
+        display: flex !important;
+        flex-wrap: wrap !important; /* 줄바꿈 활성화 */
+        justify-content: center !important;
+        background: transparent !important; /* 전체 배경 제거 */
+        padding: 0 !important;
+        gap: 10px 8px !important; /* 버튼 간 상하좌우 간격 */
+        border-radius: 0 !important;
+        min-width: 0 !important;
+        width: 100% !important;
+    }
+
+    .filter-chip {
+        background: #f8f9fa !important; /* 각 버튼마다 배경색 부여 */
+        padding: 8px 18px !important;
+        font-size: 0.88rem !important;
+        border-radius: 50px !important;
+        border: 1px solid #eef0f2 !important;
+        color: #444 !important;
+        white-space: nowrap !important;
+        margin: 0 !important; /* 기존 개별 마진 제거 */
+    }
+
+    .filter-chip.active {
+        background: #7c0b47 !important;
+        color: white !important;
+        border-color: #7c0b47 !important;
+        box-shadow: 0 4px 12px rgba(124, 11, 71, 0.15) !important;
+    }
 }

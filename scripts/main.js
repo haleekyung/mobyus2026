@@ -39,12 +39,21 @@ document.addEventListener('DOMContentLoaded', () => {
         elements.forEach(el => {
             const key = el.getAttribute('data-i18n');
             if (dictionary && key in dictionary) {
-                if (dictionary[key] === '') {
-                    el.style.display = 'none';
-                } else {
-                    el.style.display = '';
-                    el.innerHTML = dictionary[key];
-                }
+                el.innerHTML = dictionary[key];
+            }
+        });
+
+        // Handle data-i18n-attr (attribute translations like placeholder, title, etc.)
+        const attrElements = document.querySelectorAll('[data-i18n-attr]');
+        attrElements.forEach(el => {
+            const attrData = el.getAttribute('data-i18n-attr');
+            if (!attrData) return;
+            const parts = attrData.split(':');
+            if (parts.length < 2) return;
+            const attr = parts[0];
+            const key = parts[1];
+            if (dictionary && key in dictionary) {
+                el.setAttribute(attr, dictionary[key]);
             }
         });
 
