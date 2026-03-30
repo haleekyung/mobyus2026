@@ -144,6 +144,7 @@
         .tech-table td {
             display: table-cell !important;
             vertical-align: middle !important;
+            text-align: left !important; /* 기본 모든 셀 왼쪽 정렬 보장 */
         }
 
         /* MOBYUS / 경쟁사 열은 가운데 정렬 */
@@ -158,6 +159,61 @@
         .diff-table thead th:first-child,
         .tech-table thead th:first-child {
             text-align: center !important;
+        }
+
+        /* [Mobile Alignment Fix] 모든 정렬 규칙을 무력화하는 초토화(Atomic) 정렬 오버라이드 */
+        @media (max-width: 768px) {
+            /* 1. 모든 셀과 그 안의 모든 요소를 왼쪽 정렬로 강제 (main.css의 :first-child 우선순위를 이기기 위해 명시) */
+            html body table.diff-table tr th,
+            html body table.diff-table tr td,
+            html body table.diff-table tr th:first-child,
+            html body table.diff-table tr td:first-child,
+            html body table.tech-table tr th,
+            html body table.tech-table tr td,
+            html body table.tech-table tr th:first-child,
+            html body table.tech-table tr td:first-child,
+            html body table.diff-table tr td *,
+            html body table.tech-table tr td * {
+                text-align: left !important;
+                display: table-cell !important;
+                vertical-align: middle !important;
+                justify-content: flex-start !important;
+                align-items: flex-start !important;
+            }
+            
+            /* 2. span, b, i 등 인라인 요소들이 block으로 변해 정렬을 무시하지 못하도록 방어 */
+            html body table.diff-table tr td span,
+            html body table.diff-table tr td div,
+            html body table.diff-table tr td b,
+            html body .font-set-table-en,
+            html body .font-set-table-ko {
+                display: inline-block !important;
+                text-align: left !important;
+                width: auto !important;
+                margin-right: auto !important;
+                margin-left: 0 !important;
+            }
+
+            /* 2.1. 컬러 박스(sq-box)의 너비/높이, 여백은 보존해야 함 (위의 width: auto 오버라이드 대비) */
+            html body table.diff-table tr td span.sq-box {
+                width: 14px !important;
+                height: 14px !important;
+                display: inline-block !important;
+                margin-right: 8px !important;
+                margin-left: 0 !important;
+            }
+
+            /* 3. 비교표의 특정 열(Mobyus, 경쟁사)은 여전히 중앙 정렬 유지 (예외 처리) */
+            html body table.diff-table tr .col-mobyus,
+            html body table.diff-table tr .col-competitor,
+            html body table.diff-table tr .col-mobyus *,
+            html body table.diff-table tr .col-competitor * {
+                text-align: center !important;
+                display: table-cell !important;
+                justify-content: center !important;
+                align-items: center !important;
+                margin: 0 auto !important;
+            }
         }
 
         .font-set-table-ko {
