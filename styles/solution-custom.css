@@ -490,6 +490,55 @@
 }
 
 /* ==========================================================================
+   Logistics Software Cards Mobile Optimization
+   ========================================================================== */
+@media (max-width: 768px) {
+    .logistics-sw-card {
+        padding: 24px 20px !important;
+        /* Keep row for arrow placement, but text stack handled in sub-classes */
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        gap: 16px !important;
+    }
+
+    .lsc-header {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 4px !important;
+    }
+
+    .lsc-name {
+        font-size: 1.5rem !important;
+        line-height: 1.1 !important;
+        margin-bottom: 2px !important;
+    }
+
+    .lsc-fullname {
+        font-size: 1rem !important;
+        color: #1f2937 !important;
+        font-weight: 600 !important;
+        margin-left: 0 !important;
+        margin-bottom: 8px !important;
+    }
+
+    .lsc-desc {
+        font-size: 1.05rem !important;
+        line-height: 1.4 !important;
+        margin-top: 8px !important;
+    }
+
+    .lsc-arrow {
+        /* Keep original centering */
+        align-self: center !important;
+        width: 38px !important;
+        height: 38px !important;
+        flex-shrink: 0 !important;
+    }
+}
+
+/* ==========================================================================
    Solution Combinations Summary Card
    ========================================================================== */
 .combo-summary-card {
