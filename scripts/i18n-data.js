@@ -1,4 +1,4 @@
-﻿window.i18nData = {
+window.i18nData = {
     ko: {
         "hero.title_main": "자율을 지휘하다 <span>Autonomy, Orchestrated.</span>",
         "hero.desc": "로봇이 움직입니다. Robots move. <br>관제가 지휘합니다. TAMS orchestrates.<br>물류SW가 운영합니다 Logistics SW runs the flow.",
@@ -2334,12 +2334,20 @@
         "ps.control.why.th.desc": "Description",
         "ps.control.why.q1": "Congestion",
         "ps.control.why.a1": "Multiple robots & devices coexist — unmanageable individually",
+        "ps.control.why.a1_ko": "",
+        "ps.control.why.a1_en": "Multiple robots & devices coexist — unmanageable individually",
         "ps.control.why.q2": "Deadlock",
         "ps.control.why.a2": "Inter-device deadlocks — line stoppage",
+        "ps.control.why.a2_ko": "",
+        "ps.control.why.a2_en": "Inter-device deadlocks — line stoppage",
         "ps.control.why.q3": "Collision & Waiting",
         "ps.control.why.a3": "Collisions & queuing — efficiency loss",
+        "ps.control.why.a3_ko": "",
+        "ps.control.why.a3_en": "Collisions & queuing — efficiency loss",
         "ps.control.why.q4": "Siloed Control",
         "ps.control.why.a4": "Siloed control per system — no global optimization",
+        "ps.control.why.a4_ko": "",
+        "ps.control.why.a4_en": "Siloed control per system — no global optimization",
         "ps.control.answer.sub": "TAMS's Answer",
         "ps.control.answer.desc": "5 modules operate organically on a single platform (MAOP),<br>orchestrating everything from material flow to robot control, safety management, and worker navigation.",
         "ps.control.suite.title": "TAMS Suite",

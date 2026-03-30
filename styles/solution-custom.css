@@ -404,3 +404,175 @@
     }
 }
 
+
+/* ==========================================================================
+   Why TAMS (Challenges) Card Layout
+   ========================================================================== */
+.why-tams-cards-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 52px;
+}
+
+.why-tams-card {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    padding: 24px 32px;
+    transition: all 0.3s ease;
+}
+
+.why-tams-card:hover {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    border-color: #d1d5db;
+    transform: translateY(-2px);
+}
+
+.why-tams-card .card-header {
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.why-tams-card .card-num {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--color-gray90);
+    line-height: 1;
+}
+
+.why-tams-card .card-title {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--color-gray90);
+    line-height: 1;
+}
+
+.why-tams-card .card-desc-ko {
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: var(--color-gray80);
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
+
+.why-tams-card .card-desc-en {
+    font-size: 1rem;
+    font-weight: 400;
+    color: #a1a1aa; /* Muted gray for English secondary text */
+    line-height: 1.4;
+}
+
+@media (max-width: 768px) {
+    .why-tams-card {
+        padding: 20px 24px;
+    }
+    .why-tams-card .card-header {
+        margin-bottom: 8px;
+    }
+    .why-tams-card .card-title {
+        font-size: 1.15rem;
+    }
+    .why-tams-card .card-desc-ko {
+        font-size: 1.05rem;
+        margin-bottom: 6px;
+    }
+    .why-tams-card .card-desc-en {
+        font-size: 0.95rem;
+    }
+}
+
+.why-tams-card .card-desc-ko:empty,
+.why-tams-card .card-desc-en:empty {
+    display: none !important;
+}
+
+/* ==========================================================================
+   Solution Combinations Summary Card
+   ========================================================================== */
+.combo-summary-card {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.combo-summary-item {
+    padding: 32px 40px;
+    border-bottom: 1px solid #f1f5f9;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.combo-summary-item:last-child {
+    border-bottom: none;
+    background: #faf5f8; /* Very light pink background for highlight */
+}
+
+.combo-summary-title {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--color-gray90);
+    font-family: var(--font-heading);
+}
+
+.combo-summary-item:last-child .combo-summary-title {
+    color: #800040;
+}
+
+.combo-summary-desc {
+    font-size: 1.15rem;
+    color: var(--color-gray50);
+    line-height: 1.5;
+    font-weight: 500;
+}
+
+.combo-summary-item:last-child .combo-summary-desc {
+    color: #800040;
+    font-weight: 600;
+}
+
+/* Premium Button style */
+.btn-premium-maroon {
+    background: #a01053; /* MOBYUS Maroon */
+    color: #fff !important;
+    padding: 18px 48px;
+    border-radius: 12px;
+    font-size: 1.25rem;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 12px rgba(160, 16, 83, 0.15);
+}
+
+.btn-premium-maroon:hover {
+    background: #800040;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(160, 16, 83, 0.25);
+}
+
+@media (max-width: 768px) {
+    .combo-summary-item {
+        padding: 24px 20px;
+    }
+    .combo-summary-title {
+        font-size: 1.2rem;
+    }
+    .combo-summary-desc {
+        font-size: 1rem;
+    }
+    .btn-premium-maroon {
+        padding: 14px 32px;
+        font-size: 1.1rem;
+        width: 100%;
+        justify-content: center;
+    }
+}
