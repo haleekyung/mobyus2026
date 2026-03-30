@@ -3187,7 +3187,7 @@ body.scroll-down-mode .secondary-nav {
 /* ==============================================
    GLOBAL: Dark Theme Hero (Header)
    Product, Control, Logistics, Total Solution ??
-   ??類λ땹嶺뚮??????嶺뚮???????�곷?�嶺??��? ???�쾴??????�맠 ?????
+   ??類λ땹嶺뚮??????嶺뚮???????�곷?�嶺??��? ???�쾴??????�맠 ?????
    ============================================== */
 .global-hero {
     background-color: #111;
@@ -3211,7 +3211,7 @@ body.scroll-down-mode .secondary-nav {
     margin-bottom: 0;
 }
 
-/* Main Title e.g., "???�???????��??濡ル?? */
+/* Main Title e.g., "???�???????��??濡ル?? */
 .global-hero-title {
     font-size: 2.375rem;
     font-weight: 600;
@@ -3263,7 +3263,7 @@ body.scroll-down-mode .secondary-nav {
    (ex. product.html Stats & Intro)
    ============================================== */
 
-/* ??????꾩룄??�몭????깅턄??�곣�??*/
+/* ??????꾩룄??�몭????깅턄??�곣�??*/
 .stats-banner {
     background: transparent;
     border-radius: 0;
@@ -3292,7 +3292,7 @@ body.scroll-down-mode .secondary-nav {
     background-color: var(--color-gray15);
 }
 
-/* ????????�챶???????(40px Semibold / br900) */
+/* ????????�챶???????(40px Semibold / br900) */
 .product-stats-num {
     font-family: var(--font-heading);
     font-size: 40px;
@@ -3304,7 +3304,7 @@ body.scroll-down-mode .secondary-nav {
     white-space: nowrap;
 }
 
-/* ????????�챶??????�츩??(18px Semibold / gray70) */
+/* ????????�챶??????�츩??(18px Semibold / gray70) */
 .product-stats-label {
     font-size: 18px;
     font-weight: 600;
@@ -3313,7 +3313,7 @@ body.scroll-down-mode .secondary-nav {
     line-height: 1.3;
 }
 
-/* ?筌뤿굝諭?�슖??????: 36px / gray90 / Bold */
+/* ?筌뤿굝諭?�슖??????: 36px / gray90 / Bold */
 .font-set-intro-title {
     font-size: 36px;
     font-weight: 700;
@@ -3323,7 +3323,7 @@ body.scroll-down-mode .secondary-nav {
     word-break: keep-all;
 }
 
-/* ?筌뤿굝諭?�슖??????곌랜�?���? 18px / gray90 / Regular */
+/* ?筌뤿굝諭?�슖??????곌랜�?���? 18px / gray90 / Regular */
 .font-set-intro-ko {
     font-size: 18px;
     font-weight: 400;
@@ -3333,7 +3333,7 @@ body.scroll-down-mode .secondary-nav {
     word-break: keep-all;
 }
 
-/* ?筌뤿굝諭?�슖???類λ땹 ?????: 20px / gray90 / SemiBold / Center */
+/* ?筌뤿굝諭?�슖???類λ땹 ?????: 20px / gray90 / SemiBold / Center */
 .font-set-intro-sub {
     font-size: 20px;
     font-weight: 600;
@@ -3344,7 +3344,7 @@ body.scroll-down-mode .secondary-nav {
     word-break: keep-all;
 }
 
-/* ?筌뤿굝諭?�슖????�줎??곌랜�?���? 16px / gray90 / Regular / Outfit */
+/* ?筌뤿굝諭?�슖????�줎??곌랜�?���? 16px / gray90 / Regular / Outfit */
 .font-set-intro-en {
     font-family: var(--font-heading);
     font-size: 16px;
@@ -3356,10 +3356,10 @@ body.scroll-down-mode .secondary-nav {
 }
 
 /* ===================================================
-   ???? ?곸궠?????�곣�?????�쥓�??筌뤿굝諭?(Product Card Font Sets)
+   ???? ?곸궠?????�곣�?????�쥓�??筌뤿굝諭?(Product Card Font Sets)
    =================================================== */
 
-/* ????�?????? (AFL / AMR / EPT) : 40px / Outfit / Medium */
+/* ????�?????? (AFL / AMR / EPT) : 40px / Outfit / Medium */
 .font-set-card-acronym {
     font-family: var(--font-heading);
     font-size: 40px;
@@ -3370,7 +3370,7 @@ body.scroll-down-mode .secondary-nav {
     margin-bottom: 4px;
 }
 
-/* ???�줎??????깅엮 (Autonomous Mobile Robot ...) : 20px / Outfit / SemiBold */
+/* ???�줎??????깅엮 (Autonomous Mobile Robot ...) : 20px / Outfit / SemiBold */
 .font-set-card-en-name {
     font-family: var(--font-heading);
     font-size: 20px;
@@ -3381,7 +3381,7 @@ body.scroll-down-mode .secondary-nav {
     margin-bottom: 4px;
 }
 
-/* ??? 嶺뚮?�援?�눧?(???紐쏃????�筌?嶺뚮?�維?????β??��?? : 22px / Pretendard / SemiBold */
+/* ??? 嶺뚮?�援?�눧?(???紐쏃????�筌?嶺뚮?�維?????β??��?? : 22px / Pretendard / SemiBold */
 .font-set-card-ko-name {
     font-family: var(--font-body);
     font-size: 22px;
@@ -3392,7 +3392,7 @@ body.scroll-down-mode .secondary-nav {
     word-break: keep-all;
 }
 
-/* ??? ?곌랜�?���?: 17px / Pretendard / Light / ?????26px */
+/* ??? ?곌랜�?���?: 17px / Pretendard / Light / ?????26px */
 .font-set-card-ko-body {
     font-family: var(--font-body);
     font-size: 17px;
@@ -3403,7 +3403,7 @@ body.scroll-down-mode .secondary-nav {
     margin-bottom: 0;
 }
 
-/* ???�줎??곌랜�?���?: 17px / Outfit / Light / ?????26px */
+/* ???�줎??곌랜�?���?: 17px / Outfit / Light / ?????26px */
 .font-set-card-en-body {
     font-family: var(--font-heading);
     font-size: 17px;
@@ -3414,7 +3414,7 @@ body.scroll-down-mode .secondary-nav {
 }
 
 /* ===================================================
-   ??�곣�???�?�???????????�뺣�?(Button Component Sets)
+   ??�곣�???�?�???????????�뺣�?(Button Component Sets)
    =================================================== */
 
 /* Primary Button */
@@ -3483,10 +3483,10 @@ body.scroll-down-mode .secondary-nav {
 }
 
 /* ===================================================
-   ????�곣�?????�쥓�??筌뤿굝諭?(Table Font Sets)
+   ????�곣�?????�쥓�??筌뤿굝諭?(Table Font Sets)
    =================================================== */
 
-/* Overview ???�뚮??: 22px / Pretendard / SemiBold / gray90 */
+/* Overview ???�뚮??: 22px / Pretendard / SemiBold / gray90 */
 .font-set-overview-label {
     font-family: var(--font-body);
     font-size: 22px;
@@ -3495,7 +3495,7 @@ body.scroll-down-mode .secondary-nav {
     line-height: 1.3;
 }
 
-/* ????�맠 : 18px / Pretendard / SemiBold / ?????28px */
+/* ????�맠 : 18px / Pretendard / SemiBold / ?????28px */
 .font-set-table-header {
     font-family: var(--font-body);
     font-size: 18px;
@@ -3504,7 +3504,7 @@ body.scroll-down-mode .secondary-nav {
     line-height: 28px;
 }
 
-/* ??蹂λ윟???곌랜�?���?: 18px / Pretendard / Light / ?????30px */
+/* ??蹂λ윟???곌랜�?���?: 18px / Pretendard / Light / ?????30px */
 .font-set-table-ko {
     font-family: var(--font-body);
     font-size: 18px;
@@ -3515,7 +3515,7 @@ body.scroll-down-mode .secondary-nav {
     display: inline-block;
 }
 
-/* ?꾩룄??�몭????꾩씩 ?꾩룄??�몭???蹂λ윟????�룆�??: 17px / Pretendard / SemiBold / ?????1.6 / ???�?�돰 */
+/* ?꾩룄??�몭????꾩씩 ?꾩룄??�몭???蹂λ윟????�룆�??: 17px / Pretendard / SemiBold / ?????1.6 / ???�?�돰 */
 .font-set-table-ko-white {
     font-family: var(--font-body);
     font-size: 17px;
@@ -3525,7 +3525,7 @@ body.scroll-down-mode .secondary-nav {
     word-break: keep-all;
 }
 
-/* ???�줎??곌랜�?���?: 16px / Outfit / Light / ?????30px */
+/* ???�줎??곌랜�?���?: 16px / Outfit / Light / ?????30px */
 .font-set-table-en {
     font-family: var(--font-heading);
     font-size: 16px;
@@ -3537,7 +3537,7 @@ body.scroll-down-mode .secondary-nav {
 }
 
 /* ===================================================
-   ???�쾹?????????�옇?????????(tech-table)
+   ???�쾹?????????�옇?????????(tech-table)
    =================================================== */
 .tech-table {
     width: 100%;
@@ -3641,7 +3641,7 @@ body.scroll-down-mode .secondary-nav {
 }
 
 /* ===================================================
-   ???�쾹??Overview ??????(Overview section from product pages)
+   ???�쾹??Overview ??????(Overview section from product pages)
    =================================================== */
 .overview-section {
     padding: 96px 0;
@@ -3732,7 +3732,7 @@ body.scroll-down-mode .secondary-nav {
 }
 
 /* ===================================================
-   ??濡ル??3??????�룴?롪퍓?????꾩룄??�몭?(Bottom Nav Banner)
+   ??濡ル??3??????�룴?롪퍓?????꾩룄??�몭?(Bottom Nav Banner)
    =================================================== */
 .bottom-nav-banner {
     padding: 48px 0;
@@ -3805,7 +3805,7 @@ body.scroll-down-mode .secondary-nav {
     background: var(--color-br800);
 }
 
-/* ??�룆�???곸궠???(Fit Check) */
+/* ??�룆�???곸궠???(Fit Check) */
 .bnb-card--accent {
     background: var(--color-br900);
     border-color: var(--color-br900);
@@ -4164,38 +4164,88 @@ body.scroll-down-mode .secondary-nav {
         justify-content: center !important;
     }
 
-    /* Shared Tech, Why TAMS, & Core Competencies Tables (Mobile: inline numbers/titles) */
-    .shared-tech-section .tech-table td:first-child,
-    .shared-tech-section .tech-table td:nth-child(2),
-    .why-tams-container .tech-table td:first-child,
-    .why-tams-container .tech-table td:nth-child(2),
-    .core-competencies-section .tech-table td:first-child,
-    .core-competencies-section .tech-table td:nth-child(2) {
-        display: inline-block !important;
-        width: auto !important;
-        padding-bottom: 0 !important;
-        padding-top: 0 !important;
-        border-bottom: none !important;
+    /* Shared Tech, Why TAMS, & Core Competencies Tables (Mobile: card layout) */
+    .shared-tech-section .tech-table,
+    .why-tams-container .tech-table,
+    .core-competencies-section .tech-table {
+        display: block !important;
+        width: 100% !important;
+        border: none !important;
+        outline: none !important;
+        background: transparent !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        overflow: visible !important;
+    }
+
+    .shared-tech-section .tech-table thead,
+    .why-tams-container .tech-table thead,
+    .core-competencies-section .tech-table thead {
+        display: none !important;
+        position: static !important;
+    }
+
+    .shared-tech-section .tech-table tbody,
+    .why-tams-container .tech-table tbody,
+    .core-competencies-section .tech-table tbody {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 12px !important;
+    }
+
+    .shared-tech-section .tech-table tr,
+    .why-tams-container .tech-table tr,
+    .core-competencies-section .tech-table tr {
+        display: block !important;
+        background: #fff !important;
+        border: 1px solid #e5e7eb !important;
+        border-bottom: 1px solid #e5e7eb !important;
+        border-radius: 12px !important;
+        padding: 18px 20px !important;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.04) !important;
+        margin-bottom: 0 !important;
     }
 
     .shared-tech-section .tech-table td:first-child,
     .why-tams-container .tech-table td:first-child,
     .core-competencies-section .tech-table td:first-child {
-        margin-right: 8px !important;
-        margin-bottom: 8px !important;
-        font-weight: 600 !important;
+        display: inline !important;
+        font-weight: 700 !important;
+        font-size: 1rem !important;
+        color: #111 !important;
+        padding: 0 !important;
+        border: none !important;
+        margin-right: 6px !important;
+        width: auto !important;
     }
 
     .shared-tech-section .tech-table td:nth-child(2),
     .why-tams-container .tech-table td:nth-child(2),
     .core-competencies-section .tech-table td:nth-child(2) {
-        margin-bottom: 8px !important;
-        font-weight: 600 !important;
-        position: relative !important;
-        top: 2px !important;
+        display: inline !important;
+        font-weight: 700 !important;
+        font-size: 1rem !important;
+        color: #111 !important;
+        padding: 0 !important;
+        border: none !important;
+        width: auto !important;
     }
 
-    /* Bottom Nav Banner (Mobile Stacking) */
+    .shared-tech-section .tech-table td:nth-child(3),
+    .why-tams-container .tech-table td:nth-child(3),
+    .core-competencies-section .tech-table td:nth-child(3) {
+        display: block !important;
+        margin-top: 10px !important;
+        font-size: 0.9rem !important;
+        color: #374151 !important;
+        line-height: 1.6 !important;
+        padding: 0 !important;
+        border: none !important;
+        word-break: keep-all !important;
+        width: 100% !important;
+    }
+
+        /* Bottom Nav Banner (Mobile Stacking) */
     .bnb-grid {
         grid-template-columns: 1fr;
         gap: 16px;
@@ -4389,6 +4439,63 @@ body.scroll-down-mode .secondary-nav {
 
     /* Final overrides to ensure m-hide/m-show work as intended globally */
     .m-hide { display: none !important; }
+}
+
+/* --- MAOP Platform Table Mobile Fix --- */
+@media (max-width: 768px) {
+    /* MAOP 플랫폼 테이블: 고정 픽셀 너비 해제 후 카드형으로 전환 */
+    .maop-platform-section .tech-table colgroup,
+    .maop-platform-section .tech-table col {
+        width: auto !important;
+    }
+
+    .maop-platform-section .tech-table {
+        display: block !important;
+        width: 100% !important;
+        border: none !important;
+        table-layout: auto !important;
+    }
+
+    .maop-platform-section .tech-table thead {
+        display: none !important;
+    }
+
+    .maop-platform-section .tech-table tbody {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 12px !important;
+    }
+
+    .maop-platform-section .tech-table tr {
+        display: block !important;
+        background: #fff !important;
+        border: 1px solid #e5e7eb !important;
+        border-radius: 12px !important;
+        padding: 18px 20px !important;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.04) !important;
+    }
+
+    .maop-platform-section .tech-table td {
+        display: block !important;
+        padding: 0 !important;
+        border: none !important;
+        width: 100% !important;
+        white-space: normal !important;
+        word-break: keep-all !important;
+    }
+
+    .maop-platform-section .tech-table td:first-child {
+        font-weight: 700 !important;
+        font-size: 1rem !important;
+        color: #111 !important;
+        margin-bottom: 8px !important;
+    }
+
+    .maop-platform-section .tech-table td:not(:first-child) {
+        font-size: 0.9rem !important;
+        color: #374151 !important;
+        line-height: 1.6 !important;
+    }
 }
 
 /* --- Added for text visibility on PC --- */
