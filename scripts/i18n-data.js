@@ -21,9 +21,9 @@ window.i18nData = {
         "mission.p2.en": "Command the Floor",
         "mission.p2.title": "로봇은 한 대씩<br>움직일 수는 있습니다.",
         "mission.p2.desc": "그러나 수백 대가 엉키지 않고 하나의 흐름으로 움직이려면, 지휘가 필요합니다. 통합관제시스템 TAMS가 다수·이기종 로봇은 물론, 설비와 작업자까지 하나의 흐름으로 조율합니다.",
-        "mission.p2.fact1": "300대+ 동시 제어",
+        "mission.p2.fact1": "다기종/1000대+ 동시제어",
         "mission.p2.fact2": "이기종 통합",
-        "mission.p2.fact3": "실시간 경로 최적화",
+        "mission.p2.fact3": "실시간 재고/경로 최적화",
 
         "mission.p3.sub": "운영을 연결하다",
         "mission.p3.en": "Operations, Connected",
@@ -2098,9 +2098,9 @@ window.i18nData = {
         "mission.p2.sub": "Command the Floor",
         "mission.p2.title": "You can move robots<br>one by one.",
         "mission.p2.desc": "But keeping hundreds in sync as one flow — that requires orchestration. TAMS coordinates multi-type robots, equipment, and workforce into one seamless operation.",
-        "mission.p2.fact1": "300+ simultaneous control",
+        "mission.p2.fact1": "Multi-vendor/1000+ simultaneous control",
         "mission.p2.fact2": "Multi-vendor integration",
-        "mission.p2.fact3": "Real-time route optimization",
+        "mission.p2.fact3": "Real-time inventory/route optimization",
 
         "mission.p3.sub": "Operations, Connected",
         "mission.p3.title": "Robots move.<br>Orchestration commands.",
