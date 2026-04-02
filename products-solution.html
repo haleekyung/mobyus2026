@@ -26,50 +26,16 @@
             .maop-mobile { display: block !important; }
         }
 
-        /* TAMS Architecture Hotspots (Restored - Layout Minimal) */
-        .tams-hotspot-wrapper {
-            position: relative;
+         /* TAMS Architecture Layout */
+        .tams-suite-image {
             width: 100%;
-            display: inline-block;
+            margin-bottom: 40px;
         }
 
-        .tams-hotspot-wrapper img {
+        .tams-suite-image img {
             width: 100%;
             display: block;
             border-radius: 12px;
-        }
-
-        .tams-hotspot {
-            position: absolute;
-            background: rgba(124, 11, 71, 0);
-            cursor: pointer;
-            z-index: 10;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-        }
-
-        .tams-hotspot:hover {
-            background: rgba(124, 11, 71, 0.15);
-            border: 2px solid var(--color-br900);
-            box-shadow: 0 0 20px rgba(124, 11, 71, 0.3);
-        }
-
-        .tams-hotspot span {
-            color: transparent;
-            font-weight: 700;
-            font-size: 1rem;
-            pointer-events: none;
-            transition: color 0.3s ease;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.1);
-        }
-
-        .tams-hotspot:hover span {
-            color: var(--color-br900);
-            text-transform: uppercase;
         }
 
         /* Modal Styles */
@@ -1068,18 +1034,9 @@
                     <div style="text-align: center; color: #e8b4cc; font-size: 1.4rem; margin-bottom: 24px;">▼</div>
 
                     <div class="tams-suite-layout">
-                        <!-- Left Image (With Hotspots Overlay) -->
+                        <!-- Left Image -->
                         <div class="tams-suite-image">
-                            <div class="tams-hotspot-wrapper">
-                                <img src="images/tams-suite.png" alt="TAMS Suite Architecture">
-                                <!-- Hotspots: Positions calibrated for tams-suite.png -->
-                                <div class="tams-hotspot" onclick="openTamsModal('mcs')" style="top: 28%; left: 33%; width: 12%; height: 44%;"><span>MCS</span></div>
-                                <div class="tams-hotspot" onclick="openTamsModal('fms')" style="top: 28%; left: 45.5%; width: 10%; height: 44%;"><span>FMS</span></div>
-                                <div class="tams-hotspot" onclick="openTamsModal('acs')" style="top: 28%; left: 58.5%; width: 12%; height: 44%;"><span>ACS</span></div>
-                                <div class="tams-hotspot" onclick="openTamsModal('sms')" style="top: 38%; left: 16.5%; width: 12%; height: 34%;"><span>SMS</span></div>
-                                <div class="tams-hotspot" onclick="openTamsModal('wns')" style="top: 38%; left: 73.5%; width: 12%; height: 34%;"><span>WNS</span></div>
-                                <div class="tams-hotspot" onclick="openTamsModal('maop')" style="top: 74%; left: 33%; width: 38%; height: 18%;"><span>MAOP</span></div>
-                            </div>
+                            <img src="images/tams-suite.png" alt="TAMS Suite Architecture">
                         </div>
 
                         <!-- Right Modules -->
