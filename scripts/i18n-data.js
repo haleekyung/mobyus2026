@@ -913,15 +913,38 @@ window.i18nData = {
         "ps.modal.vms.li2": "KPI 지표(처리량, 정확도, 지연율) 실시간 모니터링",
         "ps.modal.vms.li3": "예외 상황 알림 및 병목 구간 자동 감지",
         "ps.modal.vms.li4": "경영진·운영팀·현장 각 레벨별 맞춤형 리포트 제공",
-        "ps.modal.maop.title": "MAOP",
-        "ps.modal.maop.sub": "Multi Agent Orchestration Platform",
-        "ps.modal.maop.def_label": "정의",
-        "ps.modal.maop.role_label": "역할",
-        "ps.modal.maop.feat_label": "핵심 특징",
-        "ps.modal.maop.f1": "Microservices 기반 서비스 관리",
-        "ps.modal.maop.f2": "메모리 캐시(Message Queue) 기반 정보 관리",
-        "ps.modal.maop.f3": "이중화 아키텍처 (안정성)",
         "ps.modal.maop.f4": "유연한 UI 개발 플랫폼 + CAD 플랫폼",
+
+        // TAMS Module Modal Data (Restored - Layout Minimal)
+        "ps.modal.mcs.title": "자재 흐름 및 이송 오더 관리 시스템 (MCS)",
+        "ps.modal.mcs.sub": "이송 요청(Transfer Request)을 최적 오더로 변환",
+        "ps.modal.mcs.li1": "공장/창고 내 피킹/적치 전략과 이송 요청 매핑",
+        "ps.modal.mcs.li2": "최적화 엔진을 통한 이송 우선순위 및 경로 할당",
+        "ps.modal.mcs.li3": "실시간 재고 현황 및 자재 흐름 통합 관리",
+
+        "ps.modal.fms.title": "다중 로봇 관리 시스템 (FMS)",
+        "ps.modal.fms.sub": "수백 대의 이기종 로봇을 하나의 군집으로 제어",
+        "ps.modal.fms.li1": "300대 이상 대규모 로봇 군집 교착(Deadlock) 방지 및 실시간 제어",
+        "ps.modal.fms.li2": "이기종 로봇 수용을 위한 표준 어댑터 기반 통합 관리",
+        "ps.modal.fms.li3": "엘리베이터, 자동문 등 하위 설비와의 실시간 연동 제어",
+
+        "ps.modal.acs.title": "로봇 제어 시스템 (ACS)",
+        "ps.modal.acs.sub": "초 단위 현장 상황을 반영한 개별 로봇 정밀 지휘",
+        "ps.modal.acs.li1": "3D 기반 로봇 관제 및 상태 모니터링",
+        "ps.modal.acs.li2": "현장 장애물 및 상황 변화에 따른 실시간 경로 재설정",
+        "ps.modal.acs.li3": "산업용 프로토콜(PLC, IoT) 연동을 통한 현장 인터페이스 최적화",
+
+        "ps.modal.sms.title": "안전 관제 시스템 (SMS)",
+        "ps.modal.sms.sub": "유무인 혼합 환경을 위한 실시간 위험 조기 감지",
+        "ps.modal.sms.li1": "로봇 및 작업자 실시간 위치 추적을 통한 충돌 방지",
+        "ps.modal.sms.li2": "구간별 혼잡도 관리 및 위험 상황 자동 제어",
+        "ps.modal.sms.li3": "안전 사고 예방을 위한 실시간 관제 대시보드 운영",
+
+        "ps.modal.wns.title": "창고 내비게이션 시스템 (WNS)",
+        "ps.modal.wns.sub": "작업자 생산성을 극대화하는 현장 가이드",
+        "ps.modal.wns.li1": "작업자 위치 기반 최적 피킹/이동 경로 안내",
+        "ps.modal.wns.li2": "웨어러블 기기 연동을 통한 핸즈프리 작업 환경 구축",
+        "ps.modal.wns.li3": "실시간 작업 현황 시각화 및 병목 구간 안내",
 
         // Solution Section (Combinations Detail - Standardized Keys)
         "ps.combo.c1.title": "1. Robot + Control",
@@ -2740,6 +2763,37 @@ window.i18nData = {
         "ps.modal.vms.li2": "Real-time monitoring of KPI metrics (throughput, accuracy, delay rate)",
         "ps.modal.vms.li3": "Exception alerts and automatic detection of bottlenecks",
         "ps.modal.vms.li4": "Customized reports for executives, operations teams, and on-site personnel at each level",
+
+        // TAMS Module Modal Data (EN Restored)
+        "ps.modal.mcs.title": "Material Control System (MCS)",
+        "ps.modal.mcs.sub": "Transforming Transfer Requests into Optimized Orders",
+        "ps.modal.mcs.li1": "Mapping picking/stacking strategies and transfer requests within the factory/warehouse",
+        "ps.modal.mcs.li2": "Assigning transfer priority and routes through an optimization engine",
+        "ps.modal.mcs.li3": "Integrated management of real-time inventory and material flow",
+
+        "ps.modal.fms.title": "Fleet Management System (FMS)",
+        "ps.modal.fms.sub": "Controlling hundreds of heterogeneous robots as a single fleet",
+        "ps.modal.fms.li1": "Preventing deadlocks and real-time control of large-scale robot fleets (300+ units)",
+        "ps.modal.fms.li2": "Unified management based on standard adapters to accommodate diverse robot types",
+        "ps.modal.fms.li3": "Real-time interconnection and control with ground equipment like elevators and speed doors",
+
+        "ps.modal.acs.title": "Autonomous mobile robot Control System (ACS)",
+        "ps.modal.acs.sub": "Precision command of individual robots reflecting split-second site conditions",
+        "ps.modal.acs.li1": "3D-based robot monitoring and status visibility",
+        "ps.modal.acs.li2": "Real-time route resetting in response to obstacles and situational changes",
+        "ps.modal.acs.li3": "Optimized site interfaces through integration with industrial protocols (PLC, IoT)",
+
+        "ps.modal.sms.title": "Safety Management System (SMS)",
+        "ps.modal.sms.sub": "Split-second danger detection for human-robot mixed environments",
+        "ps.modal.sms.li1": "Collision prevention through real-time location tracking of robots and workers",
+        "ps.modal.sms.li2": "Congestion management by zone and automatic risk control",
+        "ps.modal.sms.li3": "Operating real-time visibility dashboards for safety accident prevention",
+
+        "ps.modal.wns.title": "Warehouse Navigation System (WNS)",
+        "ps.modal.wns.sub": "Site guides maximizing worker productivity",
+        "ps.modal.wns.li1": "Guiding optimal picking/movement paths based on worker location",
+        "ps.modal.wns.li2": "Building a hands-free work environment through wearable device integration",
+        "ps.modal.wns.li3": "Visualizing real-time work status and guiding through bottleneck areas",
 
         "ps.modal.maop.role": "The foundational platform for TAMS's 5 modules. Its Microservices architecture enables both independent operation and organic linkage between modules.",
         "ps.modal.maop.f1": "Microservices-based service management",
