@@ -164,6 +164,10 @@ window.i18nData = {
         "ps.robot.amr.name_en": "Autonomous Mobile Robot",
         "ps.robot.amr.desc": "별도 가이드 없이 최적의 경로로 물품을 이송",
         "ps.robot.amr.desc_en": "Guideless navigation on optimal paths.",
+        "ps.robot.ss.name": "스마트 저장",
+        "ps.robot.ss.name_en": "Smart Storage",
+        "ps.robot.ss.desc": "효율적인 공간 활용을 위한 자동 저장 솔루션",
+        "ps.robot.ss.desc_en": "Automated storage solutions for efficient space utilization.",
         "ps.robot.card.more": "자세히 보기",
 
         "ps.robot.tech.title": "공통 핵심 기술",
@@ -2227,6 +2231,8 @@ window.i18nData = {
         "ps.robot.afl.desc": "Flexible, safe pallet handling across diverse logistics environments",
         "ps.robot.amr.name": "Autonomous Mobile Robot",
         "ps.robot.amr.desc": "Guideless navigation on optimal paths",
+        "ps.robot.ss.name": "Smart Storage",
+        "ps.robot.ss.desc": "Automated storage solutions for efficient space utilization",
         "ps.robot.card.more": "Learn More",
 
         // AFL상세페이지 (product-afl.html)
