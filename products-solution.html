@@ -507,6 +507,34 @@
                 font-weight: 800 !important;
                 font-size: 1.1rem !important;
             }
+
+            /* TAMS Modal Mobile Fix */
+            .lsw-modal {
+                align-items: flex-end !important;
+            }
+
+            .lsw-modal-box {
+                width: 100% !important;
+                height: 100% !important;
+                max-width: none !important;
+                border-radius: 0 !important;
+                padding: 60px 24px 120px !important;
+                overflow-y: auto !important;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .lsw-modal-close {
+                top: 20px !important;
+                right: 20px !important;
+                font-size: 2.2rem !important;
+                z-index: 100;
+            }
+
+            .lsw-modal-footer {
+                margin-top: auto;
+                padding-top: 40px;
+            }
         }
 
         .combo4-desktop-flex {
@@ -4081,6 +4109,10 @@
                     <li>재고 가용 수량 기반 오더 배분 및 창고 지시 연계</li>
                     <li>주문 상태 실시간 추적 및 고객사 통보 자동화</li>
                 </ul>
+                <div class="lsw-modal-footer" style="margin-top: 32px; text-align: center;">
+                    <button class="btn-premium-maroon" style="width: 100%; padding: 14px; font-weight: 700;"
+                        data-i18n="fc.modal.btn" onclick="document.getElementById('modal-oms').style.display='none'">확인</button>
+                </div>
             </div>
         </div>
 
@@ -4099,6 +4131,10 @@
                     <li data-i18n="ps.modal.wms.li4">출고 우선순위·납기 기반 출하 지시 자동화</li>
                     <li data-i18n="ps.modal.wms.li5">재고 실사(cycle count) 및 로케이션 정확도 관리</li>
                 </ul>
+                <div class="lsw-modal-footer" style="margin-top: 32px; text-align: center;">
+                    <button class="btn-premium-maroon" style="width: 100%; padding: 14px; font-weight: 700;"
+                        data-i18n="fc.modal.btn" onclick="document.getElementById('modal-wms').style.display='none'">확인</button>
+                </div>
             </div>
         </div>
 
@@ -4149,6 +4185,10 @@
                             large-scale pallet/box transfers</p>
                     </div>
                 </div>
+                <div class="lsw-modal-footer" style="margin-top: 32px; text-align: center;">
+                    <button class="btn-premium-maroon" style="width: 100%; padding: 14px; font-weight: 700;"
+                        data-i18n="fc.modal.btn" onclick="document.getElementById('modal-mcs').style.display='none'">확인</button>
+                </div>
             </div>
         </div>
 
@@ -4196,6 +4236,10 @@
                         <p class="font-set-table-en">Factory with 50 MOBYUS AMRs + 20 3rd-party AGVs + 10 manned
                             forklifts, orchestrated without deadlocks</p>
                     </div>
+                </div>
+                <div class="lsw-modal-footer" style="margin-top: 32px; text-align: center;">
+                    <button class="btn-premium-maroon" style="width: 100%; padding: 14px; font-weight: 700;"
+                        data-i18n="fc.modal.btn" onclick="document.getElementById('modal-fms').style.display='none'">확인</button>
                 </div>
             </div>
         </div>
@@ -4245,6 +4289,10 @@
                             traffic in real-time for zero deadlock/collision</p>
                     </div>
                 </div>
+                <div class="lsw-modal-footer" style="margin-top: 32px; text-align: center;">
+                    <button class="btn-premium-maroon" style="width: 100%; padding: 14px; font-weight: 700;"
+                        data-i18n="fc.modal.btn" onclick="document.getElementById('modal-acs').style.display='none'">확인</button>
+                </div>
             </div>
         </div>
 
@@ -4291,6 +4339,10 @@
                         <p class="font-set-table-en">Safety Management System prevents accidents by immediately
                             detecting workers entering robot paths and decelerating or stopping nearby robots.</p>
                     </div>
+                </div>
+                <div class="lsw-modal-footer" style="margin-top: 32px; text-align: center;">
+                    <button class="btn-premium-maroon" style="width: 100%; padding: 14px; font-weight: 700;"
+                        data-i18n="fc.modal.btn" onclick="document.getElementById('modal-sms').style.display='none'">확인</button>
                 </div>
             </div>
         </div>
@@ -4342,6 +4394,10 @@
                             coordinating nearby AMRs</p>
                     </div>
                 </div>
+                <div class="lsw-modal-footer" style="margin-top: 32px; text-align: center;">
+                    <button class="btn-premium-maroon" style="width: 100%; padding: 14px; font-weight: 700;"
+                        data-i18n="fc.modal.btn" onclick="document.getElementById('modal-wns').style.display='none'">확인</button>
+                </div>
             </div>
         </div>
 
@@ -4362,6 +4418,10 @@
                     </li>
                     <li data-i18n="ps.modal.tms.li4">협력사(택배사·용차) 연동 및 운임 정산 자동화</li>
                 </ul>
+                <div class="lsw-modal-footer" style="margin-top: 32px; text-align: center;">
+                    <button class="btn-premium-maroon" style="width: 100%; padding: 14px; font-weight: 700;"
+                        data-i18n="fc.modal.btn" onclick="document.getElementById('modal-tms').style.display='none'">확인</button>
+                </div>
             </div>
         </div>
 
@@ -4382,6 +4442,10 @@
                     <li data-i18n="ps.modal.vms.li3">예외 상황 알림 및 병목 구간 자동 감지</li>
                     <li data-i18n="ps.modal.vms.li4">경영진·운영팀·현장 각 레벨별 맞춤형 리포트 제공</li>
                 </ul>
+                <div class="lsw-modal-footer" style="margin-top: 32px; text-align: center;">
+                    <button class="btn-premium-maroon" style="width: 100%; padding: 14px; font-weight: 700;"
+                        data-i18n="fc.modal.btn" onclick="document.getElementById('modal-vms').style.display='none'">확인</button>
+                </div>
             </div>
         </div>
 
@@ -4415,6 +4479,10 @@
                     <p style="font-size:0.93rem; color:#374151; line-height:1.6;" data-i18n="ps.modal.maop.features">①
                         Microservices 기반 서비스 관리 ② 메모리 캐시(Message Queue) 기반 정보 관리 ③ 이중화 아키텍처 (안정성) ④ 유연한 UI 개발 플랫폼 + CAD
                         플랫폼</p>
+                </div>
+                <div class="lsw-modal-footer" style="margin-top: 32px; text-align: center;">
+                    <button class="btn-premium-maroon" style="width: 100%; padding: 14px; font-weight: 700;"
+                        data-i18n="fc.modal.btn" onclick="document.getElementById('maop-modal').style.display='none'">확인</button>
                 </div>
             </div>
         </div>
