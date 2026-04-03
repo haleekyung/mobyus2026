@@ -18,15 +18,74 @@
 
     <style>
         /* MAOP 전용 가시성 제어 (전역 클래스 충돌 방지) */
-        .maop-desktop { display: block !important; }
-        .maop-mobile { display: none !important; }
-
-        @media (max-width: 768px) {
-            .maop-desktop { display: none !important; }
-            .maop-mobile { display: block !important; }
+        .maop-desktop {
+            display: block !important;
         }
 
-         /* TAMS Architecture Layout */
+        .maop-mobile {
+            display: none !important;
+        }
+
+        @media (max-width: 768px) {
+            .maop-desktop {
+                display: none !important;
+            }
+
+            .maop-mobile {
+                display: block !important;
+            }
+        }
+
+        /* MAOP 모바일 리스트 레이아웃 */
+        .maop-mobile-list {
+            display: block;
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-top: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+        }
+
+        .maop-mobile-item {
+            display: block;
+            padding: 28px 25px;
+            background: #fff;
+            border-bottom: 1px solid #f3f4f6;
+        }
+
+        .maop-mobile-item:last-child {
+            border-bottom: none;
+        }
+
+        .maop-mobile-item .maop-label {
+            display: block;
+            margin-bottom: 25px;
+            color: #111;
+            font-weight: 800;
+            font-size: 1.3rem;
+            letter-spacing: -0.02em;
+        }
+
+        .maop-mobile-item .maop-desc-primary {
+            display: block;
+            margin-bottom: 20px;
+            color: #333;
+            font-size: 1.15rem;
+            line-height: 1.6;
+            font-weight: 400;
+            word-break: keep-all;
+        }
+
+        .maop-mobile-item .maop-desc-secondary {
+            display: block;
+            color: #888;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            font-weight: 400;
+        }
+
+        /* TAMS Architecture Layout */
         .tams-suite-image {
             width: 100%;
             margin-bottom: 40px;
@@ -45,7 +104,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.8);
+            background: rgba(0, 0, 0, 0.8);
             backdrop-filter: blur(8px);
             z-index: 9999;
             display: none;
@@ -67,8 +126,15 @@
         }
 
         @keyframes tamsModalFadeIn {
-            from { opacity: 0; transform: translateY(20px) scale(0.95); }
-            to { opacity: 1; transform: translateY(0) scale(1); }
+            from {
+                opacity: 0;
+                transform: translateY(20px) scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
         }
 
         .tams-modal-close {
@@ -82,13 +148,44 @@
             transition: color 0.3s;
         }
 
-        .tams-modal-close:hover { color: var(--color-br900); }
+        .tams-modal-close:hover {
+            color: var(--color-br900);
+        }
+
+        /* TAMS Hotspot Styles */
+        .tams-hotspot-container {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+            max-width: 482px;
+            /* Based on image natural width */
+            margin: 0 auto;
+        }
+
+        .tams-hotspot-container img {
+            width: 100%;
+            display: block;
+        }
+
+        .tams-hotspot {
+            position: absolute;
+            background: rgba(124, 11, 71, 0);
+            /* Invisible by default */
+            cursor: pointer;
+            transition: background 0.3s;
+            z-index: 10;
+        }
+
+        .tams-hotspot:hover {
+            background: rgba(124, 11, 71, 0.1);
+            /* Subtle highlight on hover */
+        }
     </style>
 
     <script>
-        (function() {
-            // [1] 초강력 스크롤 고정 (v11.0 - 모든 이동 수단 차단)
-            const scrollKey = 'mobyus_final_scroll_pos_v11';
+        (function () {
+            // [1] 스크롤 위치 복원 (scrollRestoration manual 방식)
+            const scrollKey = 'mobyus_scroll_pos';
             if ('scrollRestoration' in history) {
                 history.scrollRestoration = 'manual';
             }
@@ -97,73 +194,14 @@
                 localStorage.setItem(scrollKey, window.scrollY);
             });
 
-            // 모든 스크롤 이동 함수 가로채기
-            const originalScrollTo = window.scrollTo;
-            const originalScroll = window.scroll;
-            const originalScrollBy = window.scrollBy;
-            
-            let isLockActive = true;
-            const preventScroll = function(x, y) {
-                if (isLockActive && (x === 0 || y === 0)) return;
-                return originalScrollTo.apply(this, arguments);
-            };
-
-            window.scrollTo = preventScroll;
-            window.scroll = preventScroll;
-            window.scrollBy = function() { if (isLockActive) return; return originalScrollBy.apply(this, arguments); };
-
-            setTimeout(() => { isLockActive = false; }, 2000);
-
-            const forceScroll = () => {
+            window.addEventListener('load', () => {
                 const savedPos = localStorage.getItem(scrollKey);
                 if (savedPos !== null) {
-                    let count = 0;
-                    const interval = setInterval(() => {
-                        originalScrollTo.apply(window, [0, parseInt(savedPos)]);
-                        if (++count > 200) clearInterval(interval); 
-                    }, 10);
+                    window.scrollTo(0, parseInt(savedPos, 10));
                 }
-            };
-            window.addEventListener('load', forceScroll);
-
-            // [2] MAOP 레이아웃 실시간 주입 (이미지 스타일 1:1 재현)
-            const applyMaopDesign = () => {
-                const container = document.querySelector('.maop-mobile-list');
-                if (container) {
-                    container.style.cssText = "display: block !important; background: #fff !important; border: 1px solid #e5e7eb !important; border-radius: 12px !important; overflow: hidden !important; margin-top: 20px !important; box-shadow: 0 4px 12px rgba(0,0,0,0.03) !important;";
-                }
-
-                const mobileItems = document.querySelectorAll('.maop-mobile-item');
-                mobileItems.forEach((item, idx) => {
-                    item.style.cssText = "display: block !important; padding: 28px 25px !important; background: #fff !important; border: none !important; border-bottom: " + (idx === mobileItems.length - 1 ? "none" : "1px solid #f3f4f6") + " !important;";
-                    
-                    const label = item.querySelector('.maop-label');
-                    if (label) {
-                        label.style.cssText = "display: block !important; margin-bottom: 25px !important; color: #111 !important; font-weight: 800 !important; font-size: 1.3rem !important; letter-spacing: -0.02em !important;";
-                    }
-                    
-                    const descPrimary = item.querySelector('.maop-desc-primary');
-                    if (descPrimary) {
-                        descPrimary.style.cssText = "display: block !important; margin-bottom: 20px !important; color: #333 !important; font-size: 1.15rem !important; line-height: 1.6 !important; font-weight: 400 !important; word-break: keep-all !important;";
-                    }
-
-                    const descSecondary = item.querySelector('.maop-desc-secondary');
-                    if (descSecondary) {
-                        descSecondary.style.cssText = "display: block !important; color: #888 !important; font-size: 0.95rem !important; line-height: 1.5 !important; font-weight: 400 !important;";
-                    }
-                });
-            };
-
-            const observer = new MutationObserver(() => { applyMaopDesign(); });
-
-            window.addEventListener('DOMContentLoaded', () => {
-                const section = document.querySelector('.maop-platform-section');
-                if (section) {
-                    observer.observe(section, { childList: true, subtree: true });
-                }
-                applyMaopDesign();
             });
-            window.addEventListener('load', applyMaopDesign);
+
+            // [2] MAOP 레이아웃: CSS 클래스(.maop-mobile-list 등)로 처리됨 — JS 주입 불필요
         })();
     </script>
 
@@ -202,7 +240,8 @@
         .tech-table td {
             display: table-cell !important;
             vertical-align: middle !important;
-            text-align: left !important; /* 기본 모든 셀 왼쪽 정렬 보장 */
+            text-align: left !important;
+            /* 기본 모든 셀 왼쪽 정렬 보장 */
         }
 
         /* MOBYUS / 경쟁사 열은 가운데 정렬 */
@@ -221,6 +260,7 @@
 
         /* [Mobile Alignment Fix] 모든 정렬 규칙을 무력화하는 초토화(Atomic) 정렬 오버라이드 */
         @media (max-width: 768px) {
+
             /* 1. 모든 셀과 그 안의 모든 요소를 왼쪽 정렬로 강제 (main.css의 :first-child 우선순위를 이기기 위해 명시) */
             html body table.diff-table tr th,
             html body table.diff-table tr td,
@@ -238,7 +278,7 @@
                 justify-content: flex-start !important;
                 align-items: flex-start !important;
             }
-            
+
             /* 2. span, b, i 등 인라인 요소들이 block으로 변해 정렬을 무시하지 못하도록 방어 */
             html body table.diff-table tr td span,
             html body table.diff-table tr td div,
@@ -284,21 +324,41 @@
             border-radius: 16px;
             overflow: hidden;
             background: #fff;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); /* 프리미엄 느낌의 쉐도우 추가 */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            /* 프리미엄 느낌의 쉐도우 추가 */
         }
+
         .solution-combo-table {
             display: table !important;
             width: 100% !important;
             table-layout: fixed !important;
             border-collapse: collapse !important;
         }
-        .solution-combo-table thead { display: table-header-group !important; }
-        .solution-combo-table tbody { display: table-row-group !important; }
-        .solution-combo-table tr   { display: table-row !important; }
+
+        .solution-combo-table thead {
+            display: table-header-group !important;
+        }
+
+        .solution-combo-table tbody {
+            display: table-row-group !important;
+        }
+
+        .solution-combo-table tr {
+            display: table-row !important;
+        }
+
         .solution-combo-table th,
-        .solution-combo-table td   { display: table-cell !important; vertical-align: middle !important; }
+        .solution-combo-table td {
+            display: table-cell !important;
+            vertical-align: middle !important;
+        }
+
         /* 데스크톱 헤더 */
-        .solution-combo-table thead tr { background: #f8fafc; border-bottom: 2px solid #e5e7eb; }
+        .solution-combo-table thead tr {
+            background: #f8fafc;
+            border-bottom: 2px solid #e5e7eb;
+        }
+
         .solution-combo-table th {
             padding: 18px 32px !important;
             font-size: 1rem !important;
@@ -306,52 +366,72 @@
             color: #111 !important;
             text-align: center !important;
         }
+
         /* 데스크톱 바디 셀 */
         .solution-combo-table td {
             padding: 26px 32px !important;
             border-bottom: 1px solid #f1f5f9 !important;
         }
-        .solution-combo-table tbody tr:last-child td { border-bottom: none !important; }
+
+        .solution-combo-table tbody tr:last-child td {
+            border-bottom: none !important;
+        }
+
         /* 첫 번째 컬럼 너비 */
         .solution-combo-table th:first-child,
-        .solution-combo-table td:first-child { width: 40% !important; }
+        .solution-combo-table td:first-child {
+            width: 40% !important;
+        }
 
         /* 모바일 카드 레이아웃 */
         @media (max-width: 768px) {
-            .solution-combo-table thead { display: none !important; }
+            .solution-combo-table thead {
+                display: none !important;
+            }
+
             .solution-combo-table tr {
                 display: block !important;
                 padding: 22px 24px !important;
                 border-bottom: 1px solid #f1f5f9 !important;
             }
-            .solution-combo-table tbody tr:last-child { border-bottom: none !important; }
+
+            .solution-combo-table tbody tr:last-child {
+                border-bottom: none !important;
+            }
+
             .solution-combo-table td {
                 display: block !important;
                 padding: 0 !important;
                 border: none !important;
                 width: 100% !important;
-                text-align: left !important; /* 모바일 왼쪽 정렬 강제 */
+                text-align: left !important;
+                /* 모바일 왼쪽 정렬 강제 */
             }
+
             .solution-combo-table td:first-child {
                 font-weight: 700 !important;
                 color: #111 !important;
                 font-size: 1.1rem !important;
                 margin-bottom: 6px !important;
             }
+
             .solution-combo-table td:last-child {
                 font-size: 0.95rem !important;
                 color: #666 !important;
                 line-height: 1.5 !important;
             }
+
             /* 마지막 행(풀스택) 모바일 배경 처리 */
-            .solution-combo-table tbody tr:last-child { 
-                background: #faf5f8 !important; 
+            .solution-combo-table tbody tr:last-child {
+                background: #faf5f8 !important;
             }
-            .solution-combo-table tbody tr:last-child td:first-child { 
-                color: #7c0b47 !important; 
+
+            .solution-combo-table tbody tr:last-child td:first-child {
+                color: #7c0b47 !important;
             }
-            .solution-combo-table tbody tr:last-child td:last-child { 
-                color: #7c0b47 !important; 
+
+            .solution-combo-table tbody tr:last-child td:last-child {
+                color: #7c0b47 !important;
             }
 
             /* 모바일에서 컨테이너 양옆 마진 확보 */
@@ -405,7 +485,8 @@
                 background: transparent !important;
                 border: none !important;
                 border-bottom: 1px solid #e5e7eb !important;
-                padding: 45px 0 !important; /* 마진(패딩) 대폭 증대 */
+                padding: 45px 0 !important;
+                /* 마진(패딩) 대폭 증대 */
                 box-shadow: none !important;
                 border-radius: 0 !important;
             }
@@ -413,14 +494,16 @@
             body .maop-platform-section .tech-table td {
                 display: block !important;
                 width: 100% !important;
-                padding: 15px 0 !important; /* 텍스트 간 줄 간격 */
+                padding: 15px 0 !important;
+                /* 텍스트 간 줄 간격 */
                 border: none !important;
                 background: transparent !important;
             }
 
             .maop-platform-section .tech-table td:first-child {
                 padding-bottom: 8px !important;
-                color: #7C0B47 !important; /* 모비어스 메인 컬러로 항목 강조 */
+                color: #7C0B47 !important;
+                /* 모비어스 메인 컬러로 항목 강조 */
                 font-weight: 800 !important;
                 font-size: 1.1rem !important;
             }
@@ -488,6 +571,116 @@
         html[lang="en"] .sw-detail-table .m-hide,
         html[lang="en"] .opt-desc-en {
             display: none !important;
+        }
+
+        /* ===== LSW Modal (body에 있던 style 이동) ===== */
+        @keyframes lswFadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes lswSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .lsw-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.55);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+            animation: lswFadeIn 0.2s ease;
+        }
+
+        .lsw-modal-box {
+            background: #fff;
+            border-radius: 20px;
+            padding: 40px 44px;
+            max-width: 520px;
+            width: 90%;
+            position: relative;
+            animation: lswSlideUp 0.28s ease;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+        }
+
+        .lsw-modal-close {
+            position: absolute;
+            top: 16px;
+            right: 20px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #9ca3af;
+            line-height: 1;
+            border: none;
+            background: none;
+        }
+
+        .lsw-modal-close:hover {
+            color: #111;
+        }
+
+        .lsw-modal-tag {
+            display: inline-block;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            padding: 4px 12px;
+            border-radius: 999px;
+            margin-bottom: 16px;
+        }
+
+        .lsw-modal-box h3 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #111;
+            margin-bottom: 8px;
+        }
+
+        .lsw-modal-box .lsw-subtitle {
+            font-size: 0.88rem;
+            color: #6b7280;
+            margin-bottom: 24px;
+        }
+
+        .lsw-modal-box ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            border-top: 1px solid #f3f4f6;
+            padding-top: 20px;
+        }
+
+        .lsw-modal-box ul li {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            padding: 10px 0;
+            border-bottom: 1px solid #f9fafb;
+            font-size: 0.93rem;
+            color: #374151;
+        }
+
+        .lsw-modal-box ul li::before {
+            content: "·";
+            font-size: 0.7rem;
+            color: #9ca3af;
+            flex-shrink: 0;
+            margin-top: 4px;
         }
     </style>
 </head>
@@ -593,14 +786,16 @@
         <div class="solution-combinations" style="margin-top: 80px; margin-bottom: 120px;">
             <div class="text-center" style="margin-bottom: 56px;">
                 <h2 class="font-set-intro-sub" data-i18n="ps.combo.title">Solution 조합</h2>
-                <p class="font-set-intro-ko" style="margin-top: 12px;" data-i18n="ps.combo.sub">현장의 조건과 목표에 따라, 제품을 유연하게 조합합니다</p>
+                <p class="font-set-intro-ko" style="margin-top: 12px;" data-i18n="ps.combo.sub">현장의 조건과 목표에 따라, 제품을 유연하게
+                    조합합니다</p>
             </div>
 
             <div class="container" style="max-width: 800px; margin: 0 auto;">
                 <div class="combo-summary-card">
                     <!-- Combination 1 -->
                     <div class="combo-summary-item fade-in-up">
-                        <div class="combo-summary-title" data-i18n="ps.combo.c1.label">Robot &nbsp; + &nbsp; Control</div>
+                        <div class="combo-summary-title" data-i18n="ps.combo.c1.label">Robot &nbsp; + &nbsp; Control
+                        </div>
                         <div class="combo-summary-desc" data-i18n="ps.combo.c1.desc">단일 공정 자동화부터 공장 전체 관제까지</div>
                     </div>
                     <!-- Combination 2 -->
@@ -615,13 +810,15 @@
                     </div>
                     <!-- Combination 4 (Full Stack Highlight) -->
                     <div class="combo-summary-item fade-in-up" style="transition-delay: 0.3s;">
-                        <div class="combo-summary-title" data-i18n="ps.combo.c4.label">Robot &nbsp; + &nbsp; Control &nbsp; + &nbsp; SW</div>
+                        <div class="combo-summary-title" data-i18n="ps.combo.c4.label">Robot &nbsp; + &nbsp; Control
+                            &nbsp; + &nbsp; SW</div>
                         <div class="combo-summary-desc" data-i18n="ps.combo.c4.desc">물류 전체를 연결하는 풀 스택</div>
                     </div>
                 </div>
             </div>
             <!-- Action Button -->
-            <div class="text-center" style="padding-top: 80px; padding-bottom: 80px; padding-left: 20px; padding-right: 20px;">
+            <div class="text-center"
+                style="padding-top: 80px; padding-bottom: 80px; padding-left: 20px; padding-right: 20px;">
                 <a href="#logistics-sw-section" class="btn-premium-maroon" data-i18n="ps.combo.btn">상세 솔루션 조합 보기 <i
                         class="fas fa-arrow-right" style="margin-left: 8px;"></i></a>
             </div>
@@ -653,8 +850,7 @@
                 <div class="stats-banner">
                     <div class="stat-block">
                         <div class="product-stats-num">
-                            <span class="count-up" data-target="188">0</span><span
-                                data-i18n="ps.robot.stat1.suffix">대+</span>
+                            <span class="stat-count" data-target="188" data-suffix="대+">0</span>
                         </div>
                         <div class="product-stats-label" data-i18n="ps.robot.stat1.label">단일 사이트<br>최대 동시 운영</div>
                     </div>
@@ -666,8 +862,7 @@
                     <div class="stat-divider"></div>
                     <div class="stat-block">
                         <div class="product-stats-num">
-                            <span class="count-up" data-target="990">0</span><span
-                                data-i18n="ps.robot.stat3.suffix">대+</span>
+                            <span class="stat-count" data-target="990" data-suffix="대+">0</span>
                         </div>
                         <div class="product-stats-label" data-i18n="ps.robot.stat3.label">누적 로봇 출하</div>
                     </div>
@@ -969,7 +1164,8 @@
                                 <span class="card-title" data-i18n="ps.control.why.q1">혼재</span>
                             </div>
                             <div class="card-desc-ko" data-i18n="ps.control.why.a1_ko">다량의 로봇/기기가 혼재 — 개별 관리 불가</div>
-                            <div class="card-desc-en" data-i18n="ps.control.why.a1_en">Multiple robots & devices coexist — unmanageable individually</div>
+                            <div class="card-desc-en" data-i18n="ps.control.why.a1_en">Multiple robots & devices coexist
+                                — unmanageable individually</div>
                         </div>
 
                         <!-- Item 2 -->
@@ -979,7 +1175,8 @@
                                 <span class="card-title" data-i18n="ps.control.why.q2">교착</span>
                             </div>
                             <div class="card-desc-ko" data-i18n="ps.control.why.a2_ko">기기간 교착(Deadlock)</div>
-                            <div class="card-desc-en" data-i18n="ps.control.why.a2_en">Inter-device deadlocks — line stoppage</div>
+                            <div class="card-desc-en" data-i18n="ps.control.why.a2_en">Inter-device deadlocks — line
+                                stoppage</div>
                         </div>
 
                         <!-- Item 3 -->
@@ -989,7 +1186,8 @@
                                 <span class="card-title" data-i18n="ps.control.why.q3">충돌·대기</span>
                             </div>
                             <div class="card-desc-ko" data-i18n="ps.control.why.a3_ko">로봇/설비 간 충돌 및 대기</div>
-                            <div class="card-desc-en" data-i18n="ps.control.why.a3_en">Collisions & queuing — efficiency loss</div>
+                            <div class="card-desc-en" data-i18n="ps.control.why.a3_en">Collisions & queuing — efficiency
+                                loss</div>
                         </div>
 
                         <!-- Item 4 -->
@@ -999,7 +1197,8 @@
                                 <span class="card-title" data-i18n="ps.control.why.q4">분산제어</span>
                             </div>
                             <div class="card-desc-ko" data-i18n="ps.control.why.a4_ko">시스템별 분산 제어</div>
-                            <div class="card-desc-en" data-i18n="ps.control.why.a4_en">Siloed control per system — no global optimization</div>
+                            <div class="card-desc-en" data-i18n="ps.control.why.a4_en">Siloed control per system — no
+                                global optimization</div>
                         </div>
                     </div>
 
@@ -1034,9 +1233,36 @@
                     <div style="text-align: center; color: #e8b4cc; font-size: 1.4rem; margin-bottom: 24px;">▼</div>
 
                     <div class="tams-suite-layout">
-                        <!-- Left Image -->
+                        <!-- Left Image with Hotspots -->
                         <div class="tams-suite-image">
-                            <img src="images/tams-suite.png" alt="TAMS Suite Architecture">
+                            <div class="tams-hotspot-container">
+                                <img src="images/tams-suite.png" alt="TAMS Suite Architecture">
+                                <!-- Hotspots based on 482x797 image -->
+                                <!-- MCS: 148,56,431,174 -->
+                                <a href="javascript:void(0)" class="tams-hotspot"
+                                    style="left: 30.7%; top: 7.0%; width: 58.7%; height: 14.8%;"
+                                    onclick="openTamsModal('mcs')"></a>
+                                <!-- FMS: 146,201,430,318 -->
+                                <a href="javascript:void(0)" class="tams-hotspot"
+                                    style="left: 30.2%; top: 25.2%; width: 58.9%; height: 14.7%;"
+                                    onclick="openTamsModal('fms')"></a>
+                                <!-- ACS: 146,339,431,457 -->
+                                <a href="javascript:void(0)" class="tams-hotspot"
+                                    style="left: 30.2%; top: 42.5%; width: 59.1%; height: 14.8%;"
+                                    onclick="openTamsModal('acs')"></a>
+                                <!-- SMS: 146,479,431,598 -->
+                                <a href="javascript:void(0)" class="tams-hotspot"
+                                    style="left: 30.2%; top: 60.1%; width: 59.1%; height: 14.9%;"
+                                    onclick="openTamsModal('sms')"></a>
+                                <!-- WNS: 147,619,431,738 -->
+                                <a href="javascript:void(0)" class="tams-hotspot"
+                                    style="left: 30.5%; top: 77.7%; width: 58.9%; height: 14.9%;"
+                                    onclick="openTamsModal('wns')"></a>
+                                <!-- MAOP: 83,59,141,737 -->
+                                <a href="javascript:void(0)" class="tams-hotspot"
+                                    style="left: 17.2%; top: 7.4%; width: 12.0%; height: 85.1%;"
+                                    onclick="openTamsModal('maop')"></a>
+                            </div>
                         </div>
 
                         <!-- Right Modules -->
@@ -1613,7 +1839,8 @@
                 <div class="maop-mobile maop-mobile-list">
                     <div class="maop-mobile-item">
                         <div class="maop-label" data-i18n="ps.control.maop.r1.name">정의</div>
-                        <div class="maop-desc-primary" data-i18n="ps.control.maop.r1.val">Multi Agent Orchestration Platform</div>
+                        <div class="maop-desc-primary" data-i18n="ps.control.maop.r1.val">Multi Agent Orchestration
+                            Platform</div>
                     </div>
                     <div class="maop-mobile-item">
                         <div class="maop-label" data-i18n="ps.control.maop.r2.name">역할</div>
@@ -1624,7 +1851,8 @@
                     <div class="maop-mobile-item">
                         <div class="maop-label" data-i18n="ps.control.maop.r3.name">핵심 특징</div>
                         <div class="maop-desc-primary" data-i18n="ps.control.maop.r3.val">
-                            ① Microservices 기반 서비스 관리 ② 메모리 캐시(Message Queue) 기반 정보 관리 ③ 이중화 아키텍처 (안정성) ④ 유연한 UI 개발 플랫폼 + CAD 플랫폼
+                            ① Microservices 기반 서비스 관리 ② 메모리 캐시(Message Queue) 기반 정보 관리 ③ 이중화 아키텍처 (안정성) ④ 유연한 UI 개발 플랫폼
+                            + CAD 플랫폼
                         </div>
                     </div>
                 </div>
@@ -2156,8 +2384,10 @@
                         <table class="diff-table sw-detail-table" style="width: 100%">
                             <thead>
                                 <tr>
-                                    <th style="width: 80px; text-align: center" data-i18n="ps.logistics.e2e.table.sw">SW</th>
-                                    <th style="width: 160px; white-space: nowrap" data-i18n="ps.logistics.e2e.table.cover">커버구간</th>
+                                    <th style="width: 80px; text-align: center" data-i18n="ps.logistics.e2e.table.sw">SW
+                                    </th>
+                                    <th style="width: 160px; white-space: nowrap"
+                                        data-i18n="ps.logistics.e2e.table.cover">커버구간</th>
                                     <th style="text-align: left" data-i18n="ps.logistics.e2e.table.desc">설명</th>
                                 </tr>
                             </thead>
@@ -2166,7 +2396,8 @@
                                     <td style="font-weight: 700; color: #111; text-align: center">
                                         <span>OMS</span>
                                     </td>
-                                    <td style="white-space: nowrap" data-i18n="ps.logistics.e2e.table.c1">주문 수집 ~ 배분</td>
+                                    <td style="white-space: nowrap" data-i18n="ps.logistics.e2e.table.c1">주문 수집 ~ 배분
+                                    </td>
                                     <td style="text-align: left">
                                         <div class="sw-desc-ko" data-i18n="ps.logistics.e2e.table.d1">주문의 시작점 — 접수, 배분,
                                             통제</div>
@@ -2756,12 +2987,15 @@
                                 <th class="font-set-table-header col-layer"
                                     style="width: 50px; text-align: center; padding: 16px;" data-i18n="ps.strategy.th1">
                                     Layer</th>
-                                <th class="font-set-table-header col-name" style="width: 100px; text-align: left; padding: 16px;"
-                                    data-i18n="ps.strategy.th2">이름</th>
-                                <th class="font-set-table-header col-role" style="width: 40%; text-align: left; padding: 16px;"
-                                    data-i18n="ps.strategy.th3">역할</th>
-                                <th class="font-set-table-header col-products" style="width: 25%; text-align: left; padding: 16px;"
-                                    data-i18n="ps.strategy.th4">포함 제품</th>
+                                <th class="font-set-table-header col-name"
+                                    style="width: 100px; text-align: left; padding: 16px;" data-i18n="ps.strategy.th2">
+                                    이름</th>
+                                <th class="font-set-table-header col-role"
+                                    style="width: 40%; text-align: left; padding: 16px;" data-i18n="ps.strategy.th3">역할
+                                </th>
+                                <th class="font-set-table-header col-products"
+                                    style="width: 25%; text-align: left; padding: 16px;" data-i18n="ps.strategy.th4">포함
+                                    제품</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -4050,192 +4284,108 @@
 
 
         <script>
-            // Consolidated fade-in effect for all sections
+            // =============================================
+            // [통합 스크립트] fade-in + count-up + quick-nav
+            // =============================================
             document.addEventListener("DOMContentLoaded", () => {
-                const observer = new IntersectionObserver(
+
+                // --- 1. Fade-in 애니메이션 ---
+                const fadeObserver = new IntersectionObserver(
                     (entries) => {
                         entries.forEach((entry) => {
-                            if (entry.isIntersecting) {
-                                entry.target.classList.add("visible");
-                            }
+                            if (entry.isIntersecting) entry.target.classList.add("visible");
                         });
                     },
-                    {
-                        threshold: 0.01,
-                    },
+                    { threshold: 0.01 }
                 );
+                document.querySelectorAll(".fade-in-section, .fade-in-up")
+                    .forEach(item => fadeObserver.observe(item));
 
-                // Observe both .fade-in-section and .fade-in-up items
-                const fadeItems = document.querySelectorAll(".fade-in-section, .fade-in-up");
-                fadeItems.forEach(item => observer.observe(item));
-            });
-
-            // Banner Counter Animation
-            (function () {
-                const banner = document.getElementById("logistics-stats-banner");
-                if (!banner) return;
-                let animated = false;
-
-                function animateCountUp() {
-                    if (animated) return;
-                    animated = true;
-                    const DURATION = 2000; // ms
-                    document
-                        .querySelectorAll("#logistics-stats-banner .stat-count")
-                        .forEach(function (el) {
-                            const targetStr = el.getAttribute("data-target");
-                            const target = parseFloat(targetStr);
-                            const isFloat = targetStr.includes(".");
-                            const prefix = el.getAttribute("data-prefix") || "";
-                            const suffix = el.getAttribute("data-suffix") || "";
-                            if (isNaN(target)) return;
-
-                            let start = null;
-                            function step(timestamp) {
-                                if (!start) start = timestamp;
-                                const progress = Math.min((timestamp - start) / DURATION, 1);
-                                // easeOutQuart
-                                const eased = 1 - Math.pow(1 - progress, 4);
-
-                                let currentOut = eased * target;
-                                if (isFloat) {
-                                    currentOut = currentOut.toFixed(1);
-                                } else {
-                                    currentOut = Math.floor(currentOut);
+                // --- 2. Count-up 통합 함수 (stat-count 클래스 기준, prefix/suffix/소수점 지원) ---
+                function initCountUp(containerId) {
+                    const container = document.getElementById(containerId);
+                    if (!container) return;
+                    let animated = false;
+                    const io = new IntersectionObserver((entries) => {
+                        entries.forEach((entry) => {
+                            if (!entry.isIntersecting || animated) return;
+                            animated = true;
+                            const DURATION = 2000;
+                            container.querySelectorAll('.stat-count').forEach((el) => {
+                                const targetStr = el.getAttribute('data-target');
+                                const target = parseFloat(targetStr);
+                                const isFloat = targetStr.includes('.');
+                                const prefix = el.getAttribute('data-prefix') || '';
+                                const suffix = el.getAttribute('data-suffix') || '';
+                                if (isNaN(target)) return;
+                                let start = null;
+                                function step(timestamp) {
+                                    if (!start) start = timestamp;
+                                    const progress = Math.min((timestamp - start) / DURATION, 1);
+                                    const eased = 1 - Math.pow(1 - progress, 4);
+                                    const current = eased * target;
+                                    el.textContent = prefix + (isFloat ? current.toFixed(1) : Math.floor(current)) + suffix;
+                                    if (progress < 1) requestAnimationFrame(step);
+                                    else el.textContent = prefix + targetStr + suffix;
                                 }
-
-                                el.textContent = prefix + currentOut + suffix;
-                                if (progress < 1) requestAnimationFrame(step);
-                                else el.textContent = prefix + targetStr + suffix;
-                            }
-                            requestAnimationFrame(step);
+                                requestAnimationFrame(step);
+                            });
                         });
+                    }, { threshold: 0.1 });
+                    io.observe(container);
                 }
 
-                const io = new IntersectionObserver(
-                    function (entries) {
-                        entries.forEach(function (entry) {
-                            if (entry.isIntersecting) animateCountUp();
+                initCountUp('robot-stats-banner');
+                initCountUp('control-stats-banner');
+                initCountUp('logistics-stats-banner');
+
+                // --- 3. Quick Navigation ---
+                const btnTop = document.getElementById('btn-top');
+                const btnPrev = document.getElementById('btn-prev');
+                if (btnTop && btnPrev) {
+                    const sections = ['gnb', 'robot-section', 'control-section', 'logistics-sw', 'total-solution-section'];
+
+                    btnTop.addEventListener('click', () => {
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    });
+
+                    btnPrev.addEventListener('click', () => {
+                        const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+                        const buffer = 120;
+                        const offsets = sections.map(id => {
+                            const el = document.getElementById(id);
+                            return el ? el.offsetTop : 0;
                         });
-                    },
-                    { threshold: 0.1 },
-                );
-                io.observe(banner);
-            })();
+                        let currentIndex = 0;
+                        for (let i = offsets.length - 1; i >= 0; i--) {
+                            if (offsets[i] < currentScroll - buffer) {
+                                currentIndex = i;
+                                break;
+                            }
+                        }
+                        window.scrollTo({ top: offsets[Math.max(0, currentIndex - 1)], behavior: 'smooth' });
+                    });
+
+                    window.addEventListener('scroll', () => {
+                        const show = (window.pageYOffset || document.documentElement.scrollTop) > 400;
+                        btnTop.classList.toggle('show', show);
+                        btnPrev.classList.toggle('show', show);
+                    });
+                }
+
+                // --- 4. TAMS Suite Hotspot Modal Logic ---
+                window.openTamsModal = function (moduleId) {
+                    const modalId = (moduleId === 'maop') ? 'maop-modal' : 'modal-' + moduleId;
+                    const modal = document.getElementById(modalId);
+                    if (modal) {
+                        modal.style.display = 'flex';
+                    }
+                };
+
+            });
         </script>
 
         <!-- ===== Modals ===== -->
-        <style>
-            @keyframes lswFadeIn {
-                from {
-                    opacity: 0;
-                }
-
-                to {
-                    opacity: 1;
-                }
-            }
-
-            @keyframes lswSlideUp {
-                from {
-                    opacity: 0;
-                    transform: translateY(24px);
-                }
-
-                to {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-            }
-
-            .lsw-modal {
-                display: none;
-                position: fixed;
-                inset: 0;
-                background: rgba(0, 0, 0, 0.55);
-                z-index: 9999;
-                align-items: center;
-                justify-content: center;
-                animation: lswFadeIn 0.2s ease;
-            }
-
-            .lsw-modal-box {
-                background: #fff;
-                border-radius: 20px;
-                padding: 40px 44px;
-                max-width: 520px;
-                width: 90%;
-                position: relative;
-                animation: lswSlideUp 0.28s ease;
-                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
-            }
-
-            .lsw-modal-close {
-                position: absolute;
-                top: 16px;
-                right: 20px;
-                font-size: 1.5rem;
-                cursor: pointer;
-                color: #9ca3af;
-                line-height: 1;
-                border: none;
-                background: none;
-            }
-
-            .lsw-modal-close:hover {
-                color: #111;
-            }
-
-            .lsw-modal-tag {
-                display: inline-block;
-                font-size: 0.72rem;
-                font-weight: 700;
-                letter-spacing: 0.08em;
-                padding: 4px 12px;
-                border-radius: 999px;
-                margin-bottom: 16px;
-            }
-
-            .lsw-modal-box h3 {
-                font-size: 1.6rem;
-                font-weight: 800;
-                color: #111;
-                margin-bottom: 8px;
-            }
-
-            .lsw-modal-box .lsw-subtitle {
-                font-size: 0.88rem;
-                color: #6b7280;
-                margin-bottom: 24px;
-            }
-
-            .lsw-modal-box ul {
-                list-style: none;
-                padding: 0;
-                margin: 0;
-                border-top: 1px solid #f3f4f6;
-                padding-top: 20px;
-            }
-
-            .lsw-modal-box ul li {
-                display: flex;
-                gap: 12px;
-                align-items: flex-start;
-                padding: 10px 0;
-                border-bottom: 1px solid #f9fafb;
-                font-size: 0.93rem;
-                color: #374151;
-            }
-
-            .lsw-modal-box ul li::before {
-                content: "?";
-                font-size: 0.7rem;
-                color: #9ca3af;
-                flex-shrink: 0;
-                margin-top: 4px;
-            }
-        </style>
-
         <!-- OMS Modal -->
         <div id="modal-oms" class="lsw-modal" onclick="if (event.target === this) this.style.display = 'none';">
             <div class="lsw-modal-box">
@@ -4260,19 +4410,193 @@
         <!-- WMS Modal -->
         <div id="modal-wms" class="lsw-modal" onclick="if (event.target === this) this.style.display = 'none';">
             <div class="lsw-modal-box">
-                <button class="lsw-modal-close" onclick="document.getElementById('modal-wms').style.display = 'none'">
-                    ×
-                </button>
+                <button class="lsw-modal-close" onclick="document.getElementById('modal-wms').style.display = 'none'">×</button>
                 <span class="lsw-modal-tag" style="background: #d1ead9; color: #166534">WMS</span>
-                <h3>물류센터의 최적 업무 환경</h3>
-                <p class="lsw-subtitle">담당 구간: 입고 ~ 출고</p>
+                <h3 data-i18n="ps.modal.wms.title">물류센터의 최적 업무 환경</h3>
+                <p class="lsw-subtitle" data-i18n="ps.modal.wms.sub">담당 구간: 입고 ~ 출고</p>
                 <ul>
-                    <li>입고 예정 정보 기반 자동 슬롯 배정 및 적치 위치 최적화</li>
-                    <li>Algorithm 기반 피킹 경로 최적화로 작업 생산성 향상</li>
-                    <li>로봇(AMR·AFL), 컨베이어 등 자동화 설비와 실시간 연동</li>
-                    <li>출고 우선순위·납기 기반 출하 지시 자동화</li>
-                    <li>재고 실사(cycle count) 및 로케이션 정확도 관리</li>
+                    <li data-i18n="ps.modal.wms.li1">입고 예정 정보 기반 자동 슬롯 배정 및 적치 위치 최적화</li>
+                    <li data-i18n="ps.modal.wms.li2">Algorithm 기반 피킹 경로 최적화로 작업 생산성 향상</li>
+                    <li data-i18n="ps.modal.wms.li3">로봇(AMR·AFL), 컨베이어 등 자동화 설비와 실시간 연동</li>
+                    <li data-i18n="ps.modal.wms.li4">출고 우선순위·납기 기반 출하 지시 자동화</li>
+                    <li data-i18n="ps.modal.wms.li5">재고 실사(cycle count) 및 로케이션 정확도 관리</li>
                 </ul>
+            </div>
+        </div>
+
+        <!-- TAMS Modals -->
+        <!-- MCS Modal -->
+        <div id="modal-mcs" class="lsw-modal" onclick="if (event.target === this) this.style.display = 'none';">
+            <div class="lsw-modal-box">
+                <button class="lsw-modal-close" onclick="document.getElementById('modal-mcs').style.display = 'none'">×</button>
+                <span class="lsw-modal-tag" style="background: #f3dde7; color: #7c0b47">MCS</span>
+                <h3 data-i18n="ps.control.mcs.sub">자재흐름제어시스템</h3>
+                <p class="lsw-subtitle">Material Control System</p>
+                <div style="border-top: 1px solid #f3f4f6; padding-top: 20px;">
+                    <div style="font-size:0.956rem; font-weight:700; text-transform:uppercase; color:#7c0b47; margin-bottom:10px;" data-i18n="ps.control.mcs.label1">설명</div>
+                    <div style="font-size:0.93rem; color:#374151; line-height:1.6; margin-bottom:20px;" data-i18n="ps.control.mcs.desc1">
+                        <p class="font-set-table-ko">자재 흐름과 이송 오더를 관리합니다</p>
+                        <p class="font-set-table-en">Manages material flow and transport orders</p>
+                    </div>
+
+                    <div style="font-size:0.956rem; font-weight:700; text-transform:uppercase; color:#7c0b47; margin-bottom:10px;" data-i18n="ps.control.mcs.label2">역할</div>
+                    <div style="font-size:0.93rem; color:#374151; line-height:1.6; margin-bottom:20px;" data-i18n="ps.control.mcs.desc2">
+                        <p class="font-set-table-ko">상위 시스템(WMS, MES, ERP)에서 내려온 작업 요청을 이송 오더로 변환하고, 자재의 출발지·목적지·우선순위를 판단하여 최적의 실행 계획을 수립합니다</p>
+                        <p class="font-set-table-en">Converts work requests from upper systems (WMS, MES, ERP) into transport orders, determines origin/destination/priority, and creates optimal execution plans</p>
+                    </div>
+
+                    <div style="font-size:0.956rem; font-weight:700; text-transform:uppercase; color:#7c0b47; margin-bottom:10px;" data-i18n="ps.control.mcs.label3">핵심기능</div>
+                    <div style="font-size:0.93rem; color:#374151; line-height:1.6; margin-bottom:20px;" data-i18n="ps.control.mcs.desc3">
+                        <p class="font-set-table-ko">① 이송 오더 생성·유연화 ② 최적 이송계획 수립 (VRP 기반) ③ 상위 시스템 연동 (ERP·MES·WMS·OMS)</p>
+                        <p class="font-set-table-en">① Flexible transport order generation ② Optimal plan (VRP-based) ③ Upper system integration</p>
+                    </div>
+
+                    <div style="font-size:0.956rem; font-weight:700; text-transform:uppercase; color:#7c0b47; margin-bottom:10px;" data-i18n="ps.control.mcs.label4">적용예시</div>
+                    <div style="font-size:0.93rem; color:#374151; line-height:1.6;" data-i18n="ps.control.mcs.desc4">
+                        <p class="font-set-table-ko">팔레트/박스 단위의 대량 이송이 빈번한 물류센터 및 제조 공장</p>
+                        <p class="font-set-table-en">Logistics centers and manufacturing plants with frequent large-scale pallet/box transfers</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FMS Modal -->
+        <div id="modal-fms" class="lsw-modal" onclick="if (event.target === this) this.style.display = 'none';">
+            <div class="lsw-modal-box">
+                <button class="lsw-modal-close" onclick="document.getElementById('modal-fms').style.display = 'none'">×</button>
+                <span class="lsw-modal-tag" style="background: #d1ead9; color: #166534">FMS</span>
+                <h3 data-i18n="ps.control.fms.sub">로봇관리 시스템</h3>
+                <p class="lsw-subtitle">Fleet Management System</p>
+                <div style="border-top: 1px solid #f3f4f6; padding-top: 20px;">
+                    <div style="font-size:0.956rem; font-weight:700; text-transform:uppercase; color:#7c0b47; margin-bottom:10px;" data-i18n="ps.control.fms.label1">설명</div>
+                    <div style="font-size:0.93rem; color:#374151; line-height:1.6; margin-bottom:20px;" data-i18n="ps.control.fms.desc1">
+                        <p class="font-set-table-ko">다수·이기종 로봇을 통합 관리합니다</p>
+                        <p class="font-set-table-en">Manages fleets of multi-type robots</p>
+                    </div>
+
+                    <div style="font-size:0.956rem; font-weight:700; text-transform:uppercase; color:#7c0b47; margin-bottom:10px;" data-i18n="ps.control.fms.label2">역할</div>
+                    <div style="font-size:0.93rem; color:#374151; line-height:1.6; margin-bottom:20px;" data-i18n="ps.control.fms.desc2">
+                        <p class="font-set-table-ko">현장에 투입된 모든 로봇(자사 AMR·AFL, 타사 AGV, 청소로봇 등)의 상태를 실시간 모니터링하고, 작업 할당·스케줄링·충전 관리를 수행합니다</p>
+                        <p class="font-set-table-en">Real-time monitoring of all deployed robots (MOBYUS AMR/AFL, 3rd-party AGVs, cleaning robots), with task assignment, scheduling, and charging management</p>
+                    </div>
+
+                    <div style="font-size:0.956rem; font-weight:700; text-transform:uppercase; color:#7c0b47; margin-bottom:10px;" data-i18n="ps.control.fms.label3">핵심기능</div>
+                    <div style="font-size:0.93rem; color:#374151; line-height:1.6; margin-bottom:20px;" data-i18n="ps.control.fms.desc3">
+                        <p class="font-set-table-ko">① 이기종 로봇 통합 모니터링 ② 작업 할당 엔진 (스케줄링) ③ 배터리·충전 관리 ④ 로봇 상태 대시보드</p>
+                        <p class="font-set-table-en">① Multi-vendor fleet monitoring ② Task assignment engine ③ Battery & charging ④ Fleet status dashboard</p>
+                    </div>
+
+                    <div style="font-size:0.956rem; font-weight:700; text-transform:uppercase; color:#7c0b47; margin-bottom:10px;" data-i18n="ps.control.fms.label4">적용예시</div>
+                    <div style="font-size:0.93rem; color:#374151; line-height:1.6;" data-i18n="ps.control.fms.desc4">
+                        <p class="font-set-table-ko">자사 AMR 50대 + 타사 AGV 20대 + 유인지게차 10대가 혼재하는 공장에서, 교착 없이 전체 로봇을 조율</p>
+                        <p class="font-set-table-en">Factory with 50 MOBYUS AMRs + 20 3rd-party AGVs + 10 manned forklifts, orchestrated without deadlocks</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ACS Modal -->
+        <div id="modal-acs" class="lsw-modal" onclick="if (event.target === this) this.style.display = 'none';">
+            <div class="lsw-modal-box">
+                <button class="lsw-modal-close" onclick="document.getElementById('modal-acs').style.display = 'none'">×</button>
+                <span class="lsw-modal-tag" style="background: #d5e0f5; color: #1e40af">ACS</span>
+                <h3 data-i18n="ps.control.acs.sub">로봇 제어 시스템</h3>
+                <p class="lsw-subtitle">AMR Control System</p>
+                <div style="border-top: 1px solid #f3f4f6; padding-top: 20px;">
+                    <div style="font-size:0.956rem; font-weight:700; text-transform:uppercase; color:#7c0b47; margin-bottom:10px;" data-i18n="ps.control.acs.label1">설명</div>
+                    <div style="font-size:0.93rem; color:#374151; line-height:1.6; margin-bottom:20px;" data-i18n="ps.control.acs.desc1">
+                        <p class="font-set-table-ko">개별 로봇의 실시간 제어를 담당합니다</p>
+                        <p class="font-set-table-en">Handles real-time control of individual robots</p>
+                    </div>
+
+                    <div style="font-size:0.956rem; font-weight:700; text-transform:uppercase; color:#7c0b47; margin-bottom:10px;" data-i18n="ps.control.acs.label2">역할</div>
+                    <div style="font-size:0.93rem; color:#374151; line-height:1.6; margin-bottom:20px;" data-i18n="ps.control.acs.desc2">
+                        <p class="font-set-table-ko">각 로봇의 주행 경로 생성, 속도 제어, 장애물 회피, 도킹 제어 등 저수준(low-level) 제어를 수행합니다. FMS의 지시를 받아 실제 로봇이 움직이는 단계.</p>
+                        <p class="font-set-table-en">Generates paths, controls speed, avoids obstacles, and manages docking for each robot. Executes FMS directives at the robot level.</p>
+                    </div>
+
+                    <div style="font-size:0.956rem; font-weight:700; text-transform:uppercase; color:#7c0b47; margin-bottom:10px;" data-i18n="ps.control.acs.label3">핵심기능</div>
+                    <div style="font-size:0.93rem; color:#374151; line-height:1.6; margin-bottom:20px;" data-i18n="ps.control.acs.desc3">
+                        <p class="font-set-table-ko">① 경로 생성·최적화 (혼잡 구간 우회) ② 교통 제어 (5종 지원) ③ V2V 통신 기반 충돌 방지 ④ 어댑터 기반 이기종 제어 (10+종)</p>
+                        <p class="font-set-table-en">① Path generation & optimization ② Traffic control (5 types) ③ V2V collision avoidance ④ Adapter-based multi-vendor control (10+ types)</p>
+                    </div>
+
+                    <div style="font-size:0.956rem; font-weight:700; text-transform:uppercase; color:#7c0b47; margin-bottom:10px;" data-i18n="ps.control.acs.label4">적용예시</div>
+                    <div style="font-size:0.93rem; color:#374151; line-height:1.6;" data-i18n="ps.control.acs.desc4">
+                        <p class="font-set-table-ko">300대 로봇이 동시에 다른 경로를 주행할 때, ACS가 실시간으로 교통을 조율하여 교착·충돌 zero 유지</p>
+                        <p class="font-set-table-en">300 robots on different paths simultaneously, ACS coordinates traffic in real-time for zero deadlock/collision</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SMS Modal -->
+        <div id="modal-sms" class="lsw-modal" onclick="if (event.target === this) this.style.display = 'none';">
+            <div class="lsw-modal-box">
+                <button class="lsw-modal-close" onclick="document.getElementById('modal-sms').style.display = 'none'">×</button>
+                <span class="lsw-modal-tag" style="background: #fef3c7; color: #92400e">SMS</span>
+                <h3 data-i18n="ps.control.sms.sub">안전 관리 시스템</h3>
+                <p class="lsw-subtitle">Safety Management System</p>
+                <div style="border-top: 1px solid #f3f4f6; padding-top: 20px;">
+                    <div style="font-size:0.956rem; font-weight:700; text-transform:uppercase; color:#7c0b47; margin-bottom:10px;" data-i18n="ps.control.sms.label1">설명</div>
+                    <div style="font-size:0.93rem; color:#374151; line-height:1.6; margin-bottom:20px;" data-i18n="ps.control.sms.desc1">
+                        <p class="font-set-table-ko">현장 내 안전 사고를 통합 관리하고 방지합니다</p>
+                        <p class="font-set-table-en">Integrated safety management and accident prevention</p>
+                    </div>
+
+                    <div style="font-size:0.956rem; font-weight:700; text-transform:uppercase; color:#7c0b47; margin-bottom:10px;" data-i18n="ps.control.sms.label2">역할</div>
+                    <div style="font-size:0.93rem; color:#374151; line-height:1.6; margin-bottom:20px;" data-i18n="ps.control.sms.desc2">
+                        <p class="font-set-table-ko">로봇과 작업자, 유인장비가 같은 공간에서 공존할 때 발생할 수 있는 안전 리스크를 실시간으로 감지하고 대응합니다.</p>
+                        <p class="font-set-table-en">Detects and responds to safety risks in real-time when robots, workers, and manned equipment share the same space.</p>
+                    </div>
+
+                    <div style="font-size:0.956rem; font-weight:700; text-transform:uppercase; color:#7c0b47; margin-bottom:10px;" data-i18n="ps.control.sms.label3">핵심기능</div>
+                    <div style="font-size:0.93rem; color:#374151; line-height:1.6; margin-bottom:20px;" data-i18n="ps.control.sms.desc3">
+                        <p class="font-set-table-ko">① 유·무인 혼재 구역 안전 관리 ② 실시간 위험 감지·경고 ③ 긴급 정지·우회 제어 ④ 안전 이벤트 이력 관리</p>
+                        <p class="font-set-table-en">① Manned/unmanned mixed zone safety ② Real-time danger detection ③ Emergency stop/bypass ④ Safety event history</p>
+                    </div>
+
+                    <div style="font-size:0.956rem; font-weight:700; text-transform:uppercase; color:#7c0b47; margin-bottom:10px;" data-i18n="ps.control.sms.label4">적용예시</div>
+                    <div style="font-size:0.93rem; color:#374151; line-height:1.6;" data-i18n="ps.control.sms.desc4">
+                        <p class="font-set-table-ko">작업자가 로봇 주행 경로에 갑자기 진입할 경우, SMS가 즉시 인지하여 주변 모든 로봇을 감속하거나 정지시켜 사고 예방</p>
+                        <p class="font-set-table-en">Safety Management System prevents accidents by immediately detecting workers entering robot paths and decelerating or stopping nearby robots.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- WNS Modal -->
+        <div id="modal-wns" class="lsw-modal" onclick="if (event.target === this) this.style.display = 'none';">
+            <div class="lsw-modal-box">
+                <button class="lsw-modal-close" onclick="document.getElementById('modal-wns').style.display = 'none'">×</button>
+                <span class="lsw-modal-tag" style="background: #e8e8ec; color: #374151">WNS</span>
+                <h3 data-i18n="ps.control.wns.sub">창고 내비게이션 시스템</h3>
+                <p class="lsw-subtitle">Warehouse Navigation System</p>
+                <div style="border-top: 1px solid #f3f4f6; padding-top: 20px;">
+                    <div style="font-size:0.956rem; font-weight:700; text-transform:uppercase; color:#7c0b47; margin-bottom:10px;" data-i18n="ps.control.wns.label1">설명</div>
+                    <div style="font-size:0.93rem; color:#374151; line-height:1.6; margin-bottom:20px;" data-i18n="ps.control.wns.desc1">
+                        <p class="font-set-table-ko">창고 내 모든 이동체(로봇·유인장비·작업자)의 위치를 추적하고 내비게이션합니다</p>
+                        <p class="font-set-table-en">Tracks and navigates all moving entities in the warehouse — robots, manned vehicles, workers</p>
+                    </div>
+
+                    <div style="font-size:0.956rem; font-weight:700; text-transform:uppercase; color:#7c0b47; margin-bottom:10px;" data-i18n="ps.control.wns.label2">역할</div>
+                    <div style="font-size:0.93rem; color:#374151; line-height:1.6; margin-bottom:20px;" data-i18n="ps.control.wns.desc2">
+                        <p class="font-set-table-ko">유인장비(지게차 등)와 작업자의 실시간 위치를 추적하여, 로봇과의 공존 안전을 확보하고 전체 동선을 최적화합니다. TAMS가 무인 로봇뿐 아니라 유인 환경까지 커버하는 핵심 모듈.</p>
+                        <p class="font-set-table-en">Tracks manned vehicles and workers in real-time, ensuring safe coexistence with robots and optimizing all traffic flows. The key module that extends TAMS coverage from unmanned robots to the entire manned environment.</p>
+                    </div>
+
+                    <div style="font-size:0.956rem; font-weight:700; text-transform:uppercase; color:#7c0b47; margin-bottom:10px;" data-i18n="ps.control.wns.label3">핵심기능</div>
+                    <div style="font-size:0.93rem; color:#374151; line-height:1.6; margin-bottom:20px;" data-i18n="ps.control.wns.desc3">
+                        <p class="font-set-table-ko">① 유인장비 실시간 위치 추적 ② 작업자 동선 관리 ③ 로봇-유인장비 교통 통합 ④ 내비게이션 경로 제공 (작업자 단말)</p>
+                        <p class="font-set-table-en">① Real-time manned vehicle tracking ② Worker path management ③ Robot-manned traffic integration ④ Navigation for worker devices</p>
+                    </div>
+
+                    <div style="font-size:0.956rem; font-weight:700; text-transform:uppercase; color:#7c0b47; margin-bottom:10px;" data-i18n="ps.control.wns.label4">적용예시</div>
+                    <div style="font-size:0.93rem; color:#374151; line-height:1.6;" data-i18n="ps.control.wns.desc4">
+                        <p class="font-set-table-ko">유인 지게차 운전자에게 최적 경로를 안내하면서, 동시에 해당 경로 근처의 AMR을 자동 조율</p>
+                        <p class="font-set-table-en">Guides manned forklift driver on optimal path while automatically coordinating nearby AMRs</p>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -4283,15 +4607,15 @@
                     ×
                 </button>
                 <span class="lsw-modal-tag" style="background: #d5e0f5; color: #1e40af">TMS</span>
-                <h3>운송관리 업무의 최적화</h3>
-                <p class="lsw-subtitle">담당 구간: 배차 ~ 정산</p>
+                <h3 data-i18n="ps.modal.tms.title">운송관리 업무의 최적화</h3>
+                <p class="lsw-subtitle" data-i18n="ps.modal.tms.sub">담당 구간: 배차 ~ 정산</p>
                 <ul>
-                    <li>출고량·목적지·차량 적재 효율을 고려한 최적 배차 계획 수립</li>
-                    <li>실시간 차량 위치 추적 및 배송 상태 모니터링</li>
-                    <li>
+                    <li data-i18n="ps.modal.tms.li1">출고량·목적지·차량 적재 효율을 고려한 최적 배차 계획 수립</li>
+                    <li data-i18n="ps.modal.tms.li2">실시간 차량 위치 추적 및 배송 상태 모니터링</li>
+                    <li data-i18n="ps.modal.tms.li3">
                         배송 완료 POD(Proof of Delivery) 수집 및 정산 데이터 자동 생성
                     </li>
-                    <li>협력사(택배사·용차) 연동 및 운임 정산 자동화</li>
+                    <li data-i18n="ps.modal.tms.li4">협력사(택배사·용차) 연동 및 운임 정산 자동화</li>
                 </ul>
             </div>
         </div>
@@ -4303,15 +4627,15 @@
                     ×
                 </button>
                 <span class="lsw-modal-tag" style="background: #e8e8ec; color: #374151">VMS</span>
-                <h3>전 과정 가시화 · 의사결정 지원</h3>
-                <p class="lsw-subtitle">담당 구간: 전 구간</p>
+                <h3 data-i18n="ps.modal.vms.title">전 과정 가시화 · 의사결정 지원</h3>
+                <p class="lsw-subtitle" data-i18n="ps.modal.vms.sub">담당 구간: 전 구간</p>
                 <ul>
-                    <li>
+                    <li data-i18n="ps.modal.vms.li1">
                         주문 → 재고 → 출고 → 배송 전 구간 데이터를 단일 대시보드로 통합
                     </li>
-                    <li>KPI 지표(처리량, 정확도, 지연율) 실시간 모니터링</li>
-                    <li>예외 상황 알림 및 병목 구간 자동 감지</li>
-                    <li>경영진·운영팀·현장 각 레벨별 맞춤형 리포트 제공</li>
+                    <li data-i18n="ps.modal.vms.li2">KPI 지표(처리량, 정확도, 지연율) 실시간 모니터링</li>
+                    <li data-i18n="ps.modal.vms.li3">예외 상황 알림 및 병목 구간 자동 감지</li>
+                    <li data-i18n="ps.modal.vms.li4">경영진·운영팀·현장 각 레벨별 맞춤형 리포트 제공</li>
                 </ul>
             </div>
         </div>
@@ -4319,102 +4643,30 @@
 
 
         <!-- MAOP Modal -->
-        <div id="maop-modal" onclick="if(event.target===this)this.style.display='none'"
-            style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.45); z-index:9999; align-items:center; justify-content:center; animation:fadeInOverlay 0.2s ease;">
-            <div
-                style="background:#fff; border-radius:20px; width:min(560px,90vw); max-height:85vh; overflow-y:auto; box-shadow:0 24px 60px rgba(0,0,0,0.2); animation:slideUpModal 0.25s ease;">
-                <!-- Modal header -->
-                <div
-                    style="background:#fdf2f8; border-bottom:1px solid #e8b4cc; padding:24px 28px; display:flex; align-items:center; justify-content:space-between; border-radius:20px 20px 0 0;">
-                    <div>
-                        <div style="font-size:1rem; font-weight:700; color:#7C0B47; margin-bottom:4px;">MAOP</div>
-                        <div style="font-size:0.85rem; color:#6b7280;">Multi Agent Orchestration Platform</div>
-                    </div>
-                    <button onclick="document.getElementById('maop-modal').style.display='none'"
-                        style="background:none; border:none; font-size:1.4rem; color:#9ca3af; cursor:pointer; line-height:1; padding:4px 8px;">&times;</button>
-                </div>
-                <!-- Modal body -->
-                <div style="padding:28px;">
-                    <!-- 정의 -->
-                    <div
-                        style="font-size:0.78rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:#9ca3af; margin-bottom:8px;">
-                        정의</div>
-                    <p style="font-size:0.97rem; color:#374151; margin-bottom:24px;">Multi Agent Orchestration Platform
-                    </p>
+        <div id="maop-modal" class="lsw-modal" onclick="if (event.target === this) this.style.display = 'none';">
+            <div class="lsw-modal-box">
+                <button class="lsw-modal-close" onclick="document.getElementById('maop-modal').style.display = 'none'">×</button>
+                <span class="lsw-modal-tag" style="background: #f3dde7; color: #7c0b47">MAOP</span>
+                <h3 data-i18n="ps.control.maop.title">MAOP 플랫폼</h3>
+                <p class="lsw-subtitle">Multi Agent Orchestration Platform</p>
+                <div style="border-top: 1px solid #f3f4f6; padding-top: 20px;">
+                    <!-- 정의 Section -->
+                    <div style="font-size:0.956rem; font-weight:700; text-transform:uppercase; color:#7c0b47; margin-bottom:10px;" data-i18n="ps.modal.maop.label1">정의</div>
+                    <p style="font-size:0.93rem; color:#374151; line-height:1.6; margin-bottom:20px;" data-i18n="ps.modal.maop.def">Multi Agent Orchestration Platform</p>
 
-                    <!-- 역할 -->
-                    <div
-                        style="font-size:0.78rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:#9ca3af; margin-bottom:8px;">
-                        역할</div>
-                    <p style="font-size:0.97rem; color:#374151; line-height:1.8; margin-bottom:24px;">TAMS 5모듈의 기반 플랫폼.
-                        Microservices 아키텍처로 모듈 간 독립 운영과 유기적 연동을 동시에 가능하게 합니다.</p>
-
-                    <!-- 핵심 특징 -->
-                    <div
-                        style="font-size:0.78rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:#9ca3af; margin-bottom:14px;">
-                        핵심 특징</div>
-                    <div style="display:flex; flex-direction:column; gap:10px;">
-                        <div style="display:flex; gap:14px; background:#f9fafb; border-radius:10px; padding:14px 18px;">
-                            <span style="font-weight:800; color:#7C0B47; min-width:22px;">①</span>
-                            <span style="font-size:0.93rem; color:#374151;">Microservices 기반 서비스 관리</span>
-                        </div>
-                        <div style="display:flex; gap:14px; background:#f9fafb; border-radius:10px; padding:14px 18px;">
-                            <span style="font-weight:800; color:#7C0B47; min-width:22px;">②</span>
-                            <span style="font-size:0.93rem; color:#374151;">메모리 캐시(Message Queue) 기반 정보 관리</span>
-                        </div>
-                        <div style="display:flex; gap:14px; background:#f9fafb; border-radius:10px; padding:14px 18px;">
-                            <span style="font-weight:800; color:#7C0B47; min-width:22px;">③</span>
-                            <span style="font-size:0.93rem; color:#374151;">이중화 아키텍처 (안정성)</span>
-                        </div>
-                        <div style="display:flex; gap:14px; background:#f9fafb; border-radius:10px; padding:14px 18px;">
-                            <span style="font-weight:800; color:#7C0B47; min-width:22px;">④</span>
-                            <span style="font-size:0.93rem; color:#374151;">유연한 UI 개발 플랫폼 + CAD 플랫폼</span>
-                        </div>
-                    </div>
+                    <!-- 역할 Section -->
+                    <div style="font-size:0.956rem; font-weight:700; text-transform:uppercase; color:#7c0b47; margin-bottom:10px;" data-i18n="ps.modal.maop.label2">역할</div>
+                    <p style="font-size:0.93rem; color:#374151; line-height:1.6; margin-bottom:20px;" data-i18n="ps.modal.maop.role">TAMS 5모듈의 기반 플랫폼. Microservices 아키텍처로 모듈 간 독립 운영과 유기적 연동을 동시에 가능하게 합니다.</p>
+                    
+                    <!-- 핵심 특징 Section -->
+                    <div style="font-size:0.956rem; font-weight:700; text-transform:uppercase; color:#7c0b47; margin-bottom:12px;" data-i18n="ps.modal.maop.label3">핵심 특징</div>
+                    <p style="font-size:0.93rem; color:#374151; line-height:1.6;" data-i18n="ps.modal.maop.features">① Microservices 기반 서비스 관리 ② 메모리 캐시(Message Queue) 기반 정보 관리 ③ 이중화 아키텍처 (안정성) ④ 유연한 UI 개발 플랫폼 + CAD 플랫폼</p>
                 </div>
             </div>
         </div>
 
 
 
-
-        <script>
-            (function () {
-                // Count-up for Stats Banners
-                function animateCountUp(containerId) {
-                    const container = document.getElementById(containerId);
-                    if (!container) return;
-
-                    let animated = false;
-                    const observer = new IntersectionObserver(function (entries) {
-                        entries.forEach(function (entry) {
-                            if (entry.isIntersecting && !animated) {
-                                animated = true;
-                                const DURATION = 2000;
-                                container.querySelectorAll('.stat-count').forEach(function (el) {
-                                    const target = parseInt(el.dataset.target, 10);
-                                    const suffix = el.dataset.suffix || '';
-                                    const start = performance.now();
-                                    function step(now) {
-                                        const elapsed = now - start;
-                                        const progress = Math.min(elapsed / DURATION, 1);
-                                        const eased = 1 - Math.pow(1 - progress, 3);
-                                        el.textContent = Math.floor(eased * target) + suffix;
-                                        if (progress < 1) requestAnimationFrame(step);
-                                        else el.textContent = target + suffix;
-                                    }
-                                    requestAnimationFrame(step);
-                                });
-                            }
-                        });
-                    }, { threshold: 0.3 });
-                    observer.observe(container);
-                }
-
-                animateCountUp('control-stats-banner');
-                animateCountUp('robot-stats-banner');
-            })();
-        </script>
 
         <!-- Floating Quick Navigation -->
         <div class="quick-nav">
@@ -4427,68 +4679,6 @@
                 <span>TOP</span>
             </button>
         </div>
-
-        <script>
-            /**
-             * Quick Navigation Logic
-             * Handles floating buttons for 'Top' and 'Previous Section' jumping
-             */
-            (function () {
-                const btnTop = document.getElementById('btn-top');
-                const btnPrev = document.getElementById('btn-prev');
-
-                // Major section IDs for sequential navigation
-                const sections = [
-                    'gnb',
-                    'robot-section',
-                    'control-section',
-                    'logistics-sw',
-                    'total-solution-section'
-                ];
-
-                // Scroll to Top
-                btnTop.addEventListener('click', () => {
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                });
-
-                // Scroll to Previous Section
-                btnPrev.addEventListener('click', () => {
-                    const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-                    const buffer = 120; // Accounts for sticky header and spacing
-
-                    // Map IDs to current offset positions
-                    const offsets = sections.map(id => {
-                        const el = document.getElementById(id);
-                        return el ? el.offsetTop : 0;
-                    });
-
-                    // Detect current position
-                    let currentIndex = 0;
-                    for (let i = offsets.length - 1; i >= 0; i--) {
-                        if (offsets[i] < currentScroll - buffer) {
-                            currentIndex = i;
-                            break;
-                        }
-                    }
-
-                    // Jump to the immediately preceding section
-                    const targetIndex = Math.max(0, currentIndex - 1);
-                    window.scrollTo({ top: offsets[targetIndex], behavior: 'smooth' });
-                });
-
-                // Visibility Toggle on Scroll
-                window.addEventListener('scroll', () => {
-                    const scrollPos = window.pageYOffset || document.documentElement.scrollTop;
-                    if (scrollPos > 400) {
-                        btnTop.classList.add('show');
-                        btnPrev.classList.add('show');
-                    } else {
-                        btnTop.classList.remove('show');
-                        btnPrev.classList.remove('show');
-                    }
-                });
-            })();
-        </script>
         <footer id="contact"></footer>
 
         <script src="scripts/main.js"></script>

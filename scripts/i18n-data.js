@@ -307,7 +307,7 @@ window.i18nData = {
 
         "ps.control.mcs.title": "<span style=\"color: #7C0b47;\">MCS</span> <span style=\"font-size: 1.5rem; color: var(--color-gray40);\">—</span> Material Control System",
         "ps.control.mcs.sub": "자재흐름제어시스템",
-        "ps.control.mcs.label1": "한줄",
+        "ps.control.mcs.label1": "설명",
         "ps.control.mcs.desc1": "<p class=\"font-set-table-ko\">자재 흐름과 이송 오더를 관리합니다</p><p class=\"font-set-table-en\">Manages material flow and transport orders</p>",
         "ps.control.mcs.label2": "역할",
         "ps.control.mcs.desc2": "<p class=\"font-set-table-ko\">상위 시스템(WMS, MES, ERP)에서 내려온 작업 요청을 이송 오더로 변환하고, 자재의 출발지·목적지·우선순위를 판단하여 최적의 실행 계획을 수립합니다</p><p class=\"font-set-table-en\">Converts work requests from upper systems (WMS, MES, ERP) into transport orders, determines origin/destination/priority, and creates optimal execution plans</p>",
@@ -318,7 +318,7 @@ window.i18nData = {
 
         "ps.control.fms.title": "<span style=\"color: #7C0b47;\">FMS</span> <span style=\"font-size: 1.5rem; color: var(--color-gray40);\">—</span> Fleet Management System",
         "ps.control.fms.sub": "로봇관리 시스템",
-        "ps.control.fms.label1": "한줄",
+        "ps.control.fms.label1": "설명",
         "ps.control.fms.desc1": "<p class=\"font-set-table-ko\">다수·이기종 로봇을 통합 관리합니다</p><p class=\"font-set-table-en\">Manages fleets of multi-type robots</p>",
         "ps.control.fms.label2": "역할",
         "ps.control.fms.desc2": "<p class=\"font-set-table-ko\">현장에 투입된 모든 로봇(자사 AMR·AFL, 타사 AGV, 청소로봇 등)의 상태를 실시간 모니터링하고, 작업 할당·스케줄링·충전 관리를 수행합니다</p><p class=\"font-set-table-en\">Real-time monitoring of all deployed robots (MOBYUS AMR/AFL, 3rd-party AGVs, cleaning robots), with task assignment, scheduling, and charging management</p>",
@@ -329,7 +329,7 @@ window.i18nData = {
 
         "ps.control.acs.title": "<span style=\"color: #7C0b47;\">ACS</span> <span style=\"font-size: 1.5rem; color: var(--color-gray40);\">—</span> AMR Control System",
         "ps.control.acs.sub": "로봇 제어 시스템",
-        "ps.control.acs.label1": "한줄",
+        "ps.control.acs.label1": "설명",
         "ps.control.acs.desc1": "<p class=\"font-set-table-ko\">개별 로봇의 실시간 제어를 담당합니다</p><p class=\"font-set-table-en\">Handles real-time control of individual robots</p>",
         "ps.control.acs.label2": "역할",
         "ps.control.acs.desc2": "<p class=\"font-set-table-ko\">각 로봇의 주행 경로 생성, 속도 제어, 장애물 회피, 도킹 제어 등 저수준(low-level) 제어를 수행합니다. FMS의 지시를 받아 실제 로봇이 움직이는 단계.</p><p class=\"font-set-table-en\">Generates paths, controls speed, avoids obstacles, and manages docking for each robot. Executes FMS directives at the robot level.</p>",
@@ -340,7 +340,7 @@ window.i18nData = {
 
         "ps.control.sms.title": "<span style=\"color: #7C0b47;\">SMS</span> <span style=\"font-size: 1.5rem; color: var(--color-gray40);\">—</span> Safety Management System",
         "ps.control.sms.sub": "안전 관리 시스템",
-        "ps.control.sms.label1": "한줄",
+        "ps.control.sms.label1": "설명",
         "ps.control.sms.desc1": "<p class=\"font-set-table-ko\">현장 내 안전 사고를 통합 관리하고 방지합니다</p><p class=\"font-set-table-en\">Integrated safety management and accident prevention</p>",
         "ps.control.sms.label2": "역할",
         "ps.control.sms.desc2": "<p class=\"font-set-table-ko\">로봇과 작업자, 유인장비가 같은 공간에서 공존할 때 발생할 수 있는 안전 리스크를 실시간으로 감지하고 대응합니다.</p><p class=\"font-set-table-en\">Detects and responds to safety risks in real-time when robots, workers, and manned equipment share the same space.</p>",
@@ -351,7 +351,7 @@ window.i18nData = {
 
         "ps.control.wns.title": "<span style=\"color: #7C0b47;\">WNS</span> <span style=\"font-size: 1.5rem; color: var(--color-gray40);\">—</span> Warehouse Navigation System",
         "ps.control.wns.sub": "창고 내비게이션 시스템",
-        "ps.control.wns.label1": "한줄",
+        "ps.control.wns.label1": "설명",
         "ps.control.wns.desc1": "<p class=\"font-set-table-ko\">창고 내 모든 이동체(로봇·유인장비·작업자)의 위치를 추적하고 내비게이션합니다</p><p class=\"font-set-table-en\">Tracks and navigates all moving entities in the warehouse — robots, manned vehicles, workers</p>",
         "ps.control.wns.label2": "역할",
         "ps.control.wns.desc2": "<p class=\"font-set-table-ko\">유인장비(지게차 등)와 작업자의 실시간 위치를 추적하여, 로봇과의 공존 안전을 확보하고 전체 동선을 최적화합니다. TAMS가 무인 로봇뿐 아니라 유인 환경까지 커버하는 핵심 모듈.</p><p class=\"font-set-table-en\">Tracks manned vehicles and workers in real-time, ensuring safe coexistence with robots and optimizing all traffic flows. The key module that extends TAMS coverage from unmanned robots to the entire manned environment.</p>",
@@ -791,11 +791,12 @@ window.i18nData = {
 
         "ps.control.maop.title": "MAOP 플랫폼",
         "ps.control.maop.sub": "Multi Agent Orchestration Platform",
+        "ps.modal.maop.label1": "정의",
+        "ps.modal.maop.def": "Multi Agent Orchestration Platform",
+        "ps.modal.maop.label2": "역할",
         "ps.modal.maop.role": "TAMS 5모듈의 기반 플랫폼. Microservices 아키텍처로 모듈 간 독립 운영과 유기적 연동을 동시에 가능하게 합니다.",
-        "ps.modal.maop.f1": "Microservices 기반 서비스 관리",
-        "ps.modal.maop.f2": "메모리 캐시(Message Queue) 기반 정보 관리",
-        "ps.modal.maop.f3": "이중화 아키텍처 (안정성)",
-        "ps.modal.maop.f4": "유연한 UI 개발 플랫폼 + CAD 플랫폼",
+        "ps.modal.maop.label3": "핵심 특징",
+        "ps.modal.maop.features": "① Microservices 기반 서비스 관리 ② 메모리 캐시(Message Queue) 기반 정보 관리 ③ 이중화 아키텍처 (안정성) ④ 유연한 UI 개발 플랫폼 + CAD 플랫폼",
 
         "ps.logistics.opt.title": "구축옵션",
         "ps.logistics.opt.e.cat": "Enterprise",
@@ -2451,7 +2452,7 @@ window.i18nData = {
 
         "ps.control.mcs.title": "MCS — Material Control System",
         "ps.control.mcs.sub": "Material flow and transport order management",
-        "ps.control.mcs.label1": "Summary",
+        "ps.control.mcs.label1": "Explanation",
         "ps.control.mcs.desc1": "Manages material flow and transport orders",
         "ps.control.mcs.label2": "Role",
         "ps.control.mcs.desc2": "Converts work requests from upper systems (WMS, MES, ERP) into transport orders, determines origin/destination/priority, and creates optimal execution plans",
@@ -2462,7 +2463,7 @@ window.i18nData = {
 
         "ps.control.fms.title": "FMS — Fleet Management System",
         "ps.control.fms.sub": "Multi-type robot fleet management",
-        "ps.control.fms.label1": "Summary",
+        "ps.control.fms.label1": "Explanation",
         "ps.control.fms.desc1": "Manages fleets of multi-type robots",
         "ps.control.fms.label2": "Role",
         "ps.control.fms.desc2": "Real-time monitoring of all deployed robots (MOBYUS AMR/AFL, 3rd-party AGVs, cleaning robots), with task assignment, scheduling, and charging management",
@@ -2473,7 +2474,7 @@ window.i18nData = {
 
         "ps.control.acs.title": "ACS — Robot Control System",
         "ps.control.acs.sub": "Real-time control of individual robots",
-        "ps.control.acs.label1": "Summary",
+        "ps.control.acs.label1": "Explanation",
         "ps.control.acs.desc1": "Handles real-time control of individual robots",
         "ps.control.acs.label2": "Role",
         "ps.control.acs.desc2": "Generates paths, controls speed, avoids obstacles, and manages docking for each robot. Executes FMS directives at the robot level.",
@@ -2484,7 +2485,7 @@ window.i18nData = {
 
         "ps.control.sms.title": "SMS — Safety Management System",
         "ps.control.sms.sub": "Integrated safety and accident prevention",
-        "ps.control.sms.label1": "Summary",
+        "ps.control.sms.label1": "Explanation",
         "ps.control.sms.desc1": "Integrated safety management and accident prevention",
         "ps.control.sms.label2": "Role",
         "ps.control.sms.desc2": "Detects and responds to safety risks in real-time when robots, workers, and manned equipment share the same space.",
@@ -2495,7 +2496,7 @@ window.i18nData = {
 
         "ps.control.wns.title": "WNS (Warehouse Navigation System)",
         "ps.control.wns.sub": "Worker navigation & manned-unmanned coexistence",
-        "ps.control.wns.label1": "Summary",
+        "ps.control.wns.label1": "Explanation",
         "ps.control.wns.desc1": "Tracks and navigates all moving entities in the warehouse — robots, manned vehicles, workers",
         "ps.control.wns.label2": "Role",
         "ps.control.wns.desc2": "Tracks manned vehicles and workers in real-time, ensuring safe coexistence with robots and optimizing all traffic flows. The key module that extends TAMS coverage from unmanned robots to the entire manned environment.",
@@ -2795,11 +2796,12 @@ window.i18nData = {
         "ps.modal.wns.li2": "Building a hands-free work environment through wearable device integration",
         "ps.modal.wns.li3": "Visualizing real-time work status and guiding through bottleneck areas",
 
-        "ps.modal.maop.role": "The foundational platform for TAMS's 5 modules. Its Microservices architecture enables both independent operation and organic linkage between modules.",
-        "ps.modal.maop.f1": "Microservices-based service management",
-        "ps.modal.maop.f2": "Information management based on memory cache (Message Queue)",
-        "ps.modal.maop.f3": "Redundant architecture (stability)",
-        "ps.modal.maop.f4": "Flexible UI development platform + CAD platform",
+        "ps.modal.maop.label1": "Definition",
+        "ps.modal.maop.def": "Multi Agent Orchestration Platform",
+        "ps.modal.maop.label2": "Role",
+        "ps.modal.maop.role": "The base platform for TAMS modules. Enables independent operation and organic integration through microservices architecture.",
+        "ps.modal.maop.label3": "Key Features",
+        "ps.modal.maop.features": "① Microservices-based service management ② Memory cache (Message Queue) based data management ③ Redundant architecture (Stability) ④ Flexible UI development & CAD platform",
 
         "ps.bnb.total.label": "Solution combinations",
         "ps.bnb.total.title": "Explore Solution combinations",
