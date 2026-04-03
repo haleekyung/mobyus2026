@@ -1517,347 +1517,6 @@
             </div>
         </section>
 
-        <section class="overview-section" style="background-color: #f8f9fa;">
-            <div class="container fade-in-section">
-                <!-- MCS Module -->
-                <div id="mcs-module" class="module-block" style="margin-bottom: 200px;">
-                    <h2 class="font-set-intro-title section-center-title"
-                        style="margin-bottom: 12px; text-align: center;" data-i18n="ps.control.mcs.title"><span
-                            style="color: #7C0b47;">MCS</span> <span
-                            style="font-size: 1.5rem; color: var(--color-gray40);">—</span> Material Control System</h2>
-                    <p class="font-set-intro-sub" style="margin-bottom: 52px;" data-i18n="ps.control.mcs.sub">자재흐름제어시스템
-                    </p>
-
-                    <div class="overview-items"
-                        style="background: #fff; padding: 40px; border-radius: 12px; border: 1px solid var(--color-gray20);">
-                        <div class="overview-item">
-                            <div class="overview-left">
-                                <span class="overview-number">1</span>
-                                <span class="font-set-overview-label" data-i18n="ps.control.mcs.label1">한줄</span>
-                            </div>
-                            <div class="overview-right" data-i18n="ps.control.mcs.desc1">
-                                <p class="font-set-table-ko">자재 흐름과 이송 오더를 관리합니다</p>
-                                <p class="font-set-table-en">Manages material flow and transport orders</p>
-                            </div>
-                        </div>
-                        <div class="overview-item">
-                            <div class="overview-left">
-                                <span class="overview-number">2</span>
-                                <span class="font-set-overview-label" data-i18n="ps.control.mcs.label2">역할</span>
-                            </div>
-                            <div class="overview-right" data-i18n="ps.control.mcs.desc2">
-                                <p class="font-set-table-ko">상위 시스템(WMS, MES, ERP)에서 내려온 작업 요청을 이송 오더로 변환하고, 자재의
-                                    출발지·목적지·우선순위를 판단하여 최적의 실행 계획을 수립합니다</p>
-                                <p class="font-set-table-en">Converts work requests from upper systems (WMS, MES, ERP)
-                                    into transport orders, determines origin/destination/priority, and creates optimal
-                                    execution plans</p>
-                            </div>
-                        </div>
-                        <div class="overview-item">
-                            <div class="overview-left">
-                                <span class="overview-number">3</span>
-                                <span class="font-set-overview-label" data-i18n="ps.control.mcs.label3">핵심기능</span>
-                            </div>
-                            <div class="overview-right" data-i18n="ps.control.mcs.desc3">
-                                <p class="font-set-table-ko">① 이송 오더 생성·유연화 ② 최적 이송계획 수립 (VRP 기반) ③ 상위 시스템 연동
-                                    (ERP·MES·WMS·OMS)</p>
-                                <p class="font-set-table-en">① Flexible transport order generation ② Optimal plan
-                                    (VRP-based) ③ Upper system integration</p>
-                            </div>
-                        </div>
-                        <div class="overview-item">
-                            <div class="overview-left">
-                                <span class="overview-number">4</span>
-                                <span class="font-set-overview-label" data-i18n="ps.control.mcs.label4">적용예시</span>
-                            </div>
-                            <div class="overview-right" data-i18n="ps.control.mcs.desc4">
-                                <p class="font-set-table-ko">생산 라인에서 부품 공급 요청 → MCS가 가장 효율적인 로봇과 경로를 할당</p>
-                                <p class="font-set-table-en">Production line requests parts → MCS assigns the most
-                                    efficient robot & route</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- FMS Module -->
-                <div id="fms-module" class="module-block" style="margin-bottom: 200px;">
-                    <h2 class="font-set-intro-title section-center-title"
-                        style="margin-bottom: 12px; text-align: center;" data-i18n="ps.control.fms.title"><span
-                            style="color: #7C0b47;">FMS</span> <span
-                            style="font-size: 1.5rem; color: var(--color-gray40);">—</span> Fleet Management System</h2>
-                    <p class="font-set-intro-sub" style="margin-bottom: 52px;" data-i18n="ps.control.fms.sub">로봇관리 시스템
-                    </p>
-
-                    <div class="overview-items"
-                        style="background: #fff; padding: 40px; border-radius: 12px; border: 1px solid var(--color-gray20);">
-                        <div class="overview-item">
-                            <div class="overview-left">
-                                <span class="overview-number">1</span>
-                                <span class="font-set-overview-label" data-i18n="ps.control.fms.label1">한줄</span>
-                            </div>
-                            <div class="overview-right" data-i18n="ps.control.fms.desc1">
-                                <p class="font-set-table-ko">다수·이기종 로봇을 통합 관리합니다</p>
-                                <p class="font-set-table-en">Manages fleets of multi-type robots</p>
-                            </div>
-                        </div>
-                        <div class="overview-item">
-                            <div class="overview-left">
-                                <span class="overview-number">2</span>
-                                <span class="font-set-overview-label" data-i18n="ps.control.fms.label2">역할</span>
-                            </div>
-                            <div class="overview-right" data-i18n="ps.control.fms.desc2">
-                                <p class="font-set-table-ko">현장에 투입된 모든 로봇(자사 AMR·AFL, 타사 AGV, 청소로봇 등)의 상태를 실시간 모니터링하고,
-                                    작업 할당·스케줄링·충전 관리를 수행합니다</p>
-                                <p class="font-set-table-en">Real-time monitoring of all deployed robots (MOBYUS
-                                    AMR/AFL, 3rd-party AGVs, cleaning robots), with task assignment, scheduling, and
-                                    charging management</p>
-                            </div>
-                        </div>
-                        <div class="overview-item">
-                            <div class="overview-left">
-                                <span class="overview-number">3</span>
-                                <span class="font-set-overview-label" data-i18n="ps.control.fms.label3">핵심기능</span>
-                            </div>
-                            <div class="overview-right" data-i18n="ps.control.fms.desc3">
-                                <p class="font-set-table-ko">① 이기종 로봇 통합 모니터링 ② 작업 할당 엔진 (스케줄링) ③ 배터리·충전 관리 ④ 로봇 상태 대시보드
-                                </p>
-                                <p class="font-set-table-en">① Multi-vendor fleet monitoring ② Task assignment engine ③
-                                    Battery & charging ④ Fleet status dashboard
-                                </p>
-                            </div>
-                        </div>
-                        <div class="overview-item">
-                            <div class="overview-left">
-                                <span class="overview-number">4</span>
-                                <span class="font-set-overview-label" data-i18n="ps.control.fms.label4">적용예시</span>
-                            </div>
-                            <div class="overview-right" data-i18n="ps.control.fms.desc4">
-                                <p class="font-set-table-ko">자사 AMR 50대 + 타사 AGV 20대 + 유인지게차 10대가 혼재하는 공장에서, 교착 없이 전체
-                                    로봇을 조율</p>
-                                <p class="font-set-table-en">Factory with 50 MOBYUS AMRs + 20 3rd-party AGVs + 10 manned
-                                    forklifts, orchestrated without deadlocks</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- ACS Module -->
-                <div id="acs-module" class="module-block" style="margin-bottom: 200px;">
-                    <h2 class="font-set-intro-title section-center-title"
-                        style="margin-bottom: 12px; text-align: center;" data-i18n="ps.control.acs.title"><span
-                            style="color: #7C0b47;">ACS</span> <span
-                            style="font-size: 1.5rem; color: var(--color-gray40);">—</span> AMR Control System</h2>
-                    <p class="font-set-intro-sub" style="margin-bottom: 52px;" data-i18n="ps.control.acs.sub">로봇 제어 시스템
-                    </p>
-
-                    <div class="overview-items"
-                        style="background: #fff; padding: 40px; border-radius: 12px; border: 1px solid var(--color-gray20);">
-                        <div class="overview-item">
-                            <div class="overview-left">
-                                <span class="overview-number">1</span>
-                                <span class="font-set-overview-label" data-i18n="ps.control.acs.label1">한줄</span>
-                            </div>
-                            <div class="overview-right" data-i18n="ps.control.acs.desc1">
-                                <p class="font-set-table-ko">개별 로봇의 실시간 제어를 담당합니다</p>
-                                <p class="font-set-table-en">Handles real-time control of individual robots</p>
-                            </div>
-                        </div>
-                        <div class="overview-item">
-                            <div class="overview-left">
-                                <span class="overview-number">2</span>
-                                <span class="font-set-overview-label" data-i18n="ps.control.acs.label2">역할</span>
-                            </div>
-                            <div class="overview-right" data-i18n="ps.control.acs.desc2">
-                                <p class="font-set-table-ko">각 로봇의 주행 경로 생성, 속도 제어, 장애물 회피, 도킹 제어 등 저수준(low-level) 제어를
-                                    수행합니다. FMS의 지시를 받아 실제 로봇이 움직이는 단계.</p>
-                                <p class="font-set-table-en">Generates paths, controls speed, avoids obstacles, and
-                                    manages docking for each robot. Executes FMS directives at the robot level.</p>
-                            </div>
-                        </div>
-                        <div class="overview-item">
-                            <div class="overview-left">
-                                <span class="overview-number">3</span>
-                                <span class="font-set-overview-label" data-i18n="ps.control.acs.label3">핵심기능</span>
-                            </div>
-                            <div class="overview-right" data-i18n="ps.control.acs.desc3">
-                                <p class="font-set-table-ko">① 경로 생성·최적화 (혼잡 구간 우회) ② 교통 제어 (5종 지원) ③ V2V 통신 기반 충돌 방지 ④
-                                    어댑터 기반 이기종 제어 (10+종)</p>
-                                <p class="font-set-table-en">① Path generation & optimization ② Traffic control (5
-                                    types) ③ V2V collision avoidance ④ Adapter-based multi-vendor control (10+ types)
-                                </p>
-                            </div>
-                        </div>
-                        <div class="overview-item">
-                            <div class="overview-left">
-                                <span class="overview-number">4</span>
-                                <span class="font-set-overview-label" data-i18n="ps.control.acs.label4">적용예시</span>
-                            </div>
-                            <div class="overview-right" data-i18n="ps.control.acs.desc4">
-                                <p class="font-set-table-ko">300대 로봇이 동시에 다른 경로를 주행할 때, ACS가 실시간으로 교통을 조율하여 교착·충돌 zero
-                                    유지</p>
-                                <p class="font-set-table-en">300 robots on different paths simultaneously, ACS
-                                    coordinates traffic in real-time for zero deadlock/collision</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- SMS Module -->
-                <div id="sms-module" class="module-block" style="margin-bottom: 200px;">
-                    <h2 class="font-set-intro-title section-center-title"
-                        style="margin-bottom: 12px; text-align: center;" data-i18n="ps.control.sms.title"><span
-                            style="color: #7C0b47;">SMS</span> <span
-                            style="font-size: 1.5rem; color: var(--color-gray40);">—</span> Safety Management System
-                    </h2>
-                    <p class="font-set-intro-sub" style="margin-bottom: 52px;" data-i18n="ps.control.sms.sub">안전 관제 시스템
-                    </p>
-
-                    <div class="overview-items"
-                        style="background: #fff; padding: 40px; border-radius: 12px; border: 1px solid var(--color-gray20);">
-                        <div class="overview-item">
-                            <div class="overview-left">
-                                <span class="overview-number">1</span>
-                                <span class="font-set-overview-label" data-i18n="ps.control.sms.label1">한줄</span>
-                            </div>
-                            <div class="overview-right" data-i18n="ps.control.sms.desc1">
-                                <p class="font-set-table-ko">유·무인 혼재 환경의 안전을 관제합니다</p>
-                                <p class="font-set-table-en">Manages safety in mixed manned/unmanned environments</p>
-                            </div>
-                        </div>
-                        <div class="overview-item">
-                            <div class="overview-left">
-                                <span class="overview-number">2</span>
-                                <span class="font-set-overview-label" data-i18n="ps.control.sms.label2">역할</span>
-                            </div>
-                            <div class="overview-right" data-i18n="ps.control.sms.desc2">
-                                <p class="font-set-table-ko">로봇과 작업자, 유인장비가 같은 공간에서 공존할 때 발생할 수 있는 안전 리스크를 실시간으로 감지하고
-                                    대응합니다.</p>
-                                <p class="font-set-table-en">Detects and responds to safety risks in real-time when
-                                    robots, workers, and manned equipment share the same space.</p>
-                            </div>
-                        </div>
-                        <div class="overview-item">
-                            <div class="overview-left">
-                                <span class="overview-number">3</span>
-                                <span class="font-set-overview-label" data-i18n="ps.control.sms.label3">핵심기능</span>
-                            </div>
-                            <div class="overview-right" data-i18n="ps.control.sms.desc3">
-                                <p class="font-set-table-ko">① 유·무인 혼재 구역 안전 관리 ② 실시간 위험 감지·경고 ③ 긴급 정지·우회 제어 ④ 안전 이벤트 이력
-                                    관리
-                                </p>
-                                <p class="font-set-table-en">① Mixed-zone safety management ② Real-time hazard detection
-                                    & alerts ③ Emergency stop & rerouting ④ Safety event history</p>
-                            </div>
-                        </div>
-                        <div class="overview-item">
-                            <div class="overview-left">
-                                <span class="overview-number">4</span>
-                                <span class="font-set-overview-label" data-i18n="ps.control.sms.label4">적용예시</span>
-                            </div>
-                            <div class="overview-right" data-i18n="ps.control.sms.desc4">
-                                <p class="font-set-table-ko">유인 지게차와 AMR이 교차하는 구역에서, SMS가 충돌 위험을 사전 감지하고 AMR을 자동 우회</p>
-                                <p class="font-set-table-en">SMS pre-detects collision risk between manned forklift and
-                                    AMR at an intersection, automatically reroutes the AMR</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- WNS Module -->
-                <div id="wns-module" class="module-block" style="margin-bottom: 0;">
-                    <h2 class="font-set-intro-title section-center-title"
-                        style="margin-bottom: 12px; text-align: center;" data-i18n="ps.control.wns.title"><span
-                            style="color: #7C0b47;">WNS</span> <span
-                            style="font-size: 1.5rem; color: var(--color-gray40);">—</span> Warehouse Navigation System
-                    </h2>
-                    <p class="font-set-intro-sub" style="margin-bottom: 52px;" data-i18n="ps.control.wns.sub">창고 내비게이션
-                        시스템</p>
-
-                    <div class="overview-items"
-                        style="background: #fff; padding: 40px; border-radius: 12px; border: 1px solid var(--color-gray20);">
-                        <div class="overview-item">
-                            <div class="overview-left">
-                                <span class="overview-number">1</span>
-                                <span class="font-set-overview-label" data-i18n="ps.control.wns.label1">한줄</span>
-                            </div>
-                            <div class="overview-right" data-i18n="ps.control.wns.desc1">
-                                <p class="font-set-table-ko">창고 내 모든 이동체(로봇·유인장비·작업자)의 위치를 추적하고 내비게이션합니다</p>
-                                <p class="font-set-table-en">Tracks and navigates all moving entities in the warehouse —
-                                    robots, manned vehicles, workers</p>
-                            </div>
-                        </div>
-                        <div class="overview-item">
-                            <div class="overview-left">
-                                <span class="overview-number">2</span>
-                                <span class="font-set-overview-label" data-i18n="ps.control.wns.label2">역할</span>
-                            </div>
-                            <div class="overview-right" data-i18n="ps.control.wns.desc2">
-                                <p class="font-set-table-ko">유인장비(지게차 등)와 작업자의 실시간 위치를 추적하여, 로봇과의 공존 안전을 확보하고 전체 동선을
-                                    최적화합니다. TAMS가 무인 로봇뿐 아니라 유인 환경까지 커버하는 핵심 모듈.</p>
-                                <p class="font-set-table-en">Tracks manned vehicles and workers in real-time, ensuring
-                                    safe coexistence with robots and optimizing all traffic flows. The key module that
-                                    extends TAMS coverage from unmanned robots to the entire manned environment.</p>
-                            </div>
-                        </div>
-                        <div class="overview-item">
-                            <div class="overview-left">
-                                <span class="overview-number">3</span>
-                                <span class="font-set-overview-label" data-i18n="ps.control.wns.label3">핵심기능</span>
-                            </div>
-                            <div class="overview-right" data-i18n="ps.control.wns.desc3">
-                                <p class="font-set-table-ko">① 유인장비 실시간 위치 추적 ② 작업자 동선 관리 ③ 로봇-유인장비 교통 통합 ④ 내비게이션 경로 제공
-                                    (작업자 단말)
-                                </p>
-                                <p class="font-set-table-en">① Real-time manned vehicle tracking ② Worker path
-                                    management ③ Robot-manned traffic integration ④ Navigation for worker devices</p>
-                            </div>
-                        </div>
-                        <div class="overview-item">
-                            <div class="overview-left">
-                                <span class="overview-number">4</span>
-                                <span class="font-set-overview-label" data-i18n="ps.control.wns.label4">적용예시</span>
-                            </div>
-                            <div class="overview-right" data-i18n="ps.control.wns.desc4">
-                                <p class="font-set-table-ko">유인 지게차 운전자에게 최적 경로를 안내하면서, 동시에 해당 경로 근처의 AMR을 자동 조율</p>
-                                <p class="font-set-table-en">Guides manned forklift driver on optimal path while
-                                    automatically coordinating nearby AMRs</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-        <!-- MAOP 플랫폼 (모바일 전용 DIV 구조로 전면 개편) -->
-        <section class="section-padding maop-platform-section">
-            <div class="container" style="max-width: 1000px; margin: 0 auto;">
-                <h2 class="font-set-intro-title section-center-title" style="margin-bottom: 50px; text-align: center;"
-                    data-i18n="ps.control.maop.title">
-                    MAOP 플랫폼</h2>
-
-                <!-- Mobile Only: Image-based Card Structure -->
-                <div class="maop-mobile maop-mobile-list">
-                    <div class="maop-mobile-item">
-                        <div class="maop-label" data-i18n="ps.control.maop.r1.name">정의</div>
-                        <div class="maop-desc-primary" data-i18n="ps.control.maop.r1.val">Multi Agent Orchestration
-                            Platform</div>
-                    </div>
-                    <div class="maop-mobile-item">
-                        <div class="maop-label" data-i18n="ps.control.maop.r2.name">역할</div>
-                        <div class="maop-desc-primary" data-i18n="ps.control.maop.r2.val">
-                            TAMS 5모듈의 기반 플랫폼. Microservices 아키텍처로 모듈 간 독립 운영과 유기적 연동을 동시에 가능하게 합니다.
-                        </div>
-                    </div>
-                    <div class="maop-mobile-item">
-                        <div class="maop-label" data-i18n="ps.control.maop.r3.name">핵심 특징</div>
-                        <div class="maop-desc-primary" data-i18n="ps.control.maop.r3.val">
-                            ① Microservices 기반 서비스 관리 ② 메모리 캐시(Message Queue) 기반 정보 관리 ③ 이중화 아키텍처 (안정성) ④ 유연한 UI 개발 플랫폼
-                            + CAD 플랫폼
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
 
         <!-- ===== 하단 3단 배너 ===== -->
         <section class="bottom-nav-banner">
@@ -4410,7 +4069,8 @@
         <!-- WMS Modal -->
         <div id="modal-wms" class="lsw-modal" onclick="if (event.target === this) this.style.display = 'none';">
             <div class="lsw-modal-box">
-                <button class="lsw-modal-close" onclick="document.getElementById('modal-wms').style.display = 'none'">×</button>
+                <button class="lsw-modal-close"
+                    onclick="document.getElementById('modal-wms').style.display = 'none'">×</button>
                 <span class="lsw-modal-tag" style="background: #d1ead9; color: #166534">WMS</span>
                 <h3 data-i18n="ps.modal.wms.title">물류센터의 최적 업무 환경</h3>
                 <p class="lsw-subtitle" data-i18n="ps.modal.wms.sub">담당 구간: 입고 ~ 출고</p>
@@ -4428,33 +4088,47 @@
         <!-- MCS Modal -->
         <div id="modal-mcs" class="lsw-modal" onclick="if (event.target === this) this.style.display = 'none';">
             <div class="lsw-modal-box">
-                <button class="lsw-modal-close" onclick="document.getElementById('modal-mcs').style.display = 'none'">×</button>
+                <button class="lsw-modal-close"
+                    onclick="document.getElementById('modal-mcs').style.display = 'none'">×</button>
                 <span class="lsw-modal-tag" style="background: #f3dde7; color: #7c0b47">MCS</span>
                 <h3 data-i18n="ps.control.mcs.sub">자재흐름제어시스템</h3>
                 <p class="lsw-subtitle">Material Control System</p>
                 <div style="border-top: 1px solid #f3f4f6; padding-top: 20px;">
-                    <div style="font-size:0.956rem; font-weight:700; text-transform:uppercase; color:#7c0b47; margin-bottom:10px;" data-i18n="ps.control.mcs.label1">설명</div>
-                    <div style="font-size:0.93rem; color:#374151; line-height:1.6; margin-bottom:20px;" data-i18n="ps.control.mcs.desc1">
+                    <div style="font-size:0.956rem; font-weight:700; text-transform:uppercase; color:#7c0b47; margin-bottom:10px;"
+                        data-i18n="ps.control.mcs.label1">설명</div>
+                    <div style="font-size:0.93rem; color:#374151; line-height:1.6; margin-bottom:20px;"
+                        data-i18n="ps.control.mcs.desc1">
                         <p class="font-set-table-ko">자재 흐름과 이송 오더를 관리합니다</p>
                         <p class="font-set-table-en">Manages material flow and transport orders</p>
                     </div>
 
-                    <div style="font-size:0.956rem; font-weight:700; text-transform:uppercase; color:#7c0b47; margin-bottom:10px;" data-i18n="ps.control.mcs.label2">역할</div>
-                    <div style="font-size:0.93rem; color:#374151; line-height:1.6; margin-bottom:20px;" data-i18n="ps.control.mcs.desc2">
-                        <p class="font-set-table-ko">상위 시스템(WMS, MES, ERP)에서 내려온 작업 요청을 이송 오더로 변환하고, 자재의 출발지·목적지·우선순위를 판단하여 최적의 실행 계획을 수립합니다</p>
-                        <p class="font-set-table-en">Converts work requests from upper systems (WMS, MES, ERP) into transport orders, determines origin/destination/priority, and creates optimal execution plans</p>
+                    <div style="font-size:0.956rem; font-weight:700; text-transform:uppercase; color:#7c0b47; margin-bottom:10px;"
+                        data-i18n="ps.control.mcs.label2">역할</div>
+                    <div style="font-size:0.93rem; color:#374151; line-height:1.6; margin-bottom:20px;"
+                        data-i18n="ps.control.mcs.desc2">
+                        <p class="font-set-table-ko">상위 시스템(WMS, MES, ERP)에서 내려온 작업 요청을 이송 오더로 변환하고, 자재의 출발지·목적지·우선순위를
+                            판단하여 최적의 실행 계획을 수립합니다</p>
+                        <p class="font-set-table-en">Converts work requests from upper systems (WMS, MES, ERP) into
+                            transport orders, determines origin/destination/priority, and creates optimal execution
+                            plans</p>
                     </div>
 
-                    <div style="font-size:0.956rem; font-weight:700; text-transform:uppercase; color:#7c0b47; margin-bottom:10px;" data-i18n="ps.control.mcs.label3">핵심기능</div>
-                    <div style="font-size:0.93rem; color:#374151; line-height:1.6; margin-bottom:20px;" data-i18n="ps.control.mcs.desc3">
-                        <p class="font-set-table-ko">① 이송 오더 생성·유연화 ② 최적 이송계획 수립 (VRP 기반) ③ 상위 시스템 연동 (ERP·MES·WMS·OMS)</p>
-                        <p class="font-set-table-en">① Flexible transport order generation ② Optimal plan (VRP-based) ③ Upper system integration</p>
+                    <div style="font-size:0.956rem; font-weight:700; text-transform:uppercase; color:#7c0b47; margin-bottom:10px;"
+                        data-i18n="ps.control.mcs.label3">핵심기능</div>
+                    <div style="font-size:0.93rem; color:#374151; line-height:1.6; margin-bottom:20px;"
+                        data-i18n="ps.control.mcs.desc3">
+                        <p class="font-set-table-ko">① 이송 오더 생성·유연화 ② 최적 이송계획 수립 (VRP 기반) ③ 상위 시스템 연동 (ERP·MES·WMS·OMS)
+                        </p>
+                        <p class="font-set-table-en">① Flexible transport order generation ② Optimal plan (VRP-based) ③
+                            Upper system integration</p>
                     </div>
 
-                    <div style="font-size:0.956rem; font-weight:700; text-transform:uppercase; color:#7c0b47; margin-bottom:10px;" data-i18n="ps.control.mcs.label4">적용예시</div>
+                    <div style="font-size:0.956rem; font-weight:700; text-transform:uppercase; color:#7c0b47; margin-bottom:10px;"
+                        data-i18n="ps.control.mcs.label4">적용예시</div>
                     <div style="font-size:0.93rem; color:#374151; line-height:1.6;" data-i18n="ps.control.mcs.desc4">
                         <p class="font-set-table-ko">팔레트/박스 단위의 대량 이송이 빈번한 물류센터 및 제조 공장</p>
-                        <p class="font-set-table-en">Logistics centers and manufacturing plants with frequent large-scale pallet/box transfers</p>
+                        <p class="font-set-table-en">Logistics centers and manufacturing plants with frequent
+                            large-scale pallet/box transfers</p>
                     </div>
                 </div>
             </div>
@@ -4463,33 +4137,46 @@
         <!-- FMS Modal -->
         <div id="modal-fms" class="lsw-modal" onclick="if (event.target === this) this.style.display = 'none';">
             <div class="lsw-modal-box">
-                <button class="lsw-modal-close" onclick="document.getElementById('modal-fms').style.display = 'none'">×</button>
+                <button class="lsw-modal-close"
+                    onclick="document.getElementById('modal-fms').style.display = 'none'">×</button>
                 <span class="lsw-modal-tag" style="background: #d1ead9; color: #166534">FMS</span>
                 <h3 data-i18n="ps.control.fms.sub">로봇관리 시스템</h3>
                 <p class="lsw-subtitle">Fleet Management System</p>
                 <div style="border-top: 1px solid #f3f4f6; padding-top: 20px;">
-                    <div style="font-size:0.956rem; font-weight:700; text-transform:uppercase; color:#7c0b47; margin-bottom:10px;" data-i18n="ps.control.fms.label1">설명</div>
-                    <div style="font-size:0.93rem; color:#374151; line-height:1.6; margin-bottom:20px;" data-i18n="ps.control.fms.desc1">
+                    <div style="font-size:0.956rem; font-weight:700; text-transform:uppercase; color:#7c0b47; margin-bottom:10px;"
+                        data-i18n="ps.control.fms.label1">설명</div>
+                    <div style="font-size:0.93rem; color:#374151; line-height:1.6; margin-bottom:20px;"
+                        data-i18n="ps.control.fms.desc1">
                         <p class="font-set-table-ko">다수·이기종 로봇을 통합 관리합니다</p>
                         <p class="font-set-table-en">Manages fleets of multi-type robots</p>
                     </div>
 
-                    <div style="font-size:0.956rem; font-weight:700; text-transform:uppercase; color:#7c0b47; margin-bottom:10px;" data-i18n="ps.control.fms.label2">역할</div>
-                    <div style="font-size:0.93rem; color:#374151; line-height:1.6; margin-bottom:20px;" data-i18n="ps.control.fms.desc2">
-                        <p class="font-set-table-ko">현장에 투입된 모든 로봇(자사 AMR·AFL, 타사 AGV, 청소로봇 등)의 상태를 실시간 모니터링하고, 작업 할당·스케줄링·충전 관리를 수행합니다</p>
-                        <p class="font-set-table-en">Real-time monitoring of all deployed robots (MOBYUS AMR/AFL, 3rd-party AGVs, cleaning robots), with task assignment, scheduling, and charging management</p>
+                    <div style="font-size:0.956rem; font-weight:700; text-transform:uppercase; color:#7c0b47; margin-bottom:10px;"
+                        data-i18n="ps.control.fms.label2">역할</div>
+                    <div style="font-size:0.93rem; color:#374151; line-height:1.6; margin-bottom:20px;"
+                        data-i18n="ps.control.fms.desc2">
+                        <p class="font-set-table-ko">현장에 투입된 모든 로봇(자사 AMR·AFL, 타사 AGV, 청소로봇 등)의 상태를 실시간 모니터링하고, 작업
+                            할당·스케줄링·충전 관리를 수행합니다</p>
+                        <p class="font-set-table-en">Real-time monitoring of all deployed robots (MOBYUS AMR/AFL,
+                            3rd-party AGVs, cleaning robots), with task assignment, scheduling, and charging management
+                        </p>
                     </div>
 
-                    <div style="font-size:0.956rem; font-weight:700; text-transform:uppercase; color:#7c0b47; margin-bottom:10px;" data-i18n="ps.control.fms.label3">핵심기능</div>
-                    <div style="font-size:0.93rem; color:#374151; line-height:1.6; margin-bottom:20px;" data-i18n="ps.control.fms.desc3">
+                    <div style="font-size:0.956rem; font-weight:700; text-transform:uppercase; color:#7c0b47; margin-bottom:10px;"
+                        data-i18n="ps.control.fms.label3">핵심기능</div>
+                    <div style="font-size:0.93rem; color:#374151; line-height:1.6; margin-bottom:20px;"
+                        data-i18n="ps.control.fms.desc3">
                         <p class="font-set-table-ko">① 이기종 로봇 통합 모니터링 ② 작업 할당 엔진 (스케줄링) ③ 배터리·충전 관리 ④ 로봇 상태 대시보드</p>
-                        <p class="font-set-table-en">① Multi-vendor fleet monitoring ② Task assignment engine ③ Battery & charging ④ Fleet status dashboard</p>
+                        <p class="font-set-table-en">① Multi-vendor fleet monitoring ② Task assignment engine ③ Battery
+                            & charging ④ Fleet status dashboard</p>
                     </div>
 
-                    <div style="font-size:0.956rem; font-weight:700; text-transform:uppercase; color:#7c0b47; margin-bottom:10px;" data-i18n="ps.control.fms.label4">적용예시</div>
+                    <div style="font-size:0.956rem; font-weight:700; text-transform:uppercase; color:#7c0b47; margin-bottom:10px;"
+                        data-i18n="ps.control.fms.label4">적용예시</div>
                     <div style="font-size:0.93rem; color:#374151; line-height:1.6;" data-i18n="ps.control.fms.desc4">
                         <p class="font-set-table-ko">자사 AMR 50대 + 타사 AGV 20대 + 유인지게차 10대가 혼재하는 공장에서, 교착 없이 전체 로봇을 조율</p>
-                        <p class="font-set-table-en">Factory with 50 MOBYUS AMRs + 20 3rd-party AGVs + 10 manned forklifts, orchestrated without deadlocks</p>
+                        <p class="font-set-table-en">Factory with 50 MOBYUS AMRs + 20 3rd-party AGVs + 10 manned
+                            forklifts, orchestrated without deadlocks</p>
                     </div>
                 </div>
             </div>
@@ -4498,33 +4185,46 @@
         <!-- ACS Modal -->
         <div id="modal-acs" class="lsw-modal" onclick="if (event.target === this) this.style.display = 'none';">
             <div class="lsw-modal-box">
-                <button class="lsw-modal-close" onclick="document.getElementById('modal-acs').style.display = 'none'">×</button>
+                <button class="lsw-modal-close"
+                    onclick="document.getElementById('modal-acs').style.display = 'none'">×</button>
                 <span class="lsw-modal-tag" style="background: #d5e0f5; color: #1e40af">ACS</span>
                 <h3 data-i18n="ps.control.acs.sub">로봇 제어 시스템</h3>
                 <p class="lsw-subtitle">AMR Control System</p>
                 <div style="border-top: 1px solid #f3f4f6; padding-top: 20px;">
-                    <div style="font-size:0.956rem; font-weight:700; text-transform:uppercase; color:#7c0b47; margin-bottom:10px;" data-i18n="ps.control.acs.label1">설명</div>
-                    <div style="font-size:0.93rem; color:#374151; line-height:1.6; margin-bottom:20px;" data-i18n="ps.control.acs.desc1">
+                    <div style="font-size:0.956rem; font-weight:700; text-transform:uppercase; color:#7c0b47; margin-bottom:10px;"
+                        data-i18n="ps.control.acs.label1">설명</div>
+                    <div style="font-size:0.93rem; color:#374151; line-height:1.6; margin-bottom:20px;"
+                        data-i18n="ps.control.acs.desc1">
                         <p class="font-set-table-ko">개별 로봇의 실시간 제어를 담당합니다</p>
                         <p class="font-set-table-en">Handles real-time control of individual robots</p>
                     </div>
 
-                    <div style="font-size:0.956rem; font-weight:700; text-transform:uppercase; color:#7c0b47; margin-bottom:10px;" data-i18n="ps.control.acs.label2">역할</div>
-                    <div style="font-size:0.93rem; color:#374151; line-height:1.6; margin-bottom:20px;" data-i18n="ps.control.acs.desc2">
-                        <p class="font-set-table-ko">각 로봇의 주행 경로 생성, 속도 제어, 장애물 회피, 도킹 제어 등 저수준(low-level) 제어를 수행합니다. FMS의 지시를 받아 실제 로봇이 움직이는 단계.</p>
-                        <p class="font-set-table-en">Generates paths, controls speed, avoids obstacles, and manages docking for each robot. Executes FMS directives at the robot level.</p>
+                    <div style="font-size:0.956rem; font-weight:700; text-transform:uppercase; color:#7c0b47; margin-bottom:10px;"
+                        data-i18n="ps.control.acs.label2">역할</div>
+                    <div style="font-size:0.93rem; color:#374151; line-height:1.6; margin-bottom:20px;"
+                        data-i18n="ps.control.acs.desc2">
+                        <p class="font-set-table-ko">각 로봇의 주행 경로 생성, 속도 제어, 장애물 회피, 도킹 제어 등 저수준(low-level) 제어를 수행합니다.
+                            FMS의 지시를 받아 실제 로봇이 움직이는 단계.</p>
+                        <p class="font-set-table-en">Generates paths, controls speed, avoids obstacles, and manages
+                            docking for each robot. Executes FMS directives at the robot level.</p>
                     </div>
 
-                    <div style="font-size:0.956rem; font-weight:700; text-transform:uppercase; color:#7c0b47; margin-bottom:10px;" data-i18n="ps.control.acs.label3">핵심기능</div>
-                    <div style="font-size:0.93rem; color:#374151; line-height:1.6; margin-bottom:20px;" data-i18n="ps.control.acs.desc3">
-                        <p class="font-set-table-ko">① 경로 생성·최적화 (혼잡 구간 우회) ② 교통 제어 (5종 지원) ③ V2V 통신 기반 충돌 방지 ④ 어댑터 기반 이기종 제어 (10+종)</p>
-                        <p class="font-set-table-en">① Path generation & optimization ② Traffic control (5 types) ③ V2V collision avoidance ④ Adapter-based multi-vendor control (10+ types)</p>
+                    <div style="font-size:0.956rem; font-weight:700; text-transform:uppercase; color:#7c0b47; margin-bottom:10px;"
+                        data-i18n="ps.control.acs.label3">핵심기능</div>
+                    <div style="font-size:0.93rem; color:#374151; line-height:1.6; margin-bottom:20px;"
+                        data-i18n="ps.control.acs.desc3">
+                        <p class="font-set-table-ko">① 경로 생성·최적화 (혼잡 구간 우회) ② 교통 제어 (5종 지원) ③ V2V 통신 기반 충돌 방지 ④ 어댑터 기반
+                            이기종 제어 (10+종)</p>
+                        <p class="font-set-table-en">① Path generation & optimization ② Traffic control (5 types) ③ V2V
+                            collision avoidance ④ Adapter-based multi-vendor control (10+ types)</p>
                     </div>
 
-                    <div style="font-size:0.956rem; font-weight:700; text-transform:uppercase; color:#7c0b47; margin-bottom:10px;" data-i18n="ps.control.acs.label4">적용예시</div>
+                    <div style="font-size:0.956rem; font-weight:700; text-transform:uppercase; color:#7c0b47; margin-bottom:10px;"
+                        data-i18n="ps.control.acs.label4">적용예시</div>
                     <div style="font-size:0.93rem; color:#374151; line-height:1.6;" data-i18n="ps.control.acs.desc4">
                         <p class="font-set-table-ko">300대 로봇이 동시에 다른 경로를 주행할 때, ACS가 실시간으로 교통을 조율하여 교착·충돌 zero 유지</p>
-                        <p class="font-set-table-en">300 robots on different paths simultaneously, ACS coordinates traffic in real-time for zero deadlock/collision</p>
+                        <p class="font-set-table-en">300 robots on different paths simultaneously, ACS coordinates
+                            traffic in real-time for zero deadlock/collision</p>
                     </div>
                 </div>
             </div>
@@ -4533,33 +4233,45 @@
         <!-- SMS Modal -->
         <div id="modal-sms" class="lsw-modal" onclick="if (event.target === this) this.style.display = 'none';">
             <div class="lsw-modal-box">
-                <button class="lsw-modal-close" onclick="document.getElementById('modal-sms').style.display = 'none'">×</button>
+                <button class="lsw-modal-close"
+                    onclick="document.getElementById('modal-sms').style.display = 'none'">×</button>
                 <span class="lsw-modal-tag" style="background: #fef3c7; color: #92400e">SMS</span>
                 <h3 data-i18n="ps.control.sms.sub">안전 관리 시스템</h3>
                 <p class="lsw-subtitle">Safety Management System</p>
                 <div style="border-top: 1px solid #f3f4f6; padding-top: 20px;">
-                    <div style="font-size:0.956rem; font-weight:700; text-transform:uppercase; color:#7c0b47; margin-bottom:10px;" data-i18n="ps.control.sms.label1">설명</div>
-                    <div style="font-size:0.93rem; color:#374151; line-height:1.6; margin-bottom:20px;" data-i18n="ps.control.sms.desc1">
+                    <div style="font-size:0.956rem; font-weight:700; text-transform:uppercase; color:#7c0b47; margin-bottom:10px;"
+                        data-i18n="ps.control.sms.label1">설명</div>
+                    <div style="font-size:0.93rem; color:#374151; line-height:1.6; margin-bottom:20px;"
+                        data-i18n="ps.control.sms.desc1">
                         <p class="font-set-table-ko">현장 내 안전 사고를 통합 관리하고 방지합니다</p>
                         <p class="font-set-table-en">Integrated safety management and accident prevention</p>
                     </div>
 
-                    <div style="font-size:0.956rem; font-weight:700; text-transform:uppercase; color:#7c0b47; margin-bottom:10px;" data-i18n="ps.control.sms.label2">역할</div>
-                    <div style="font-size:0.93rem; color:#374151; line-height:1.6; margin-bottom:20px;" data-i18n="ps.control.sms.desc2">
+                    <div style="font-size:0.956rem; font-weight:700; text-transform:uppercase; color:#7c0b47; margin-bottom:10px;"
+                        data-i18n="ps.control.sms.label2">역할</div>
+                    <div style="font-size:0.93rem; color:#374151; line-height:1.6; margin-bottom:20px;"
+                        data-i18n="ps.control.sms.desc2">
                         <p class="font-set-table-ko">로봇과 작업자, 유인장비가 같은 공간에서 공존할 때 발생할 수 있는 안전 리스크를 실시간으로 감지하고 대응합니다.</p>
-                        <p class="font-set-table-en">Detects and responds to safety risks in real-time when robots, workers, and manned equipment share the same space.</p>
+                        <p class="font-set-table-en">Detects and responds to safety risks in real-time when robots,
+                            workers, and manned equipment share the same space.</p>
                     </div>
 
-                    <div style="font-size:0.956rem; font-weight:700; text-transform:uppercase; color:#7c0b47; margin-bottom:10px;" data-i18n="ps.control.sms.label3">핵심기능</div>
-                    <div style="font-size:0.93rem; color:#374151; line-height:1.6; margin-bottom:20px;" data-i18n="ps.control.sms.desc3">
+                    <div style="font-size:0.956rem; font-weight:700; text-transform:uppercase; color:#7c0b47; margin-bottom:10px;"
+                        data-i18n="ps.control.sms.label3">핵심기능</div>
+                    <div style="font-size:0.93rem; color:#374151; line-height:1.6; margin-bottom:20px;"
+                        data-i18n="ps.control.sms.desc3">
                         <p class="font-set-table-ko">① 유·무인 혼재 구역 안전 관리 ② 실시간 위험 감지·경고 ③ 긴급 정지·우회 제어 ④ 안전 이벤트 이력 관리</p>
-                        <p class="font-set-table-en">① Manned/unmanned mixed zone safety ② Real-time danger detection ③ Emergency stop/bypass ④ Safety event history</p>
+                        <p class="font-set-table-en">① Manned/unmanned mixed zone safety ② Real-time danger detection ③
+                            Emergency stop/bypass ④ Safety event history</p>
                     </div>
 
-                    <div style="font-size:0.956rem; font-weight:700; text-transform:uppercase; color:#7c0b47; margin-bottom:10px;" data-i18n="ps.control.sms.label4">적용예시</div>
+                    <div style="font-size:0.956rem; font-weight:700; text-transform:uppercase; color:#7c0b47; margin-bottom:10px;"
+                        data-i18n="ps.control.sms.label4">적용예시</div>
                     <div style="font-size:0.93rem; color:#374151; line-height:1.6;" data-i18n="ps.control.sms.desc4">
-                        <p class="font-set-table-ko">작업자가 로봇 주행 경로에 갑자기 진입할 경우, SMS가 즉시 인지하여 주변 모든 로봇을 감속하거나 정지시켜 사고 예방</p>
-                        <p class="font-set-table-en">Safety Management System prevents accidents by immediately detecting workers entering robot paths and decelerating or stopping nearby robots.</p>
+                        <p class="font-set-table-ko">작업자가 로봇 주행 경로에 갑자기 진입할 경우, SMS가 즉시 인지하여 주변 모든 로봇을 감속하거나 정지시켜 사고 예방
+                        </p>
+                        <p class="font-set-table-en">Safety Management System prevents accidents by immediately
+                            detecting workers entering robot paths and decelerating or stopping nearby robots.</p>
                     </div>
                 </div>
             </div>
@@ -4568,33 +4280,48 @@
         <!-- WNS Modal -->
         <div id="modal-wns" class="lsw-modal" onclick="if (event.target === this) this.style.display = 'none';">
             <div class="lsw-modal-box">
-                <button class="lsw-modal-close" onclick="document.getElementById('modal-wns').style.display = 'none'">×</button>
+                <button class="lsw-modal-close"
+                    onclick="document.getElementById('modal-wns').style.display = 'none'">×</button>
                 <span class="lsw-modal-tag" style="background: #e8e8ec; color: #374151">WNS</span>
                 <h3 data-i18n="ps.control.wns.sub">창고 내비게이션 시스템</h3>
                 <p class="lsw-subtitle">Warehouse Navigation System</p>
                 <div style="border-top: 1px solid #f3f4f6; padding-top: 20px;">
-                    <div style="font-size:0.956rem; font-weight:700; text-transform:uppercase; color:#7c0b47; margin-bottom:10px;" data-i18n="ps.control.wns.label1">설명</div>
-                    <div style="font-size:0.93rem; color:#374151; line-height:1.6; margin-bottom:20px;" data-i18n="ps.control.wns.desc1">
+                    <div style="font-size:0.956rem; font-weight:700; text-transform:uppercase; color:#7c0b47; margin-bottom:10px;"
+                        data-i18n="ps.control.wns.label1">설명</div>
+                    <div style="font-size:0.93rem; color:#374151; line-height:1.6; margin-bottom:20px;"
+                        data-i18n="ps.control.wns.desc1">
                         <p class="font-set-table-ko">창고 내 모든 이동체(로봇·유인장비·작업자)의 위치를 추적하고 내비게이션합니다</p>
-                        <p class="font-set-table-en">Tracks and navigates all moving entities in the warehouse — robots, manned vehicles, workers</p>
+                        <p class="font-set-table-en">Tracks and navigates all moving entities in the warehouse — robots,
+                            manned vehicles, workers</p>
                     </div>
 
-                    <div style="font-size:0.956rem; font-weight:700; text-transform:uppercase; color:#7c0b47; margin-bottom:10px;" data-i18n="ps.control.wns.label2">역할</div>
-                    <div style="font-size:0.93rem; color:#374151; line-height:1.6; margin-bottom:20px;" data-i18n="ps.control.wns.desc2">
-                        <p class="font-set-table-ko">유인장비(지게차 등)와 작업자의 실시간 위치를 추적하여, 로봇과의 공존 안전을 확보하고 전체 동선을 최적화합니다. TAMS가 무인 로봇뿐 아니라 유인 환경까지 커버하는 핵심 모듈.</p>
-                        <p class="font-set-table-en">Tracks manned vehicles and workers in real-time, ensuring safe coexistence with robots and optimizing all traffic flows. The key module that extends TAMS coverage from unmanned robots to the entire manned environment.</p>
+                    <div style="font-size:0.956rem; font-weight:700; text-transform:uppercase; color:#7c0b47; margin-bottom:10px;"
+                        data-i18n="ps.control.wns.label2">역할</div>
+                    <div style="font-size:0.93rem; color:#374151; line-height:1.6; margin-bottom:20px;"
+                        data-i18n="ps.control.wns.desc2">
+                        <p class="font-set-table-ko">유인장비(지게차 등)와 작업자의 실시간 위치를 추적하여, 로봇과의 공존 안전을 확보하고 전체 동선을 최적화합니다.
+                            TAMS가 무인 로봇뿐 아니라 유인 환경까지 커버하는 핵심 모듈.</p>
+                        <p class="font-set-table-en">Tracks manned vehicles and workers in real-time, ensuring safe
+                            coexistence with robots and optimizing all traffic flows. The key module that extends TAMS
+                            coverage from unmanned robots to the entire manned environment.</p>
                     </div>
 
-                    <div style="font-size:0.956rem; font-weight:700; text-transform:uppercase; color:#7c0b47; margin-bottom:10px;" data-i18n="ps.control.wns.label3">핵심기능</div>
-                    <div style="font-size:0.93rem; color:#374151; line-height:1.6; margin-bottom:20px;" data-i18n="ps.control.wns.desc3">
-                        <p class="font-set-table-ko">① 유인장비 실시간 위치 추적 ② 작업자 동선 관리 ③ 로봇-유인장비 교통 통합 ④ 내비게이션 경로 제공 (작업자 단말)</p>
-                        <p class="font-set-table-en">① Real-time manned vehicle tracking ② Worker path management ③ Robot-manned traffic integration ④ Navigation for worker devices</p>
+                    <div style="font-size:0.956rem; font-weight:700; text-transform:uppercase; color:#7c0b47; margin-bottom:10px;"
+                        data-i18n="ps.control.wns.label3">핵심기능</div>
+                    <div style="font-size:0.93rem; color:#374151; line-height:1.6; margin-bottom:20px;"
+                        data-i18n="ps.control.wns.desc3">
+                        <p class="font-set-table-ko">① 유인장비 실시간 위치 추적 ② 작업자 동선 관리 ③ 로봇-유인장비 교통 통합 ④ 내비게이션 경로 제공 (작업자 단말)
+                        </p>
+                        <p class="font-set-table-en">① Real-time manned vehicle tracking ② Worker path management ③
+                            Robot-manned traffic integration ④ Navigation for worker devices</p>
                     </div>
 
-                    <div style="font-size:0.956rem; font-weight:700; text-transform:uppercase; color:#7c0b47; margin-bottom:10px;" data-i18n="ps.control.wns.label4">적용예시</div>
+                    <div style="font-size:0.956rem; font-weight:700; text-transform:uppercase; color:#7c0b47; margin-bottom:10px;"
+                        data-i18n="ps.control.wns.label4">적용예시</div>
                     <div style="font-size:0.93rem; color:#374151; line-height:1.6;" data-i18n="ps.control.wns.desc4">
                         <p class="font-set-table-ko">유인 지게차 운전자에게 최적 경로를 안내하면서, 동시에 해당 경로 근처의 AMR을 자동 조율</p>
-                        <p class="font-set-table-en">Guides manned forklift driver on optimal path while automatically coordinating nearby AMRs</p>
+                        <p class="font-set-table-en">Guides manned forklift driver on optimal path while automatically
+                            coordinating nearby AMRs</p>
                     </div>
                 </div>
             </div>
@@ -4645,22 +4372,31 @@
         <!-- MAOP Modal -->
         <div id="maop-modal" class="lsw-modal" onclick="if (event.target === this) this.style.display = 'none';">
             <div class="lsw-modal-box">
-                <button class="lsw-modal-close" onclick="document.getElementById('maop-modal').style.display = 'none'">×</button>
+                <button class="lsw-modal-close"
+                    onclick="document.getElementById('maop-modal').style.display = 'none'">×</button>
                 <span class="lsw-modal-tag" style="background: #f3dde7; color: #7c0b47">MAOP</span>
                 <h3 data-i18n="ps.control.maop.title">MAOP 플랫폼</h3>
                 <p class="lsw-subtitle">Multi Agent Orchestration Platform</p>
                 <div style="border-top: 1px solid #f3f4f6; padding-top: 20px;">
                     <!-- 정의 Section -->
-                    <div style="font-size:0.956rem; font-weight:700; text-transform:uppercase; color:#7c0b47; margin-bottom:10px;" data-i18n="ps.modal.maop.label1">정의</div>
-                    <p style="font-size:0.93rem; color:#374151; line-height:1.6; margin-bottom:20px;" data-i18n="ps.modal.maop.def">Multi Agent Orchestration Platform</p>
+                    <div style="font-size:0.956rem; font-weight:700; text-transform:uppercase; color:#7c0b47; margin-bottom:10px;"
+                        data-i18n="ps.modal.maop.label1">정의</div>
+                    <p style="font-size:0.93rem; color:#374151; line-height:1.6; margin-bottom:20px;"
+                        data-i18n="ps.modal.maop.def">Multi Agent Orchestration Platform</p>
 
                     <!-- 역할 Section -->
-                    <div style="font-size:0.956rem; font-weight:700; text-transform:uppercase; color:#7c0b47; margin-bottom:10px;" data-i18n="ps.modal.maop.label2">역할</div>
-                    <p style="font-size:0.93rem; color:#374151; line-height:1.6; margin-bottom:20px;" data-i18n="ps.modal.maop.role">TAMS 5모듈의 기반 플랫폼. Microservices 아키텍처로 모듈 간 독립 운영과 유기적 연동을 동시에 가능하게 합니다.</p>
-                    
+                    <div style="font-size:0.956rem; font-weight:700; text-transform:uppercase; color:#7c0b47; margin-bottom:10px;"
+                        data-i18n="ps.modal.maop.label2">역할</div>
+                    <p style="font-size:0.93rem; color:#374151; line-height:1.6; margin-bottom:20px;"
+                        data-i18n="ps.modal.maop.role">TAMS 5모듈의 기반 플랫폼. Microservices 아키텍처로 모듈 간 독립 운영과 유기적 연동을 동시에
+                        가능하게 합니다.</p>
+
                     <!-- 핵심 특징 Section -->
-                    <div style="font-size:0.956rem; font-weight:700; text-transform:uppercase; color:#7c0b47; margin-bottom:12px;" data-i18n="ps.modal.maop.label3">핵심 특징</div>
-                    <p style="font-size:0.93rem; color:#374151; line-height:1.6;" data-i18n="ps.modal.maop.features">① Microservices 기반 서비스 관리 ② 메모리 캐시(Message Queue) 기반 정보 관리 ③ 이중화 아키텍처 (안정성) ④ 유연한 UI 개발 플랫폼 + CAD 플랫폼</p>
+                    <div style="font-size:0.956rem; font-weight:700; text-transform:uppercase; color:#7c0b47; margin-bottom:12px;"
+                        data-i18n="ps.modal.maop.label3">핵심 특징</div>
+                    <p style="font-size:0.93rem; color:#374151; line-height:1.6;" data-i18n="ps.modal.maop.features">①
+                        Microservices 기반 서비스 관리 ② 메모리 캐시(Message Queue) 기반 정보 관리 ③ 이중화 아키텍처 (안정성) ④ 유연한 UI 개발 플랫폼 + CAD
+                        플랫폼</p>
                 </div>
             </div>
         </div>
