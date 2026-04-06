@@ -123,9 +123,13 @@
     }
     .q-card.answered { border-color: #B0B0B0; }
     .q-card-header {
-      display: flex; align-items: flex-start; gap: 10px; margin-bottom: 14px;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 6px 12px;
+      margin-bottom: 16px;
     }
     .q-num {
+      grid-row: 1 / 3;
       width: 26px; height: 26px; border-radius: 50%;
       background: var(--bg); border: 1.5px solid var(--border);
       color: var(--accent); font-size: 12px; font-weight: 800;
@@ -137,7 +141,7 @@
     }
     .q-label { font-size: 15px; font-weight: 700; color: var(--text); line-height: 1.4; }
     .q-hint-tag {
-      margin-left: auto; flex-shrink: 0;
+      justify-self: flex-start;
       font-size: 11px; color: var(--accent); font-weight: 600;
       background: var(--accent-light);
       padding: 3px 9px; border-radius: 6px;
@@ -641,16 +645,15 @@
       <div class="q-card" id="qc-5">
         <div class="q-card-header">
           <div class="q-num" id="qn-5">5</div>
-          <div class="q-label">작업 환경의 특이사항이 있습니까?</div>
-          <div class="q-hint-tag">주행기술 매칭</div>
+          <div class="q-label">현재 물류 현장에서 개선 또는 연동이 필요한 특수 환경이 있습니까?</div>
+          <div class="q-hint-tag">특수 사양 진단</div>
         </div>
-        <div class="multi-badge">☑ 중복 선택 가능 · 없으면 건너뛰세요</div>
-        <div class="options-row">
+        <div class="options-row cols-1">
           <div class="option-item multi" onclick="multiPick(5,1,this)">
             <div class="opt-check"></div>
             <div class="opt-text">
-              <span class="opt-main">협소 통로 또는 고층 랙 (6M+)</span>
-              <span class="opt-sub">Multi-directional / Reach Truck 특화</span>
+              <span class="opt-main">협소 통로 또는 고층 랙 작업 구역</span>
+              <span class="opt-sub">VNA(Very Narrow Aisle) 또는 6M 이상 고층 작업</span>
             </div>
           </div>
           <div class="option-item multi" onclick="multiPick(5,2,this)">
@@ -675,6 +678,7 @@
             </div>
           </div>
         </div>
+        <div class="multi-badge" style="margin-top: 16px; margin-bottom: 0;"><i class="far fa-check-square"></i> 중복 선택 가능 · 없으면 건너뛰세요</div>
       </div>
     </div>
 
