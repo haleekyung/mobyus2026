@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         
         safeStorage.setItem('preferredLanguage', lang);
+        document.documentElement.lang = lang;  // ← reference.html 인라인 스크립트와 동기화
         updateContent(lang);
         updateGnbUI(lang);
         
@@ -263,25 +264,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Case Study Data ---
     const caseStudyData = [
-        { id: "auto-1", category: "AUTOMOTIVE", tags: ["AMR", "AFL", "TAMS"], title: "현대자동차 글로벌 EV 생산 거점 무인화", description: "글로벌 6개국 이상의 생산 현장에서 300대 이상의 로봇을 TAMS로 통합 관제하여 혁신적인 생산 유연성을 확보했습니다.", highlights: ["단일 사이트 188대 최대 규모", "글로벌 표준 관제 시스템 구축"], icon: "fas fa-car-front", customer: "현대자동차" },
-        { id: "auto-2", category: "AUTOMOTIVE", tags: ["AMR", "TAMS"], title: "현대모비스 해외 부품 공장 자동화", description: "미국 및 체코 등 해외 주요 거점에 200대 이상의 자율 주행 로봇을 도입하여 부품 공급 효율을 극대화했습니다.", highlights: ["해외 거점 200대+ 도입", "이기종 로봇 통합 제어"], icon: "fas fa-car-front", customer: "현대모비스" },
-        { id: "batt-1", category: "BATTERY & ENERGY", tags: ["AMR", "TAMS"], title: "LG에너지솔루션 해외 배터리 공장 이공정 자동화", description: "폴란드와 중국 공장에 120대 이상의 AGV를 도입하여 배터리 셀 제조 공정의 물류 흐름을 자동화했습니다.", highlights: ["해외 공장 120대+ 통합 운영", "24시간 무중단 자재 공급"], icon: "fas fa-battery-charging", customer: "LG에너지솔루션" },
-        { id: "batt-2", category: "BATTERY & ENERGY", tags: ["AMR"], title: "SK온 해외 배터리 생산 라인 자동화", description: "중국 및 미국 생산 거점에 85대 이상의 AMR을 도입하여 배터리 제조 공정 물류를 지능화했습니다.", highlights: ["글로벌 거점 85대+ 도입", "정밀 반송 솔루션 적용"], icon: "fas fa-car-battery", customer: "SK온" },
-        { id: "batt-3", category: "BATTERY & ENERGY", tags: ["AMR", "TAMS", "WMS"], title: "한화큐셀 태양광 모듈 생산 풀스택 자동화", description: "로봇 관제(TAMS)와 창고관리시스템(WMS)을 유기적으로 결합하여 자재 입고부터 생산 투입까지 전 과정을 자동화했습니다.", highlights: ["로봇 + WMS 복합 구축", "자재 흐름 가시성 100% 확보"], icon: "fas fa-sun", customer: "한화큐셀" },
-        { id: "batt-4", category: "BATTERY & ENERGY", tags: ["AMR"], title: "Verkor 배터리 기가팩토리 AMR 도입", description: "유럽 신흥 배터리 강자 Verkor의 생산 라인에 정밀 이송을 위한 AMR 솔루션을 공급했습니다.", highlights: ["유럽 기가팩토리 레퍼런스", "정밀 가이던스 기술 적용"], icon: "fas fa-charging-station", customer: "Verkor" },
-        { id: "batt-5", category: "BATTERY & ENERGY", tags: ["AMR"], title: "Northvolt 배터리 생산 공정 자동화", description: "유럽 최대 배터리 제조사인 Northvolt 생산 현장에 자율 주행 로봇 솔루션을 도입했습니다.", highlights: ["유럽 핵심 배터리 제조사 공급", "글로벌 기술 경쟁력 입증"], icon: "fas fa-bolt", customer: "Northvolt" },
-        { id: "semi-1", category: "SEMICONDUCTOR & ELECTRONICS", tags: ["AFL", "TAMS"], title: "삼성전자 반도체 부문 TAMS 전사 표준 채택", description: "반도체 생산 현장의 수백 대 로봇 운용을 위한 통합 관제 표준 플랫폼으로 TAMS가 채택되어 전사 확산 중입니다.", highlights: ["반도체 공정 표준 관제 채택", "확장 가능한 아키텍처 구현"], icon: "fas fa-cpu", customer: "삼성전자" },
-        { id: "semi-2", category: "SEMICONDUCTOR & ELECTRONICS", tags: ["AMR"], title: "LG전자 캘리포니아 물류센터 AMR 도입", description: "미국 캘리포니아 가전 물류 거점에 자율 주행 로봇을 도입하여 피킹 및 이송 효율을 극대화했습니다.", highlights: ["북미 물류 거점 자동화", "이송 효율 대폭 개선"], icon: "fas fa-tv", customer: "LG전자" },
-        { id: "semi-3", category: "SEMICONDUCTOR & ELECTRONICS", tags: ["WMS"], title: "서울반도체 LED 제조 통합 물류 관리", description: "LED 생산 및 유통 과정의 투명성을 확보하기 위한 지능형 창고 관리 시스템(WMS)을 구축했습니다.", highlights: ["재고 정확도 향상", "실시간 물류 가시성 확보"], icon: "fas fa-lightbulb", customer: "서울반도체" },
-        { id: "semi-4", category: "SEMICONDUCTOR & ELECTRONICS", tags: ["WMS"], title: "세메스 반도체 장비 부품 통합 물류 고도화", description: "정밀 부품의 입출고 및 재고 관리를 위해 WMS 2차 고도화를 진행하여 반도체 장비 제조 경쟁력을 높였습니다.", highlights: ["2차 고도화 프로젝트 완료", "부품 오피킹 제로화"], icon: "fas fa-microchip", customer: "세메스" },
-        { id: "food-1", category: "FOOD & MANUFACTURING", tags: ["WMS", "TMS", "OMS"], title: "하림그룹 가금류·사료 통합 물류 시스템", description: "자재 입고부터 주문, 배송까지 아우르는 통합 물류 SW 플랫폼을 구축하여 전사 운영 효율을 개선했습니다.", highlights: ["OMS·WMS·TMS 통합 구축", "신선식품 물류 체계 최적화"], icon: "fas fa-egg", customer: "하림그룹" },
-        { id: "food-2", category: "FOOD & MANUFACTURING", tags: ["OMS", "WMS", "VMS"], title: "신세계푸드 전국 통합 물류 인프라", description: "전국 23개 물류 거점의 주문부터 재고까지 전 과정을 통합 관리하여 콜드체인 운영을 최적화했습니다.", highlights: ["전국 23개 센터 통합 관리", "주문-재고 실시간 연동"], icon: "fas fa-bread-slice", customer: "신세계푸드" },
-        { id: "food-3", category: "FOOD & MANUFACTURING", tags: ["TMS"], title: "SPC삼립 제과·제빵 배송 최적화 시스템", description: "복잡한 배송 경로를 효율화하는 TMS 솔루션을 도입하여 물류 비용 절감 및 배송 품질을 향상시켰습니다.", highlights: ["전국 단위 배송 경로 최적화", "배송 가동률 향상"], icon: "fas fa-truck-fast", customer: "SPC그룹" },
-        { id: "food-4", category: "FOOD & MANUFACTURING", tags: ["TMS"], title: "롯데칠성 음료 물류 배송 고도화", description: "대규모 음료 물량의 효율적인 운송 관리를 위한 지능형 배송 관리 시스템(TMS)을 구축했습니다.", highlights: ["대량 물동량 처리 최적화", "운송 가시성 확보"], icon: "fas fa-wine-bottle", customer: "롯데칠성" },
-        { id: "dist-1", category: "DISTRIBUTION & FULFILLMENT", tags: ["OMS", "WMS", "VMS"], title: "이마트24 전국 물류 거점 통합 운영 플랫폼", description: "전국 각지의 편의점 물류 센터를 아우르는 통합 관리 시스템을 구축하여 재고 및 주문 효율을 극대화했습니다.", highlights: ["전국 DC 통합 관리", "물류 데이터 표준화"], icon: "fas fa-store", customer: "이마트24" },
-        { id: "dist-4", category: "DISTRIBUTION & FULFILLMENT", tags: ["OMS", "WMS", "TMS", "VMS"], title: "우아한형제들(배민상회) 4모듈 풀스택 구축", description: "OMS, WMS, TMS, VMS 등 물류 운영에 필요한 4개 핵심 모듈을 모두 구축하여 풀필먼트 서비스를 구현했습니다.", highlights: ["4개 핵심 모듈 통합 구축", "배민상회 풀필먼트 최적화"], icon: "fas fa-rocket", customer: "우아한형제들" },
-        { id: "fashion-1", category: "FASHION & CONSUMER GOODS", tags: ["WMS"], title: "F&F 패션 물류 자동화 설비 연동 고도화", description: "RFID 및 자동화 설비(Sorter, DAS 등)와 유기적으로 연동되는 WMS를 구축하여 물류 속도를 혁신했습니다.", highlights: ["자동화 설비 커스텀 연동", "1~3차 단계적 고도화 완료"], icon: "fas fa-tshirt", customer: "F&F" },
-        { id: "fashion-2", category: "FASHION & CONSUMER GOODS", tags: ["OMS", "WMS"], title: "신성통상 통합 관리 및 4차 고도화", description: "전국 18개 패션 물류 거점을 아우르는 통합 시스템을 구축하여 효율적인 재고 운영 체계를 마련했습니다.", highlights: ["전국 18개 센터 통합", "4차 연속 고도화 신뢰 관계"], icon: "fas fa-shirt", customer: "신성통상" }
+        { id: "ref-aut-001", category: "AUTOMOTIVE",                   tags: ["AMR", "AFL", "TAMS"],        icon: "fas fa-car-side" },
+        { id: "ref-aut-002", category: "AUTOMOTIVE",                   tags: ["AMR", "TAMS"],               icon: "fas fa-gears" },
+        { id: "ref-bat-001", category: "BATTERY & ENERGY",             tags: ["AMR", "TAMS"],               icon: "fas fa-battery-full" },
+        { id: "ref-bat-002", category: "BATTERY & ENERGY",             tags: ["AMR"],                       icon: "fas fa-car-battery" },
+        { id: "ref-bat-003", category: "BATTERY & ENERGY",             tags: ["AMR", "TAMS", "WMS"],        icon: "fas fa-sun" },
+        { id: "ref-bat-004", category: "BATTERY & ENERGY",             tags: ["AMR"],                       icon: "fas fa-charging-station" },
+        { id: "ref-bat-005", category: "BATTERY & ENERGY",             tags: ["AMR"],                       icon: "fas fa-bolt" },
+        { id: "ref-bat-006", category: "BATTERY & ENERGY",             tags: ["WMS"],                       icon: "fas fa-battery-half" },
+        { id: "ref-bat-007", category: "BATTERY & ENERGY",             tags: ["WMS"],                       icon: "fas fa-flask" },
+        { id: "ref-sem-001", category: "SEMICONDUCTOR & ELECTRONICS",  tags: ["TAMS"],                      icon: "fas fa-server" },
+        { id: "ref-sem-002", category: "SEMICONDUCTOR & ELECTRONICS",  tags: ["AFL", "TAMS"],               icon: "fas fa-cpu" },
+        { id: "ref-sem-003", category: "SEMICONDUCTOR & ELECTRONICS",  tags: ["WCS"],                       icon: "fas fa-microchip" },
+        { id: "ref-sem-004", category: "SEMICONDUCTOR & ELECTRONICS",  tags: ["AMR"],                       icon: "fas fa-tv" },
+        { id: "ref-sem-005", category: "SEMICONDUCTOR & ELECTRONICS",  tags: ["WMS"],                       icon: "fas fa-lightbulb" },
+        { id: "ref-sem-006", category: "SEMICONDUCTOR & ELECTRONICS",  tags: ["WMS"],                       icon: "fas fa-microchip" },
+        { id: "ref-foo-001", category: "FOOD & MANUFACTURING",         tags: ["WMS", "TMS", "OMS"],         icon: "fas fa-industry" },
+        { id: "ref-foo-002", category: "FOOD & MANUFACTURING",         tags: ["OMS", "WMS", "VMS"],         icon: "fas fa-industry" },
+        { id: "ref-foo-003", category: "FOOD & MANUFACTURING",         tags: ["TMS"],                       icon: "fas fa-bread-slice" },
+        { id: "ref-foo-004", category: "FOOD & MANUFACTURING",         tags: ["TMS"],                       icon: "fas fa-wine-bottle" },
+        { id: "ref-dis-001", category: "DISTRIBUTION & FULFILLMENT",   tags: ["OMS", "WMS", "VMS"],         icon: "fas fa-store" },
+        { id: "ref-dis-002", category: "DISTRIBUTION & FULFILLMENT",   tags: ["OMS", "WMS", "TMS", "VMS"], icon: "fas fa-rocket" },
+        { id: "ref-dis-003", category: "DISTRIBUTION & FULFILLMENT",   tags: ["WMS", "TMS"],                icon: "fas fa-truck-fast" },
+        { id: "ref-fas-001", category: "FASHION & CONSUMER GOODS",     tags: ["WMS"],                       icon: "fas fa-shirt" },
+        { id: "ref-fas-002", category: "FASHION & CONSUMER GOODS",     tags: ["OMS", "WMS"],                icon: "fas fa-tshirt" },
+        { id: "ref-fas-003", category: "FASHION & CONSUMER GOODS",     tags: ["WMS"],                       icon: "fas fa-shirt" }
     ];
 
     currentPage = 1;
@@ -444,10 +451,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     : (dict['reference.no_results'] || '해당하는 사례가 없습니다.');
 
                 caseGrid.innerHTML = paginatedData.length > 0 ? paginatedData.map(caseItem => {
-                    const title = dict[`reference.case.${caseItem.id}.title`] || caseItem.title;
-                    const desc = dict[`reference.case.${caseItem.id}.desc`] || caseItem.description;
-                    const customer = dict[`reference.case.${caseItem.id}.customer`] || caseItem.customer;
-                    const highlights = caseItem.highlights.map((h, idx) => dict[`reference.case.${caseItem.id}.h${idx + 1}`] || h);
+                    const title = dict[`case.${caseItem.id}.title`] || '';
+                    const desc = dict[`case.${caseItem.id}.desc`] || '';
+                    const h1 = dict[`case.${caseItem.id}.h1`] || '';
+                    const h2 = dict[`case.${caseItem.id}.h2`] || '';
+                    const highlights = [h1, h2].filter(h => h !== '');
 
                     return `
                     <div id="${caseItem.id}" class="case-card-horizontal fade-in">

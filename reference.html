@@ -172,25 +172,31 @@
         document.addEventListener('DOMContentLoaded', () => {
             // Case Study Static Mapping
             const caseStudyData = [
-                { id: "auto-1", category: "AUTOMOTIVE", tags: ["AMR", "AFL", "TAMS"], icon: "fas fa-car-side" },
-                { id: "auto-2", category: "AUTOMOTIVE", tags: ["AMR", "TAMS"], icon: "fas fa-gears" },
-                { id: "batt-1", category: "BATTERY & ENERGY", tags: ["AMR", "TAMS"], icon: "fas fa-battery-full" },
-                { id: "batt-2", category: "BATTERY & ENERGY", tags: ["AMR"], icon: "fas fa-car-battery" },
-                { id: "batt-3", category: "BATTERY & ENERGY", tags: ["AMR", "TAMS", "WMS"], icon: "fas fa-sun" },
-                { id: "batt-4", category: "BATTERY & ENERGY", tags: ["AMR"], icon: "fas fa-charging-station" },
-                { id: "batt-5", category: "BATTERY & ENERGY", tags: ["AMR"], icon: "fas fa-bolt" },
-                { id: "semi-1", category: "SEMICONDUCTOR & ELECTRONICS", tags: ["AFL", "TAMS"], icon: "fas fa-cpu" },
-                { id: "semi-2", category: "SEMICONDUCTOR & ELECTRONICS", tags: ["AMR"], icon: "fas fa-tv" },
-                { id: "semi-3", category: "SEMICONDUCTOR & ELECTRONICS", tags: ["WMS"], icon: "fas fa-lightbulb" },
-                { id: "semi-4", category: "SEMICONDUCTOR & ELECTRONICS", tags: ["WMS"], icon: "fas fa-microchip" },
-                { id: "food-1", category: "FOOD & MANUFACTURING", tags: ["WMS", "TMS", "OMS"], icon: "fas fa-egg" },
-                { id: "food-2", category: "FOOD & MANUFACTURING", tags: ["OMS", "WMS", "VMS"], icon: "fas fa-bread-slice" },
-                { id: "food-3", category: "FOOD & MANUFACTURING", tags: ["TMS"], icon: "fas fa-truck-fast" },
-                { id: "food-4", category: "FOOD & MANUFACTURING", tags: ["TMS"], icon: "fas fa-wine-bottle" },
-                { id: "dist-1", category: "DISTRIBUTION & FULFILLMENT", tags: ["OMS", "WMS", "VMS"], icon: "fas fa-store" },
-                { id: "dist-2", category: "DISTRIBUTION & FULFILLMENT", tags: ["OMS", "WMS", "TMS"], icon: "fas fa-rocket" },
-                { id: "fashion-1", category: "FASHION & CONSUMER GOODS", tags: ["WMS"], icon: "fas fa-shirt" },
-                { id: "fashion-2", category: "FASHION & CONSUMER GOODS", tags: ["OMS", "WMS"], icon: "fas fa-tshirt" }
+                { id: "ref-aut-001", category: "AUTOMOTIVE", tags: ["AMR", "AFL", "TAMS"], icon: "fas fa-car-side" },
+                { id: "ref-aut-002", category: "AUTOMOTIVE", tags: ["AMR", "TAMS"], icon: "fas fa-gears" },
+                { id: "ref-bat-001", category: "BATTERY & ENERGY", tags: ["AMR", "TAMS"], icon: "fas fa-battery-full" },
+                { id: "ref-bat-002", category: "BATTERY & ENERGY", tags: ["AMR"], icon: "fas fa-car-battery" },
+                { id: "ref-bat-003", category: "BATTERY & ENERGY", tags: ["AMR", "TAMS", "WMS"], icon: "fas fa-sun" },
+                { id: "ref-bat-004", category: "BATTERY & ENERGY", tags: ["AMR"], icon: "fas fa-charging-station" },
+                { id: "ref-bat-005", category: "BATTERY & ENERGY", tags: ["AMR"], icon: "fas fa-bolt" },
+                { id: "ref-bat-006", category: "BATTERY & ENERGY", tags: ["WMS"], icon: "fas fa-battery-half" },
+                { id: "ref-bat-007", category: "BATTERY & ENERGY", tags: ["WMS"], icon: "fas fa-flask" },
+                { id: "ref-sem-001", category: "SEMICONDUCTOR & ELECTRONICS", tags: ["TAMS"], icon: "fas fa-server" },
+                { id: "ref-sem-002", category: "SEMICONDUCTOR & ELECTRONICS", tags: ["AFL", "TAMS"], icon: "fas fa-cpu" },
+                { id: "ref-sem-003", category: "SEMICONDUCTOR & ELECTRONICS", tags: ["WCS"], icon: "fas fa-microchip" },
+                { id: "ref-sem-004", category: "SEMICONDUCTOR & ELECTRONICS", tags: ["AMR"], icon: "fas fa-tv" },
+                { id: "ref-sem-005", category: "SEMICONDUCTOR & ELECTRONICS", tags: ["WMS"], icon: "fas fa-lightbulb" },
+                { id: "ref-sem-006", category: "SEMICONDUCTOR & ELECTRONICS", tags: ["WMS"], icon: "fas fa-microchip" },
+                { id: "ref-foo-001", category: "FOOD & MANUFACTURING", tags: ["WMS", "TMS", "OMS"], icon: "fas fa-industry" },
+                { id: "ref-foo-002", category: "FOOD & MANUFACTURING", tags: ["OMS", "WMS", "VMS"], icon: "fas fa-industry" },
+                { id: "ref-foo-003", category: "FOOD & MANUFACTURING", tags: ["TMS"], icon: "fas fa-bread-slice" },
+                { id: "ref-foo-004", category: "FOOD & MANUFACTURING", tags: ["TMS"], icon: "fas fa-wine-bottle" },
+                { id: "ref-dis-001", category: "DISTRIBUTION & FULFILLMENT", tags: ["OMS", "WMS", "VMS"], icon: "fas fa-store" },
+                { id: "ref-dis-002", category: "DISTRIBUTION & FULFILLMENT", tags: ["OMS", "WMS", "TMS", "VMS"], icon: "fas fa-rocket" },
+                { id: "ref-dis-003", category: "DISTRIBUTION & FULFILLMENT", tags: ["WMS", "TMS"], icon: "fas fa-truck-fast" },
+                { id: "ref-fas-001", category: "FASHION & CONSUMER GOODS", tags: ["WMS"], icon: "fas fa-shirt" },
+                { id: "ref-fas-002", category: "FASHION & CONSUMER GOODS", tags: ["OMS", "WMS"], icon: "fas fa-tshirt" },
+                { id: "ref-fas-003", category: "FASHION & CONSUMER GOODS", tags: ["WMS"], icon: "fas fa-shirt" }
             ];
 
             let currentCategory = 'All';
@@ -278,7 +284,9 @@
 
             // Listen for Language Change Events from main.js
             window.addEventListener('languageChanged', (e) => {
-                const lang = e.detail.language;
+                // 필터 탭을 비워서 새 언어로 재생성되도록 함
+                const filterContainer = document.querySelector('.filter-container');
+                if (filterContainer) filterContainer.innerHTML = '';
                 renderCaseStudies(currentCategory, 1);
             });
 
