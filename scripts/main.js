@@ -266,6 +266,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const caseStudyData = [
         { id: "ref-aut-001", category: "AUTOMOTIVE",                   tags: ["AMR", "AFL", "TAMS"],        icon: "fas fa-car-side" },
         { id: "ref-aut-002", category: "AUTOMOTIVE",                   tags: ["AMR", "TAMS"],               icon: "fas fa-gears" },
+        { id: "ref-aut-003", category: "AUTOMOTIVE",                   tags: ["AMR", "TAMS"],               icon: "fas fa-plug-circle-bolt" },
         { id: "ref-bat-001", category: "BATTERY & ENERGY",             tags: ["AMR", "TAMS"],               icon: "fas fa-battery-full" },
         { id: "ref-bat-002", category: "BATTERY & ENERGY",             tags: ["AMR"],                       icon: "fas fa-car-battery" },
         { id: "ref-bat-003", category: "BATTERY & ENERGY",             tags: ["AMR", "TAMS", "WMS"],        icon: "fas fa-sun" },
@@ -279,6 +280,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: "ref-sem-004", category: "SEMICONDUCTOR & ELECTRONICS",  tags: ["AMR"],                       icon: "fas fa-tv" },
         { id: "ref-sem-005", category: "SEMICONDUCTOR & ELECTRONICS",  tags: ["WMS"],                       icon: "fas fa-lightbulb" },
         { id: "ref-sem-006", category: "SEMICONDUCTOR & ELECTRONICS",  tags: ["WMS"],                       icon: "fas fa-microchip" },
+        { id: "ref-sem-007", category: "SEMICONDUCTOR & ELECTRONICS",  tags: ["AFL", "TAMS", "MCS"],         icon: "fas fa-shield-halved" },
         { id: "ref-foo-001", category: "FOOD & MANUFACTURING",         tags: ["WMS", "TMS", "OMS"],         icon: "fas fa-industry" },
         { id: "ref-foo-002", category: "FOOD & MANUFACTURING",         tags: ["OMS", "WMS", "VMS"],         icon: "fas fa-industry" },
         { id: "ref-foo-003", category: "FOOD & MANUFACTURING",         tags: ["TMS"],                       icon: "fas fa-bread-slice" },
@@ -397,33 +399,29 @@ document.addEventListener('DOMContentLoaded', () => {
             const lang = localStorage.getItem('preferredLanguage') || 'ko';
             const dicts = window.i18nData || { ko: {}, en: {} };
             const dict = dicts[lang] || dicts['ko'] || {};
-            
-            const industries = [
-                { id: 'auto-1', icon: 'fas fa-car-side' },
-                { id: 'auto-2', icon: 'fas fa-cogs' },
-                { id: 'batt-1', icon: 'fas fa-battery-full' },
-                { id: 'batt-2', icon: 'fas fa-microchip' }
+
+            // 메인 홈 레퍼런스 카드: 새 케이스 2개 + 대표 기존 케이스 2개
+            const homeCards = [
+                { id: 'ref-aut-003', icon: 'fas fa-plug-circle-bolt', category: 'AUTOMOTIVE' },
+                { id: 'ref-sem-007', icon: 'fas fa-shield-halved',    category: 'SEMICONDUCTOR & ELECTRONICS' },
+                { id: 'ref-sem-001', icon: 'fas fa-server',            category: 'SEMICONDUCTOR & ELECTRONICS' },
+                { id: 'ref-foo-001', icon: 'fas fa-industry',          category: 'FOOD & MANUFACTURING' }
             ];
 
-            const itemsHtml = industries.map(ind => {
-                const title = dict[`reference.case.${ind.id}.title`] || '';
-                const desc = dict[`reference.case.${ind.id}.desc`] || '';
-                const customer = dict[`reference.case.${ind.id}.customer`] || '';
-                const highlights = [
-                    dict[`reference.case.${ind.id}.h1`] || '',
-                    dict[`reference.case.${ind.id}.h2`] || ''
-                ].filter(h => h !== '');
-
-                const category = ind.id.startsWith('auto') ? 'AUTOMOTIVE' : 'BATTERY & ENERGY';
+            const itemsHtml = homeCards.map(card => {
+                const title = dict[`case.${card.id}.title`] || '';
+                const desc  = dict[`case.${card.id}.desc`]  || '';
+                const h1    = dict[`case.${card.id}.h1`]    || '';
+                const h2    = dict[`case.${card.id}.h2`]    || '';
+                const highlights = [h1, h2].filter(h => h !== '');
 
                 return `
-                <a href="reference.html?filter=${encodeURIComponent(category)}" class="use-case-card">
-                    <div class="case-img"><i class="${ind.icon}"></i></div>
+                <a href="reference.html?filter=${encodeURIComponent(card.category)}" class="use-case-card">
+                    <div class="case-img"><i class="${card.icon}"></i></div>
                     <div class="case-info">
-                        <span class="case-card-category" style="color: #7C0b47; font-weight: 700;">${category}</span>
+                        <span class="case-card-category" style="color: #7C0b47; font-weight: 700;">${card.category}</span>
                         <h4 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 15px;">${title}</h4>
-                        <div class="case-customer-mini">${lang === 'en' ? 'Principal Customer' : '주요 고객사'}: <strong>${customer}</strong></div>
-                        <p style="font-size: 0.95rem; color: #555;">${desc}</p>
+                        <p style="font-size: 0.95rem; color: #555; margin-bottom: 14px;">${desc}</p>
                         <div class="case-tags">
                             ${highlights.map(h => `<span class="case-meta-tag">${h}</span>`).join('')}
                         </div>
