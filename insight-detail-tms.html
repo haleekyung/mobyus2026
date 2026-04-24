@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TMS Insight - MOBYUS</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&family=Pretendard+Variable:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <script src="scripts/i18n-data.js"></script>
+    <script src="scripts/i18n.js"></script>
+    <style>
+        /* Bilingual Content Toggle */
+        html[lang="en"] .insight-title-ko {
+            display: none !important;
+        }
+
+        html[lang="en"] .insight-title-en {
+            display: block !important;
+            font-size: clamp(2rem, 4vw, 3.2rem) !important;
+            color: #111 !important;
+            font-weight: 700 !important;
+            line-height: 1.3 !important;
+            margin-bottom: 35px !important;
+        }
+
+        html[lang="en"] [data-i18n] {
+            font-family: 'Outfit', 'Pretendard Variable', sans-serif !important;
+        }
+        /* ===== Insights Detail Styles ===== */
+
+        .insight-header {
+            padding: 40px 0 50px;
+            background: #fff;
+        }
+
+        /* Breadcrumb */
+        .insight-breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+            color: #6b7280;
+            margin-bottom: 40px;
+            font-weight: 500;
+        }
+
+        .insight-breadcrumb a {
+            color: #6b7280;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .insight-breadcrumb a:hover {
+            color: var(--primary-color);
+        }
+
+        .insight-breadcrumb i {
+            font-size: 0.7rem;
+            color: #d1d5db;
+        }
+
+        /* Meta Top */
+        .insight-meta-top {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .insight-tag {
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: #f3f4f6;
+            color: #4b5563;
+        }
+
+        .badge-tech {
+            background: #e0f2fe;
+            color: #0369a1;
+        }
+
+        /* Titles */
+        .insight-title-ko {
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            font-weight: 700;
+            color: #111;
+            line-height: 1.3;
+            margin-bottom: 16px;
+            word-break: keep-all;
+            letter-spacing: -0.02em;
+        }
+
+        .insight-title-en {
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            font-weight: 400;
+            color: #9ca3af;
+            font-family: var(--font-heading);
+            margin-bottom: 35px;
+        }
+
+        /* Meta Bottom */
+        .insight-meta-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 25px;
+            border-top: 1px solid #f3f4f6;
+            color: #6b7280;
+            font-size: 0.95rem;
+        }
+
+        .insight-meta-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .insight-meta-info span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .insight-share-btn {
+            background: none;
+            border: 1px solid #e5e7eb;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #4b5563;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .insight-share-btn:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+            background: #f9fafb;
+        }
+
+        /* Hero Image */
+        .insight-hero-img {
+            width: 100%;
+            height: clamp(300px, 40vw, 550px);
+            border-radius: 24px;
+            margin-bottom: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .insight-hero-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .insight-hero-img::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.1) 0%, transparent 60%);
+        }
+
+        /* Content Body (Markdown style) */
+        .insight-content-body {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: #374151;
+        }
+
+        .insight-content-body h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #111;
+            margin: 60px 0 25px;
+            line-height: 1.4;
+            letter-spacing: -0.02em;
+        }
+
+        .insight-content-body h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin: 40px 0 20px;
+            line-height: 1.4;
+        }
+
+        .insight-content-body p {
+            margin-bottom: 24px;
+            word-break: keep-all;
+        }
+
+        .insight-content-body ul,
+        .insight-content-body ol {
+            margin-bottom: 30px;
+            padding-left: 24px;
+        }
+
+        .insight-content-body li {
+            margin-bottom: 12px;
+            word-break: keep-all;
+        }
+
+        /* Quote / Callout */
+        .insight-callout {
+            background: #f8fafc;
+            border-left: 4px solid var(--primary-color);
+            padding: 25px 30px;
+            border-radius: 0 16px 16px 0;
+            margin: 40px 0;
+            font-size: 1.1rem;
+            color: #4b5563;
+            font-style: italic;
+        }
+
+        /* Table */
+        .process-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 40px 0;
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .process-table th {
+            background: #f3f4f6;
+            padding: 16px;
+            font-weight: 700;
+            color: #111;
+            text-align: left;
+            border-bottom: 2px solid #e5e7eb;
+        }
+
+        .process-table td {
+            padding: 16px;
+            border-bottom: 1px solid #e5e7eb;
+            color: #374151;
+            vertical-align: top;
+        }
+
+        .process-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Next Step CTA Banner (Type E) */
+        .insight-cta-banner {
+            max-width: 1000px;
+            margin: 80px auto;
+            background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
+            border-radius: 24px;
+            padding: 50px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 20px 40px rgba(30, 58, 138, 0.15);
+        }
+
+        .cta-banner-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #93c5fd;
+        }
+
+        .cta-banner-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            word-break: keep-all;
+        }
+
+        .cta-banner-desc {
+            font-size: 1.05rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 30px;
+            line-height: 1.6;
+            word-break: keep-all;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary-alt {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 32px;
+            background: white;
+            color: #1e3a8a;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: transform 0.2s;
+        }
+
+        .btn-primary-alt:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-outline-alt {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 32px;
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .btn-outline-alt:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Related Insights */
+        .related-insights {
+            padding: 80px 0 100px;
+            background: #f9fafb;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .related-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 40px;
+        }
+
+        .related-header h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #111;
+        }
+
+        .view-all-link {
+            color: var(--primary-color);
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .view-all-link:hover {
+            text-decoration: underline;
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .insight-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid #f0f0f0;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .insight-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.09);
+        }
+
+        .card-thumb {
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            overflow: hidden;
+        }
+
+        .card-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-body {
+            padding: 25px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-badges {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #111;
+            line-height: 1.4;
+            margin-bottom: 10px;
+        }
+
+        .badge-type {
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .badge-cat {
+            padding: 3px 8px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            background: #f3f4f6;
+            color: #6b7280;
+        }
+
+        @media (max-width: 900px) {
+            .related-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .insight-title-ko {
+                font-size: 2rem;
+            }
+
+            .insight-hero-img {
+                height: 250px;
+                margin-bottom: 40px;
+                border-radius: 16px;
+            }
+
+            .insight-cta-banner {
+                padding: 40px 20px;
+            }
+
+            .related-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header id="gnb"></header>
+
+    <main>
+        <section class="insight-header">
+            <div class="container fade-in">
+                <!-- Breadcrumb -->
+                <div class="insight-breadcrumb">
+                    <a href="index.html" data-i18n="gnb.home">Home</a>
+                    <i class="fas fa-chevron-right"></i>
+                    <a href="resource-guide.html" data-i18n="gnb.insights">Insights</a>
+                    <i class="fas fa-chevron-right"></i>
+                    <a href="resource-guide.html?filter=기술" data-i18n="insights.filter.tech">기술</a>
+                    <i class="fas fa-chevron-right"></i>
+                    <span style="color: #111;" data-i18n="ins.tms.breadcrumb">모비어스 TMS 시뮬레이션 및 엔진의 혁신</span>
+                </div>
+
+                <!-- Meta Top -->
+                <div class="insight-meta-top">
+                    <span class="insight-tag" data-i18n="insights.filter.tech">기술</span>
+                    <span class="insight-tag badge-tech" data-i18n="ins.type.blog">Tech Blog</span>
+                </div>
+
+                <!-- Title -->
+                <h1 class="insight-title-ko" data-i18n="ins.tms.title">[TMS Insight] 모비어스 TMS 시뮬레이션 및 엔진의 혁신</h1>
+                <div class="insight-title-en" data-i18n="ins.tms.title_en">Innovation in Logistics Brain: Optimizing Delivery Planning and Simulating What-if Scenarios</div>
+
+                <!-- Meta Bottom -->
+                <div class="insight-meta-bottom">
+                    <div class="insight-meta-info">
+                        <span data-i18n="ins.tms.date"><i class="far fa-calendar"></i> 작성일: 2026.04.24</span>
+                        <span data-i18n="ins.tms.time"><i class="far fa-clock"></i> 약 8분 소요</span>
+                    </div>
+                    <button class="insight-share-btn" title="공유하기" onclick="alert('링크가 복사되었습니다.')">
+                        <i class="fas fa-link"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Content Area -->
+        <section style="padding-bottom: 60px;">
+            <div class="container fade-in-section">
+
+                <!-- Hero Image -->
+                <div class="insight-hero-img">
+                    <img src="images/thumbnail_08.png" alt="TMS Insight">
+                </div>
+
+                <!-- Article Body -->
+                <article class="insight-content-body">
+                    <h2 data-i18n="ins.tms.h1">1. TMS 배송계획 최적화 엔진: 물류의 '디지털 브레인'</h2>
+                    <p data-i18n="ins.tms.p1">운송 관리 시스템(TMS)의 핵심은 수만 가지 경로 조합 중 최적의 해답을 실시간으로 찾아내는 최적화 엔진에 있습니다. 모비어스 TMS의 엔진은 단순히 당일 배송 계획을 수립하는 것을 넘어, 시뮬레이션을 통해 미래를 예측하고 과거를 혁신하는 전략적 도구로 활용됩니다.</p>
+                    <ul>
+                        <li data-i18n="ins.tms.li1_1"><strong>배송계획 시뮬레이션(Delivery Planning Simulation):</strong> 실제 배송 전 가상 시나리오를 통해 효율성을 검증하는 <strong>'디지털 리허설'</strong>입니다. 불확실성이 높은 시장 환경에서 "What-if(만약의 상황)"에 대한 대응력을 극대화합니다.</li>
+                        <li data-i18n="ins.tms.li1_2"><strong>사후분석 시뮬레이션(Post-Execution Simulation):</strong> 실제 수행 데이터를 기반으로 '디지털 트윈' 검증을 실시합니다. 단순한 결과 확인을 넘어 "왜 계획과 차이가 발생했는가?"를 정밀 분석하여 지속적인 운영 개선을 이끌어냅니다.</li>
+                    </ul>
+
+                    <h2 data-i18n="ins.tms.h2">2. 모비어스 TMS만의 핵심 시뮬레이션 역량</h2>
+                    <p data-i18n="ins.tms.p2">모비어스 TMS는 과거 운송 데이터를 기반으로 제약 조건과 알고리즘을 유연하게 변경하며 실제 운영 결과와 정교하게 비교 분석합니다.</p>
+                    
+                    <h3 data-i18n="ins.tms.h2_1">① What-if 시나리오 분석</h3>
+                    <p data-i18n="ins.tms.p2_1">운영 조건 변화에 따른 결과를 예측하여 의사결정을 지원합니다.</p>
+                    <ul>
+                        <li data-i18n="ins.tms.li2_1_1"><strong>Case:</strong> 차량 유형 및 대수 변경, 적재 용량(Capacity) 및 최대 착지수 조정, 물동량 급증 시뮬레이션 등.</li>
+                        <li data-i18n="ins.tms.li2_1_2"><strong>Value:</strong> 변화에 따른 배송 비용과 시간의 변동 폭을 사전에 예측하여 리스크를 최소화합니다.</li>
+                    </ul>
+
+                    <h3 data-i18n="ins.tms.h2_2">② 동적 경로 최적화 (Dynamic Routing)</h3>
+                    <p data-i18n="ins.tms.p2_2">실시간 교통 정보와 과거 통계 데이터를 융합하여 경로의 정확도를 높입니다.</p>
+                    <ul>
+                        <li data-i18n="ins.tms.li2_2_1"><strong>Function:</strong> 단순 최단 거리가 아닌 시간대별 정체 구간을 회피하는 경로를 산출합니다.</li>
+                        <li data-i18n="ins.tms.li2_2_2"><strong>Value:</strong> 도착 예정 시간(ETA)의 정확도를 획기적으로 향상시켜 고객 신뢰도를 높입니다.</li>
+                    </ul>
+
+                    <h3 data-i18n="ins.tms.h2_3">③ 권역 및 거점 재설계 시뮬레이션 (Network Design)</h3>
+                    <p data-i18n="ins.tms.p2_3">장기적인 관점에서 물류 네트워크 최적화 효과를 평가합니다.</p>
+                    <ul>
+                        <li data-i18n="ins.tms.li2_3_1"><strong>Function:</strong> 배송 권역 조정 및 물류 센터(DC) 위치 변경이 배송 계획에 미치는 영향을 분석합니다.</li>
+                        <li data-i18n="ins.tms.li2_3_2"><strong>Value:</strong> 고객 분포 기반의 거점 최적화를 통해 전체 물류비 절감 포인트를 도출합니다.</li>
+                    </ul>
+
+                    <h2 data-i18n="ins.tms.h3">3. 모비어스 TMS의 4단계 최적화 프로세스</h2>
+                    <p data-i18n="ins.tms.p3">모비어스는 복수 상차지와 하역지를 관리하는 MPMD(Multi-Pick Multi-drop) 환경에서도 탁월한 성능을 발휘합니다. 특히 아시아 물류 특성인 '밀집 지역 기반 차량 투입 최소화' 모델을 구현하기 위해 다음과 같은 체계적인 프로세스를 거칩니다.</p>
+                    
+                    <table class="process-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 15%;" data-i18n="ins.tms.th1">단계</th>
+                                <th style="width: 30%;" data-i18n="ins.tms.th2">프로세스</th>
+                                <th style="width: 55%;" data-i18n="ins.tms.th3">핵심 내용</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td data-i18n="ins.tms.td1_1">Step 1</td>
+                                <td data-i18n="ins.tms.td1_2">데이터 클렌징 및 그룹화</td>
+                                <td data-i18n="ins.tms.td1_3">지리적 밀집도를 분석하여 가용 차량 수에 맞춰 구역을 분할하고, 물동량에 최적화된 톤급 차량을 배정합니다.</td>
+                            </tr>
+                            <tr>
+                                <td data-i18n="ins.tms.td2_1">Step 2</td>
+                                <td data-i18n="ins.tms.td2_2">차량 단위 배송 계획</td>
+                                <td data-i18n="ins.tms.td2_3">차량별 적재 제약을 고려하여 물량을 할당합니다. 제약 초과 시 그룹화(Clustering)를 반복 수행하여 실행 가능한 최적 조합을 도출합니다.</td>
+                            </tr>
+                            <tr>
+                                <td data-i18n="ins.tms.td3_1">Step 3</td>
+                                <td data-i18n="ins.tms.td3_2">경로 최적화 (Routing)</td>
+                                <td data-i18n="ins.tms.td3_3">TSP 알고리즘과 실시간/통계 교통 데이터를 결합하여 최적의 방문 순서를 결정하고 이동 시간을 정밀 산출합니다.</td>
+                            </tr>
+                            <tr>
+                                <td data-i18n="ins.tms.td4_1">Step 4</td>
+                                <td data-i18n="ins.tms.td4_2">종합 비용 검증</td>
+                                <td data-i18n="ins.tms.td4_3">총 주행 거리, 시간, 운송비, 유류비 등을 산출하여 최종 계획이 목표 원가 이내인지 철저히 검증합니다.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </article>
+
+            </div>
+
+            <!-- CTA Banner -->
+            <div class="container fade-in-section">
+                <div class="insight-cta-banner">
+                    <i class="fas fa-truck cta-banner-icon"></i>
+                    <h3 class="cta-banner-title" data-i18n="ins.tms.cta_title">TMS 최적화 솔루션 도입 문의</h3>
+                    <p class="cta-banner-desc" data-i18n="ins.tms.cta_desc">귀사의 배송 물동량과 차량 운영 데이터를 기반으로 최적의 TMS 엔진 도입 효과를 제안해 드립니다.</p>
+
+                    <div class="cta-buttons">
+                        <a href="contact.html" class="btn-primary-alt" data-i18n="ins.tms.cta_btn1">도입 상담 신청 <i
+                                class="fas fa-arrow-right"></i></a>
+                        <a href="solution-tms.html" class="btn-outline-alt" data-i18n="ins.tms.cta_btn2">TMS 솔루션 자세히 보기 <i
+                                class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Related Insights -->
+        <section class="related-insights">
+            <div class="container fade-in-section">
+                <div class="related-header">
+                    <h3 data-i18n="ins.common.related">Related Insights</h3>
+                    <a href="resource-guide.html" class="view-all-link" data-i18n="ins.back_to_list">목록으로 돌아가기 <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="related-grid">
+                    <a class="insight-card" href="insight-detail-roi.html">
+                        <div class="card-thumb">
+                            <img src="images/thumbnail_05.png" alt="물류 자동화 ROI 산출 가이드">
+                        </div>
+                        <div class="card-body">
+                            <div class="card-badges">
+                                <span class="badge-type badge-starter" style="background:#ede9ff; color:#6d28d9;" data-i18n="ins.type.guide">Starter Guide</span>
+                                <span class="badge-cat" data-i18n="insights.filter.tech">기술</span>
+                            </div>
+                            <div class="card-title" data-i18n="ins.e3.title">물류 자동화 ROI 산출 가이드 — 투자 비용부터 회수까지</div>
+                        </div>
+                    </a>
+                    
+                    <a class="insight-card" href="insight-detail-tams.html">
+                        <div class="card-thumb">
+                            <img src="images/thumbnail_06.png" alt="TAMS 아키텍처">
+                        </div>
+                        <div class="card-body">
+                            <div class="card-badges">
+                                <span class="badge-type badge-tech" data-i18n="ins.type.blog">Tech Blog</span>
+                                <span class="badge-cat" data-i18n="insights.filter.tech">기술</span>
+                            </div>
+                            <div class="card-title" data-i18n="ins.t1.title">[Tech Insight] TAMS 아키텍처 심층 해부 — Heterogeneous Robot Integration</div>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer id="contact"></footer>
+    <script src="scripts/main.js"></script>
+    <script>
+        // Sync html lang attribute for CSS visibility logic
+        window.addEventListener('languageChanged', (e) => {
+            document.documentElement.lang = e.detail.lang;
+        });
+        // Set initial state
+        document.documentElement.lang = localStorage.getItem('preferredLanguage') || 'ko';
+    </script>
+</body>
+
+</html>
