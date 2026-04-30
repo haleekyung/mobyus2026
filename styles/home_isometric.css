@@ -383,6 +383,104 @@
 }
 
 /* ==================================
+   Tooltip for Interactive Architecture Objects
+   ================================== */
+.arch-layer-item::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(15, 23, 42, 0.9);
+    color: #ffffff;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 10px; /* Scales up visually when parent scales */
+    font-weight: 500;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    pointer-events: none;
+    z-index: 30;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.arch-layer-item:hover::after {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(2px);
+}
+
+/* ==================================
+   Invisible Hotspot for Tooltips (No Image)
+   ================================== */
+.arch-hotspot {
+    position: absolute;
+    display: block;
+    cursor: pointer;
+    z-index: 10;
+    /* Uncomment below during development to see the boxes */
+    /* border: 1px dashed rgba(255,0,0,0.5); background: rgba(255,0,0,0.1); */
+}
+
+.arch-hotspot::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: -35px; /* Slightly lower because it doesn't scale */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(15, 23, 42, 0.9);
+    color: #ffffff;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 13px; /* Normal font size since parent doesn't scale */
+    font-weight: 500;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    pointer-events: none;
+    z-index: 30;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.arch-hotspot:hover::after {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(-5px);
+}
+
+/* ==================================
+   Interaction Hint Floating Badge
+   ================================== */
+.interaction-hint {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(124, 11, 71, 0.9);
+    backdrop-filter: blur(4px);
+    color: #ffffff;
+    padding: 8px 16px;
+    border-radius: 30px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    z-index: 50;
+    pointer-events: none;
+    animation: bounceHint 2s infinite ease-in-out;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+}
+
+@keyframes bounceHint {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+/* ==================================
    Responsive Adjustments
    ================================== */
 @media (max-width: 1024px) {
@@ -399,6 +497,15 @@
 }
 
 @media (max-width: 768px) {
+    .interaction-hint {
+        bottom: -75px;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        width: max-content;
+        font-size: 0.8rem;
+        padding: 6px 12px;
+    }
     .isometric-visual-section {
         padding-bottom: 60px;
     }
@@ -416,7 +523,7 @@
         width: calc(100vw - 40px) !important;
         margin-left: calc(50% - 50vw + 20px) !important;
         margin-top: 30px !important;
-        margin-bottom: 30px !important;
+        margin-bottom: 70px !important;
     }
     .iso-world {
         transform: rotateX(60deg) rotateZ(-45deg) scale(0.65);

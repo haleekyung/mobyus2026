@@ -39,6 +39,20 @@
             display: block;
             pointer-events: none;
         }
+        
+        .hotspot-marker {
+            background: rgba(56, 189, 248, 0.4);
+            border: 2px dashed #38bdf8;
+            resize: both;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px #000;
+        }
+        
         textarea {
             width: 90%;
             max-width: 1000px;
@@ -60,6 +74,7 @@
             color: #0f172a;
             border: none;
             border-radius: 8px;
+            margin: 0 10px;
         }
         button:hover { background: #7dd3fc; }
         .instructions { font-size: 1.1rem; margin-bottom: 20px; color: #cbd5e1; }
@@ -67,63 +82,69 @@
 </head>
 <body>
     <h2>🎯 수동 좌표 튜닝 툴 (Visual Coordinate Picker)</h2>
-    <p class="instructions">마우스로 빨간 점선 박스 안의 이미지들을 드래그해서 원본 이미지의 정확한 위치에 딱 맞게 겹쳐보세요.<br>배경 이미지는 구분을 위해 살짝 흐리게(반투명하게) 처리해 두었습니다.<br>완료 후 <b>[최종 코드 복사하기]</b> 버튼을 누르시면 됩니다!</p>
+    <p class="instructions">
+        투명한 영역(핫스팟)을 만들려면 <b>[+ 투명 핫스팟 추가]</b> 버튼을 누르고 파란 박스를 배치/크기조절 하세요.<br>
+        오른쪽 아래 모서리를 드래그하면 크기를 조절할 수 있습니다.<br>
+        모두 완료 후 <b>[최종 코드 복사하기]</b> 버튼을 누르시면 됩니다!
+    </p>
     
     <div>
+        <button onclick="addHotspot()" style="background: #fbbf24;">+ 투명 핫스팟 추가</button>
         <button onclick="generateCode()">최종 코드 복사하기</button>
     </div>
     
     <div id="canvas-container">
-        <img id="bg-image" src="images/img_3layers_cropped.png" alt="Base">
-        <div class="draggable" id="Object_AFL_Clamp" style="left: 27.3610%; top: 89.2437%; width: 7.9370%;" title="Object_AFL_Clamp">
+        <!-- 베이스 이미지를 최신 super_tight.png 로 변경! -->
+        <img id="bg-image" src="images/img_3layers_super_tight.png" alt="Base">
+        <div class="draggable" id="Object_AFL_Clamp" style="left: 68.2164%; top: 72.8880%; width: 9.8095%;" title="Object_AFL_Clamp">
             <img src="images/3layers/04_Assets_Object/Object_AFL_Clamp.png" alt="Object_AFL_Clamp">
         </div>
-        <div class="draggable" id="Object_AFL_Lift_01" style="left: 64.7354%; top: 79.2557%; width: 7.9370%;" title="Object_AFL_Lift_01">
+        <div class="draggable" id="Object_AFL_Lift_01" style="left: 54.9510%; top: 81.0094%; width: 9.8095%;" title="Object_AFL_Lift_01">
             <img src="images/3layers/04_Assets_Object/Object_AFL_Lift_01.png" alt="Object_AFL_Lift_01">
         </div>
-        <div class="draggable" id="Object_AFL_Lift_02" style="left: 23.7441%; top: 77.7191%; width: 7.8366%;" title="Object_AFL_Lift_02">
+        <div class="draggable" id="Object_AFL_Lift_02" style="left: 25.5850%; top: 82.7169%; width: 9.6854%;" title="Object_AFL_Lift_02">
             <img src="images/3layers/04_Assets_Object/Object_AFL_Lift_02.png" alt="Object_AFL_Lift_02">
         </div>
-        <div class="draggable" id="Object_AFL_Lift_03" style="left: 32.3175%; top: 88.2833%; width: 7.8031%;" title="Object_AFL_Lift_03">
+        <div class="draggable" id="Object_AFL_Lift_03" style="left: 51.6917%; top: 70.6303%; width: 9.6441%;" title="Object_AFL_Lift_03">
             <img src="images/3layers/04_Assets_Object/Object_AFL_Lift_03.png" alt="Object_AFL_Lift_03">
         </div>
-        <div class="draggable" id="Object_AFL_Pallet_01" style="left: 66.6109%; top: 79.8319%; width: 8.3389%;" title="Object_AFL_Pallet_01">
+        <div class="draggable" id="Object_AFL_Pallet_01" style="left: 45.9438%; top: 85.1428%; width: 10.3063%;" title="Object_AFL_Pallet_01">
             <img src="images/3layers/04_Assets_Object/Object_AFL_Pallet_01.png" alt="Object_AFL_Pallet_01">
         </div>
-        <div class="draggable" id="Object_AFL_Pallet_02" style="left: 66.6109%; top: 79.8319%; width: 8.3054%;" title="Object_AFL_Pallet_02">
+        <div class="draggable" id="Object_AFL_Pallet_02" style="left: 11.8448%; top: 82.2845%; width: 10.2649%;" title="Object_AFL_Pallet_02">
             <img src="images/3layers/04_Assets_Object/Object_AFL_Pallet_02.png" alt="Object_AFL_Pallet_02">
         </div>
-        <div class="draggable" id="Object_AMR_01" style="left: 66.6109%; top: 78.0072%; width: 5.1909%;" title="Object_AMR_01">
+        <div class="draggable" id="Object_AMR_01" style="left: 30.0637%; top: 79.3845%; width: 6.4155%;" title="Object_AMR_01">
             <img src="images/3layers/04_Assets_Object/Object_AMR_01.png" alt="Object_AMR_01">
         </div>
-        <div class="draggable" id="Object_AMR_02" style="left: 33.1212%; top: 74.5498%; width: 5.1909%;" title="Object_AMR_02">
+        <div class="draggable" id="Object_AMR_02" style="left: 51.3309%; top: 80.2291%; width: 6.4155%;" title="Object_AMR_02">
             <img src="images/3layers/04_Assets_Object/Object_AMR_02.png" alt="Object_AMR_02">
         </div>
-        <div class="draggable" id="Object_AMR_03" style="left: 52.4113%; top: 85.4022%; width: 5.1909%;" title="Object_AMR_03">
+        <div class="draggable" id="Object_AMR_03" style="left: 41.5658%; top: 76.4820%; width: 6.4155%;" title="Object_AMR_03">
             <img src="images/3layers/04_Assets_Object/Object_AMR_03.png" alt="Object_AMR_03">
         </div>
-        <div class="draggable" id="Object_AMR_04" style="left: 23.0743%; top: 87.8031%; width: 5.4588%;" title="Object_AMR_04">
+        <div class="draggable" id="Object_AMR_04" style="left: 35.7132%; top: 70.8116%; width: 6.7467%;" title="Object_AMR_04">
             <img src="images/3layers/04_Assets_Object/Object_AMR_04.png" alt="Object_AMR_04">
         </div>
-        <div class="draggable" id="Object_AMR_Manipulator" style="left: 38.6135%; top: 88.1873%; width: 6.2291%;" title="Object_AMR_Manipulator">
+        <div class="draggable" id="Object_AMR_Manipulator" style="left: 38.1768%; top: 84.6568%; width: 7.6987%;" title="Object_AMR_Manipulator">
             <img src="images/3layers/04_Assets_Object/Object_AMR_Manipulator.png" alt="Object_AMR_Manipulator">
         </div>
-        <div class="draggable" id="Object_CMS" style="left: 37.5419%; top: 44.8739%; width: 9.9799%;" title="Object_CMS">
+        <div class="draggable" id="Object_CMS" style="left: 41.0378%; top: 39.0115%; width: 12.3344%;" title="Object_CMS">
             <img src="images/3layers/04_Assets_Object/Object_CMS.png" alt="Object_CMS">
         </div>
-        <div class="draggable" id="Object_TAMS" style="left: 68.3523%; top: 51.4046%; width: 9.9799%;" title="Object_TAMS">
+        <div class="draggable" id="Object_TAMS" style="left: 57.4515%; top: 39.1189%; width: 12.3344%;" title="Object_TAMS">
             <img src="images/3layers/04_Assets_Object/Object_TAMS.png" alt="Object_TAMS">
         </div>
-        <div class="draggable" id="Object_TMS" style="left: 62.7261%; top: 44.3938%; width: 9.9799%;" title="Object_TMS">
+        <div class="draggable" id="Object_TMS" style="left: 57.5147%; top: 44.9096%; width: 12.3344%;" title="Object_TMS">
             <img src="images/3layers/04_Assets_Object/Object_TMS.png" alt="Object_TMS">
         </div>
-        <div class="draggable" id="Object_VMS" style="left: 43.5700%; top: 43.1453%; width: 9.9799%;" title="Object_VMS">
+        <div class="draggable" id="Object_VMS" style="left: 65.8452%; top: 41.9349%; width: 12.3344%;" title="Object_VMS">
             <img src="images/3layers/04_Assets_Object/Object_VMS.png" alt="Object_VMS">
         </div>
-        <div class="draggable" id="Object_WES" style="left: 42.9002%; top: 66.4826%; width: 9.9799%;" title="Object_WES">
+        <div class="draggable" id="Object_WES" style="left: 44.3365%; top: 44.0350%; width: 12.3344%;" title="Object_WES">
             <img src="images/3layers/04_Assets_Object/Object_WES.png" alt="Object_WES">
         </div>
-        <div class="draggable" id="Object_WMS" style="left: 62.9940%; top: 23.7455%; width: 9.9799%;" title="Object_WMS">
+        <div class="draggable" id="Object_WMS" style="left: 50.0905%; top: 35.9506%; width: 12.3344%;" title="Object_WMS">
             <img src="images/3layers/04_Assets_Object/Object_WMS.png" alt="Object_WMS">
         </div>
     </div>
@@ -134,11 +155,48 @@
         const container = document.getElementById('canvas-container');
         let activeEl = null;
         let startX, startY, startLeft, startTop;
+        let hotspotCount = 0;
+
+        function addHotspot() {
+            hotspotCount++;
+            const div = document.createElement('div');
+            div.className = 'draggable hotspot-marker';
+            div.id = 'Hotspot_' + hotspotCount;
+            div.style.left = '45%';
+            div.style.top = '45%';
+            div.style.width = '10%';
+            div.style.height = '10%';
+            div.innerHTML = '<span style="pointer-events:none;">핫스팟 ' + hotspotCount + '</span>';
+            
+            attachDragEvents(div);
+            container.appendChild(div);
+        }
+
+        function attachDragEvents(el) {
+            el.addEventListener('mousedown', e => {
+                // If it's a hotspot and we clicked near the bottom-right corner, let the browser resize it instead of dragging
+                if (el.classList.contains('hotspot-marker')) {
+                    const rect = el.getBoundingClientRect();
+                    if (e.clientX > rect.right - 20 && e.clientY > rect.bottom - 20) {
+                        return; // Let the browser handle resize
+                    }
+                }
+                
+                document.querySelectorAll('.draggable').forEach(d => d.style.borderColor = 'rgba(255,0,0,0.5)');
+                el.style.borderColor = '#facc15';
+                
+                activeEl = el;
+                startX = e.clientX;
+                startY = e.clientY;
+                startLeft = parseFloat(el.style.left) || 0;
+                startTop = parseFloat(el.style.top) || 0;
+            });
+        }
 
         // Add arrow key fine tuning
         window.addEventListener('keydown', e => {
             if (!activeEl) return;
-            const step = e.shiftKey ? 0.5 : 0.05; // Shift for faster movement
+            const step = e.shiftKey ? 0.5 : 0.05;
             let left = parseFloat(activeEl.style.left) || 0;
             let top = parseFloat(activeEl.style.top) || 0;
             
@@ -155,25 +213,14 @@
         });
 
         document.querySelectorAll('.draggable').forEach(el => {
-            el.addEventListener('mousedown', e => {
-                // remove highlight from all
-                document.querySelectorAll('.draggable').forEach(d => d.style.border = '1px dashed rgba(255,0,0,0.5)');
-                // highlight active
-                el.style.border = '2px solid #facc15'; // yellow border when selected
-                
-                activeEl = el;
-                startX = e.clientX;
-                startY = e.clientY;
-                startLeft = parseFloat(el.style.left) || 0;
-                startTop = parseFloat(el.style.top) || 0;
-            });
+            attachDragEvents(el);
         });
 
         window.addEventListener('mousemove', e => {
-            if (!activeEl || e.buttons !== 1) return; // Only if mouse is down
+            if (!activeEl || e.buttons !== 1) return;
+            
             const dx = e.clientX - startX;
             const dy = e.clientY - startY;
-            
             const containerRect = container.getBoundingClientRect();
             
             const dxPct = (dx / containerRect.width) * 100;
@@ -183,41 +230,57 @@
             activeEl.style.top = (startTop + dyPct).toFixed(4) + '%';
         });
 
-        window.addEventListener('mouseup', () => {
-            // Keep activeEl selected for arrow key tuning
-        });
-        
-        // Deselect if clicked outside
         document.addEventListener('mousedown', e => {
-            if (!e.target.closest('.draggable') && e.target.id !== 'bg-image') {
-                document.querySelectorAll('.draggable').forEach(d => d.style.border = '1px dashed rgba(255,0,0,0.5)');
+            if (!e.target.closest('.draggable') && e.target.id !== 'bg-image' && e.target.tagName !== 'BUTTON') {
+                document.querySelectorAll('.draggable').forEach(d => d.style.borderColor = 'rgba(255,0,0,0.5)');
                 activeEl = null;
             }
         });
 
         function generateCode() {
-            let html = '                <!-- 복사해서 교체할 영역 시작 -->\n';
-            html += '                <div class="interactive-architecture" style="position: relative; width: 100%; max-width: 1000px; margin: 0 auto;">\n';
-            html += '                    <img src="images/img_3layers_cropped.png" alt="MOBYUS 3-Layer Architecture Base" style="width: 100%; display: block;">\n';
+            let html = '                <div class="interactive-architecture" style="position: relative; width: 100%; max-width: 1000px; margin: 0 auto;">\n';
+            html += '                    <img src="images/img_3layers_super_tight.png" alt="MOBYUS 3-Layer Architecture Base" style="width: 100%; display: block;">\n';
+            
+            const containerRect = container.getBoundingClientRect();
             
             document.querySelectorAll('.draggable').forEach(el => {
-                const id = el.id;
-                const left = el.style.left;
-                const top = el.style.top;
-                const width = el.style.width;
-                html += '                    <a href="#" class="arch-layer-item" style="position: absolute; left: ' + left + '; top: ' + top + '; width: ' + width + '; display: block;">\n';
-                html += '                        <img src="images/3layers/04_Assets_Object/' + id + '.png" alt="' + id + '" style="width: 100%; display: block;">\n';
-                html += '                    </a>\n';
+                const isHotspot = el.classList.contains('hotspot-marker');
+                
+                if (isHotspot) {
+                    const rect = el.getBoundingClientRect();
+                    const left = ((rect.left - containerRect.left) / containerRect.width * 100).toFixed(4) + '%';
+                    const top = ((rect.top - containerRect.top) / containerRect.height * 100).toFixed(4) + '%';
+                    const width = (rect.width / containerRect.width * 100).toFixed(4) + '%';
+                    const height = (rect.height / containerRect.height * 100).toFixed(4) + '%';
+                    
+                    html += `                    <a href="#" class="arch-hotspot" data-tooltip="툴팁내용을바꿔주세요" style="position: absolute; left: ${left}; top: ${top}; width: ${width}; height: ${height};"></a>\n`;
+                } else {
+                    const id = el.id;
+                    const left = el.style.left;
+                    const top = el.style.top;
+                    const width = el.style.width;
+                    
+                    // 기본 툴팁 텍스트 세팅
+                    let tooltip = id;
+                    if (id.includes('AMR_0')) tooltip = 'AMR (자율이동로봇)';
+                    if (id.includes('AMR_Manipulator')) tooltip = 'AMR 매니퓰레이터';
+                    if (id.includes('AFL_Lift')) tooltip = 'AFL 리프트';
+                    if (id.includes('AFL_Pallet')) tooltip = 'AFL 파렛트';
+                    if (id.includes('AFL_Clamp')) tooltip = 'AFL Clamp Type';
+                    
+                    html += `                    <a href="#" class="arch-layer-item" data-tooltip="${tooltip}" style="position: absolute; left: ${left}; top: ${top}; width: ${width}; display: block;">\n`;
+                    html += `                        <img src="images/3layers/04_Assets_Object/${id}.png" alt="${id}" style="width: 100%; display: block;">\n`;
+                    html += '                    </a>\n';
+                }
             });
             
             html += '                </div>\n';
-            html += '                <!-- 복사해서 교체할 영역 끝 -->';
             
             const out = document.getElementById('output');
             out.value = html;
             out.select();
             document.execCommand('copy');
-            alert('코드가 클립보드에 복사되었습니다!\n이 코드를 저(Antigravity)에게 그대로 붙여넣어 주시거나 index_test.html에 직접 붙여넣으시면 됩니다!');
+            alert('코드가 클립보드에 복사되었습니다!\n이 코드를 Antigravity에게 주시거나 직접 index_test.html에 반영하시면 됩니다.');
         }
     </script>
 </body>
