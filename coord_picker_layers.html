@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layer Hotspot Coordinator - MOBYUS</title>
+    <style>
+        :root {
+            --primary: #7c0b47;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text: #1e293b;
+        }
+
+        body {
+            font-family: 'Pretendard', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .controls {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            margin-bottom: 30px;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        select, button {
+            padding: 10px 16px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            font-weight: 600;
+        }
+
+        .main-container {
+            display: flex;
+            gap: 40px;
+            max-width: 1400px;
+            width: 100%;
+        }
+
+        .canvas-area {
+            flex: 2;
+            position: relative;
+            background: #eee;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 2px solid #e2e8f0;
+            cursor: crosshair;
+        }
+
+        #bg-image {
+            width: 100%;
+            display: block;
+            user-select: none;
+            pointer-events: none;
+        }
+
+        .sidebar {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .info-card {
+            background: var(--card-bg);
+            padding: 24px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+        }
+
+        .info-card h3 {
+            margin-top: 0;
+            border-bottom: 1px solid #f1f5f9;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        .coord-display {
+            font-family: monospace;
+            font-size: 1.2rem;
+            background: #f1f5f9;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .code-output {
+            width: 100%;
+            height: 150px;
+            font-family: monospace;
+            font-size: 0.85rem;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            background: #1e293b;
+            color: #e2e8f0;
+            resize: none;
+        }
+
+        .marker {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: rgba(255, 0, 0, 0.5);
+            border: 2px solid red;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+        }
+
+        .hint {
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Layer Hotspot Coordinator</h1>
+        <p>이미지를 클릭하여 아이콘 배치를 위한 정확한 좌표(%)를 추출하세요.</p>
+    </div>
+
+    <div class="controls">
+        <label for="layer-select">대상 이미지 선택:</label>
+        <select id="layer-select">
+            <option value="images/3layers/05_Layer_Image/Physical Layer.png">Physical Layer (Robot)</option>
+            <option value="images/3layers/05_Layer_Image/Digital Layer.png">Digital Layer (Control/Logistics SW)</option>
+        </select>
+        <button id="copy-btn">코드 복사</button>
+    </div>
+
+    <div class="main-container">
+        <div class="canvas-area" id="canvas">
+            <img id="bg-image" src="images/3layers/05_Layer_Image/Physical Layer.png" alt="Background">
+            <div id="marker-layer"></div>
+        </div>
+
+        <div class="sidebar">
+            <div class="info-card">
+                <h3>클릭한 좌표</h3>
+                <div class="coord-display">
+                    Left: <span id="val-left">0</span>%<br>
+                    Top: <span id="val-top">0</span>%
+                </div>
+                <p class="hint">이미지의 어느 지점을 클릭하든 해당 위치의 퍼센트 좌표가 생성됩니다.</p>
+            </div>
+
+            <div class="info-card">
+                <h3>HTML 코드 스니펫</h3>
+                <textarea id="code-box" class="code-output" readonly></textarea>
+                <p class="hint">위 코드를 복사해서 HTML의 해당 위치에 붙여넣으세요.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('canvas');
+        const bgImg = document.getElementById('bg-image');
+        const layerSelect = document.getElementById('layer-select');
+        const valLeft = document.getElementById('val-left');
+        const valTop = document.getElementById('val-top');
+        const codeBox = document.getElementById('code-box');
+        const markerLayer = document.getElementById('marker-layer');
+        const copyBtn = document.getElementById('copy-btn');
+
+        layerSelect.addEventListener('change', () => {
+            bgImg.src = layerSelect.value;
+            markerLayer.innerHTML = '';
+            codeBox.value = '';
+        });
+
+        canvas.addEventListener('mousedown', (e) => {
+            const rect = canvas.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            const leftPerc = (x / rect.width * 100).toFixed(4);
+            const topPerc = (y / rect.height * 100).toFixed(4);
+
+            valLeft.textContent = leftPerc;
+            valTop.textContent = topPerc;
+
+            // Update Marker
+            markerLayer.innerHTML = `<div class="marker" style="left: ${leftPerc}%; top: ${topPerc}%;"></div>`;
+
+            // Update Code
+            const snippet = `<a href="#" class="arch-layer-item" data-tooltip="ITEM_NAME" data-i18n-attr="data-tooltip:arch.tt.KEY"
+   style="position: absolute; left: ${leftPerc}%; top: ${topPerc}%; width: 10%; display: block;">
+    <img src="images/3layers/04_Assets_Object/ASSET_NAME.png" alt="Icon" style="width: 100%;">
+</a>`;
+            codeBox.value = snippet;
+        });
+
+        copyBtn.addEventListener('click', () => {
+            codeBox.select();
+            document.execCommand('copy');
+            alert('코드가 클립보드에 복사되었습니다.');
+        });
+    </script>
+</body>
+</html>

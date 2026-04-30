@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Layer Visual Coordinate Picker - MOBYUS</title>
+    <style>
+        body { background: #0f172a; color: white; font-family: 'Pretendard', sans-serif; text-align: center; margin: 0; padding: 20px; }
+        .app-container { display: flex; gap: 20px; justify-content: center; align-items: flex-start; max-width: 1400px; margin: 0 auto; }
+        
+        .sidebar {
+            width: 280px;
+            background: #1e293b;
+            border-radius: 12px;
+            padding: 20px;
+            height: 800px;
+            overflow-y: auto;
+            text-align: left;
+            border: 1px solid #334155;
+        }
+
+        .sidebar h3 { margin-top: 0; font-size: 1.1rem; color: #fbbf24; border-bottom: 1px solid #334155; padding-bottom: 10px; }
+        .library-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.2s;
+            font-size: 0.85rem;
+            margin-bottom: 5px;
+        }
+        .library-item:hover { background: #334155; }
+        .library-item img { width: 40px; height: auto; background: #fff; border-radius: 4px; }
+
+        .main-content { flex: 1; }
+        .controls { margin-bottom: 20px; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+        
+        #canvas-container {
+            position: relative;
+            width: 1000px; 
+            margin: 0 auto;
+            border: 2px solid #334155;
+            box-shadow: 0 0 40px rgba(0,0,0,0.5);
+            background: #fff;
+            overflow: hidden;
+        }
+        
+        #bg-image { width: 100%; display: block; opacity: 0.6; }
+
+        .draggable { 
+            position: absolute; 
+            cursor: grab; 
+            border: 1px dashed rgba(255,0,0,0.3); 
+            z-index: 10; 
+            resize: both;
+            overflow: hidden;
+        }
+        .draggable:hover { border: 2px solid #38bdf8; background: rgba(56, 189, 248, 0.1); z-index: 20; }
+        .draggable:active { cursor: grabbing; z-index: 30; }
+        .draggable.active { border: 2px solid #fbbf24; box-shadow: 0 0 15px rgba(251, 191, 36, 0.5); }
+        .draggable img { width: 100%; display: block; pointer-events: none; }
+
+        .hotspot-marker {
+            background: rgba(56, 189, 248, 0.4);
+            border: 2px dashed #38bdf8;
+            resize: both;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px #000;
+            font-size: 12px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 150px;
+            margin-top: 20px;
+            font-family: monospace;
+            padding: 15px;
+            background: #1e293b;
+            color: #38bdf8;
+            border: 1px solid #334155;
+            border-radius: 8px;
+            box-sizing: border-box;
+        }
+
+        button { 
+            padding: 10px 16px; 
+            font-size: 14px; 
+            font-weight: 700;
+            cursor: pointer; 
+            background: #38bdf8;
+            color: #0f172a;
+            border: none;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+        button:hover { background: #7dd3fc; transform: translateY(-2px); }
+        button.secondary { background: #475569; color: white; }
+        button.warning { background: #fbbf24; color: #0f172a; }
+        button.danger { background: #ef4444; color: white; }
+        
+        .instructions { font-size: 0.9rem; color: #94a3b8; margin-bottom: 20px; }
+        .layer-title { font-size: 1.5rem; font-weight: 800; color: #fbbf24; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+    <div class="layer-title" id="current-layer-name">Physical Layer (Robot)</div>
+    <p class="instructions">
+        왼쪽 <b>보관함</b>에서 아이콘을 클릭해 추가하세요. 배치된 아이콘은 <b>Delete</b> 키로 삭제할 수 있습니다.
+    </p>
+
+    <div class="app-container">
+        <div class="sidebar">
+            <h3>Object Library</h3>
+            <div id="library-list"></div>
+        </div>
+
+        <div class="main-content">
+            <div class="controls">
+                <button class="secondary" onclick="switchLayer('physical')">Physical Layer로 전환</button>
+                <button class="secondary" onclick="switchLayer('digital')">Digital Layer로 전환</button>
+                <button class="warning" onclick="addHotspot()">+ 투명 핫스팟 추가</button>
+                <button class="danger" onclick="clearCanvas()">전체 삭제</button>
+                <button onclick="generateCode()">최종 코드 복사하기</button>
+            </div>
+
+            <div id="canvas-container">
+                <img id="bg-image" src="images/3layers/05_Layer_Image/Physical Layer.png" alt="Base">
+                <div id="items-container"></div>
+            </div>
+
+            <textarea id="output" readonly placeholder="버튼을 누르면 여기에 붙여넣을 코드가 생성됩니다..."></textarea>
+        </div>
+    </div>
+
+    <script>
+        const allObjects = [
+            'Object_AFL_Pallet_01', 'Object_AFL_Pallet_02', 'Object_AFL_Lift_01', 
+            'Object_AFL_Lift_02', 'Object_AFL_Lift_03', 'Object_AFL_Clamp',
+            'Object_AMR_01', 'Object_AMR_02', 'Object_AMR_03', 'Object_AMR_04',
+            'Object_AMR_Manipulator', 'Object_Gantry', 'Object_SmartStorage',
+            'Object_People_1', 'Object_People_2', 'Object_CMS', 'Object_TAMS',
+            'Object_TAMS (2)', 'Object_TMS', 'Object_VMS', 'Object_WES', 'Object_WMS'
+        ];
+
+        const layerData = {
+            physical: { bg: "images/3layers/05_Layer_Image/Physical Layer.png", name: "Physical Layer (Robot)" },
+            digital: { bg: "images/3layers/05_Layer_Image/Digital Layer.png", name: "Digital Layer (Control/SW)" }
+        };
+
+        let currentLayer = 'physical';
+        let activeEl = null;
+        let startX, startY, startLeft, startTop;
+        let hotspotCount = 0;
+
+        function initLibrary() {
+            const lib = document.getElementById('library-list');
+            allObjects.forEach(obj => {
+                const item = document.createElement('div');
+                item.className = 'library-item';
+                item.innerHTML = `<img src="images/3layers/04_Assets_Object/${obj}.png"> <span>${obj.replace('Object_', '')}</span>`;
+                item.onclick = () => addObjectToCanvas(obj);
+                lib.appendChild(item);
+            });
+        }
+
+        function addObjectToCanvas(id) {
+            const container = document.getElementById('items-container');
+            const div = document.createElement('div');
+            div.className = 'draggable';
+            div.id = id + '_' + Date.now();
+            div.dataset.assetId = id;
+            div.style.left = '45%';
+            div.style.top = '45%';
+            div.style.width = id.includes('People') ? '3%' : '10%';
+            div.innerHTML = `<img src="images/3layers/04_Assets_Object/${id}.png">`;
+            
+            attachDragEvents(div);
+            container.appendChild(div);
+            div.dispatchEvent(new MouseEvent('mousedown'));
+        }
+
+        function addHotspot() {
+            hotspotCount++;
+            const container = document.getElementById('items-container');
+            const div = document.createElement('div');
+            div.className = 'draggable hotspot-marker';
+            div.id = 'Hotspot_' + hotspotCount;
+            div.style.left = '45%';
+            div.style.top = '45%';
+            div.style.width = '10%';
+            div.style.height = '10%';
+            div.innerHTML = `<span style="pointer-events:none;">핫스팟 ${hotspotCount}</span>`;
+            
+            attachDragEvents(div);
+            container.appendChild(div);
+        }
+
+        function clearCanvas() {
+            if(confirm('화면의 모든 오브젝트를 삭제하시겠습니까?')) {
+                document.getElementById('items-container').innerHTML = '';
+                activeEl = null;
+            }
+        }
+
+        function switchLayer(type) {
+            currentLayer = type;
+            document.getElementById('current-layer-name').innerText = layerData[type].name;
+            document.getElementById('bg-image').src = layerData[type].bg;
+            document.getElementById('items-container').innerHTML = '';
+            document.getElementById('output').value = '';
+        }
+
+        function attachDragEvents(el) {
+            el.addEventListener('mousedown', e => {
+                const rect = el.getBoundingClientRect();
+                if (e.clientX > rect.right - 20 && e.clientY > rect.bottom - 20) return;
+                
+                document.querySelectorAll('.draggable').forEach(d => d.classList.remove('active'));
+                el.classList.add('active');
+                activeEl = el;
+                startX = e.clientX; startY = e.clientY;
+                startLeft = parseFloat(el.style.left) || 0;
+                startTop = parseFloat(el.style.top) || 0;
+            });
+        }
+
+        window.addEventListener('mousemove', e => {
+            if (!activeEl || e.buttons !== 1) return;
+            const containerRect = document.getElementById('canvas-container').getBoundingClientRect();
+            const dxPct = ((e.clientX - startX) / containerRect.width) * 100;
+            const dyPct = ((e.clientY - startY) / containerRect.height) * 100;
+            activeEl.style.left = (startLeft + dxPct).toFixed(4) + '%';
+            activeEl.style.top = (startTop + dyPct).toFixed(4) + '%';
+        });
+
+        window.addEventListener('keydown', e => {
+            if (!activeEl) return;
+            const step = e.shiftKey ? 0.5 : 0.05;
+            let left = parseFloat(activeEl.style.left);
+            let top = parseFloat(activeEl.style.top);
+            
+            if (e.key === 'ArrowLeft') left -= step;
+            else if (e.key === 'ArrowRight') left += step;
+            else if (e.key === 'ArrowUp') top -= step;
+            else if (e.key === 'ArrowDown') top += step;
+            else if (e.key === 'Delete' || e.key === 'Backspace') {
+                activeEl.remove(); activeEl = null; return;
+            } else return;
+
+            e.preventDefault();
+            activeEl.style.left = left.toFixed(4) + '%';
+            activeEl.style.top = top.toFixed(4) + '%';
+        });
+
+        function generateCode() {
+            let html = `<!-- Interactive Layer Content for ${layerData[currentLayer].name} -->\n`;
+            const containerRect = document.getElementById('canvas-container').getBoundingClientRect();
+            
+            document.querySelectorAll('.draggable').forEach(el => {
+                const rect = el.getBoundingClientRect();
+                const left = ((rect.left - containerRect.left) / containerRect.width * 100).toFixed(4) + '%';
+                const top = ((rect.top - containerRect.top) / containerRect.height * 100).toFixed(4) + '%';
+                const width = (rect.width / containerRect.width * 100).toFixed(4) + '%';
+
+                if (el.classList.contains('hotspot-marker')) {
+                    const height = (rect.height / containerRect.height * 100).toFixed(4) + '%';
+                    html += `<a href="#" class="arch-hotspot" data-tooltip="영역설명" style="position: absolute; left: ${left}; top: ${top}; width: ${width}; height: ${height};"></a>\n`;
+                } else {
+                    const assetId = el.dataset.assetId;
+                    let tooltip = assetId.replace('Object_', '');
+                    if (assetId.includes('AMR_0')) tooltip = 'AMR (자율이동로봇)';
+                    if (assetId.includes('Manipulator')) tooltip = 'AMR 매니퓰레이터';
+                    if (assetId.includes('AFL_Lift')) tooltip = 'AFL 리프트';
+                    if (assetId.includes('AFL_Pallet')) tooltip = 'AFL 파렛트';
+                    
+                    html += `<a href="#" class="arch-layer-item" data-tooltip="${tooltip}" style="position: absolute; left: ${left}; top: ${top}; width: ${width}; display: block;">\n`;
+                    html += `    <img src="images/3layers/04_Assets_Object/${assetId}.png" alt="${assetId}" style="width: 100%;">\n`;
+                    html += `</a>\n`;
+                }
+            });
+
+            document.getElementById('output').value = html;
+            document.getElementById('output').select();
+            document.execCommand('copy');
+            alert('코드가 클립보드에 복사되었습니다!');
+        }
+
+        initLibrary();
+    </script>
+</body>
+</html>
