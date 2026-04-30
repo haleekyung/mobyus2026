@@ -208,7 +208,28 @@
                         <img src="images/3layers/04_Assets_Object/Object_WMS.png" alt="Object_WMS" style="width: 100%; display: block;">
                     </a>
                 </div>
-
+                
+                <!-- iOS Hover Double-Tap Fix -->
+                <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        const archItems = document.querySelectorAll('.arch-layer-item');
+                        archItems.forEach(item => {
+                            let isScrolling = false;
+                            item.addEventListener('touchstart', () => { isScrolling = false; }, {passive: true});
+                            item.addEventListener('touchmove', () => { isScrolling = true; }, {passive: true});
+                            item.addEventListener('touchend', function(e) {
+                                if (!isScrolling) {
+                                    const href = this.getAttribute('href');
+                                    if (href && href !== '#') {
+                                        // Trigger navigation immediately on tap
+                                        e.preventDefault();
+                                        window.location.href = href;
+                                    }
+                                }
+                            });
+                        });
+                    });
+                </script>
 
             </div>
         </section>
