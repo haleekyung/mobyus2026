@@ -557,7 +557,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         renderCertifications();
         renderNews();
+        loadArchitectureComponent();
         loadFooter();
+        updateContent(initialLang); // Ensure all dynamically injected components are translated
     } catch (e) {
         console.error('Initial load failed:', e);
     }
@@ -632,6 +634,133 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
     loadFooter();
+
+    function loadArchitectureComponent() {
+        const containers = document.querySelectorAll('.architecture-component-container');
+        if (containers.length === 0) return;
+
+        const architectureHTML = `
+            <div class="interactive-architecture" style="position: relative; width: 100%; max-width: 1000px; margin: 0 auto;">
+                <div class="interaction-hint">
+                    <i class="fas fa-hand-pointer"></i>
+                    <span data-i18n="solutions.click_hint">장비나 솔루션을 클릭해 보세요</span>
+                </div>
+                <img src="images/img_3layers_super_tight.png" alt="MOBYUS 3-Layer Architecture Base" style="width: 100%; display: block;">
+                <a href="product-afl.html" class="arch-layer-item" data-tooltip="AFL Clamp Type" data-i18n-attr="data-tooltip:arch.tt.afl_clamp"
+                    style="position: absolute; left: 68.2164%; top: 72.8880%; width: 9.8095%; display: block;">
+                    <img src="images/3layers/04_Assets_Object/Object_AFL_Clamp.png" alt="Object_AFL_Clamp"
+                        style="width: 100%; display: block;">
+                </a>
+                <a href="product-afl.html" class="arch-layer-item" data-tooltip="AFL 리프트" data-i18n-attr="data-tooltip:arch.tt.afl_lift"
+                    style="position: absolute; left: 54.9510%; top: 81.0094%; width: 9.8095%; display: block;">
+                    <img src="images/3layers/04_Assets_Object/Object_AFL_Lift_01.png" alt="Object_AFL_Lift_01"
+                        style="width: 100%; display: block;">
+                </a>
+                <a href="product-afl.html" class="arch-layer-item" data-tooltip="AFL 리프트" data-i18n-attr="data-tooltip:arch.tt.afl_lift"
+                    style="position: absolute; left: 25.5850%; top: 82.7169%; width: 9.6854%; display: block;">
+                    <img src="images/3layers/04_Assets_Object/Object_AFL_Lift_02.png" alt="Object_AFL_Lift_02"
+                        style="width: 100%; display: block;">
+                </a>
+                <a href="product-afl.html" class="arch-layer-item" data-tooltip="AFL 리프트" data-i18n-attr="data-tooltip:arch.tt.afl_lift"
+                    style="position: absolute; left: 51.6917%; top: 70.6303%; width: 9.6441%; display: block;">
+                    <img src="images/3layers/04_Assets_Object/Object_AFL_Lift_03.png" alt="Object_AFL_Lift_03"
+                        style="width: 100%; display: block;">
+                </a>
+                <a href="product-afl.html" class="arch-layer-item" data-tooltip="AFL 파렛트" data-i18n-attr="data-tooltip:arch.tt.afl_pallet"
+                    style="position: absolute; left: 45.9438%; top: 85.1428%; width: 10.3063%; display: block;">
+                    <img src="images/3layers/04_Assets_Object/Object_AFL_Pallet_01.png" alt="Object_AFL_Pallet_01"
+                        style="width: 100%; display: block;">
+                </a>
+                <a href="product-afl.html" class="arch-layer-item" data-tooltip="AFL 파렛트" data-i18n-attr="data-tooltip:arch.tt.afl_pallet"
+                    style="position: absolute; left: 11.8448%; top: 82.2845%; width: 10.2649%; display: block;">
+                    <img src="images/3layers/04_Assets_Object/Object_AFL_Pallet_02.png" alt="Object_AFL_Pallet_02"
+                        style="width: 100%; display: block;">
+                </a>
+                <a href="product-amr.html" class="arch-layer-item" data-tooltip="AMR (자율이동로봇)" data-i18n-attr="data-tooltip:arch.tt.amr"
+                    style="position: absolute; left: 30.0637%; top: 79.3845%; width: 6.4155%; display: block;">
+                    <img src="images/3layers/04_Assets_Object/Object_AMR_01.png" alt="Object_AMR_01"
+                        style="width: 100%; display: block;">
+                </a>
+                <a href="product-amr.html" class="arch-layer-item" data-tooltip="AMR (자율이동로봇)" data-i18n-attr="data-tooltip:arch.tt.amr"
+                    style="position: absolute; left: 51.3309%; top: 80.2291%; width: 6.4155%; display: block;">
+                    <img src="images/3layers/04_Assets_Object/Object_AMR_02.png" alt="Object_AMR_02"
+                        style="width: 100%; display: block;">
+                </a>
+                <a href="product-amr.html" class="arch-layer-item" data-tooltip="AMR (자율이동로봇)" data-i18n-attr="data-tooltip:arch.tt.amr"
+                    style="position: absolute; left: 41.5658%; top: 76.4820%; width: 6.4155%; display: block;">
+                    <img src="images/3layers/04_Assets_Object/Object_AMR_03.png" alt="Object_AMR_03"
+                        style="width: 100%; display: block;">
+                </a>
+                <a href="product-amr.html" class="arch-layer-item" data-tooltip="AMR (자율이동로봇)" data-i18n-attr="data-tooltip:arch.tt.amr"
+                    style="position: absolute; left: 35.7132%; top: 70.8116%; width: 6.7467%; display: block;">
+                    <img src="images/3layers/04_Assets_Object/Object_AMR_04.png" alt="Object_AMR_04"
+                        style="width: 100%; display: block;">
+                </a>
+                <a href="product-amr.html" class="arch-layer-item" data-tooltip="AMR 매니퓰레이터" data-i18n-attr="data-tooltip:arch.tt.amr_mani"
+                    style="position: absolute; left: 38.1768%; top: 84.6568%; width: 7.6987%; display: block;">
+                    <img src="images/3layers/04_Assets_Object/Object_AMR_Manipulator.png"
+                        alt="Object_AMR_Manipulator" style="width: 100%; display: block;">
+                </a>
+                <a href="products-solution.html" class="arch-layer-item" data-tooltip="CMS" data-i18n-attr="data-tooltip:arch.tt.cms"
+                    style="position: absolute; left: 41.0378%; top: 39.0115%; width: 12.3344%; display: block;">
+                    <img src="images/3layers/04_Assets_Object/Object_CMS.png" alt="Object_CMS"
+                        style="width: 100%; display: block;">
+                </a>
+                <a href="solution-tams.html" class="arch-layer-item" data-tooltip="WES (물류실행시스템)" data-i18n-attr="data-tooltip:arch.tt.wes"
+                    style="position: absolute; left: 57.4515%; top: 39.1189%; width: 12.3344%; display: block;">
+                    <img src="images/3layers/04_Assets_Object/Object_WES.png" alt="Object_WES"
+                        style="width: 100%; display: block;">
+                </a>
+                <a href="solution-tms.html" class="arch-layer-item" data-tooltip="TMS (운송관리시스템)" data-i18n-attr="data-tooltip:arch.tt.tms"
+                    style="position: absolute; left: 57.5147%; top: 44.9096%; width: 12.3344%; display: block;">
+                    <img src="images/3layers/04_Assets_Object/Object_TMS.png" alt="Object_TMS"
+                        style="width: 100%; display: block;">
+                </a>
+                <a href="solution-vms.html" class="arch-layer-item" data-tooltip="VMS (차량관리시스템)" data-i18n-attr="data-tooltip:arch.tt.vms"
+                    style="position: absolute; left: 65.8452%; top: 41.9349%; width: 12.3344%; display: block;">
+                    <img src="images/3layers/04_Assets_Object/Object_VMS.png" alt="Object_VMS"
+                        style="width: 100%; display: block;">
+                </a>
+                <a href="products-solution.html" class="arch-layer-item" data-tooltip="TAMS (통합관제시스템)" data-i18n-attr="data-tooltip:arch.tt.tams"
+                    style="position: absolute; left: 44.3365%; top: 44.0350%; width: 12.3344%; display: block;">
+                    <img src="images/3layers/04_Assets_Object/Object_TAMS (2).png" alt="Object_TAMS"
+                        style="width: 100%; display: block;">
+                </a>
+                <a href="solution-wms.html" class="arch-layer-item" data-tooltip="WMS (창고관리시스템)" data-i18n-attr="data-tooltip:arch.tt.wms"
+                    style="position: absolute; left: 50.0905%; top: 35.9506%; width: 12.3344%; display: block;">
+                    <img src="images/3layers/04_Assets_Object/Object_WMS.png" alt="Object_WMS"
+                        style="width: 100%; display: block;">
+                </a>
+
+                <!-- 투명 핫스팟 영역 -->
+                <a href="javascript:void(0)" class="arch-hotspot" data-tooltip="자동화 장비(ASRS)" data-i18n-attr="data-tooltip:arch.tt.asrs"
+                    style="position: absolute; left: 44.0270%; top: 61.0362%; width: 25.0000%; height: 9.5107%;"></a>
+                <a href="javascript:void(0)" class="arch-hotspot" data-tooltip="자동화 장비(Gantry)" data-i18n-attr="data-tooltip:arch.tt.gantry"
+                    style="position: absolute; left: 16.2496%; top: 72.6381%; width: 19.6215%; height: 6.8117%;"></a>
+            </div>
+        `;
+
+        containers.forEach(container => {
+            container.innerHTML = architectureHTML;
+
+            // Attach iOS Hover Double-Tap Fix
+            const archItems = container.querySelectorAll('.arch-layer-item');
+            archItems.forEach(item => {
+                let isScrolling = false;
+                item.addEventListener('touchstart', () => { isScrolling = false; }, { passive: true });
+                item.addEventListener('touchmove', () => { isScrolling = true; }, { passive: true });
+                item.addEventListener('touchend', function (e) {
+                    if (!isScrolling) {
+                        const href = this.getAttribute('href');
+                        if (href && href !== '#') {
+                            e.preventDefault();
+                            window.location.href = href;
+                        }
+                    }
+                });
+            });
+        });
+    }
 
     const fadeInObserver = new IntersectionObserver((entries, obs) => {
         entries.forEach(entry => {
