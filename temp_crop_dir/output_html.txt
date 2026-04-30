@@ -1,0 +1,57 @@
+<div class="interactive-architecture" style="position: relative; width: 100%; max-width: 1000px; margin: 0 auto;">
+    <img src="images/img_3layers_bg_cropped.png" alt="MOBYUS 3-Layer Architecture Base" style="width: 100%; display: block;">
+    <a href="#" class="arch-layer-item" style="position: absolute; left: 27.3610%; top: 89.2437%; width: 7.9370%;">
+        <img src="images/3layers/04_Assets_Object/Object_AFL_Clamp.png" alt="Object_AFL_Clamp" style="width: 100%; display: block;">
+    </a>
+    <a href="#" class="arch-layer-item" style="position: absolute; left: 64.7354%; top: 79.2557%; width: 7.9370%;">
+        <img src="images/3layers/04_Assets_Object/Object_AFL_Lift_01.png" alt="Object_AFL_Lift_01" style="width: 100%; display: block;">
+    </a>
+    <a href="#" class="arch-layer-item" style="position: absolute; left: 23.7441%; top: 77.7191%; width: 7.8366%;">
+        <img src="images/3layers/04_Assets_Object/Object_AFL_Lift_02.png" alt="Object_AFL_Lift_02" style="width: 100%; display: block;">
+    </a>
+    <a href="#" class="arch-layer-item" style="position: absolute; left: 32.3175%; top: 88.2833%; width: 7.8031%;">
+        <img src="images/3layers/04_Assets_Object/Object_AFL_Lift_03.png" alt="Object_AFL_Lift_03" style="width: 100%; display: block;">
+    </a>
+    <a href="#" class="arch-layer-item" style="position: absolute; left: 66.6109%; top: 79.8319%; width: 8.3389%;">
+        <img src="images/3layers/04_Assets_Object/Object_AFL_Pallet_01.png" alt="Object_AFL_Pallet_01" style="width: 100%; display: block;">
+    </a>
+    <a href="#" class="arch-layer-item" style="position: absolute; left: 66.6109%; top: 79.8319%; width: 8.3054%;">
+        <img src="images/3layers/04_Assets_Object/Object_AFL_Pallet_02.png" alt="Object_AFL_Pallet_02" style="width: 100%; display: block;">
+    </a>
+    <a href="#" class="arch-layer-item" style="position: absolute; left: 66.6109%; top: 78.0072%; width: 5.1909%;">
+        <img src="images/3layers/04_Assets_Object/Object_AMR_01.png" alt="Object_AMR_01" style="width: 100%; display: block;">
+    </a>
+    <a href="#" class="arch-layer-item" style="position: absolute; left: 33.1212%; top: 74.5498%; width: 5.1909%;">
+        <img src="images/3layers/04_Assets_Object/Object_AMR_02.png" alt="Object_AMR_02" style="width: 100%; display: block;">
+    </a>
+    <a href="#" class="arch-layer-item" style="position: absolute; left: 52.4113%; top: 85.4022%; width: 5.1909%;">
+        <img src="images/3layers/04_Assets_Object/Object_AMR_03.png" alt="Object_AMR_03" style="width: 100%; display: block;">
+    </a>
+    <a href="#" class="arch-layer-item" style="position: absolute; left: 23.0743%; top: 87.8031%; width: 5.4588%;">
+        <img src="images/3layers/04_Assets_Object/Object_AMR_04.png" alt="Object_AMR_04" style="width: 100%; display: block;">
+    </a>
+    <a href="#" class="arch-layer-item" style="position: absolute; left: 38.6135%; top: 88.1873%; width: 6.2291%;">
+        <img src="images/3layers/04_Assets_Object/Object_AMR_Manipulator.png" alt="Object_AMR_Manipulator" style="width: 100%; display: block;">
+    </a>
+    <a href="#" class="arch-layer-item" style="position: absolute; left: 37.5419%; top: 44.8739%; width: 9.9799%;">
+        <img src="images/3layers/04_Assets_Object/Object_CMS.png" alt="Object_CMS" style="width: 100%; display: block;">
+    </a>
+    <a href="#" class="arch-layer-item" style="position: absolute; left: 45.7133%; top: 64.8499%; width: 29.2364%;">
+        <img src="images/3layers/04_Assets_Object/Object_SmartStorage.png" alt="Object_SmartStorage" style="width: 100%; display: block;">
+    </a>
+    <a href="#" class="arch-layer-item" style="position: absolute; left: 68.3523%; top: 51.4046%; width: 9.9799%;">
+        <img src="images/3layers/04_Assets_Object/Object_TAMS.png" alt="Object_TAMS" style="width: 100%; display: block;">
+    </a>
+    <a href="#" class="arch-layer-item" style="position: absolute; left: 62.7261%; top: 44.3938%; width: 9.9799%;">
+        <img src="images/3layers/04_Assets_Object/Object_TMS.png" alt="Object_TMS" style="width: 100%; display: block;">
+    </a>
+    <a href="#" class="arch-layer-item" style="position: absolute; left: 43.5700%; top: 43.1453%; width: 9.9799%;">
+        <img src="images/3layers/04_Assets_Object/Object_VMS.png" alt="Object_VMS" style="width: 100%; display: block;">
+    </a>
+    <a href="#" class="arch-layer-item" style="position: absolute; left: 42.9002%; top: 66.4826%; width: 9.9799%;">
+        <img src="images/3layers/04_Assets_Object/Object_WES.png" alt="Object_WES" style="width: 100%; display: block;">
+    </a>
+    <a href="#" class="arch-layer-item" style="position: absolute; left: 62.9940%; top: 23.7455%; width: 9.9799%;">
+        <img src="images/3layers/04_Assets_Object/Object_WMS.png" alt="Object_WMS" style="width: 100%; display: block;">
+    </a>
+</div>
