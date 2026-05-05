@@ -97,6 +97,22 @@
             border-radius: 12px;
         }
 
+
+        .layer-content-inner img.base-layer {
+            width: 100%;
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .layer-image-wrapper {
+                margin-top: -10px;
+                margin-bottom: -20px;
+            }
+            .layer-content-inner {
+                transform: scale(1.1);
+            }
+        }
+
         /* Modal Styles */
         .tams-modal-overlay {
             position: fixed;
@@ -804,9 +820,7 @@
                         최적의 흐름을 만듭니다</p>
                 </div>
 
-                <div class="isometric-canvas">
-                    <img src="images/img_3layers_v2.jpg" alt="MOBYUS 3-Layer Architecture" class="architecture-diagram">
-                </div>
+                <div class="architecture-component-container"></div>
             </div>
         </section>
 
@@ -869,6 +883,10 @@
                     라인업</p>
                 <p class="font-set-intro-en" data-i18n="ps.robot.intro_en">Advanced robot lineup for on-site automation
                 </p>
+                <!-- Image Placeholder (Reverted) -->
+                <div style="margin: 40px auto; max-width: 900px;">
+                    <img src="images/img_products_robot_overview.png" alt="Robot Solution Overview" style="width: 100%; height: auto; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);" onerror="this.style.display='none'">
+                </div>
             </div>
         </section>
 
@@ -1134,6 +1152,10 @@
                     제어하여 물류 효율을 극대화합니다</p>
                 <p class="font-set-intro-en" data-i18n="ps.control.intro_en">Integrate & optimize multi-type robots and
                     equipment</p>
+                <!-- Image Placeholder (Reverted) -->
+                <div style="margin: 40px auto; max-width: 900px;">
+                    <img src="images/img_products_control_overview.png" alt="Control Solution Overview" style="width: 100%; height: auto; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);" onerror="this.style.display='none'">
+                </div>
             </div>
         </section>
 
@@ -1625,6 +1647,10 @@
                     핵심 소프트웨어</p>
                 <p class="font-set-intro-en" data-i18n="ps.logistics.intro_en">Core software for logistics process
                     optimization</p>
+                <!-- Image Placeholder (Reverted) -->
+                <div style="margin: 40px auto; max-width: 900px;">
+                    <img src="images/img_products_sw_overview.png" alt="Logistics SW Overview" style="width: 100%; height: auto; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);" onerror="this.style.display='none'">
+                </div>
             </div>
         </section>
 
