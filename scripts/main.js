@@ -94,7 +94,11 @@ document.addEventListener('DOMContentLoaded', () => {
     window.setLanguage = setLanguage;
     window.getLanguage = getLanguage;
 
-    // --- Smooth Anchor Scrolling (Simplified) ---
+    // --- Smooth Anchor Scrolling ---
+    if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+    }
+
     function handleAnchorScroll() {
         const hash = window.location.hash;
         if (hash) {
@@ -109,6 +113,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     });
                 }, 300); 
             }
+        } else {
+            // 해시가 없으면 항상 맨 위에서 시작
+            window.scrollTo({ top: 0, behavior: 'instant' });
         }
     }
 
@@ -171,7 +178,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="gnb-lang">
                 <i class="fas fa-globe"></i>
                 <a href="#" class="lang-toggle-btn" data-lang="${activeLang === 'ko' ? 'en' : 'ko'}">
-                    ${activeLang === 'ko' ? 'EN' : 'KO'}
+                    ${activeLang === 'ko' ? 'KO' : 'EN'}
                 </a>
             </div>
         `;
@@ -701,13 +708,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     <img src="images/3layers/04_Assets_Object/Object_AMR_Manipulator.png"
                         alt="Object_AMR_Manipulator" style="width: 100%; display: block;">
                 </a>
-                <a href="products-solution.html" class="arch-layer-item" data-tooltip="CMS" data-i18n-attr="data-tooltip:arch.tt.cms"
-                    style="position: absolute; left: 41.0378%; top: 39.0115%; width: 12.3344%; display: block;">
+                <a href="javascript:void(0)" class="arch-layer-item" data-tooltip="CMS" data-i18n-attr="data-tooltip:arch.tt.cms"
+                    style="position: absolute; left: 41.0378%; top: 39.0115%; width: 12.3344%; display: block; cursor: default;">
                     <img src="images/3layers/04_Assets_Object/Object_CMS.png" alt="Object_CMS"
                         style="width: 100%; display: block;">
                 </a>
-                <a href="solution-tams.html" class="arch-layer-item" data-tooltip="WES (물류실행시스템)" data-i18n-attr="data-tooltip:arch.tt.wes"
-                    style="position: absolute; left: 57.4515%; top: 39.1189%; width: 12.3344%; display: block;">
+                <a href="javascript:void(0)" class="arch-layer-item" data-tooltip="WES (물류실행시스템)" data-i18n-attr="data-tooltip:arch.tt.wes"
+                    style="position: absolute; left: 57.4515%; top: 39.1189%; width: 12.3344%; display: block; cursor: default;">
                     <img src="images/3layers/04_Assets_Object/Object_WES.png" alt="Object_WES"
                         style="width: 100%; display: block;">
                 </a>
@@ -721,7 +728,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <img src="images/3layers/04_Assets_Object/Object_VMS.png" alt="Object_VMS"
                         style="width: 100%; display: block;">
                 </a>
-                <a href="products-solution.html" class="arch-layer-item" data-tooltip="TAMS (통합관제시스템)" data-i18n-attr="data-tooltip:arch.tt.tams"
+                <a href="products-solution.html#control-section" class="arch-layer-item" data-tooltip="TAMS (통합관제시스템)" data-i18n-attr="data-tooltip:arch.tt.tams"
                     style="position: absolute; left: 44.3365%; top: 44.0350%; width: 12.3344%; display: block;">
                     <img src="images/3layers/04_Assets_Object/Object_TAMS (2).png" alt="Object_TAMS"
                         style="width: 100%; display: block;">

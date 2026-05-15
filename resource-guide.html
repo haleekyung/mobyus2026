@@ -68,14 +68,13 @@
     <script>
         // --- Page Specific Data: Insights ---
         const insightData = [
-            { id: 'e1', cat: 'Technology', type: 'Starter Guide · E1', thumb: 'images/thumbnail_02.png', url: 'insight-detail.html', date: '2026.02.26', time: '10', featured: true },
-            { id: 'case', cat: 'Industry', type: 'Case Study', thumb: 'images/thumbnail_01.png', url: 'insight-case-study.html', date: '2026.03.24', time: '12' },
-            { id: 'eval', cat: 'Technology', type: 'Tech Blog', thumb: 'images/thumbnail_03.png', url: 'insight-detail-agv-amr.html', date: '2026.03.20', time: '12' },
-            { id: 'e2', cat: 'Technology', type: 'Starter Guide', thumb: 'images/thumbnail_04.png', url: 'insight-detail-prep.html', date: '2026.02.26', time: '8' },
-            { id: 'tms', cat: 'Technology', type: 'Tech Blog', thumb: 'images/thumbnail_08.png', url: 'insight-detail-tms.html', date: '2026.04.24', time: '8' },
-            { id: 'e3', cat: 'Technology', type: 'Starter Guide', thumb: 'images/thumbnail_05.png', url: 'insight-detail-roi.html', date: '2026.02.26', time: '12' },
-            { id: 't1', cat: 'Technology', type: 'Tech Blog', thumb: 'images/thumbnail_06.png', url: 'insight-detail-tams.html', date: '2026.02.26', time: '8' },
-            { id: 'twin', cat: 'Technology', type: 'Tech Blog', thumb: 'images/thumbnail_07.png', url: '#', date: '2026.02.26', time: '9', comingSoon: true }
+            { id: 'e1',   cat: 'Technology', type: 'Starter Guide · E1', thumb: 'images/thumbnail_02.png',                      url: 'insight-detail.html',         date: '2026.02.26', time: '10', featured: true },
+            { id: 'case', cat: 'Industry',   type: 'Case Study',          thumb: 'images/thumbnail_01.png', thumb_en: 'images/thumbnail_01_eng.png', url: 'insight-case-study.html',     date: '2026.03.24', time: '12' },
+            { id: 'eval', cat: 'Technology', type: 'Tech Blog',           thumb: 'images/thumbnail_03.png', thumb_en: 'images/thumbnail_03_eng.png', url: 'insight-detail-agv-amr.html', date: '2026.03.20', time: '12' },
+            { id: 'e2',   cat: 'Technology', type: 'Starter Guide',       thumb: 'images/thumbnail_04.png', thumb_en: 'images/thumbnail_04_eng.png', url: 'insight-detail-prep.html',    date: '2026.02.26', time: '8'  },
+            { id: 'tms',  cat: 'Technology', type: 'Tech Blog',           thumb: 'images/thumbnail_08.png', thumb_en: 'images/thumbnail_08_eng.png', url: 'insight-detail-tms.html',     date: '2026.04.24', time: '8'  },
+            { id: 'e3',   cat: 'Technology', type: 'Starter Guide',       thumb: 'images/thumbnail_05.png', thumb_en: 'images/thumbnail_05_eng.png', url: 'insight-detail-roi.html',     date: '2026.02.26', time: '12' },
+            { id: 't1',   cat: 'Technology', type: 'Tech Blog',           thumb: 'images/thumbnail_06.png', thumb_en: 'images/thumbnail_06_eng.png', url: 'insight-detail-tams.html',    date: '2026.02.26', time: '8'  }
         ];
 
         let currentCategory = 'All';
@@ -119,7 +118,7 @@
                         <div class="featured-body">
                             <span class="badge-type">${featuredItem.type}</span>
                             <h2 class="featured-title ${fontClass}">${titleHtml}</h2>
-                            <p class="featured-desc ${fontClass}">${dictKo[`ins.${featuredItem.id}.desc`]}</p>
+                            <p class="featured-desc ${fontClass}">${activeDict[`ins.${featuredItem.id}.desc`]}</p>
                             <div class="featured-meta">
                                 <span><i class="far fa-calendar"></i> ${featuredItem.date}</span>
                                 <span><i class="far fa-clock"></i> ${activeDict['insights.meta.read'] || ''} ${featuredItem.time}${activeDict['insights.meta.min'] || '분'}</span>
@@ -129,7 +128,8 @@
                 featuredContainer.style.display = 'block';
             } else if (featuredContainer) { featuredContainer.style.display = 'none'; }
 
-            const gridSource = filtered.filter(i => !(i.featured && (category === 'All' || i.cat === category) && page === 1));
+            // featured 항목은 페이지에 관계없이 그리드에서 항상 제외
+            const gridSource = filtered.filter(i => !i.featured);
             const totalPages = Math.ceil(gridSource.length / itemsPerPage);
             const start = (page - 1) * itemsPerPage;
             const paginated = gridSource.slice(start, start + itemsPerPage);
@@ -137,10 +137,11 @@
             grid.innerHTML = paginated.length > 0 ? paginated.map(item => {
                 const tKo = dictKo[`ins.${item.id}.title`];
                 const tEn = dictEn[`ins.${item.id}.title`];
+                const thumbSrc = (isEn && item.thumb_en) ? item.thumb_en : item.thumb;
                 const titleHtml = isEn ? tEn : `${tKo}<span class="card-title-en font-en" style="display:block; margin-top:4px; font-size:0.9rem; color:#888; font-weight:400;">${tEn}</span>`;
                 return `
                     <a class="insight-card insight-item fade-in" href="${item.url}" ${item.comingSoon ? `onclick="return showComingSoon(event)"` : ''}>
-                        <div class="card-thumb"><img src="${item.thumb}" alt="${tKo}"></div>
+                        <div class="card-thumb"><img src="${thumbSrc}" alt="${tKo}"></div>
                         <div class="card-body">
                             <span class="badge-type">${item.type}</span>
                             <h3 class="card-title ${fontClass}">${titleHtml}</h3>
