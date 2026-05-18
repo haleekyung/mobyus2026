@@ -178,7 +178,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="gnb-lang">
                 <i class="fas fa-globe"></i>
                 <a href="#" class="lang-toggle-btn" data-lang="${activeLang === 'ko' ? 'en' : 'ko'}">
-                    ${activeLang === 'ko' ? 'KO' : 'EN'}
+                    ${activeLang === 'ko' ? 'EN' : 'KO'}
                 </a>
             </div>
         `;
