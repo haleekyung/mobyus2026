@@ -202,14 +202,25 @@
             ];
 
             let currentCategory = 'All';
+            let currentTag = 'All';
             let currentPage = 1;
             const itemsPerPage = 6;
 
+            // onclick에서 접근 가능하도록 window에 노출
+            window._refState = { category: 'All', tag: 'All' };
+
             // --- Grid Rendering ---
-            window.renderCaseStudies = function(category = 'All', page = 1) {
+            window.renderCaseStudies = function(category, page, tag) {
+                if (category === undefined) category = window._refState.category;
+                if (tag === undefined) tag = window._refState.tag;
+                if (page === undefined) page = 1;
+
                 currentCategory = category;
                 currentPage = page;
-                
+                currentTag = tag;
+                window._refState.category = category;
+                window._refState.tag = tag;
+
                 // Use global data initialized by main.js
                 const lang = document.documentElement.lang || 'ko';
                 const dict = window.i18nData[lang];
@@ -219,23 +230,42 @@
                 const paginationContainer = document.querySelector('.pagination-container');
                 if (!grid) return;
 
-                // Render Filter Tabs
+                // 필터 탭: 산업군 | 구분자 | 제품군 한 줄
                 if (filterContainer) {
                     const industries = [
-                        { id: 'All', name: dict['reference.filter.all'] },
-                        { id: 'AUTOMOTIVE', name: dict['reference.filter.auto'] },
-                        { id: 'BATTERY & ENERGY', name: dict['reference.filter.battery'] },
-                        { id: 'SEMICONDUCTOR & ELECTRONICS', name: dict['reference.filter.semi'] },
-                        { id: 'FOOD & MANUFACTURING', name: dict['reference.filter.food'] },
-                        { id: 'DISTRIBUTION & FULFILLMENT', name: dict['reference.filter.dist'] },
-                        { id: 'FASHION & CONSUMER GOODS', name: dict['reference.filter.fashion'] }
+                        { id: 'All', name: dict['reference.filter.all'] || '전체' },
+                        { id: 'AUTOMOTIVE', name: dict['reference.filter.auto'] || '자동차' },
+                        { id: 'BATTERY & ENERGY', name: dict['reference.filter.battery'] || '배터리·에너지' },
+                        { id: 'SEMICONDUCTOR & ELECTRONICS', name: dict['reference.filter.semi'] || '반도체·전자' },
+                        { id: 'FOOD & MANUFACTURING', name: dict['reference.filter.food'] || '식음료·제조' },
+                        { id: 'DISTRIBUTION & FULFILLMENT', name: dict['reference.filter.dist'] || '유통·풀필먼트' },
+                        { id: 'FASHION & CONSUMER GOODS', name: dict['reference.filter.fashion'] || '패션·소비재' }
                     ];
-                    filterContainer.innerHTML = `<div class="filter-tabs">
-                        ${industries.map(ind => `<button class="filter-tab ${currentCategory === ind.id ? 'active' : ''}" onclick="renderCaseStudies('${ind.id}', 1)">${ind.name}</button>`).join('')}
-                    </div>`;
+                    const productTags = ['AMR', 'AFL', 'TAMS', 'WMS', 'TMS'];
+
+                    // 산업군 클릭 → 태그 'All'로 초기화 (상호 배타적)
+                    const industryBtns = industries.map(ind =>
+                        `<button class="filter-tab ${category === ind.id && tag === 'All' ? 'active' : ''}" onclick="renderCaseStudies('${ind.id}', 1, 'All')">${ind.name}</button>`
+                    ).join('');
+
+                    // 태그 클릭 → 산업군 'All'로 초기화 (상호 배타적)
+                    const tagBtns = productTags.map(t =>
+                        `<button class="filter-tab filter-tab-product ${tag === t && category === 'All' ? 'active' : ''}" onclick="renderCaseStudies('All', 1, '${t}')">${t}</button>`
+                    ).join('');
+
+                    filterContainer.innerHTML = `
+                        <div class="filter-tabs" style="flex-wrap: wrap; align-items: center;">
+                            ${industryBtns}
+                            <span style="color: #d1d5db; font-size: 1.2rem; margin: 0 6px; line-height: 1;">|</span>
+                            ${tagBtns}
+                        </div>`;
                 }
 
-                const filtered = category === 'All' ? caseStudyData : caseStudyData.filter(c => c.category === category);
+                // 산업군 + 제품군 AND 필터링
+                let filtered = caseStudyData;
+                if (category !== 'All') filtered = filtered.filter(c => c.category === category);
+                if (tag !== 'All') filtered = filtered.filter(c => c.tags && c.tags.includes(tag));
+
                 const totalPages = Math.ceil(filtered.length / itemsPerPage);
                 const start = (page - 1) * itemsPerPage;
                 const paginated = filtered.slice(start, start + itemsPerPage);
@@ -269,11 +299,11 @@
                         paginationContainer.innerHTML = "";
                     } else {
                         let html = `<div class="pagination">`;
-                        html += `<button class="page-btn" ${page === 1 ? 'disabled' : ''} onclick="renderCaseStudies('${category}', ${page - 1})">${dict['reference.pagination.prev']}</button>`;
+                        html += `<button class="page-btn" ${page === 1 ? 'disabled' : ''} onclick="renderCaseStudies('${category}', ${page - 1}, '${tag}')">${dict['reference.pagination.prev']}</button>`;
                         for(let i=1; i<=totalPages; i++) {
-                            html += `<button class="page-btn ${i === page ? 'active' : ''}" onclick="renderCaseStudies('${category}', ${i})">${i}</button>`;
+                            html += `<button class="page-btn ${i === page ? 'active' : ''}" onclick="renderCaseStudies('${category}', ${i}, '${tag}')">${i}</button>`;
                         }
-                        html += `<button class="page-btn" ${page === totalPages ? 'disabled' : ''} onclick="renderCaseStudies('${category}', ${page + 1})">${dict['reference.pagination.next']}</button>`;
+                        html += `<button class="page-btn" ${page === totalPages ? 'disabled' : ''} onclick="renderCaseStudies('${category}', ${page + 1}, '${tag}')">${dict['reference.pagination.next']}</button>`;
                         html += `</div>`;
                         paginationContainer.innerHTML = html;
                     }
@@ -282,14 +312,14 @@
 
             // Initial Render
             const params = new URLSearchParams(window.location.search);
-            renderCaseStudies(params.get('filter') || 'All', 1);
+            renderCaseStudies(params.get('filter') || 'All', 1, 'All');
 
             // Listen for Language Change Events from main.js
             window.addEventListener('languageChanged', (e) => {
                 // 필터 탭을 비워서 새 언어로 재생성되도록 함
                 const filterContainer = document.querySelector('.filter-container');
                 if (filterContainer) filterContainer.innerHTML = '';
-                renderCaseStudies(currentCategory, 1);
+                renderCaseStudies(currentCategory, 1, currentTag);
             });
 
             // Trigger animations on scroll

@@ -731,6 +731,13 @@
 </head>
 
 <body>
+    <script>
+        // hash가 없을 때 robot-section을 시작점으로 설정
+        // main.js의 handleAnchorScroll이 이 hash를 읽어서 스크롤 처리함
+        if (!window.location.hash) {
+            history.replaceState(null, '', '#robot-section');
+        }
+    </script>
     <header id="gnb"></header>
 
     <main>
@@ -1303,7 +1310,7 @@
 
                     <div class="tams-suite-layout">
                         <!-- Left Image with Hotspots -->
-                        <div class="tams-suite-image">
+                        <div class="tams-suite-image" style="display: flex; flex-direction: column; align-items: stretch;">
                             <div class="tams-hotspot-container">
                                 <img src="images/tams-suite.png" alt="TAMS Suite Architecture">
                                 <!-- Hotspots based on 482x797 image -->
@@ -1332,6 +1339,11 @@
                                     style="left: 17.2%; top: 7.4%; width: 12.0%; height: 85.1%;"
                                     onclick="openTamsModal('maop')"></a>
                             </div>
+                            <p style="text-align: center; margin-top: 10px; font-size: 0.82rem; color: #9ca3af; letter-spacing: 0.02em;">
+                                <i class="fas fa-hand-pointer" style="margin-right: 6px; color: #c084a8;"></i>
+                                <span class="ko">각 모듈을 클릭하면 상세 정보를 확인할 수 있습니다</span>
+                                <span class="en">Click each module to view details</span>
+                            </p>
                         </div>
 
                         <!-- Right Modules -->
@@ -1424,6 +1436,7 @@
                             </div>
                         </div>
                     </div>
+
 
                     <div
                         style="text-align: center; color: #e8b4cc; font-size: 1.4rem; margin-top: 24px; margin-bottom: 24px;">

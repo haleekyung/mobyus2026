@@ -4668,3 +4668,7 @@ html[lang="en"] [data-i18n$=".desc_en"] {
     display: none !important;
 }
 
+/* Global .ko / .en span language toggle */
+html[lang="ko"] span.en { display: none !important; }
+html[lang="en"] span.ko { display: none !important; }
+
