@@ -659,6 +659,8 @@
                 e.preventDefault();
                 if (f.id === 'product-form') {
                     window.location.href = 'mailto:sales_amr@mobyus.com?subject=[MOBYUS] 제품·솔루션 도입 문의';
+                } else if (f.id === 'ir-form') {
+                    window.location.href = 'mailto:youngbum.an@mobyus.com?subject=[MOBYUS] IR/투자 문의';
                 } else {
                     const successMsg = (window.i18nData && window.i18nData[getLanguage()]) ? window.i18nData[getLanguage()]['ct.alert.success'] : '문의가 접수되었습니다. 2영업일 이내 답변드리겠습니다.';
                     alert(successMsg);

@@ -407,12 +407,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const dicts = window.i18nData || { ko: {}, en: {} };
             const dict = dicts[lang] || dicts['ko'] || {};
 
-            // 메인 홈 레퍼런스 카드: 새 케이스 2개 + 대표 기존 케이스 2개
+            // 메인 홈 레퍼런스 카드: 요청받은 3개 케이스 노출 (이미지 포함) + 기존 효성TNS(아이콘) 유지
             const homeCards = [
-                { id: 'ref-aut-003', icon: 'fas fa-plug-circle-bolt', category: 'AUTOMOTIVE' },
-                { id: 'ref-sem-007', icon: 'fas fa-shield-halved',    category: 'SEMICONDUCTOR & ELECTRONICS' },
-                { id: 'ref-sem-001', icon: 'fas fa-server',            category: 'SEMICONDUCTOR & ELECTRONICS' },
-                { id: 'ref-foo-001', icon: 'fas fa-industry',          category: 'FOOD & MANUFACTURING' }
+                { id: 'ref-aut-003', img: 'ref-aut-003.jpg', category: 'AUTOMOTIVE' },
+                { id: 'ref-sem-007', img: 'ref-sem-007.png', category: 'SEMICONDUCTOR & ELECTRONICS' },
+                { id: 'ref-sem-001', icon: 'fas fa-server', category: 'SEMICONDUCTOR & ELECTRONICS' },
+                { id: 'ref-foo-001', img: 'ref-foo-001.png', category: 'FOOD & MANUFACTURING' }
             ];
 
             const itemsHtml = homeCards.map(card => {
@@ -422,9 +422,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 const h2    = dict[`case.${card.id}.h2`]    || '';
                 const highlights = [h1, h2].filter(h => h !== '');
 
+                let mediaHtml = '';
+                if (card.img) {
+                    mediaHtml = `<img src="images/ref/${card.img}" alt="${title}" style="width: 100%; height: 100%; object-fit: cover;">`;
+                } else if (card.icon) {
+                    mediaHtml = `<i class="${card.icon}"></i>`;
+                }
+
                 return `
                 <a href="reference.html?filter=${encodeURIComponent(card.category)}" class="use-case-card">
-                    <div class="case-img"><i class="${card.icon}"></i></div>
+                    <div class="case-img">${mediaHtml}</div>
                     <div class="case-info">
                         <span class="case-card-category" style="color: #7C0b47; font-weight: 700;">${card.category}</span>
                         <h4 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 15px;">${title}</h4>
