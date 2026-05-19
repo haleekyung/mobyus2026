@@ -19,11 +19,10 @@ window.i18nData = {
 
         "mission.p2.sub": "현장을 지휘하다",
         "mission.p2.en": "Command the Floor",
-        "mission.p2.title": "로봇은 한 대씩<br>움직일 수는 있습니다.",
-        "mission.p2.desc": "그러나 수백 대가 엉키지 않고 하나의 흐름으로 움직이려면, 지휘가 필요합니다. 통합관제시스템 TAMS가 다수·이기종 로봇은 물론, 설비와 작업자까지 하나의 흐름으로 조율합니다.",
-        "mission.p2.fact1": "다기종/1000대+ 동시제어",
-        "mission.p2.fact2": "이기종 통합",
-        "mission.p2.fact3": "실시간 재고/경로 최적화",
+        "mission.p2.title": "로봇·설비·작업자를 하나의<br>흐름으로 조율합니다.",
+        "mission.p2.desc": "서로 다른 로봇·설비·작업자가 엉키지 않고 최적 흐름으로 움직이려면, 지휘가 필요합니다. 통합관제시스템 TAMS가 다수·이기종 로봇은 물론, 설비와 작업자까지 하나의 흐름으로 조율합니다.",
+        "mission.p2.fact1": "1,000대+ 동시 제어",
+        "mission.p2.fact2": "이기종 통합 실시간 경로 최적화",
 
         "mission.p3.sub": "운영을 연결하다",
         "mission.p3.en": "Operations, Connected",
@@ -2505,15 +2504,14 @@ window.i18nData = {
         "mission.p1.fact2": "±5mm docking precision",
 
         "mission.p2.sub": "Command the Floor",
-        "mission.p2.title": "You can move robots<br>one by one.",
-        "mission.p2.desc": "But keeping hundreds in sync as one flow — that requires orchestration. TAMS coordinates multi-type robots, equipment, and workforce into one seamless operation.",
-        "mission.p2.fact1": "Multi-vendor/3000+ simultaneous control",
-        "mission.p2.fact2": "Multi-vendor integration",
-        "mission.p2.fact3": "Real-time inventory/route optimization",
+        "mission.p2.title": "Robots, equipment, and workers<br>— orchestrated into one flow.",
+        "mission.p2.desc": "When different robots, equipment, and workers share a single floor, keeping them in optimal flow requires orchestration. TAMS, our integrated control system, coordinates multi-type robots — along with equipment and workers — into one seamless flow.",
+        "mission.p2.fact1": "1,000+ robots in concurrent control",
+        "mission.p2.fact2": "Real-time path optimization across multi-type fleets",
 
         "mission.p3.sub": "Operations, Connected",
-        "mission.p3.title": "Robots move.<br>Orchestration commands.",
-        "mission.p3.desc": "Logistics software connects to them, linking orders, inventory, and transportation into one flow.<br>WMS · OMS · TMS turn field data into operational decisions and tie the entire logistics together.",
+        "mission.p3.title": "Orders, inventory, and transport<br>— linked into one flow.",
+        "mission.p3.desc": "An order is received, inventory is allocated, a truck rolls out. WMS · OMS · TMS turn field data into operational decisions, weaving the entire logistics together.",
         "mission.p3.fact1": "12+ years of logistics solution expertise",
         "mission.p3.fact2": "Deployed across manufacturing & distribution",
 
