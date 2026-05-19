@@ -407,11 +407,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const dicts = window.i18nData || { ko: {}, en: {} };
             const dict = dicts[lang] || dicts['ko'] || {};
 
-            // 메인 홈 레퍼런스 카드: 요청받은 3개 케이스 노출 (이미지 포함) + 기존 효성TNS(아이콘) 유지
             const homeCards = [
                 { id: 'ref-aut-003', img: 'ref-aut-003.jpg', category: 'AUTOMOTIVE' },
                 { id: 'ref-sem-007', img: 'ref-sem-007.png', category: 'SEMICONDUCTOR & ELECTRONICS' },
-                { id: 'ref-sem-001', icon: 'fas fa-server', category: 'SEMICONDUCTOR & ELECTRONICS' },
+                { id: 'ref-sem-001', img: 'ref-sem-001.jpg', category: 'SEMICONDUCTOR & ELECTRONICS' },
                 { id: 'ref-foo-001', img: 'ref-foo-001.png', category: 'FOOD & MANUFACTURING' }
             ];
 
