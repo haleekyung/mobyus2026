@@ -729,18 +729,6 @@
                 });
 
                 if (f.id === 'product-form') {
-                    const banner = document.getElementById('fit-check-result-banner');
-                    if (banner && banner.style.display !== 'none') {
-                        const fitCheckDataStr = localStorage.getItem('fitCheckResult');
-                        if (fitCheckDataStr) {
-                            try {
-                                const fcData = JSON.parse(fitCheckDataStr);
-                                if (fcData.fullAnswers) {
-                                    bodyText += `\n[Fit-Check 상세 응답 내역]\n${fcData.fullAnswers}\n`;
-                                }
-                            } catch (e) {}
-                        }
-                    }
                     window.location.href = `mailto:sales_amr@mobyus.com?subject=${encodeURIComponent('[MOBYUS] 제품·솔루션 도입 문의')}&body=${encodeURIComponent(bodyText)}`;
                     document.getElementById('product-fallback').style.display = 'block';
                     window.lastMailBody_product = bodyText;
@@ -782,7 +770,7 @@
                 } else {
                     // 결과 기반 상담 요청 (Fit-Check 데이터 로드)
                     if (cReq) cReq.style.display = 'none';
-                    const fitCheckDataStr = localStorage.getItem('fitCheckResult');
+                    const fitCheckDataStr = sessionStorage.getItem('fitCheckResult');
                     
                     if (fitCheckDataStr) {
                         try {
@@ -794,13 +782,19 @@
                             document.getElementById('fc-task').textContent = fcData.tasks ? fcData.tasks.join(', ') : '해당 없음';
                             document.getElementById('fc-status').textContent = fcData.status || '완료';
 
+                            // 질문에 대한 답변 내용 자동 입력
+                            if (contentArea && fcData.fullAnswers && !contentArea.value.includes('[Fit-Check 상세 응답 내역]')) {
+                                contentArea.value = "[Fit-Check 상세 응답 내역]\n\n" + fcData.fullAnswers + "\n\n==========================\n여기에 추가 문의사항을 작성해 주세요.";
+                            }
                         } catch (e) {
                             if (banner) banner.style.display = 'none';
                         }
                     } else {
-                        // 결과가 없으면 일반 문의로 처리
-                        if (banner) banner.style.display = 'none';
-                        if (cReq) cReq.style.display = 'inline';
+                        // 결과가 없으면 진단 안내 모달 표시
+                        if (confirm('Fit-Check 진단 기록이 없습니다.\n최적의 맞춤 상담을 위해 먼저 Fit-Check를 진행하시겠습니까?')) {
+                            window.location.href = 'fit-check.html';
+                        }
+                        return; // 폼 표시 중단
                     }
                 }
             }

@@ -985,7 +985,7 @@ function showResult() {
   saveFitCheckData(grade, q1, q2, q3, q5, dict);
 
   // Save answers for back-navigation restoration
-  localStorage.setItem('fitCheckAnswers', JSON.stringify({
+  sessionStorage.setItem('fitCheckAnswers', JSON.stringify({
     ans: Object.assign({}, ans),
     multi5: multi[5].slice()
   }));
@@ -1085,7 +1085,7 @@ function saveFitCheckData(grade, q1, q2, q3, q5, dict) {
     fullAnswers:   fullAnswers
   };
 
-  localStorage.setItem('fitCheckResult', JSON.stringify(fcData));
+  sessionStorage.setItem('fitCheckResult', JSON.stringify(fcData));
 }
 // ── RESTART ────────────────────────────────
 function restart() {
@@ -1101,8 +1101,8 @@ function restart() {
   document.getElementById('hero-section').style.display  = 'block';
   document.getElementById('sticky-footer').style.display = 'flex';
   document.getElementById('result-page').style.display   = 'none';
-  localStorage.removeItem('fitCheckResult');
-  localStorage.removeItem('fitCheckAnswers');
+  sessionStorage.removeItem('fitCheckResult');
+  sessionStorage.removeItem('fitCheckAnswers');
   // Remove #result from URL
   history.replaceState(null, '', window.location.pathname);
   updateCounter();
@@ -1114,7 +1114,7 @@ function restart() {
 // and also handles bfcache restore cases
 window.addEventListener('pageshow', function() {
   if (window.location.hash !== '#result') return;
-  const saved = JSON.parse(localStorage.getItem('fitCheckAnswers') || 'null');
+  const saved = JSON.parse(sessionStorage.getItem('fitCheckAnswers') || 'null');
   if (!saved || !saved.ans) return;
   // Restore answers
   Object.assign(ans, saved.ans);
